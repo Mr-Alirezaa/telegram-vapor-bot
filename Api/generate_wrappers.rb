@@ -13,12 +13,12 @@ LIB_DIR = '../Sources/telegram-vapor-bot'
 API_FILE = 'tg-api.txt'
 
 TYPE_HEADER = <<EOT
-// Telegram-vapor-bot - Telegram Bot Swift SDK.
+
 
 EOT
 
 METHOD_HEADER = <<EOT
-// Telegram-vapor-bot - Telegram Bot Swift SDK.
+
 
 EOT
 
@@ -473,18 +473,18 @@ end
 def make_bot_protocol(signatures)
   protocol = METHOD_HEADER
   protocol << "import Vapor\n\n"
-  protocol << "public protocol #{PREFIX_LIB}BotPrtcl {\n\n"
+  protocol << "public protocol #{PREFIX_LIB}BotProtocol {\n\n"
   protocol << "#{ONE}var botId: String { get set }\n"
   protocol << "#{ONE}var tgURI: URI { get set }\n"
-  protocol << "#{ONE}var tgClient: TGClientPrtcl { get set }\n"
-  protocol << "#{ONE}var connection: TGConnectionPrtcl  { get }\n\n"
+  protocol << "#{ONE}var tgClient: ClientProtocol { get set }\n"
+  protocol << "#{ONE}var connection: ConnectionProtocol  { get }\n\n"
   protocol << "#{ONE}static var shared: Self { get }\n\n"
   protocol << "#{ONE}static var log: Logger { get }\n\n"
   protocol << "#{ONE}func start() throws\n\n"
   signatures.each { |signature| protocol << "#{signature}\n\n" }
   protocol << "}\n\n"
 
-  File.open("#{LIB_DIR}/Bot/#{PREFIX_LIB}BotPrtcl.swift", "wb") do | out |
+  File.open("#{LIB_DIR}/Bot/#{PREFIX_LIB}BotProtocol.swift", "wb") do | out |
     out.write protocol
   end
 end
