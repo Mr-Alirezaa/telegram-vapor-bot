@@ -1,14 +1,10 @@
-
-
 import Vapor
 
 /// DESCRIPTION:
 /// Use this method to create an additional invite link for a chat. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. The link can be revoked using the method revokeChatInviteLink. Returns the new invite link as ChatInviteLink object.
 
-
 /// Parameters container struct for `createChatInviteLink` method
 public struct CreateChatInviteLinkParams: Encodable {
-
     /// Unique identifier for the target chat or username of the target channel (in the format @channelusername)
     public var chatId: ChatId
 
@@ -26,36 +22,34 @@ public struct CreateChatInviteLinkParams: Encodable {
 
     /// Custom keys for coding/decoding `CreateChatInviteLinkParams` struct
     public enum CodingKeys: String, CodingKey {
-            case chatId = "chat_id"
-            case name = "name"
-            case expireDate = "expire_date"
-            case memberLimit = "member_limit"
-            case createsJoinRequest = "creates_join_request"
+        case chatId = "chat_id"
+        case name
+        case expireDate = "expire_date"
+        case memberLimit = "member_limit"
+        case createsJoinRequest = "creates_join_request"
     }
 
     public init(chatId: ChatId, name: String? = nil, expireDate: Int? = nil, memberLimit: Int? = nil, createsJoinRequest: Bool? = nil) {
-            self.chatId = chatId
-            self.name = name
-            self.expireDate = expireDate
-            self.memberLimit = memberLimit
-            self.createsJoinRequest = createsJoinRequest
+        self.chatId = chatId
+        self.name = name
+        self.expireDate = expireDate
+        self.memberLimit = memberLimit
+        self.createsJoinRequest = createsJoinRequest
     }
 }
 
-
 public extension Bot {
+    /**
+     Use this method to create an additional invite link for a chat. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. The link can be revoked using the method revokeChatInviteLink. Returns the new invite link as ChatInviteLink object.
 
-/**
- Use this method to create an additional invite link for a chat. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. The link can be revoked using the method revokeChatInviteLink. Returns the new invite link as ChatInviteLink object.
+     SeeAlso Telegram Bot API Reference:
+     [CreateChatInviteLinkParams](https://core.telegram.org/bots/api#createchatinvitelink)
 
- SeeAlso Telegram Bot API Reference:
- [CreateChatInviteLinkParams](https://core.telegram.org/bots/api#createchatinvitelink)
- 
- - Parameters:
-     - params: Parameters container, see `CreateChatInviteLinkParams` struct
- - Throws: Throws on errors
- - Returns: EventLoopFuture of `Bool` type
- */
+     - Parameters:
+         - params: Parameters container, see `CreateChatInviteLinkParams` struct
+     - Throws: Throws on errors
+     - Returns: EventLoopFuture of `Bool` type
+     */
     @discardableResult
     func createChatInviteLink(params: CreateChatInviteLinkParams) throws -> EventLoopFuture<Bool> {
         let methodURL: URI = .init(string: getMethodURL("createChatInviteLink"))

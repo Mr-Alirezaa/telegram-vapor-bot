@@ -7,11 +7,10 @@
  [PollAnswer](https://core.telegram.org/bots/api#pollanswer)
  */
 public final class PollAnswer: Codable {
-
     /// Custom keys for coding/decoding `PollAnswer` struct
     public enum CodingKeys: String, CodingKey {
         case pollId = "poll_id"
-        case user = "user"
+        case user
         case optionIds = "option_ids"
     }
 
@@ -24,7 +23,7 @@ public final class PollAnswer: Codable {
     /// 0-based identifiers of answer options, chosen by the user. May be empty if the user retracted their vote.
     public var optionIds: [Int]
 
-    public init (pollId: String, user: User, optionIds: [Int]) {
+    public init(pollId: String, user: User, optionIds: [Int]) {
         self.pollId = pollId
         self.user = user
         self.optionIds = optionIds

@@ -1,14 +1,10 @@
-
-
 import Vapor
 
 /// DESCRIPTION:
 /// Use this method to unban a previously banned channel chat in a supergroup or channel. The bot must be an administrator for this to work and must have the appropriate administrator rights. Returns True on success.
 
-
 /// Parameters container struct for `unbanChatSenderChat` method
 public struct UnbanChatSenderChatParams: Encodable {
-
     /// Unique identifier for the target chat or username of the target channel (in the format @channelusername)
     public var chatId: ChatId
 
@@ -17,30 +13,28 @@ public struct UnbanChatSenderChatParams: Encodable {
 
     /// Custom keys for coding/decoding `UnbanChatSenderChatParams` struct
     public enum CodingKeys: String, CodingKey {
-            case chatId = "chat_id"
-            case senderChatId = "sender_chat_id"
+        case chatId = "chat_id"
+        case senderChatId = "sender_chat_id"
     }
 
     public init(chatId: ChatId, senderChatId: Int64) {
-            self.chatId = chatId
-            self.senderChatId = senderChatId
+        self.chatId = chatId
+        self.senderChatId = senderChatId
     }
 }
 
-
 public extension Bot {
+    /**
+     Use this method to unban a previously banned channel chat in a supergroup or channel. The bot must be an administrator for this to work and must have the appropriate administrator rights. Returns True on success.
 
-/**
- Use this method to unban a previously banned channel chat in a supergroup or channel. The bot must be an administrator for this to work and must have the appropriate administrator rights. Returns True on success.
+     SeeAlso Telegram Bot API Reference:
+     [UnbanChatSenderChatParams](https://core.telegram.org/bots/api#unbanchatsenderchat)
 
- SeeAlso Telegram Bot API Reference:
- [UnbanChatSenderChatParams](https://core.telegram.org/bots/api#unbanchatsenderchat)
- 
- - Parameters:
-     - params: Parameters container, see `UnbanChatSenderChatParams` struct
- - Throws: Throws on errors
- - Returns: EventLoopFuture of `Bool` type
- */
+     - Parameters:
+         - params: Parameters container, see `UnbanChatSenderChatParams` struct
+     - Throws: Throws on errors
+     - Returns: EventLoopFuture of `Bool` type
+     */
     @discardableResult
     func unbanChatSenderChat(params: UnbanChatSenderChatParams) throws -> EventLoopFuture<Bool> {
         let methodURL: URI = .init(string: getMethodURL("unbanChatSenderChat"))

@@ -7,15 +7,14 @@
  [MessageEntity](https://core.telegram.org/bots/api#messageentity)
  */
 public final class MessageEntity: Codable {
-
     /// Custom keys for coding/decoding `MessageEntity` struct
     public enum CodingKeys: String, CodingKey {
-        case type = "type"
-        case offset = "offset"
-        case length = "length"
-        case url = "url"
-        case user = "user"
-        case language = "language"
+        case type
+        case offset
+        case length
+        case url
+        case user
+        case language
         case customEmojiId = "custom_emoji_id"
     }
 
@@ -40,7 +39,7 @@ public final class MessageEntity: Codable {
     /// Optional. For “custom_emoji” only, unique identifier of the custom emoji. Use getCustomEmojiStickers to get full information about the sticker
     public var customEmojiId: String?
 
-    public init (type: MessageEntityType, offset: Int, length: Int, url: String? = nil, user: User? = nil, language: String? = nil, customEmojiId: String? = nil) {
+    public init(type: MessageEntityType, offset: Int, length: Int, url: String? = nil, user: User? = nil, language: String? = nil, customEmojiId: String? = nil) {
         self.type = type
         self.offset = offset
         self.length = length

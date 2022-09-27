@@ -1,16 +1,8 @@
-//
-//  CallbackQueryHandler.swift
-//  Telegrammer
-//
-
-//
-
 import Foundation
 
 /// Handler for CallbackQuery updates
 public class CallbackQueryHandler: HandlerProtocol {
-
-    public var id: Int = 0
+    public var id = 0
 
     public var name: String
 
@@ -30,7 +22,8 @@ public class CallbackQueryHandler: HandlerProtocol {
     public func check(update: Update) -> Bool {
         guard let callbackQuery = update.callbackQuery else { return false }
         if let data = callbackQuery.data,
-           !data.matchRegexp(pattern: pattern) {
+           !data.matchRegexp(pattern: pattern)
+        {
             return false
         }
         return true

@@ -7,14 +7,13 @@
  [User](https://core.telegram.org/bots/api#user)
  */
 public final class User: Codable {
-
     /// Custom keys for coding/decoding `User` struct
     public enum CodingKeys: String, CodingKey {
-        case id = "id"
+        case id
         case isBot = "is_bot"
         case firstName = "first_name"
         case lastName = "last_name"
-        case username = "username"
+        case username
         case languageCode = "language_code"
         case isPremium = "is_premium"
         case addedToAttachmentMenu = "added_to_attachment_menu"
@@ -56,7 +55,7 @@ public final class User: Codable {
     /// Optional. True, if the bot supports inline queries. Returned only in getMe.
     public var supportsInlineQueries: Bool?
 
-    public init (id: Int64, isBot: Bool, firstName: String, lastName: String? = nil, username: String? = nil, languageCode: String? = nil, isPremium: Bool? = nil, addedToAttachmentMenu: Bool? = nil, canJoinGroups: Bool? = nil, canReadAllGroupMessages: Bool? = nil, supportsInlineQueries: Bool? = nil) {
+    public init(id: Int64, isBot: Bool, firstName: String, lastName: String? = nil, username: String? = nil, languageCode: String? = nil, isPremium: Bool? = nil, addedToAttachmentMenu: Bool? = nil, canJoinGroups: Bool? = nil, canReadAllGroupMessages: Bool? = nil, supportsInlineQueries: Bool? = nil) {
         self.id = id
         self.isBot = isBot
         self.firstName = firstName

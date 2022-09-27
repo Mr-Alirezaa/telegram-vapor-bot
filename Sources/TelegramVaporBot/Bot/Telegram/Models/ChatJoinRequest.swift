@@ -7,13 +7,12 @@
  [ChatJoinRequest](https://core.telegram.org/bots/api#chatjoinrequest)
  */
 public final class ChatJoinRequest: Codable {
-
     /// Custom keys for coding/decoding `ChatJoinRequest` struct
     public enum CodingKeys: String, CodingKey {
-        case chat = "chat"
-        case from = "from"
-        case date = "date"
-        case bio = "bio"
+        case chat
+        case from
+        case date
+        case bio
         case inviteLink = "invite_link"
     }
 
@@ -32,7 +31,7 @@ public final class ChatJoinRequest: Codable {
     /// Optional. Chat invite link that was used by the user to send the join request
     public var inviteLink: ChatInviteLink?
 
-    public init (chat: Chat, from: User, date: Int, bio: String? = nil, inviteLink: ChatInviteLink? = nil) {
+    public init(chat: Chat, from: User, date: Int, bio: String? = nil, inviteLink: ChatInviteLink? = nil) {
         self.chat = chat
         self.from = from
         self.date = date

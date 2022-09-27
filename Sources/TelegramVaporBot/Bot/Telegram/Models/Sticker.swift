@@ -7,18 +7,17 @@
  [Sticker](https://core.telegram.org/bots/api#sticker)
  */
 public final class Sticker: Codable {
-
     /// Custom keys for coding/decoding `Sticker` struct
     public enum CodingKeys: String, CodingKey {
         case fileId = "file_id"
         case fileUniqueId = "file_unique_id"
-        case type = "type"
-        case width = "width"
-        case height = "height"
+        case type
+        case width
+        case height
         case isAnimated = "is_animated"
         case isVideo = "is_video"
-        case thumb = "thumb"
-        case emoji = "emoji"
+        case thumb
+        case emoji
         case setName = "set_name"
         case premiumAnimation = "premium_animation"
         case maskPosition = "mask_position"
@@ -68,7 +67,7 @@ public final class Sticker: Codable {
     /// Optional. File size in bytes
     public var fileSize: Int?
 
-    public init (fileId: String, fileUniqueId: String, type: String, width: Int, height: Int, isAnimated: Bool, isVideo: Bool, thumb: PhotoSize? = nil, emoji: String? = nil, setName: String? = nil, premiumAnimation: File? = nil, maskPosition: MaskPosition? = nil, customEmojiId: String? = nil, fileSize: Int? = nil) {
+    public init(fileId: String, fileUniqueId: String, type: String, width: Int, height: Int, isAnimated: Bool, isVideo: Bool, thumb: PhotoSize? = nil, emoji: String? = nil, setName: String? = nil, premiumAnimation: File? = nil, maskPosition: MaskPosition? = nil, customEmojiId: String? = nil, fileSize: Int? = nil) {
         self.fileId = fileId
         self.fileUniqueId = fileUniqueId
         self.type = type

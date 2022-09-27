@@ -1,14 +1,10 @@
-
-
 import Vapor
 
 /// DESCRIPTION:
 /// Use this method to restrict a user in a supergroup. The bot must be an administrator in the supergroup for this to work and must have the appropriate administrator rights. Pass True for all permissions to lift restrictions from a user. Returns True on success.
 
-
 /// Parameters container struct for `restrictChatMember` method
 public struct RestrictChatMemberParams: Encodable {
-
     /// Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
     public var chatId: ChatId
 
@@ -23,34 +19,32 @@ public struct RestrictChatMemberParams: Encodable {
 
     /// Custom keys for coding/decoding `RestrictChatMemberParams` struct
     public enum CodingKeys: String, CodingKey {
-            case chatId = "chat_id"
-            case userId = "user_id"
-            case permissions = "permissions"
-            case untilDate = "until_date"
+        case chatId = "chat_id"
+        case userId = "user_id"
+        case permissions
+        case untilDate = "until_date"
     }
 
     public init(chatId: ChatId, userId: Int64, permissions: ChatPermissions, untilDate: Int? = nil) {
-            self.chatId = chatId
-            self.userId = userId
-            self.permissions = permissions
-            self.untilDate = untilDate
+        self.chatId = chatId
+        self.userId = userId
+        self.permissions = permissions
+        self.untilDate = untilDate
     }
 }
 
-
 public extension Bot {
+    /**
+     Use this method to restrict a user in a supergroup. The bot must be an administrator in the supergroup for this to work and must have the appropriate administrator rights. Pass True for all permissions to lift restrictions from a user. Returns True on success.
 
-/**
- Use this method to restrict a user in a supergroup. The bot must be an administrator in the supergroup for this to work and must have the appropriate administrator rights. Pass True for all permissions to lift restrictions from a user. Returns True on success.
+     SeeAlso Telegram Bot API Reference:
+     [RestrictChatMemberParams](https://core.telegram.org/bots/api#restrictchatmember)
 
- SeeAlso Telegram Bot API Reference:
- [RestrictChatMemberParams](https://core.telegram.org/bots/api#restrictchatmember)
- 
- - Parameters:
-     - params: Parameters container, see `RestrictChatMemberParams` struct
- - Throws: Throws on errors
- - Returns: EventLoopFuture of `Bool` type
- */
+     - Parameters:
+         - params: Parameters container, see `RestrictChatMemberParams` struct
+     - Throws: Throws on errors
+     - Returns: EventLoopFuture of `Bool` type
+     */
     @discardableResult
     func restrictChatMember(params: RestrictChatMemberParams) throws -> EventLoopFuture<Bool> {
         let methodURL: URI = .init(string: getMethodURL("restrictChatMember"))

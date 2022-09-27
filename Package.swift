@@ -5,12 +5,13 @@ import PackageDescription
 let package = Package(
     name: "telegram-vapor-bot",
     platforms: [
-        .macOS(.v10_15)
+        .macOS(.v10_15),
     ],
     products: [
         .library(
             name: "TelegramVaporBot",
-            targets: ["TelegramVaporBot"]),
+            targets: ["TelegramVaporBot"]
+        ),
     ],
     dependencies: [
         .package(url: "https://github.com/vapor/vapor.git", from: "4.45.0"),
@@ -23,6 +24,6 @@ let package = Package(
                 .product(name: "Vapor", package: "vapor"),
                 .product(name: "SwiftRegularExpression", package: "swift-regular-expression"),
             ]
-        )
+        ),
     ]
 )

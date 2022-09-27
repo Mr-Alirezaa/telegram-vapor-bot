@@ -1,19 +1,12 @@
-//
-//
-//
-
-//
-
 import Foundation
 
 /// Messages that contain `Game`
 public class GameFilter: Filter {
-
-    public var name: String = "forwarded"
+    public var name = "forwarded"
 
     override
     public func filter(message: Message) -> Bool {
-        return message.game != nil
+        message.game != nil
     }
 }
 

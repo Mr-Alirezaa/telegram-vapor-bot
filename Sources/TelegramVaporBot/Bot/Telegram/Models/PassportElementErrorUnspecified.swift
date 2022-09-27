@@ -7,13 +7,12 @@
  [PassportElementErrorUnspecified](https://core.telegram.org/bots/api#passportelementerrorunspecified)
  */
 public final class PassportElementErrorUnspecified: Codable {
-
     /// Custom keys for coding/decoding `PassportElementErrorUnspecified` struct
     public enum CodingKeys: String, CodingKey {
-        case source = "source"
-        case type = "type"
+        case source
+        case type
         case elementHash = "element_hash"
-        case message = "message"
+        case message
     }
 
     /// Error source, must be unspecified
@@ -28,7 +27,7 @@ public final class PassportElementErrorUnspecified: Codable {
     /// Error message
     public var message: String
 
-    public init (source: String, type: String, elementHash: String, message: String) {
+    public init(source: String, type: String, elementHash: String, message: String) {
         self.source = source
         self.type = type
         self.elementHash = elementHash

@@ -7,18 +7,17 @@
  [InputMediaVideo](https://core.telegram.org/bots/api#inputmediavideo)
  */
 public final class InputMediaVideo: Encodable {
-
     /// Custom keys for coding/decoding `InputMediaVideo` struct
     public enum CodingKeys: String, CodingKey {
-        case type = "type"
-        case media = "media"
-        case thumb = "thumb"
-        case caption = "caption"
+        case type
+        case media
+        case thumb
+        case caption
         case parseMode = "parse_mode"
         case captionEntities = "caption_entities"
-        case width = "width"
-        case height = "height"
-        case duration = "duration"
+        case width
+        case height
+        case duration
         case supportsStreaming = "supports_streaming"
     }
 
@@ -52,7 +51,7 @@ public final class InputMediaVideo: Encodable {
     /// Optional. Pass True if the uploaded video is suitable for streaming
     public var supportsStreaming: Bool?
 
-    public init (type: String, media: String, thumb: FileInfo? = nil, caption: String? = nil, parseMode: String? = nil, captionEntities: [MessageEntity]? = nil, width: Int? = nil, height: Int? = nil, duration: Int? = nil, supportsStreaming: Bool? = nil) {
+    public init(type: String, media: String, thumb: FileInfo? = nil, caption: String? = nil, parseMode: String? = nil, captionEntities: [MessageEntity]? = nil, width: Int? = nil, height: Int? = nil, duration: Int? = nil, supportsStreaming: Bool? = nil) {
         self.type = type
         self.media = media
         self.thumb = thumb

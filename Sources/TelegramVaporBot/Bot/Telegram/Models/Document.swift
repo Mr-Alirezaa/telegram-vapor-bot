@@ -7,12 +7,11 @@
  [Document](https://core.telegram.org/bots/api#document)
  */
 public final class Document: Codable {
-
     /// Custom keys for coding/decoding `Document` struct
     public enum CodingKeys: String, CodingKey {
         case fileId = "file_id"
         case fileUniqueId = "file_unique_id"
-        case thumb = "thumb"
+        case thumb
         case fileName = "file_name"
         case mimeType = "mime_type"
         case fileSize = "file_size"
@@ -36,7 +35,7 @@ public final class Document: Codable {
     /// Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this value.
     public var fileSize: Int?
 
-    public init (fileId: String, fileUniqueId: String, thumb: PhotoSize? = nil, fileName: String? = nil, mimeType: String? = nil, fileSize: Int? = nil) {
+    public init(fileId: String, fileUniqueId: String, thumb: PhotoSize? = nil, fileName: String? = nil, mimeType: String? = nil, fileSize: Int? = nil) {
         self.fileId = fileId
         self.fileUniqueId = fileUniqueId
         self.thumb = thumb

@@ -13,11 +13,10 @@
  [ChatMember](https://core.telegram.org/bots/api#chatmember)
  */
 public final class ChatMember: Codable {
-
     /// Custom keys for coding/decoding `ChatMember` struct
     public enum CodingKeys: String, CodingKey {
-        case status = "status"
-        case user = "user"
+        case status
+        case user
         case isAnonymous = "is_anonymous"
         case customTitle = "custom_title"
         case canBeEdited = "can_be_edited"
@@ -113,7 +112,7 @@ public final class ChatMember: Codable {
     /// The member's status in the chat, always “left”
     /// The member's status in the chat, always “kicked”
     /// Date when restrictions will be lifted for this user; unix time. If 0, then the user is banned forever
-    public init (status: String, user: User, isAnonymous: Bool?, customTitle: String?, canBeEdited: Bool?, canManageChat: Bool?, canDeleteMessages: Bool?, canManageVideoChats: Bool?, canRestrictMembers: Bool?, canPromoteMembers: Bool?, canChangeInfo: Bool?, canInviteUsers: Bool?, canPostMessages: Bool?, canEditMessages: Bool?, canPinMessages: Bool?, isMember: Bool?, canSendMessages: Bool?, canSendMediaMessages: Bool?, canSendPolls: Bool?, canSendOtherMessages: Bool?, canAddWebPagePreviews: Bool?, untilDate: Int?) {
+    public init(status: String, user: User, isAnonymous: Bool?, customTitle: String?, canBeEdited: Bool?, canManageChat: Bool?, canDeleteMessages: Bool?, canManageVideoChats: Bool?, canRestrictMembers: Bool?, canPromoteMembers: Bool?, canChangeInfo: Bool?, canInviteUsers: Bool?, canPostMessages: Bool?, canEditMessages: Bool?, canPinMessages: Bool?, isMember: Bool?, canSendMessages: Bool?, canSendMediaMessages: Bool?, canSendPolls: Bool?, canSendOtherMessages: Bool?, canAddWebPagePreviews: Bool?, untilDate: Int?) {
         self.status = status
         self.user = user
         self.isAnonymous = isAnonymous

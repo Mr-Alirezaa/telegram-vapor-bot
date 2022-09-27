@@ -1,14 +1,10 @@
-
-
 import Vapor
 
 /// DESCRIPTION:
 /// Use this method to change the default administrator rights requested by the bot when it's added as an administrator to groups or channels. These rights will be suggested to users, but they are are free to modify the list before adding the bot. Returns True on success.
 
-
 /// Parameters container struct for `setMyDefaultAdministratorRights` method
 public struct SetMyDefaultAdministratorRightsParams: Encodable {
-
     /// A JSON-serialized object describing new default administrator rights. If not specified, the default administrator rights will be cleared.
     public var rights: ChatAdministratorRights?
 
@@ -17,30 +13,28 @@ public struct SetMyDefaultAdministratorRightsParams: Encodable {
 
     /// Custom keys for coding/decoding `SetMyDefaultAdministratorRightsParams` struct
     public enum CodingKeys: String, CodingKey {
-            case rights = "rights"
-            case forChannels = "for_channels"
+        case rights
+        case forChannels = "for_channels"
     }
 
     public init(rights: ChatAdministratorRights? = nil, forChannels: Bool? = nil) {
-            self.rights = rights
-            self.forChannels = forChannels
+        self.rights = rights
+        self.forChannels = forChannels
     }
 }
 
-
 public extension Bot {
+    /**
+     Use this method to change the default administrator rights requested by the bot when it's added as an administrator to groups or channels. These rights will be suggested to users, but they are are free to modify the list before adding the bot. Returns True on success.
 
-/**
- Use this method to change the default administrator rights requested by the bot when it's added as an administrator to groups or channels. These rights will be suggested to users, but they are are free to modify the list before adding the bot. Returns True on success.
+     SeeAlso Telegram Bot API Reference:
+     [SetMyDefaultAdministratorRightsParams](https://core.telegram.org/bots/api#setmydefaultadministratorrights)
 
- SeeAlso Telegram Bot API Reference:
- [SetMyDefaultAdministratorRightsParams](https://core.telegram.org/bots/api#setmydefaultadministratorrights)
- 
- - Parameters:
-     - params: Parameters container, see `SetMyDefaultAdministratorRightsParams` struct
- - Throws: Throws on errors
- - Returns: EventLoopFuture of `Bool` type
- */
+     - Parameters:
+         - params: Parameters container, see `SetMyDefaultAdministratorRightsParams` struct
+     - Throws: Throws on errors
+     - Returns: EventLoopFuture of `Bool` type
+     */
     @discardableResult
     func setMyDefaultAdministratorRights(params: SetMyDefaultAdministratorRightsParams? = nil) throws -> EventLoopFuture<Bool> {
         let methodURL: URI = .init(string: getMethodURL("setMyDefaultAdministratorRights"))

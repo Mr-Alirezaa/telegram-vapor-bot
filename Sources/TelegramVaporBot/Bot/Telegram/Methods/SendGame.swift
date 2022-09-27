@@ -1,14 +1,10 @@
-
-
 import Vapor
 
 /// DESCRIPTION:
 /// Use this method to send a game. On success, the sent Message is returned.
 
-
 /// Parameters container struct for `sendGame` method
 public struct SendGameParams: Encodable {
-
     /// Unique identifier for the target chat
     public var chatId: Int64
 
@@ -32,40 +28,38 @@ public struct SendGameParams: Encodable {
 
     /// Custom keys for coding/decoding `SendGameParams` struct
     public enum CodingKeys: String, CodingKey {
-            case chatId = "chat_id"
-            case gameShortName = "game_short_name"
-            case disableNotification = "disable_notification"
-            case protectContent = "protect_content"
-            case replyToMessageId = "reply_to_message_id"
-            case allowSendingWithoutReply = "allow_sending_without_reply"
-            case replyMarkup = "reply_markup"
+        case chatId = "chat_id"
+        case gameShortName = "game_short_name"
+        case disableNotification = "disable_notification"
+        case protectContent = "protect_content"
+        case replyToMessageId = "reply_to_message_id"
+        case allowSendingWithoutReply = "allow_sending_without_reply"
+        case replyMarkup = "reply_markup"
     }
 
     public init(chatId: Int64, gameShortName: String, disableNotification: Bool? = nil, protectContent: Bool? = nil, replyToMessageId: Int? = nil, allowSendingWithoutReply: Bool? = nil, replyMarkup: InlineKeyboardMarkup? = nil) {
-            self.chatId = chatId
-            self.gameShortName = gameShortName
-            self.disableNotification = disableNotification
-            self.protectContent = protectContent
-            self.replyToMessageId = replyToMessageId
-            self.allowSendingWithoutReply = allowSendingWithoutReply
-            self.replyMarkup = replyMarkup
+        self.chatId = chatId
+        self.gameShortName = gameShortName
+        self.disableNotification = disableNotification
+        self.protectContent = protectContent
+        self.replyToMessageId = replyToMessageId
+        self.allowSendingWithoutReply = allowSendingWithoutReply
+        self.replyMarkup = replyMarkup
     }
 }
 
-
 public extension Bot {
+    /**
+     Use this method to send a game. On success, the sent Message is returned.
 
-/**
- Use this method to send a game. On success, the sent Message is returned.
+     SeeAlso Telegram Bot API Reference:
+     [SendGameParams](https://core.telegram.org/bots/api#sendgame)
 
- SeeAlso Telegram Bot API Reference:
- [SendGameParams](https://core.telegram.org/bots/api#sendgame)
- 
- - Parameters:
-     - params: Parameters container, see `SendGameParams` struct
- - Throws: Throws on errors
- - Returns: EventLoopFuture of `Message` type
- */
+     - Parameters:
+         - params: Parameters container, see `SendGameParams` struct
+     - Throws: Throws on errors
+     - Returns: EventLoopFuture of `Message` type
+     */
     @discardableResult
     func sendGame(params: SendGameParams) throws -> EventLoopFuture<Message> {
         let methodURL: URI = .init(string: getMethodURL("sendGame"))

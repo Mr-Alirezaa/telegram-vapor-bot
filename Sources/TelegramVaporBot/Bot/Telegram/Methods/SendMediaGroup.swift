@@ -1,14 +1,10 @@
-
-
 import Vapor
 
 /// DESCRIPTION:
 /// Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of Messages that were sent is returned.
 
-
 /// Parameters container struct for `sendMediaGroup` method
 public struct SendMediaGroupParams: Encodable {
-
     /// Unique identifier for the target chat or username of the target channel (in the format @channelusername)
     public var chatId: ChatId
 
@@ -29,38 +25,36 @@ public struct SendMediaGroupParams: Encodable {
 
     /// Custom keys for coding/decoding `SendMediaGroupParams` struct
     public enum CodingKeys: String, CodingKey {
-            case chatId = "chat_id"
-            case media = "media"
-            case disableNotification = "disable_notification"
-            case protectContent = "protect_content"
-            case replyToMessageId = "reply_to_message_id"
-            case allowSendingWithoutReply = "allow_sending_without_reply"
+        case chatId = "chat_id"
+        case media
+        case disableNotification = "disable_notification"
+        case protectContent = "protect_content"
+        case replyToMessageId = "reply_to_message_id"
+        case allowSendingWithoutReply = "allow_sending_without_reply"
     }
 
     public init(chatId: ChatId, media: [InputMedia], disableNotification: Bool? = nil, protectContent: Bool? = nil, replyToMessageId: Int? = nil, allowSendingWithoutReply: Bool? = nil) {
-            self.chatId = chatId
-            self.media = media
-            self.disableNotification = disableNotification
-            self.protectContent = protectContent
-            self.replyToMessageId = replyToMessageId
-            self.allowSendingWithoutReply = allowSendingWithoutReply
+        self.chatId = chatId
+        self.media = media
+        self.disableNotification = disableNotification
+        self.protectContent = protectContent
+        self.replyToMessageId = replyToMessageId
+        self.allowSendingWithoutReply = allowSendingWithoutReply
     }
 }
 
-
 public extension Bot {
+    /**
+     Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of Messages that were sent is returned.
 
-/**
- Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of Messages that were sent is returned.
+     SeeAlso Telegram Bot API Reference:
+     [SendMediaGroupParams](https://core.telegram.org/bots/api#sendmediagroup)
 
- SeeAlso Telegram Bot API Reference:
- [SendMediaGroupParams](https://core.telegram.org/bots/api#sendmediagroup)
- 
- - Parameters:
-     - params: Parameters container, see `SendMediaGroupParams` struct
- - Throws: Throws on errors
- - Returns: EventLoopFuture of `[Message]` type
- */
+     - Parameters:
+         - params: Parameters container, see `SendMediaGroupParams` struct
+     - Throws: Throws on errors
+     - Returns: EventLoopFuture of `[Message]` type
+     */
     @discardableResult
     func sendMediaGroup(params: SendMediaGroupParams) throws -> EventLoopFuture<[Message]> {
         let methodURL: URI = .init(string: getMethodURL("sendMediaGroup"))

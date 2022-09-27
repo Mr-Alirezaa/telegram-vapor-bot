@@ -1,21 +1,14 @@
-//
-//
-//
-
-//
-
 import Foundation
 import SwiftRegularExpression
 
 public class RegexpHandler: HandlerProtocol {
-    
-    public var id: Int = 0
+    public var id = 0
     public var name: String
-    
+
     let regexp: NSRegularExpression
     let callback: HandlerCallback
     let filters: Filter
-    
+
     public init(
         name: String = String(describing: RegexpHandler.self),
         regexp: NSRegularExpression,
@@ -27,7 +20,7 @@ public class RegexpHandler: HandlerProtocol {
         self.filters = filters
         self.callback = callback
     }
-    
+
     public convenience init?(
         name: String = String(describing: RegexpHandler.self),
         pattern: String,
@@ -44,12 +37,12 @@ public class RegexpHandler: HandlerProtocol {
             callback
         )
     }
-    
+
     public func check(update: Update) -> Bool {
         guard let text = update.message?.text else { return false }
         return text.regexp(regexp.pattern, regexp.options).keys.count > 0
     }
-    
+
     public func handle(update: Update, bot: BotProtocol) {
         do {
             try callback(update, bot)

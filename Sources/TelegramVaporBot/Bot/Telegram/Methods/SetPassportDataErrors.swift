@@ -1,15 +1,11 @@
-
-
 import Vapor
 
 /// DESCRIPTION:
 /// Informs a user that some of the Telegram Passport elements they provided contains errors. The user will not be able to re-submit their Passport to you until the errors are fixed (the contents of the field for which you returned the error must change). Returns True on success.
 /// Use this if the data submitted by the user doesn't satisfy the standards your service requires for any reason. For example, if a birthday date seems invalid, a submitted document is blurry, a scan shows evidence of tampering, etc. Supply some details in the error message to make sure the user knows how to correct the issues.
 
-
 /// Parameters container struct for `setPassportDataErrors` method
 public struct SetPassportDataErrorsParams: Encodable {
-
     /// User identifier
     public var userId: Int64
 
@@ -18,31 +14,29 @@ public struct SetPassportDataErrorsParams: Encodable {
 
     /// Custom keys for coding/decoding `SetPassportDataErrorsParams` struct
     public enum CodingKeys: String, CodingKey {
-            case userId = "user_id"
-            case errors = "errors"
+        case userId = "user_id"
+        case errors
     }
 
     public init(userId: Int64, errors: [PassportElementError]) {
-            self.userId = userId
-            self.errors = errors
+        self.userId = userId
+        self.errors = errors
     }
 }
 
-
 public extension Bot {
+    /**
+     Informs a user that some of the Telegram Passport elements they provided contains errors. The user will not be able to re-submit their Passport to you until the errors are fixed (the contents of the field for which you returned the error must change). Returns True on success.
+     Use this if the data submitted by the user doesn't satisfy the standards your service requires for any reason. For example, if a birthday date seems invalid, a submitted document is blurry, a scan shows evidence of tampering, etc. Supply some details in the error message to make sure the user knows how to correct the issues.
 
-/**
- Informs a user that some of the Telegram Passport elements they provided contains errors. The user will not be able to re-submit their Passport to you until the errors are fixed (the contents of the field for which you returned the error must change). Returns True on success.
- Use this if the data submitted by the user doesn't satisfy the standards your service requires for any reason. For example, if a birthday date seems invalid, a submitted document is blurry, a scan shows evidence of tampering, etc. Supply some details in the error message to make sure the user knows how to correct the issues.
+     SeeAlso Telegram Bot API Reference:
+     [SetPassportDataErrorsParams](https://core.telegram.org/bots/api#setpassportdataerrors)
 
- SeeAlso Telegram Bot API Reference:
- [SetPassportDataErrorsParams](https://core.telegram.org/bots/api#setpassportdataerrors)
- 
- - Parameters:
-     - params: Parameters container, see `SetPassportDataErrorsParams` struct
- - Throws: Throws on errors
- - Returns: EventLoopFuture of `Bool` type
- */
+     - Parameters:
+         - params: Parameters container, see `SetPassportDataErrorsParams` struct
+     - Throws: Throws on errors
+     - Returns: EventLoopFuture of `Bool` type
+     */
     @discardableResult
     func setPassportDataErrors(params: SetPassportDataErrorsParams) throws -> EventLoopFuture<Bool> {
         let methodURL: URI = .init(string: getMethodURL("setPassportDataErrors"))

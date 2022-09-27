@@ -8,7 +8,6 @@
  [VoiceChatScheduled](https://core.telegram.org/bots/api#voicechatscheduled)
  */
 public final class VoiceChatScheduled: Codable {
-
     /// Custom keys for coding/decoding `VoiceChatScheduled` struct
     public enum CodingKeys: String, CodingKey {
         case startDate = "start_date"
@@ -17,7 +16,7 @@ public final class VoiceChatScheduled: Codable {
     /// Point in time (Unix timestamp) when the voice chat is supposed to be started by a chat administrator
     public var startDate: Int
 
-    public init (startDate: Int) {
+    public init(startDate: Int) {
         self.startDate = startDate
     }
 }

@@ -1,18 +1,12 @@
-//
-//
-//
-
-//
-
 import Foundation
 
 /// Filter for any update, said "no filter"
 public class AllFilter: Filter {
-    public var name: String = "all"
+    public var name = "all"
 
     override
     public func filter(message: Message) -> Bool {
-        return true
+        true
     }
 }
 

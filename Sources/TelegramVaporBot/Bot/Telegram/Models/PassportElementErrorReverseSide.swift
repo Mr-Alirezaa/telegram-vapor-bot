@@ -7,13 +7,12 @@
  [PassportElementErrorReverseSide](https://core.telegram.org/bots/api#passportelementerrorreverseside)
  */
 public final class PassportElementErrorReverseSide: Codable {
-
     /// Custom keys for coding/decoding `PassportElementErrorReverseSide` struct
     public enum CodingKeys: String, CodingKey {
-        case source = "source"
-        case type = "type"
+        case source
+        case type
         case fileHash = "file_hash"
-        case message = "message"
+        case message
     }
 
     /// Error source, must be reverse_side
@@ -28,7 +27,7 @@ public final class PassportElementErrorReverseSide: Codable {
     /// Error message
     public var message: String
 
-    public init (source: String, type: String, fileHash: String, message: String) {
+    public init(source: String, type: String, fileHash: String, message: String) {
         self.source = source
         self.type = type
         self.fileHash = fileHash

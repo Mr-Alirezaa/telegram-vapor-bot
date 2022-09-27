@@ -7,14 +7,13 @@
  [InlineQueryResultCachedGif](https://core.telegram.org/bots/api#inlinequeryresultcachedgif)
  */
 public final class InlineQueryResultCachedGif: Codable {
-
     /// Custom keys for coding/decoding `InlineQueryResultCachedGif` struct
     public enum CodingKeys: String, CodingKey {
-        case type = "type"
-        case id = "id"
+        case type
+        case id
         case gifFileId = "gif_file_id"
-        case title = "title"
-        case caption = "caption"
+        case title
+        case caption
         case parseMode = "parse_mode"
         case captionEntities = "caption_entities"
         case replyMarkup = "reply_markup"
@@ -48,7 +47,7 @@ public final class InlineQueryResultCachedGif: Codable {
     /// Optional. Content of the message to be sent instead of the GIF animation
     public var inputMessageContent: InputMessageContent?
 
-    public init (type: String, id: String, gifFileId: String, title: String? = nil, caption: String? = nil, parseMode: String? = nil, captionEntities: [MessageEntity]? = nil, replyMarkup: InlineKeyboardMarkup? = nil, inputMessageContent: InputMessageContent? = nil) {
+    public init(type: String, id: String, gifFileId: String, title: String? = nil, caption: String? = nil, parseMode: String? = nil, captionEntities: [MessageEntity]? = nil, replyMarkup: InlineKeyboardMarkup? = nil, inputMessageContent: InputMessageContent? = nil) {
         self.type = type
         self.id = id
         self.gifFileId = gifFileId

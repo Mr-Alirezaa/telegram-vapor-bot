@@ -1,15 +1,11 @@
-
-
 import Vapor
 
 /// DESCRIPTION:
 /// Use this method to send audio files, if you want Telegram clients to display them in the music player. Your audio must be in the .MP3 or .M4A format. On success, the sent Message is returned. Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.
 /// For sending voice messages, use the sendVoice method instead.
 
-
 /// Parameters container struct for `sendAudio` method
 public struct SendAudioParams: Encodable {
-
     /// Unique identifier for the target chat or username of the target channel (in the format @channelusername)
     public var chatId: ChatId
 
@@ -54,55 +50,53 @@ public struct SendAudioParams: Encodable {
 
     /// Custom keys for coding/decoding `SendAudioParams` struct
     public enum CodingKeys: String, CodingKey {
-            case chatId = "chat_id"
-            case audio = "audio"
-            case caption = "caption"
-            case parseMode = "parse_mode"
-            case captionEntities = "caption_entities"
-            case duration = "duration"
-            case performer = "performer"
-            case title = "title"
-            case thumb = "thumb"
-            case disableNotification = "disable_notification"
-            case protectContent = "protect_content"
-            case replyToMessageId = "reply_to_message_id"
-            case allowSendingWithoutReply = "allow_sending_without_reply"
-            case replyMarkup = "reply_markup"
+        case chatId = "chat_id"
+        case audio
+        case caption
+        case parseMode = "parse_mode"
+        case captionEntities = "caption_entities"
+        case duration
+        case performer
+        case title
+        case thumb
+        case disableNotification = "disable_notification"
+        case protectContent = "protect_content"
+        case replyToMessageId = "reply_to_message_id"
+        case allowSendingWithoutReply = "allow_sending_without_reply"
+        case replyMarkup = "reply_markup"
     }
 
     public init(chatId: ChatId, audio: FileInfo, caption: String? = nil, parseMode: ParseMode? = nil, captionEntities: [MessageEntity]? = nil, duration: Int? = nil, performer: String? = nil, title: String? = nil, thumb: FileInfo? = nil, disableNotification: Bool? = nil, protectContent: Bool? = nil, replyToMessageId: Int? = nil, allowSendingWithoutReply: Bool? = nil, replyMarkup: ReplyMarkup? = nil) {
-            self.chatId = chatId
-            self.audio = audio
-            self.caption = caption
-            self.parseMode = parseMode
-            self.captionEntities = captionEntities
-            self.duration = duration
-            self.performer = performer
-            self.title = title
-            self.thumb = thumb
-            self.disableNotification = disableNotification
-            self.protectContent = protectContent
-            self.replyToMessageId = replyToMessageId
-            self.allowSendingWithoutReply = allowSendingWithoutReply
-            self.replyMarkup = replyMarkup
+        self.chatId = chatId
+        self.audio = audio
+        self.caption = caption
+        self.parseMode = parseMode
+        self.captionEntities = captionEntities
+        self.duration = duration
+        self.performer = performer
+        self.title = title
+        self.thumb = thumb
+        self.disableNotification = disableNotification
+        self.protectContent = protectContent
+        self.replyToMessageId = replyToMessageId
+        self.allowSendingWithoutReply = allowSendingWithoutReply
+        self.replyMarkup = replyMarkup
     }
 }
 
-
 public extension Bot {
+    /**
+     Use this method to send audio files, if you want Telegram clients to display them in the music player. Your audio must be in the .MP3 or .M4A format. On success, the sent Message is returned. Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.
+     For sending voice messages, use the sendVoice method instead.
 
-/**
- Use this method to send audio files, if you want Telegram clients to display them in the music player. Your audio must be in the .MP3 or .M4A format. On success, the sent Message is returned. Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.
- For sending voice messages, use the sendVoice method instead.
+     SeeAlso Telegram Bot API Reference:
+     [SendAudioParams](https://core.telegram.org/bots/api#sendaudio)
 
- SeeAlso Telegram Bot API Reference:
- [SendAudioParams](https://core.telegram.org/bots/api#sendaudio)
- 
- - Parameters:
-     - params: Parameters container, see `SendAudioParams` struct
- - Throws: Throws on errors
- - Returns: EventLoopFuture of `Message` type
- */
+     - Parameters:
+         - params: Parameters container, see `SendAudioParams` struct
+     - Throws: Throws on errors
+     - Returns: EventLoopFuture of `Message` type
+     */
     @discardableResult
     func sendAudio(params: SendAudioParams) throws -> EventLoopFuture<Message> {
         let methodURL: URI = .init(string: getMethodURL("sendAudio"))

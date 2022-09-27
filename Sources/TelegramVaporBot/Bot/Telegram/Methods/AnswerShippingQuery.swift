@@ -1,14 +1,10 @@
-
-
 import Vapor
 
 /// DESCRIPTION:
 /// If you sent an invoice requesting a shipping address and the parameter is_flexible was specified, the Bot API will send an Update with a shipping_query field to the bot. Use this method to reply to shipping queries. On success, True is returned.
 
-
 /// Parameters container struct for `answerShippingQuery` method
 public struct AnswerShippingQueryParams: Encodable {
-
     /// Unique identifier for the query to be answered
     public var shippingQueryId: String
 
@@ -23,34 +19,32 @@ public struct AnswerShippingQueryParams: Encodable {
 
     /// Custom keys for coding/decoding `AnswerShippingQueryParams` struct
     public enum CodingKeys: String, CodingKey {
-            case shippingQueryId = "shipping_query_id"
-            case ok = "ok"
-            case shippingOptions = "shipping_options"
-            case errorMessage = "error_message"
+        case shippingQueryId = "shipping_query_id"
+        case ok
+        case shippingOptions = "shipping_options"
+        case errorMessage = "error_message"
     }
 
     public init(shippingQueryId: String, ok: Bool, shippingOptions: [ShippingOption]? = nil, errorMessage: String? = nil) {
-            self.shippingQueryId = shippingQueryId
-            self.ok = ok
-            self.shippingOptions = shippingOptions
-            self.errorMessage = errorMessage
+        self.shippingQueryId = shippingQueryId
+        self.ok = ok
+        self.shippingOptions = shippingOptions
+        self.errorMessage = errorMessage
     }
 }
 
-
 public extension Bot {
+    /**
+     If you sent an invoice requesting a shipping address and the parameter is_flexible was specified, the Bot API will send an Update with a shipping_query field to the bot. Use this method to reply to shipping queries. On success, True is returned.
 
-/**
- If you sent an invoice requesting a shipping address and the parameter is_flexible was specified, the Bot API will send an Update with a shipping_query field to the bot. Use this method to reply to shipping queries. On success, True is returned.
+     SeeAlso Telegram Bot API Reference:
+     [AnswerShippingQueryParams](https://core.telegram.org/bots/api#answershippingquery)
 
- SeeAlso Telegram Bot API Reference:
- [AnswerShippingQueryParams](https://core.telegram.org/bots/api#answershippingquery)
- 
- - Parameters:
-     - params: Parameters container, see `AnswerShippingQueryParams` struct
- - Throws: Throws on errors
- - Returns: EventLoopFuture of `Bool` type
- */
+     - Parameters:
+         - params: Parameters container, see `AnswerShippingQueryParams` struct
+     - Throws: Throws on errors
+     - Returns: EventLoopFuture of `Bool` type
+     */
     @discardableResult
     func answerShippingQuery(params: AnswerShippingQueryParams) throws -> EventLoopFuture<Bool> {
         let methodURL: URI = .init(string: getMethodURL("answerShippingQuery"))

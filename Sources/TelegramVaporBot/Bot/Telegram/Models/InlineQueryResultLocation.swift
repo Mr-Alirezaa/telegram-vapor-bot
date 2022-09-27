@@ -7,17 +7,16 @@
  [InlineQueryResultLocation](https://core.telegram.org/bots/api#inlinequeryresultlocation)
  */
 public final class InlineQueryResultLocation: Codable {
-
     /// Custom keys for coding/decoding `InlineQueryResultLocation` struct
     public enum CodingKeys: String, CodingKey {
-        case type = "type"
-        case id = "id"
-        case latitude = "latitude"
-        case longitude = "longitude"
-        case title = "title"
+        case type
+        case id
+        case latitude
+        case longitude
+        case title
         case horizontalAccuracy = "horizontal_accuracy"
         case livePeriod = "live_period"
-        case heading = "heading"
+        case heading
         case proximityAlertRadius = "proximity_alert_radius"
         case replyMarkup = "reply_markup"
         case inputMessageContent = "input_message_content"
@@ -68,7 +67,7 @@ public final class InlineQueryResultLocation: Codable {
     /// Optional. Thumbnail height
     public var thumbHeight: Int?
 
-    public init (type: String, id: String, latitude: Float, longitude: Float, title: String, horizontalAccuracy: Float? = nil, livePeriod: Int? = nil, heading: Int? = nil, proximityAlertRadius: Int? = nil, replyMarkup: InlineKeyboardMarkup? = nil, inputMessageContent: InputMessageContent? = nil, thumbUrl: String? = nil, thumbWidth: Int? = nil, thumbHeight: Int? = nil) {
+    public init(type: String, id: String, latitude: Float, longitude: Float, title: String, horizontalAccuracy: Float? = nil, livePeriod: Int? = nil, heading: Int? = nil, proximityAlertRadius: Int? = nil, replyMarkup: InlineKeyboardMarkup? = nil, inputMessageContent: InputMessageContent? = nil, thumbUrl: String? = nil, thumbWidth: Int? = nil, thumbHeight: Int? = nil) {
         self.type = type
         self.id = id
         self.latitude = latitude

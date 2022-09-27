@@ -1,7 +1,3 @@
-
-
 import Foundation
 
-extension Array where Element == Array<HandlerProtocol> {
-
-}
+extension Array where Element == [HandlerProtocol] {}

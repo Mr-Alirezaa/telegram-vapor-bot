@@ -1,14 +1,10 @@
-
-
 import Vapor
 
 /// DESCRIPTION:
 /// Use this method to edit text and game messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
 
-
 /// Parameters container struct for `editMessageText` method
 public struct EditMessageTextParams: Encodable {
-
     /// Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
     public var chatId: ChatId?
 
@@ -35,42 +31,40 @@ public struct EditMessageTextParams: Encodable {
 
     /// Custom keys for coding/decoding `EditMessageTextParams` struct
     public enum CodingKeys: String, CodingKey {
-            case chatId = "chat_id"
-            case messageId = "message_id"
-            case inlineMessageId = "inline_message_id"
-            case text = "text"
-            case parseMode = "parse_mode"
-            case entities = "entities"
-            case disableWebPagePreview = "disable_web_page_preview"
-            case replyMarkup = "reply_markup"
+        case chatId = "chat_id"
+        case messageId = "message_id"
+        case inlineMessageId = "inline_message_id"
+        case text
+        case parseMode = "parse_mode"
+        case entities
+        case disableWebPagePreview = "disable_web_page_preview"
+        case replyMarkup = "reply_markup"
     }
 
     public init(chatId: ChatId? = nil, messageId: Int? = nil, inlineMessageId: String? = nil, text: String, parseMode: ParseMode? = nil, entities: [MessageEntity]? = nil, disableWebPagePreview: Bool? = nil, replyMarkup: InlineKeyboardMarkup? = nil) {
-            self.chatId = chatId
-            self.messageId = messageId
-            self.inlineMessageId = inlineMessageId
-            self.text = text
-            self.parseMode = parseMode
-            self.entities = entities
-            self.disableWebPagePreview = disableWebPagePreview
-            self.replyMarkup = replyMarkup
+        self.chatId = chatId
+        self.messageId = messageId
+        self.inlineMessageId = inlineMessageId
+        self.text = text
+        self.parseMode = parseMode
+        self.entities = entities
+        self.disableWebPagePreview = disableWebPagePreview
+        self.replyMarkup = replyMarkup
     }
 }
 
-
 public extension Bot {
+    /**
+     Use this method to edit text and game messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
 
-/**
- Use this method to edit text and game messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
+     SeeAlso Telegram Bot API Reference:
+     [EditMessageTextParams](https://core.telegram.org/bots/api#editmessagetext)
 
- SeeAlso Telegram Bot API Reference:
- [EditMessageTextParams](https://core.telegram.org/bots/api#editmessagetext)
- 
- - Parameters:
-     - params: Parameters container, see `EditMessageTextParams` struct
- - Throws: Throws on errors
- - Returns: EventLoopFuture of `MessageOrBool` type
- */
+     - Parameters:
+         - params: Parameters container, see `EditMessageTextParams` struct
+     - Throws: Throws on errors
+     - Returns: EventLoopFuture of `MessageOrBool` type
+     */
     @discardableResult
     func editMessageText(params: EditMessageTextParams) throws -> EventLoopFuture<MessageOrBool> {
         let methodURL: URI = .init(string: getMethodURL("editMessageText"))

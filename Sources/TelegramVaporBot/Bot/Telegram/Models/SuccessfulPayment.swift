@@ -7,10 +7,9 @@
  [SuccessfulPayment](https://core.telegram.org/bots/api#successfulpayment)
  */
 public final class SuccessfulPayment: Codable {
-
     /// Custom keys for coding/decoding `SuccessfulPayment` struct
     public enum CodingKeys: String, CodingKey {
-        case currency = "currency"
+        case currency
         case totalAmount = "total_amount"
         case invoicePayload = "invoice_payload"
         case shippingOptionId = "shipping_option_id"
@@ -40,7 +39,7 @@ public final class SuccessfulPayment: Codable {
     /// Provider payment identifier
     public var providerPaymentChargeId: String
 
-    public init (currency: String, totalAmount: Int, invoicePayload: String, shippingOptionId: String? = nil, orderInfo: OrderInfo? = nil, telegramPaymentChargeId: String, providerPaymentChargeId: String) {
+    public init(currency: String, totalAmount: Int, invoicePayload: String, shippingOptionId: String? = nil, orderInfo: OrderInfo? = nil, telegramPaymentChargeId: String, providerPaymentChargeId: String) {
         self.currency = currency
         self.totalAmount = totalAmount
         self.invoicePayload = invoicePayload

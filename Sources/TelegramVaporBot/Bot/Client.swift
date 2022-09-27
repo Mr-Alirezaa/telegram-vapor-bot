@@ -1,5 +1,3 @@
-
-
 import Foundation
 import Vapor
 
@@ -11,7 +9,6 @@ public enum HTTPMediaType: String, Equatable {
 private struct EmptyParams: Encodable {}
 
 public protocol ClientProtocol {
-
     @discardableResult
     func get<Params: Encodable, Response: Codable>(_ url: URI, params: Params?, as mediaType: Vapor.HTTPMediaType?) -> EventLoopFuture<Response>
 
@@ -32,7 +29,6 @@ public protocol ClientProtocol {
 }
 
 public final class DefaultClient: ClientProtocol {
-    
     private let client: Vapor.Client
 
     public init(client: Vapor.Client) {
@@ -46,7 +42,7 @@ public final class DefaultClient: ClientProtocol {
         params: Params? = nil,
         as mediaType: Vapor.HTTPMediaType? = nil
     ) -> EventLoopFuture<Response> {
-        return client.get(url, headers: HTTPHeaders()) { clientRequest in
+        client.get(url, headers: HTTPHeaders()) { clientRequest in
             if mediaType == .formData || mediaType == nil {
 //                #warning("THIS CODE FOR FAST FIX, BECAUSE https://github.com/vapor/multipart-kit/issues/63 not accepted yet")
                 var rawMultipart: (body: NSMutableData, boundary: String)!
@@ -59,7 +55,7 @@ public final class DefaultClient: ClientProtocol {
                     Bot.log.critical(error.logMessage)
                 }
                 clientRequest.headers.add(name: "Content-Type", value: "multipart/form-data; boundary=\(rawMultipart.boundary)")
-                let buffer = ByteBuffer.init(data: rawMultipart.body as Data)
+                let buffer = ByteBuffer(data: rawMultipart.body as Data)
                 clientRequest.body = buffer
             } else {
                 if let currentParams: Params = params {
@@ -68,7 +64,7 @@ public final class DefaultClient: ClientProtocol {
                     try clientRequest.content.encode(EmptyParams(), as: mediaType ?? .json)
                 }
             }
-        }.flatMapThrowing { (clientResponse) throws -> TelegramContainer<Response> in
+        }.flatMapThrowing { clientResponse throws -> TelegramContainer<Response> in
             try clientResponse.content.decode(TelegramContainer<Response>.self)
         }.flatMapThrowing { [self] telegramContainer in
             try processContainer(telegramContainer)
@@ -77,12 +73,12 @@ public final class DefaultClient: ClientProtocol {
 
     @discardableResult
     public func get<Response: Codable>(_ url: URI) -> EventLoopFuture<Response> {
-        self.get(url, params: EmptyParams(), as: nil)
+        get(url, params: EmptyParams(), as: nil)
     }
 
     @discardableResult
     public func get<Response: Codable>(_ url: URI, as mediaType: Vapor.HTTPMediaType) -> EventLoopFuture<Response> {
-        self.get(url, params: EmptyParams(), as: mediaType)
+        get(url, params: EmptyParams(), as: mediaType)
     }
 
     @discardableResult
@@ -92,7 +88,7 @@ public final class DefaultClient: ClientProtocol {
         params: Params? = nil,
         as mediaType: Vapor.HTTPMediaType? = nil
     ) -> EventLoopFuture<Response> {
-        return client.post(url, headers: HTTPHeaders()) { clientRequest in
+        client.post(url, headers: HTTPHeaders()) { clientRequest in
             if mediaType == .formData || mediaType == nil {
 //                #warning("THIS CODE FOR FAST FIX, BECAUSE https://github.com/vapor/multipart-kit/issues/63 not accepted yet")
                 var rawMultipart: (body: NSMutableData, boundary: String)!
@@ -109,14 +105,14 @@ public final class DefaultClient: ClientProtocol {
                     Bot.log.critical("Post request error: \(error.logMessage)")
                 }
                 clientRequest.headers.add(name: "Content-Type", value: "multipart/form-data; boundary=\(rawMultipart.boundary)")
-                let buffer = ByteBuffer.init(data: rawMultipart.body as Data)
+                let buffer = ByteBuffer(data: rawMultipart.body as Data)
                 clientRequest.body = buffer
                 /// Debug
 //                Bot.log.critical("url: \(url)\n\(String(decoding: rawMultipart.body, as: UTF8.self))")
             } else {
                 try clientRequest.content.encode(params ?? (EmptyParams() as! Params), as: mediaType ?? .json)
             }
-        }.flatMapThrowing { (clientResponse) throws -> TelegramContainer<Response> in
+        }.flatMapThrowing { clientResponse throws -> TelegramContainer<Response> in
             try clientResponse.content.decode(TelegramContainer<Response>.self)
         }.flatMapThrowing { [self] telegramContainer in
             try processContainer(telegramContainer)
@@ -125,12 +121,12 @@ public final class DefaultClient: ClientProtocol {
 
     @discardableResult
     public func post<Response: Codable>(_ url: URI) -> EventLoopFuture<Response> {
-        self.post(url, params: EmptyParams(), as: nil)
+        post(url, params: EmptyParams(), as: nil)
     }
 
     @discardableResult
     public func post<Response: Codable>(_ url: URI, as mediaType: Vapor.HTTPMediaType) -> EventLoopFuture<Response> {
-        self.post(url, params: EmptyParams(), as: mediaType)
+        post(url, params: EmptyParams(), as: mediaType)
     }
 
     private func processContainer<T: Codable>(_ container: TelegramContainer<T>) throws -> T {

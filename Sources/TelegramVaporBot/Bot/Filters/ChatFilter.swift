@@ -1,14 +1,7 @@
-//
-//
-//
-
-//
-
 import Foundation
 
 /// Filters messages to allow only those which are from specified chat ID.
 public class ChatFilter: Filter {
-
     var chatId: Int64
     var username: String?
 
@@ -18,7 +11,7 @@ public class ChatFilter: Filter {
         super.init()
     }
 
-    public var name: String = "chat"
+    public var name = "chat"
 
     override
     public func filter(message: Message) -> Bool {
@@ -31,6 +24,6 @@ public class ChatFilter: Filter {
 
 public extension Filter {
     static func chat(chatId: Int64, username: String? = nil) -> ChatFilter {
-        return ChatFilter(chatId: chatId, username: username)
+        ChatFilter(chatId: chatId, username: username)
     }
 }

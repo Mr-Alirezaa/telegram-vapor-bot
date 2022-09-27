@@ -1,19 +1,12 @@
-//
-//
-//
-
-//
-
 import Foundation
 
 /// Messages sent in a group chat
 public class GroupFilter: Filter {
-
-    public var name: String = "group"
+    public var name = "group"
 
     override
     public func filter(message: Message) -> Bool {
-        return message.chat.type != .private
+        message.chat.type != .private
     }
 }
 

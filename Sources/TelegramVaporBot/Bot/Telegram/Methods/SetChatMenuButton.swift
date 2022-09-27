@@ -1,14 +1,10 @@
-
-
 import Vapor
 
 /// DESCRIPTION:
 /// Use this method to change the bot's menu button in a private chat, or the default menu button. Returns True on success.
 
-
 /// Parameters container struct for `setChatMenuButton` method
 public struct SetChatMenuButtonParams: Encodable {
-
     /// Unique identifier for the target private chat. If not specified, default bot's menu button will be changed
     public var chatId: Int64?
 
@@ -17,30 +13,28 @@ public struct SetChatMenuButtonParams: Encodable {
 
     /// Custom keys for coding/decoding `SetChatMenuButtonParams` struct
     public enum CodingKeys: String, CodingKey {
-            case chatId = "chat_id"
-            case menuButton = "menu_button"
+        case chatId = "chat_id"
+        case menuButton = "menu_button"
     }
 
     public init(chatId: Int64? = nil, menuButton: MenuButton? = nil) {
-            self.chatId = chatId
-            self.menuButton = menuButton
+        self.chatId = chatId
+        self.menuButton = menuButton
     }
 }
 
-
 public extension Bot {
+    /**
+     Use this method to change the bot's menu button in a private chat, or the default menu button. Returns True on success.
 
-/**
- Use this method to change the bot's menu button in a private chat, or the default menu button. Returns True on success.
+     SeeAlso Telegram Bot API Reference:
+     [SetChatMenuButtonParams](https://core.telegram.org/bots/api#setchatmenubutton)
 
- SeeAlso Telegram Bot API Reference:
- [SetChatMenuButtonParams](https://core.telegram.org/bots/api#setchatmenubutton)
- 
- - Parameters:
-     - params: Parameters container, see `SetChatMenuButtonParams` struct
- - Throws: Throws on errors
- - Returns: EventLoopFuture of `Bool` type
- */
+     - Parameters:
+         - params: Parameters container, see `SetChatMenuButtonParams` struct
+     - Throws: Throws on errors
+     - Returns: EventLoopFuture of `Bool` type
+     */
     @discardableResult
     func setChatMenuButton(params: SetChatMenuButtonParams? = nil) throws -> EventLoopFuture<Bool> {
         let methodURL: URI = .init(string: getMethodURL("setChatMenuButton"))

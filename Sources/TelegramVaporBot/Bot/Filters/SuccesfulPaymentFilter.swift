@@ -1,19 +1,12 @@
-//
-//
-//
-
-//
-
 import Foundation
 
 /// Filters messages that contains a `SuccessfulPayment`.
 public class SuccesfulPaymentFilter: Filter {
-
-    public var name: String = "successful_payment"
+    public var name = "successful_payment"
 
     override
     public func filter(message: Message) -> Bool {
-        return message.successfulPayment != nil
+        message.successfulPayment != nil
     }
 }
 

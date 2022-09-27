@@ -7,16 +7,15 @@
  [MenuButtonCommands](https://core.telegram.org/bots/api#menubuttoncommands)
  */
 public final class MenuButtonCommands: Codable {
-
     /// Custom keys for coding/decoding `MenuButtonCommands` struct
     public enum CodingKeys: String, CodingKey {
-        case type = "type"
+        case type
     }
 
     /// Type of the button, must be commands
     public var type: String
 
-    public init (type: String) {
+    public init(type: String) {
         self.type = type
     }
 }

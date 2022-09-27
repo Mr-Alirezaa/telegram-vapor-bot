@@ -7,11 +7,10 @@
  [ChatMemberOwner](https://core.telegram.org/bots/api#chatmemberowner)
  */
 public final class ChatMemberOwner: Codable {
-
     /// Custom keys for coding/decoding `ChatMemberOwner` struct
     public enum CodingKeys: String, CodingKey {
-        case status = "status"
-        case user = "user"
+        case status
+        case user
         case isAnonymous = "is_anonymous"
         case customTitle = "custom_title"
     }
@@ -28,7 +27,7 @@ public final class ChatMemberOwner: Codable {
     /// Optional. Custom title for this user
     public var customTitle: String?
 
-    public init (status: String, user: User, isAnonymous: Bool, customTitle: String? = nil) {
+    public init(status: String, user: User, isAnonymous: Bool, customTitle: String? = nil) {
         self.status = status
         self.user = user
         self.isAnonymous = isAnonymous

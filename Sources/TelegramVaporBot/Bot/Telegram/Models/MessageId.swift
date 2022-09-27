@@ -7,7 +7,6 @@
  [MessageId](https://core.telegram.org/bots/api#messageid)
  */
 public final class MessageId: Codable {
-
     /// Custom keys for coding/decoding `MessageId` struct
     public enum CodingKeys: String, CodingKey {
         case messageId = "message_id"
@@ -16,7 +15,7 @@ public final class MessageId: Codable {
     /// Unique message identifier
     public var messageId: Int
 
-    public init (messageId: Int) {
+    public init(messageId: Int) {
         self.messageId = messageId
     }
 }

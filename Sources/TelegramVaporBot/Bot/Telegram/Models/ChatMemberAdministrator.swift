@@ -7,11 +7,10 @@
  [ChatMemberAdministrator](https://core.telegram.org/bots/api#chatmemberadministrator)
  */
 public final class ChatMemberAdministrator: Codable {
-
     /// Custom keys for coding/decoding `ChatMemberAdministrator` struct
     public enum CodingKeys: String, CodingKey {
-        case status = "status"
-        case user = "user"
+        case status
+        case user
         case canBeEdited = "can_be_edited"
         case isAnonymous = "is_anonymous"
         case canManageChat = "can_manage_chat"
@@ -72,7 +71,7 @@ public final class ChatMemberAdministrator: Codable {
     /// Optional. Custom title for this user
     public var customTitle: String?
 
-    public init (status: String, user: User, canBeEdited: Bool, isAnonymous: Bool, canManageChat: Bool, canDeleteMessages: Bool, canManageVideoChats: Bool, canRestrictMembers: Bool, canPromoteMembers: Bool, canChangeInfo: Bool, canInviteUsers: Bool, canPostMessages: Bool? = nil, canEditMessages: Bool? = nil, canPinMessages: Bool? = nil, customTitle: String? = nil) {
+    public init(status: String, user: User, canBeEdited: Bool, isAnonymous: Bool, canManageChat: Bool, canDeleteMessages: Bool, canManageVideoChats: Bool, canRestrictMembers: Bool, canPromoteMembers: Bool, canChangeInfo: Bool, canInviteUsers: Bool, canPostMessages: Bool? = nil, canEditMessages: Bool? = nil, canPinMessages: Bool? = nil, customTitle: String? = nil) {
         self.status = status
         self.user = user
         self.canBeEdited = canBeEdited

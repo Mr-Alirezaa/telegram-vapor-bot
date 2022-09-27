@@ -7,12 +7,11 @@
  [ShippingAddress](https://core.telegram.org/bots/api#shippingaddress)
  */
 public final class ShippingAddress: Codable {
-
     /// Custom keys for coding/decoding `ShippingAddress` struct
     public enum CodingKeys: String, CodingKey {
         case countryCode = "country_code"
-        case state = "state"
-        case city = "city"
+        case state
+        case city
         case streetLine1 = "street_line1"
         case streetLine2 = "street_line2"
         case postCode = "post_code"
@@ -36,7 +35,7 @@ public final class ShippingAddress: Codable {
     /// Address post code
     public var postCode: String
 
-    public init (countryCode: String, state: String, city: String, streetLine1: String, streetLine2: String, postCode: String) {
+    public init(countryCode: String, state: String, city: String, streetLine1: String, streetLine2: String, postCode: String) {
         self.countryCode = countryCode
         self.state = state
         self.city = city

@@ -7,12 +7,11 @@
  [ChatMemberUpdated](https://core.telegram.org/bots/api#chatmemberupdated)
  */
 public final class ChatMemberUpdated: Codable {
-
     /// Custom keys for coding/decoding `ChatMemberUpdated` struct
     public enum CodingKeys: String, CodingKey {
-        case chat = "chat"
-        case from = "from"
-        case date = "date"
+        case chat
+        case from
+        case date
         case oldChatMember = "old_chat_member"
         case newChatMember = "new_chat_member"
         case inviteLink = "invite_link"
@@ -36,7 +35,7 @@ public final class ChatMemberUpdated: Codable {
     /// Optional. Chat invite link, which was used by the user to join the chat; for joining by invite link events only.
     public var inviteLink: ChatInviteLink?
 
-    public init (chat: Chat, from: User, date: Int, oldChatMember: ChatMember, newChatMember: ChatMember, inviteLink: ChatInviteLink? = nil) {
+    public init(chat: Chat, from: User, date: Int, oldChatMember: ChatMember, newChatMember: ChatMember, inviteLink: ChatInviteLink? = nil) {
         self.chat = chat
         self.from = from
         self.date = date

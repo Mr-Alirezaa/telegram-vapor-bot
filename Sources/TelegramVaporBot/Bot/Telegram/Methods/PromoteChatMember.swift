@@ -1,14 +1,10 @@
-
-
 import Vapor
 
 /// DESCRIPTION:
 /// Use this method to promote or demote a user in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Pass False for all boolean parameters to demote a user. Returns True on success.
 
-
 /// Parameters container struct for `promoteChatMember` method
 public struct PromoteChatMemberParams: Encodable {
-
     /// Unique identifier for the target chat or username of the target channel (in the format @channelusername)
     public var chatId: ChatId
 
@@ -50,52 +46,50 @@ public struct PromoteChatMemberParams: Encodable {
 
     /// Custom keys for coding/decoding `PromoteChatMemberParams` struct
     public enum CodingKeys: String, CodingKey {
-            case chatId = "chat_id"
-            case userId = "user_id"
-            case isAnonymous = "is_anonymous"
-            case canManageChat = "can_manage_chat"
-            case canPostMessages = "can_post_messages"
-            case canEditMessages = "can_edit_messages"
-            case canDeleteMessages = "can_delete_messages"
-            case canManageVideoChats = "can_manage_video_chats"
-            case canRestrictMembers = "can_restrict_members"
-            case canPromoteMembers = "can_promote_members"
-            case canChangeInfo = "can_change_info"
-            case canInviteUsers = "can_invite_users"
-            case canPinMessages = "can_pin_messages"
+        case chatId = "chat_id"
+        case userId = "user_id"
+        case isAnonymous = "is_anonymous"
+        case canManageChat = "can_manage_chat"
+        case canPostMessages = "can_post_messages"
+        case canEditMessages = "can_edit_messages"
+        case canDeleteMessages = "can_delete_messages"
+        case canManageVideoChats = "can_manage_video_chats"
+        case canRestrictMembers = "can_restrict_members"
+        case canPromoteMembers = "can_promote_members"
+        case canChangeInfo = "can_change_info"
+        case canInviteUsers = "can_invite_users"
+        case canPinMessages = "can_pin_messages"
     }
 
     public init(chatId: ChatId, userId: Int64, isAnonymous: Bool? = nil, canManageChat: Bool? = nil, canPostMessages: Bool? = nil, canEditMessages: Bool? = nil, canDeleteMessages: Bool? = nil, canManageVideoChats: Bool? = nil, canRestrictMembers: Bool? = nil, canPromoteMembers: Bool? = nil, canChangeInfo: Bool? = nil, canInviteUsers: Bool? = nil, canPinMessages: Bool? = nil) {
-            self.chatId = chatId
-            self.userId = userId
-            self.isAnonymous = isAnonymous
-            self.canManageChat = canManageChat
-            self.canPostMessages = canPostMessages
-            self.canEditMessages = canEditMessages
-            self.canDeleteMessages = canDeleteMessages
-            self.canManageVideoChats = canManageVideoChats
-            self.canRestrictMembers = canRestrictMembers
-            self.canPromoteMembers = canPromoteMembers
-            self.canChangeInfo = canChangeInfo
-            self.canInviteUsers = canInviteUsers
-            self.canPinMessages = canPinMessages
+        self.chatId = chatId
+        self.userId = userId
+        self.isAnonymous = isAnonymous
+        self.canManageChat = canManageChat
+        self.canPostMessages = canPostMessages
+        self.canEditMessages = canEditMessages
+        self.canDeleteMessages = canDeleteMessages
+        self.canManageVideoChats = canManageVideoChats
+        self.canRestrictMembers = canRestrictMembers
+        self.canPromoteMembers = canPromoteMembers
+        self.canChangeInfo = canChangeInfo
+        self.canInviteUsers = canInviteUsers
+        self.canPinMessages = canPinMessages
     }
 }
 
-
 public extension Bot {
+    /**
+     Use this method to promote or demote a user in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Pass False for all boolean parameters to demote a user. Returns True on success.
 
-/**
- Use this method to promote or demote a user in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Pass False for all boolean parameters to demote a user. Returns True on success.
+     SeeAlso Telegram Bot API Reference:
+     [PromoteChatMemberParams](https://core.telegram.org/bots/api#promotechatmember)
 
- SeeAlso Telegram Bot API Reference:
- [PromoteChatMemberParams](https://core.telegram.org/bots/api#promotechatmember)
- 
- - Parameters:
-     - params: Parameters container, see `PromoteChatMemberParams` struct
- - Throws: Throws on errors
- - Returns: EventLoopFuture of `Bool` type
- */
+     - Parameters:
+         - params: Parameters container, see `PromoteChatMemberParams` struct
+     - Throws: Throws on errors
+     - Returns: EventLoopFuture of `Bool` type
+     */
     @discardableResult
     func promoteChatMember(params: PromoteChatMemberParams) throws -> EventLoopFuture<Bool> {
         let methodURL: URI = .init(string: getMethodURL("promoteChatMember"))

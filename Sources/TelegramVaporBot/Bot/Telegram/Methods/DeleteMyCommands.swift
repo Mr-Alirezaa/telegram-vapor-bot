@@ -1,14 +1,10 @@
-
-
 import Vapor
 
 /// DESCRIPTION:
 /// Use this method to delete the list of the bot's commands for the given scope and user language. After deletion, higher level commands will be shown to affected users. Returns True on success.
 
-
 /// Parameters container struct for `deleteMyCommands` method
 public struct DeleteMyCommandsParams: Encodable {
-
     /// A JSON-serialized object, describing scope of users for which the commands are relevant. Defaults to BotCommandScopeDefault.
     public var scope: BotCommandScope?
 
@@ -17,30 +13,28 @@ public struct DeleteMyCommandsParams: Encodable {
 
     /// Custom keys for coding/decoding `DeleteMyCommandsParams` struct
     public enum CodingKeys: String, CodingKey {
-            case scope = "scope"
-            case languageCode = "language_code"
+        case scope
+        case languageCode = "language_code"
     }
 
     public init(scope: BotCommandScope? = nil, languageCode: String? = nil) {
-            self.scope = scope
-            self.languageCode = languageCode
+        self.scope = scope
+        self.languageCode = languageCode
     }
 }
 
-
 public extension Bot {
+    /**
+     Use this method to delete the list of the bot's commands for the given scope and user language. After deletion, higher level commands will be shown to affected users. Returns True on success.
 
-/**
- Use this method to delete the list of the bot's commands for the given scope and user language. After deletion, higher level commands will be shown to affected users. Returns True on success.
+     SeeAlso Telegram Bot API Reference:
+     [DeleteMyCommandsParams](https://core.telegram.org/bots/api#deletemycommands)
 
- SeeAlso Telegram Bot API Reference:
- [DeleteMyCommandsParams](https://core.telegram.org/bots/api#deletemycommands)
- 
- - Parameters:
-     - params: Parameters container, see `DeleteMyCommandsParams` struct
- - Throws: Throws on errors
- - Returns: EventLoopFuture of `Bool` type
- */
+     - Parameters:
+         - params: Parameters container, see `DeleteMyCommandsParams` struct
+     - Throws: Throws on errors
+     - Returns: EventLoopFuture of `Bool` type
+     */
     @discardableResult
     func deleteMyCommands(params: DeleteMyCommandsParams? = nil) throws -> EventLoopFuture<Bool> {
         let methodURL: URI = .init(string: getMethodURL("deleteMyCommands"))

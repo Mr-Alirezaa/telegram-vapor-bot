@@ -7,12 +7,11 @@
  [OrderInfo](https://core.telegram.org/bots/api#orderinfo)
  */
 public final class OrderInfo: Codable {
-
     /// Custom keys for coding/decoding `OrderInfo` struct
     public enum CodingKeys: String, CodingKey {
-        case name = "name"
+        case name
         case phoneNumber = "phone_number"
-        case email = "email"
+        case email
         case shippingAddress = "shipping_address"
     }
 
@@ -28,7 +27,7 @@ public final class OrderInfo: Codable {
     /// Optional. User shipping address
     public var shippingAddress: ShippingAddress?
 
-    public init (name: String? = nil, phoneNumber: String? = nil, email: String? = nil, shippingAddress: ShippingAddress? = nil) {
+    public init(name: String? = nil, phoneNumber: String? = nil, email: String? = nil, shippingAddress: ShippingAddress? = nil) {
         self.name = name
         self.phoneNumber = phoneNumber
         self.email = email

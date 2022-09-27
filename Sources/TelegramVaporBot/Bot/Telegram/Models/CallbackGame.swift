@@ -6,6 +6,4 @@
  SeeAlso Telegram Bot API Reference:
  [CallbackGame](https://core.telegram.org/bots/api#callbackgame)
  */
-public final class CallbackGame: Codable {
-
-}
+public final class CallbackGame: Codable {}

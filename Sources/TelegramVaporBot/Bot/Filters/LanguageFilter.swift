@@ -1,16 +1,9 @@
-//
-//
-//
-
-//
-
 import Foundation
 
 /// Filters messages to only allow those which are from users with a certain language code.
 ///
 /// Note: According to telegrams documentation, every single user does not have the language_code attribute.
 public class LanguageFilter: Filter {
-
     var lang: String
 
     public init(lang: String) {
@@ -18,7 +11,7 @@ public class LanguageFilter: Filter {
         super.init()
     }
 
-    public var name: String = "language"
+    public var name = "language"
 
     override
     public func filter(message: Message) -> Bool {
@@ -29,6 +22,6 @@ public class LanguageFilter: Filter {
 
 public extension Filter {
     static func language(_ lang: String) -> LanguageFilter {
-        return LanguageFilter(lang: lang)
+        LanguageFilter(lang: lang)
     }
 }

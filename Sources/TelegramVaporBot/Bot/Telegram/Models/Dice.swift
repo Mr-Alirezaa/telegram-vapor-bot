@@ -7,11 +7,10 @@
  [Dice](https://core.telegram.org/bots/api#dice)
  */
 public final class Dice: Codable {
-
     /// Custom keys for coding/decoding `Dice` struct
     public enum CodingKeys: String, CodingKey {
-        case emoji = "emoji"
-        case value = "value"
+        case emoji
+        case value
     }
 
     /// Emoji on which the dice throw animation is based
@@ -20,7 +19,7 @@ public final class Dice: Codable {
     /// Value of the dice, 1-6 for “”, “” and “” base emoji, 1-5 for “” and “” base emoji, 1-64 for “” base emoji
     public var value: Int
 
-    public init (emoji: String, value: Int) {
+    public init(emoji: String, value: Int) {
         self.emoji = emoji
         self.value = value
     }

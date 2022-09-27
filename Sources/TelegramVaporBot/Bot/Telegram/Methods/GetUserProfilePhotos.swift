@@ -1,14 +1,10 @@
-
-
 import Vapor
 
 /// DESCRIPTION:
 /// Use this method to get a list of profile pictures for a user. Returns a UserProfilePhotos object.
 
-
 /// Parameters container struct for `getUserProfilePhotos` method
 public struct GetUserProfilePhotosParams: Encodable {
-
     /// Unique identifier of the target user
     public var userId: Int64
 
@@ -20,32 +16,30 @@ public struct GetUserProfilePhotosParams: Encodable {
 
     /// Custom keys for coding/decoding `GetUserProfilePhotosParams` struct
     public enum CodingKeys: String, CodingKey {
-            case userId = "user_id"
-            case offset = "offset"
-            case limit = "limit"
+        case userId = "user_id"
+        case offset
+        case limit
     }
 
     public init(userId: Int64, offset: Int? = nil, limit: Int? = nil) {
-            self.userId = userId
-            self.offset = offset
-            self.limit = limit
+        self.userId = userId
+        self.offset = offset
+        self.limit = limit
     }
 }
 
-
 public extension Bot {
+    /**
+     Use this method to get a list of profile pictures for a user. Returns a UserProfilePhotos object.
 
-/**
- Use this method to get a list of profile pictures for a user. Returns a UserProfilePhotos object.
+     SeeAlso Telegram Bot API Reference:
+     [GetUserProfilePhotosParams](https://core.telegram.org/bots/api#getuserprofilephotos)
 
- SeeAlso Telegram Bot API Reference:
- [GetUserProfilePhotosParams](https://core.telegram.org/bots/api#getuserprofilephotos)
- 
- - Parameters:
-     - params: Parameters container, see `GetUserProfilePhotosParams` struct
- - Throws: Throws on errors
- - Returns: EventLoopFuture of `UserProfilePhotos` type
- */
+     - Parameters:
+         - params: Parameters container, see `GetUserProfilePhotosParams` struct
+     - Throws: Throws on errors
+     - Returns: EventLoopFuture of `UserProfilePhotos` type
+     */
     @discardableResult
     func getUserProfilePhotos(params: GetUserProfilePhotosParams) throws -> EventLoopFuture<UserProfilePhotos> {
         let methodURL: URI = .init(string: getMethodURL("getUserProfilePhotos"))

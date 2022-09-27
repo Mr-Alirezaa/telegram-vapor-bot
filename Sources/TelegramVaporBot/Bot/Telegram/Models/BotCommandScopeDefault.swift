@@ -7,16 +7,15 @@
  [BotCommandScopeDefault](https://core.telegram.org/bots/api#botcommandscopedefault)
  */
 public final class BotCommandScopeDefault: Codable {
-
     /// Custom keys for coding/decoding `BotCommandScopeDefault` struct
     public enum CodingKeys: String, CodingKey {
-        case type = "type"
+        case type
     }
 
     /// Scope type, must be default
     public var type: String
 
-    public init (type: String) {
+    public init(type: String) {
         self.type = type
     }
 }

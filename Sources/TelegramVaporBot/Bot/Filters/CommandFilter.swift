@@ -1,17 +1,10 @@
-//
-//
-//
-
-//
-
 import Foundation
 
 /// Messages which contains command entity
 public class CommandFilter: Filter {
+    public var name = "command"
 
-    public var name: String = "command"
-
-    private var _names: [String]? = nil
+    private var _names: [String]?
     public func names(_ names: [String]) -> Self {
         _names = names
         return self
@@ -21,7 +14,7 @@ public class CommandFilter: Filter {
     public func filter(message: Message) -> Bool {
         guard let entity = message.entities else { return false }
         if let names = _names {
-            var trigger: Bool = false
+            var trigger = false
             for name in names {
                 if message.contains(command: name) {
                     trigger = true

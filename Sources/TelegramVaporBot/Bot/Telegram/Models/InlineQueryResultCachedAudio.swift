@@ -7,13 +7,12 @@
  [InlineQueryResultCachedAudio](https://core.telegram.org/bots/api#inlinequeryresultcachedaudio)
  */
 public final class InlineQueryResultCachedAudio: Codable {
-
     /// Custom keys for coding/decoding `InlineQueryResultCachedAudio` struct
     public enum CodingKeys: String, CodingKey {
-        case type = "type"
-        case id = "id"
+        case type
+        case id
         case audioFileId = "audio_file_id"
-        case caption = "caption"
+        case caption
         case parseMode = "parse_mode"
         case captionEntities = "caption_entities"
         case replyMarkup = "reply_markup"
@@ -44,7 +43,7 @@ public final class InlineQueryResultCachedAudio: Codable {
     /// Optional. Content of the message to be sent instead of the audio
     public var inputMessageContent: InputMessageContent?
 
-    public init (type: String, id: String, audioFileId: String, caption: String? = nil, parseMode: String? = nil, captionEntities: [MessageEntity]? = nil, replyMarkup: InlineKeyboardMarkup? = nil, inputMessageContent: InputMessageContent? = nil) {
+    public init(type: String, id: String, audioFileId: String, caption: String? = nil, parseMode: String? = nil, captionEntities: [MessageEntity]? = nil, replyMarkup: InlineKeyboardMarkup? = nil, inputMessageContent: InputMessageContent? = nil) {
         self.type = type
         self.id = id
         self.audioFileId = audioFileId

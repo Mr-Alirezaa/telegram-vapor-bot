@@ -1,19 +1,12 @@
-//
-//
-//
-
-//
-
 import Foundation
 
 /// Messages that contain `Document`
 public class DocumentFilter: Filter {
-
-    public var name: String = "document"
+    public var name = "document"
 
     override
     public func filter(message: Message) -> Bool {
-        return message.document != nil
+        message.document != nil
     }
 }
 

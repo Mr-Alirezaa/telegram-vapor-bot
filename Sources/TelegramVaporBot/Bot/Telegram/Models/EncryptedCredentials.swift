@@ -7,12 +7,11 @@
  [EncryptedCredentials](https://core.telegram.org/bots/api#encryptedcredentials)
  */
 public final class EncryptedCredentials: Codable {
-
     /// Custom keys for coding/decoding `EncryptedCredentials` struct
     public enum CodingKeys: String, CodingKey {
-        case data = "data"
-        case hash = "hash"
-        case secret = "secret"
+        case data
+        case hash
+        case secret
     }
 
     /// Base64-encoded encrypted JSON-serialized data with unique user's payload, data hashes and secrets required for EncryptedPassportElement decryption and authentication
@@ -24,7 +23,7 @@ public final class EncryptedCredentials: Codable {
     /// Base64-encoded secret, encrypted with the bot's public RSA key, required for data decryption
     public var secret: String
 
-    public init (data: String, hash: String, secret: String) {
+    public init(data: String, hash: String, secret: String) {
         self.data = data
         self.hash = hash
         self.secret = secret

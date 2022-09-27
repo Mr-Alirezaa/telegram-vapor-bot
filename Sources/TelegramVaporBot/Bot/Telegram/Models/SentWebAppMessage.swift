@@ -7,7 +7,6 @@
  [SentWebAppMessage](https://core.telegram.org/bots/api#sentwebappmessage)
  */
 public final class SentWebAppMessage: Codable {
-
     /// Custom keys for coding/decoding `SentWebAppMessage` struct
     public enum CodingKeys: String, CodingKey {
         case inlineMessageId = "inline_message_id"
@@ -16,7 +15,7 @@ public final class SentWebAppMessage: Codable {
     /// Optional. Identifier of the sent inline message. Available only if there is an inline keyboard attached to the message.
     public var inlineMessageId: String?
 
-    public init (inlineMessageId: String? = nil) {
+    public init(inlineMessageId: String? = nil) {
         self.inlineMessageId = inlineMessageId
     }
 }

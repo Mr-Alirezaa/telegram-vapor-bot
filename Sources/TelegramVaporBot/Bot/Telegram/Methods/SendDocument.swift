@@ -1,14 +1,10 @@
-
-
 import Vapor
 
 /// DESCRIPTION:
 /// Use this method to send general files. On success, the sent Message is returned. Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
 
-
 /// Parameters container struct for `sendDocument` method
 public struct SendDocumentParams: Encodable {
-
     /// Unique identifier for the target chat or username of the target channel (in the format @channelusername)
     public var chatId: ChatId
 
@@ -47,50 +43,48 @@ public struct SendDocumentParams: Encodable {
 
     /// Custom keys for coding/decoding `SendDocumentParams` struct
     public enum CodingKeys: String, CodingKey {
-            case chatId = "chat_id"
-            case document = "document"
-            case thumb = "thumb"
-            case caption = "caption"
-            case parseMode = "parse_mode"
-            case captionEntities = "caption_entities"
-            case disableContentTypeDetection = "disable_content_type_detection"
-            case disableNotification = "disable_notification"
-            case protectContent = "protect_content"
-            case replyToMessageId = "reply_to_message_id"
-            case allowSendingWithoutReply = "allow_sending_without_reply"
-            case replyMarkup = "reply_markup"
+        case chatId = "chat_id"
+        case document
+        case thumb
+        case caption
+        case parseMode = "parse_mode"
+        case captionEntities = "caption_entities"
+        case disableContentTypeDetection = "disable_content_type_detection"
+        case disableNotification = "disable_notification"
+        case protectContent = "protect_content"
+        case replyToMessageId = "reply_to_message_id"
+        case allowSendingWithoutReply = "allow_sending_without_reply"
+        case replyMarkup = "reply_markup"
     }
 
     public init(chatId: ChatId, document: FileInfo, thumb: FileInfo? = nil, caption: String? = nil, parseMode: ParseMode? = nil, captionEntities: [MessageEntity]? = nil, disableContentTypeDetection: Bool? = nil, disableNotification: Bool? = nil, protectContent: Bool? = nil, replyToMessageId: Int? = nil, allowSendingWithoutReply: Bool? = nil, replyMarkup: ReplyMarkup? = nil) {
-            self.chatId = chatId
-            self.document = document
-            self.thumb = thumb
-            self.caption = caption
-            self.parseMode = parseMode
-            self.captionEntities = captionEntities
-            self.disableContentTypeDetection = disableContentTypeDetection
-            self.disableNotification = disableNotification
-            self.protectContent = protectContent
-            self.replyToMessageId = replyToMessageId
-            self.allowSendingWithoutReply = allowSendingWithoutReply
-            self.replyMarkup = replyMarkup
+        self.chatId = chatId
+        self.document = document
+        self.thumb = thumb
+        self.caption = caption
+        self.parseMode = parseMode
+        self.captionEntities = captionEntities
+        self.disableContentTypeDetection = disableContentTypeDetection
+        self.disableNotification = disableNotification
+        self.protectContent = protectContent
+        self.replyToMessageId = replyToMessageId
+        self.allowSendingWithoutReply = allowSendingWithoutReply
+        self.replyMarkup = replyMarkup
     }
 }
 
-
 public extension Bot {
+    /**
+     Use this method to send general files. On success, the sent Message is returned. Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
 
-/**
- Use this method to send general files. On success, the sent Message is returned. Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
+     SeeAlso Telegram Bot API Reference:
+     [SendDocumentParams](https://core.telegram.org/bots/api#senddocument)
 
- SeeAlso Telegram Bot API Reference:
- [SendDocumentParams](https://core.telegram.org/bots/api#senddocument)
- 
- - Parameters:
-     - params: Parameters container, see `SendDocumentParams` struct
- - Throws: Throws on errors
- - Returns: EventLoopFuture of `Message` type
- */
+     - Parameters:
+         - params: Parameters container, see `SendDocumentParams` struct
+     - Throws: Throws on errors
+     - Returns: EventLoopFuture of `Message` type
+     */
     @discardableResult
     func sendDocument(params: SendDocumentParams) throws -> EventLoopFuture<Message> {
         let methodURL: URI = .init(string: getMethodURL("sendDocument"))

@@ -8,11 +8,10 @@
  [Update](https://core.telegram.org/bots/api#update)
  */
 public final class Update: Codable {
-
     /// Custom keys for coding/decoding `Update` struct
     public enum CodingKeys: String, CodingKey {
         case updateId = "update_id"
-        case message = "message"
+        case message
         case editedMessage = "edited_message"
         case channelPost = "channel_post"
         case editedChannelPost = "edited_channel_post"
@@ -21,7 +20,7 @@ public final class Update: Codable {
         case callbackQuery = "callback_query"
         case shippingQuery = "shipping_query"
         case preCheckoutQuery = "pre_checkout_query"
-        case poll = "poll"
+        case poll
         case pollAnswer = "poll_answer"
         case myChatMember = "my_chat_member"
         case chatMember = "chat_member"
@@ -73,7 +72,7 @@ public final class Update: Codable {
     /// Optional. A request to join the chat has been sent. The bot must have the can_invite_users administrator right in the chat to receive these updates.
     public var chatJoinRequest: ChatJoinRequest?
 
-    public init (updateId: Int, message: Message? = nil, editedMessage: Message? = nil, channelPost: Message? = nil, editedChannelPost: Message? = nil, inlineQuery: InlineQuery? = nil, chosenInlineResult: ChosenInlineResult? = nil, callbackQuery: CallbackQuery? = nil, shippingQuery: ShippingQuery? = nil, preCheckoutQuery: PreCheckoutQuery? = nil, poll: Poll? = nil, pollAnswer: PollAnswer? = nil, myChatMember: ChatMemberUpdated? = nil, chatMember: ChatMemberUpdated? = nil, chatJoinRequest: ChatJoinRequest? = nil) {
+    public init(updateId: Int, message: Message? = nil, editedMessage: Message? = nil, channelPost: Message? = nil, editedChannelPost: Message? = nil, inlineQuery: InlineQuery? = nil, chosenInlineResult: ChosenInlineResult? = nil, callbackQuery: CallbackQuery? = nil, shippingQuery: ShippingQuery? = nil, preCheckoutQuery: PreCheckoutQuery? = nil, poll: Poll? = nil, pollAnswer: PollAnswer? = nil, myChatMember: ChatMemberUpdated? = nil, chatMember: ChatMemberUpdated? = nil, chatJoinRequest: ChatJoinRequest? = nil) {
         self.updateId = updateId
         self.message = message
         self.editedMessage = editedMessage

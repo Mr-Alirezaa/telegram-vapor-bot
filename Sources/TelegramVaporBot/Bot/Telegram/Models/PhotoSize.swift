@@ -7,13 +7,12 @@
  [PhotoSize](https://core.telegram.org/bots/api#photosize)
  */
 public final class PhotoSize: Codable {
-
     /// Custom keys for coding/decoding `PhotoSize` struct
     public enum CodingKeys: String, CodingKey {
         case fileId = "file_id"
         case fileUniqueId = "file_unique_id"
-        case width = "width"
-        case height = "height"
+        case width
+        case height
         case fileSize = "file_size"
     }
 
@@ -32,7 +31,7 @@ public final class PhotoSize: Codable {
     /// Optional. File size in bytes
     public var fileSize: Int?
 
-    public init (fileId: String, fileUniqueId: String, width: Int, height: Int, fileSize: Int? = nil) {
+    public init(fileId: String, fileUniqueId: String, width: Int, height: Int, fileSize: Int? = nil) {
         self.fileId = fileId
         self.fileUniqueId = fileUniqueId
         self.width = width

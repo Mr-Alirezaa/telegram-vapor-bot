@@ -1,10 +1,3 @@
-//
-//  Error+Helpers.swift
-//  Telegrammer
-//
-
-//
-
 import Foundation
 import Logging
 
@@ -15,24 +8,24 @@ public extension Error {
             errorDescription = coreError.localizedDescription
         } else if let decodingError = self as? DecodingError {
             switch decodingError {
-            case .dataCorrupted(let context):
+            case let .dataCorrupted(context):
                 errorDescription = context.debugDescription
-            case .keyNotFound(_, let context):
+            case let .keyNotFound(_, context):
                 errorDescription = context.debugDescription
-            case .typeMismatch(_, let context):
+            case let .typeMismatch(_, context):
                 errorDescription = context.debugDescription
-            case .valueNotFound(_, let context):
+            case let .valueNotFound(_, context):
                 errorDescription = context.debugDescription
             @unknown default:
                 errorDescription = "Uknown DecodingError"
             }
         } else {
-            errorDescription = "Cannot detect error type, providing default description:\n\(self.localizedDescription)"
+            errorDescription = "Cannot detect error type, providing default description:\n\(localizedDescription)"
         }
         return Logger.Message(stringLiteral: errorDescription)
     }
 
     var rawMessage: Logger.Message {
-        "\(self.localizedDescription)"
+        "\(localizedDescription)"
     }
 }

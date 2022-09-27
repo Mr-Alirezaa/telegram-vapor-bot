@@ -1,19 +1,12 @@
-//
-//
-//
-
-//
-
 import Foundation
 
 /// Messages that contain `Voice`
 public class VoiceFilter: Filter {
-
-    public var name: String = "voice"
+    public var name = "voice"
 
     override
     public func filter(message: Message) -> Bool {
-        return message.voice != nil
+        message.voice != nil
     }
 }
 

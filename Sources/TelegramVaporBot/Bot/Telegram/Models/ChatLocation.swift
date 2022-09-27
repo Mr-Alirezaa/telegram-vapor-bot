@@ -7,11 +7,10 @@
  [ChatLocation](https://core.telegram.org/bots/api#chatlocation)
  */
 public final class ChatLocation: Codable {
-
     /// Custom keys for coding/decoding `ChatLocation` struct
     public enum CodingKeys: String, CodingKey {
-        case location = "location"
-        case address = "address"
+        case location
+        case address
     }
 
     /// The location to which the supergroup is connected. Can't be a live location.
@@ -20,7 +19,7 @@ public final class ChatLocation: Codable {
     /// Location address; 1-64 characters, as defined by the chat owner
     public var address: String
 
-    public init (location: Location, address: String) {
+    public init(location: Location, address: String) {
         self.location = location
         self.address = address
     }

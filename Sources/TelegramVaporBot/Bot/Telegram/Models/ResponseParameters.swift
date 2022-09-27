@@ -7,7 +7,6 @@
  [ResponseParameters](https://core.telegram.org/bots/api#responseparameters)
  */
 public final class ResponseParameters: Codable {
-
     /// Custom keys for coding/decoding `ResponseParameters` struct
     public enum CodingKeys: String, CodingKey {
         case migrateToChatId = "migrate_to_chat_id"
@@ -20,7 +19,7 @@ public final class ResponseParameters: Codable {
     /// Optional. In case of exceeding flood control, the number of seconds left to wait before the request can be repeated
     public var retryAfter: Int?
 
-    public init (migrateToChatId: Int64? = nil, retryAfter: Int? = nil) {
+    public init(migrateToChatId: Int64? = nil, retryAfter: Int? = nil) {
         self.migrateToChatId = migrateToChatId
         self.retryAfter = retryAfter
     }

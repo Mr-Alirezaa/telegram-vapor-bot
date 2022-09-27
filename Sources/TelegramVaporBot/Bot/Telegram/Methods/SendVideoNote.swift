@@ -1,14 +1,10 @@
-
-
 import Vapor
 
 /// DESCRIPTION:
 /// As of v.4.0, Telegram clients support rounded square MPEG4 videos of up to 1 minute long. Use this method to send video messages. On success, the sent Message is returned.
 
-
 /// Parameters container struct for `sendVideoNote` method
 public struct SendVideoNoteParams: Encodable {
-
     /// Unique identifier for the target chat or username of the target channel (in the format @channelusername)
     public var chatId: ChatId
 
@@ -41,46 +37,44 @@ public struct SendVideoNoteParams: Encodable {
 
     /// Custom keys for coding/decoding `SendVideoNoteParams` struct
     public enum CodingKeys: String, CodingKey {
-            case chatId = "chat_id"
-            case videoNote = "video_note"
-            case duration = "duration"
-            case length = "length"
-            case thumb = "thumb"
-            case disableNotification = "disable_notification"
-            case protectContent = "protect_content"
-            case replyToMessageId = "reply_to_message_id"
-            case allowSendingWithoutReply = "allow_sending_without_reply"
-            case replyMarkup = "reply_markup"
+        case chatId = "chat_id"
+        case videoNote = "video_note"
+        case duration
+        case length
+        case thumb
+        case disableNotification = "disable_notification"
+        case protectContent = "protect_content"
+        case replyToMessageId = "reply_to_message_id"
+        case allowSendingWithoutReply = "allow_sending_without_reply"
+        case replyMarkup = "reply_markup"
     }
 
     public init(chatId: ChatId, videoNote: FileInfo, duration: Int? = nil, length: Int? = nil, thumb: FileInfo? = nil, disableNotification: Bool? = nil, protectContent: Bool? = nil, replyToMessageId: Int? = nil, allowSendingWithoutReply: Bool? = nil, replyMarkup: ReplyMarkup? = nil) {
-            self.chatId = chatId
-            self.videoNote = videoNote
-            self.duration = duration
-            self.length = length
-            self.thumb = thumb
-            self.disableNotification = disableNotification
-            self.protectContent = protectContent
-            self.replyToMessageId = replyToMessageId
-            self.allowSendingWithoutReply = allowSendingWithoutReply
-            self.replyMarkup = replyMarkup
+        self.chatId = chatId
+        self.videoNote = videoNote
+        self.duration = duration
+        self.length = length
+        self.thumb = thumb
+        self.disableNotification = disableNotification
+        self.protectContent = protectContent
+        self.replyToMessageId = replyToMessageId
+        self.allowSendingWithoutReply = allowSendingWithoutReply
+        self.replyMarkup = replyMarkup
     }
 }
 
-
 public extension Bot {
+    /**
+     As of v.4.0, Telegram clients support rounded square MPEG4 videos of up to 1 minute long. Use this method to send video messages. On success, the sent Message is returned.
 
-/**
- As of v.4.0, Telegram clients support rounded square MPEG4 videos of up to 1 minute long. Use this method to send video messages. On success, the sent Message is returned.
+     SeeAlso Telegram Bot API Reference:
+     [SendVideoNoteParams](https://core.telegram.org/bots/api#sendvideonote)
 
- SeeAlso Telegram Bot API Reference:
- [SendVideoNoteParams](https://core.telegram.org/bots/api#sendvideonote)
- 
- - Parameters:
-     - params: Parameters container, see `SendVideoNoteParams` struct
- - Throws: Throws on errors
- - Returns: EventLoopFuture of `Message` type
- */
+     - Parameters:
+         - params: Parameters container, see `SendVideoNoteParams` struct
+     - Throws: Throws on errors
+     - Returns: EventLoopFuture of `Message` type
+     */
     @discardableResult
     func sendVideoNote(params: SendVideoNoteParams) throws -> EventLoopFuture<Message> {
         let methodURL: URI = .init(string: getMethodURL("sendVideoNote"))

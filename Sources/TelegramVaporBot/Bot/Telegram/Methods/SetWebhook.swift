@@ -1,15 +1,11 @@
-
-
 import Vapor
 
 /// DESCRIPTION:
 /// Use this method to specify a URL and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified URL, containing a JSON-serialized Update. In case of an unsuccessful request, we will give up after a reasonable amount of attempts. Returns True on success.
 /// If you'd like to make sure that the webhook was set by you, you can specify secret data in the parameter secret_token. If specified, the request will contain a header “X-Telegram-Bot-Api-Secret-Token” with the secret token as content.
 
-
 /// Parameters container struct for `setWebhook` method
 public struct SetWebhookParams: Encodable {
-
     /// HTTPS URL to send updates to. Use an empty string to remove webhook integration
     public var url: String
 
@@ -34,41 +30,39 @@ public struct SetWebhookParams: Encodable {
 
     /// Custom keys for coding/decoding `SetWebhookParams` struct
     public enum CodingKeys: String, CodingKey {
-            case url = "url"
-            case certificate = "certificate"
-            case ipAddress = "ip_address"
-            case maxConnections = "max_connections"
-            case allowedUpdates = "allowed_updates"
-            case dropPendingUpdates = "drop_pending_updates"
-            case secretToken = "secret_token"
+        case url
+        case certificate
+        case ipAddress = "ip_address"
+        case maxConnections = "max_connections"
+        case allowedUpdates = "allowed_updates"
+        case dropPendingUpdates = "drop_pending_updates"
+        case secretToken = "secret_token"
     }
 
     public init(url: String, certificate: InputFile? = nil, ipAddress: String? = nil, maxConnections: Int? = nil, allowedUpdates: [String]? = nil, dropPendingUpdates: Bool? = nil, secretToken: String? = nil) {
-            self.url = url
-            self.certificate = certificate
-            self.ipAddress = ipAddress
-            self.maxConnections = maxConnections
-            self.allowedUpdates = allowedUpdates
-            self.dropPendingUpdates = dropPendingUpdates
-            self.secretToken = secretToken
+        self.url = url
+        self.certificate = certificate
+        self.ipAddress = ipAddress
+        self.maxConnections = maxConnections
+        self.allowedUpdates = allowedUpdates
+        self.dropPendingUpdates = dropPendingUpdates
+        self.secretToken = secretToken
     }
 }
 
-
 public extension Bot {
+    /**
+     Use this method to specify a URL and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified URL, containing a JSON-serialized Update. In case of an unsuccessful request, we will give up after a reasonable amount of attempts. Returns True on success.
+     If you'd like to make sure that the webhook was set by you, you can specify secret data in the parameter secret_token. If specified, the request will contain a header “X-Telegram-Bot-Api-Secret-Token” with the secret token as content.
 
-/**
- Use this method to specify a URL and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified URL, containing a JSON-serialized Update. In case of an unsuccessful request, we will give up after a reasonable amount of attempts. Returns True on success.
- If you'd like to make sure that the webhook was set by you, you can specify secret data in the parameter secret_token. If specified, the request will contain a header “X-Telegram-Bot-Api-Secret-Token” with the secret token as content.
+     SeeAlso Telegram Bot API Reference:
+     [SetWebhookParams](https://core.telegram.org/bots/api#setwebhook)
 
- SeeAlso Telegram Bot API Reference:
- [SetWebhookParams](https://core.telegram.org/bots/api#setwebhook)
- 
- - Parameters:
-     - params: Parameters container, see `SetWebhookParams` struct
- - Throws: Throws on errors
- - Returns: EventLoopFuture of `Bool` type
- */
+     - Parameters:
+         - params: Parameters container, see `SetWebhookParams` struct
+     - Throws: Throws on errors
+     - Returns: EventLoopFuture of `Bool` type
+     */
     @discardableResult
     func setWebhook(params: SetWebhookParams) throws -> EventLoopFuture<Bool> {
         let methodURL: URI = .init(string: getMethodURL("setWebhook"))

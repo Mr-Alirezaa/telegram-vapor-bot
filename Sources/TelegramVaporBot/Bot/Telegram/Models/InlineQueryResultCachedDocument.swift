@@ -7,15 +7,14 @@
  [InlineQueryResultCachedDocument](https://core.telegram.org/bots/api#inlinequeryresultcacheddocument)
  */
 public final class InlineQueryResultCachedDocument: Codable {
-
     /// Custom keys for coding/decoding `InlineQueryResultCachedDocument` struct
     public enum CodingKeys: String, CodingKey {
-        case type = "type"
-        case id = "id"
-        case title = "title"
+        case type
+        case id
+        case title
         case documentFileId = "document_file_id"
-        case description = "description"
-        case caption = "caption"
+        case description
+        case caption
         case parseMode = "parse_mode"
         case captionEntities = "caption_entities"
         case replyMarkup = "reply_markup"
@@ -52,7 +51,7 @@ public final class InlineQueryResultCachedDocument: Codable {
     /// Optional. Content of the message to be sent instead of the file
     public var inputMessageContent: InputMessageContent?
 
-    public init (type: String, id: String, title: String, documentFileId: String, description: String? = nil, caption: String? = nil, parseMode: String? = nil, captionEntities: [MessageEntity]? = nil, replyMarkup: InlineKeyboardMarkup? = nil, inputMessageContent: InputMessageContent? = nil) {
+    public init(type: String, id: String, title: String, documentFileId: String, description: String? = nil, caption: String? = nil, parseMode: String? = nil, captionEntities: [MessageEntity]? = nil, replyMarkup: InlineKeyboardMarkup? = nil, inputMessageContent: InputMessageContent? = nil) {
         self.type = type
         self.id = id
         self.title = title

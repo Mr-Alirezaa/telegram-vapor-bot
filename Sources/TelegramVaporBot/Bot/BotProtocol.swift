@@ -1,13 +1,10 @@
-
-
 import Vapor
 
 public protocol BotProtocol {
-
     var botId: String { get set }
     var tgURI: URI { get set }
     var tgClient: ClientProtocol { get set }
-    var connection: ConnectionProtocol  { get }
+    var connection: ConnectionProtocol { get }
 
     static var shared: Self { get }
 
@@ -281,6 +278,4 @@ public protocol BotProtocol {
 
     @discardableResult
     func getGameHighScores(params: GetGameHighScoresParams) throws -> EventLoopFuture<[GameHighScore]>
-
 }
-

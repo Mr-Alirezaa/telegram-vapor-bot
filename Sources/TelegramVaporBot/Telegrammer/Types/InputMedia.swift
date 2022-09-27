@@ -1,10 +1,3 @@
-//
-//  InputMedia.swift
-//  Telegrammer
-//
-
-//
-
 import Foundation
 
 /// This enum represents the content of a media message to be sent.
@@ -18,21 +11,21 @@ public enum InputMedia: Encodable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         switch self {
-        case .inputMediaPhoto(let value):
+        case let .inputMediaPhoto(value):
             try container.encode(value)
-        case .inputMediaVideo(let value):
+        case let .inputMediaVideo(value):
             try container.encode(value)
-        case .inputMediaAnimation(let value):
+        case let .inputMediaAnimation(value):
             try container.encode(value)
-        case .inputMediaAudio(let value):
+        case let .inputMediaAudio(value):
             try container.encode(value)
-        case .inputMediaDocument(let value):
+        case let .inputMediaDocument(value):
             try container.encode(value)
         }
     }
 }
 
-//public enum InputMediaPhotoAndVideo: Encodable {
+// public enum InputMediaPhotoAndVideo: Encodable {
 //    case inputMediaPhoto(InputMediaPhoto)
 //    case inputMediaVideo(InputMediaVideo)
 //
@@ -45,4 +38,4 @@ public enum InputMedia: Encodable {
 //            try container.encode(value)
 //        }
 //    }
-//}
+// }

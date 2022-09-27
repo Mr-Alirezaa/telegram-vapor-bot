@@ -7,15 +7,14 @@
  [Animation](https://core.telegram.org/bots/api#animation)
  */
 public final class Animation: Codable {
-
     /// Custom keys for coding/decoding `Animation` struct
     public enum CodingKeys: String, CodingKey {
         case fileId = "file_id"
         case fileUniqueId = "file_unique_id"
-        case width = "width"
-        case height = "height"
-        case duration = "duration"
-        case thumb = "thumb"
+        case width
+        case height
+        case duration
+        case thumb
         case fileName = "file_name"
         case mimeType = "mime_type"
         case fileSize = "file_size"
@@ -48,7 +47,7 @@ public final class Animation: Codable {
     /// Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this value.
     public var fileSize: Int?
 
-    public init (fileId: String, fileUniqueId: String, width: Int, height: Int, duration: Int, thumb: PhotoSize? = nil, fileName: String? = nil, mimeType: String? = nil, fileSize: Int? = nil) {
+    public init(fileId: String, fileUniqueId: String, width: Int, height: Int, duration: Int, thumb: PhotoSize? = nil, fileName: String? = nil, mimeType: String? = nil, fileSize: Int? = nil) {
         self.fileId = fileId
         self.fileUniqueId = fileUniqueId
         self.width = width

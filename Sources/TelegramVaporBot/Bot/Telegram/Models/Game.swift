@@ -7,15 +7,14 @@
  [Game](https://core.telegram.org/bots/api#game)
  */
 public final class Game: Codable {
-
     /// Custom keys for coding/decoding `Game` struct
     public enum CodingKeys: String, CodingKey {
-        case title = "title"
-        case description = "description"
-        case photo = "photo"
-        case text = "text"
+        case title
+        case description
+        case photo
+        case text
         case textEntities = "text_entities"
-        case animation = "animation"
+        case animation
     }
 
     /// Title of the game
@@ -36,7 +35,7 @@ public final class Game: Codable {
     /// Optional. Animation that will be displayed in the game message in chats. Upload via BotFather
     public var animation: Animation?
 
-    public init (title: String, description: String, photo: [PhotoSize], text: String? = nil, textEntities: [MessageEntity]? = nil, animation: Animation? = nil) {
+    public init(title: String, description: String, photo: [PhotoSize], text: String? = nil, textEntities: [MessageEntity]? = nil, animation: Animation? = nil) {
         self.title = title
         self.description = description
         self.photo = photo

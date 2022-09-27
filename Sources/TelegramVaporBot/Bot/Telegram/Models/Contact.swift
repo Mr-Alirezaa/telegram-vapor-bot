@@ -7,14 +7,13 @@
  [Contact](https://core.telegram.org/bots/api#contact)
  */
 public final class Contact: Codable {
-
     /// Custom keys for coding/decoding `Contact` struct
     public enum CodingKeys: String, CodingKey {
         case phoneNumber = "phone_number"
         case firstName = "first_name"
         case lastName = "last_name"
         case userId = "user_id"
-        case vcard = "vcard"
+        case vcard
     }
 
     /// Contact's phone number
@@ -32,7 +31,7 @@ public final class Contact: Codable {
     /// Optional. Additional data about the contact in the form of a vCard
     public var vcard: String?
 
-    public init (phoneNumber: String, firstName: String, lastName: String? = nil, userId: Int64? = nil, vcard: String? = nil) {
+    public init(phoneNumber: String, firstName: String, lastName: String? = nil, userId: Int64? = nil, vcard: String? = nil) {
         self.phoneNumber = phoneNumber
         self.firstName = firstName
         self.lastName = lastName

@@ -1,14 +1,7 @@
-//
-//  ReplyMarkup.swift
-//  App
-//
-
-//
-
-//import TelegrammerMultipart
+// import TelegrammerMultipart
 
 /** Enum for InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply
- 
+
  SeeAlso Telegram Bot API Reference:
  [Reply Markups](https://core.telegram.org/bots/2-0-intro#new-inline-keyboards)
  */
@@ -22,13 +15,13 @@ public enum ReplyMarkup: Codable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         switch self {
-        case .inlineKeyboardMarkup(let value):
+        case let .inlineKeyboardMarkup(value):
             try container.encode(value)
-        case .replyKeyboardMarkup(let value):
+        case let .replyKeyboardMarkup(value):
             try container.encode(value)
-        case .replyKeyboardRemove(let value):
+        case let .replyKeyboardRemove(value):
             try container.encode(value)
-        case .forceReply(let value):
+        case let .forceReply(value):
             try container.encode(value)
         case .undefined:
             try container.encodeNil()

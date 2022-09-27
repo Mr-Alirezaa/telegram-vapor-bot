@@ -7,6 +7,4 @@
  SeeAlso Telegram Bot API Reference:
  [VoiceChatStarted](https://core.telegram.org/bots/api#voicechatstarted)
  */
-public final class VoiceChatStarted: Codable {
-
-}
+public final class VoiceChatStarted: Codable {}

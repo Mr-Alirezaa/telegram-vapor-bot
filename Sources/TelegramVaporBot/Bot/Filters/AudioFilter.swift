@@ -1,21 +1,15 @@
-//
-//
-//
-
-//
-
 import Foundation
 
 /// Messages that contain `Audio`
 public class AudioFilter: Filter {
-    public var name: String = "audio"
+    public var name = "audio"
 
     override
     public func filter(message: Message) -> Bool {
-        return message.audio != nil
+        message.audio != nil
     }
 }
 
 public extension Filter {
-    static var audio: AudioFilter { AudioFilter() } 
+    static var audio: AudioFilter { AudioFilter() }
 }

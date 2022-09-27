@@ -1,15 +1,8 @@
-//
-//
-//
-
-//
-
 import Foundation
 import SwiftRegularExpression
 
 /// Filters updates by searching for an occurence of pattern in the message text. The `NSRegularExpression` is used to determine whether an update should be filtered. Refer to the documentation of the `NSRegularExpression` for more information.
 public class RegexpFilter: Filter {
-
     let pattern: String
     let options: NSRegularExpression.Options
 
@@ -19,7 +12,7 @@ public class RegexpFilter: Filter {
         super.init()
     }
 
-    public var name: String = "regexp"
+    public var name = "regexp"
 
     override
     public func filter(message: Message) -> Bool {
@@ -30,6 +23,6 @@ public class RegexpFilter: Filter {
 
 public extension Filter {
     static func regexp(pattern: String, options: NSRegularExpression.Options = []) -> RegexpFilter {
-        return RegexpFilter(pattern: pattern, options: options)
+        RegexpFilter(pattern: pattern, options: options)
     }
 }

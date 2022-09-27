@@ -13,9 +13,9 @@ public enum MessageOrBool: Codable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         switch self {
-        case .bool(let value):
+        case let .bool(value):
             try container.encode(value)
-        case .message(let message):
+        case let .message(message):
             try container.encode(message)
         }
     }

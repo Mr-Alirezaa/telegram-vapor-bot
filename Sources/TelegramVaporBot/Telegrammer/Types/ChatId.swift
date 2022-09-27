@@ -1,15 +1,7 @@
-//
-//  ChatId.swift
-//  App
-//
-
-//
-
 import Foundation
 
 /// Unique identifier for the target chat or username of the target channel (in the format @channelusername)
 public enum ChatId: Codable {
-
     case chat(Int64)
     case username(String)
     case undefined
@@ -17,9 +9,9 @@ public enum ChatId: Codable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         switch self {
-        case .username(let string):
+        case let .username(string):
             try container.encode(string)
-        case .chat(let integer):
+        case let .chat(integer):
             try container.encode(integer)
         default:
             try container.encodeNil()

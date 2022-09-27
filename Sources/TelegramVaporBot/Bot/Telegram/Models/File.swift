@@ -8,7 +8,6 @@
  [File](https://core.telegram.org/bots/api#file)
  */
 public final class File: Codable {
-
     /// Custom keys for coding/decoding `File` struct
     public enum CodingKeys: String, CodingKey {
         case fileId = "file_id"
@@ -29,7 +28,7 @@ public final class File: Codable {
     /// Optional. File path. Use https://api.telegram.org/file/bot<token>/<file_path> to get the file.
     public var filePath: String?
 
-    public init (fileId: String, fileUniqueId: String, fileSize: Int? = nil, filePath: String? = nil) {
+    public init(fileId: String, fileUniqueId: String, fileSize: Int? = nil, filePath: String? = nil) {
         self.fileId = fileId
         self.fileUniqueId = fileUniqueId
         self.fileSize = fileSize

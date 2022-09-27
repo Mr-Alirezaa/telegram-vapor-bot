@@ -1,14 +1,10 @@
-
-
 import Vapor
 
 /// DESCRIPTION:
 /// Use this method to add a new sticker to a set created by the bot. You must use exactly one of the fields png_sticker, tgs_sticker, or webm_sticker. Animated stickers can be added to animated sticker sets and only to them. Animated sticker sets can have up to 50 stickers. Static sticker sets can have up to 120 stickers. Returns True on success.
 
-
 /// Parameters container struct for `addStickerToSet` method
 public struct AddStickerToSetParams: Encodable {
-
     /// User identifier of sticker set owner
     public var userId: Int64
 
@@ -32,40 +28,38 @@ public struct AddStickerToSetParams: Encodable {
 
     /// Custom keys for coding/decoding `AddStickerToSetParams` struct
     public enum CodingKeys: String, CodingKey {
-            case userId = "user_id"
-            case name = "name"
-            case pngSticker = "png_sticker"
-            case tgsSticker = "tgs_sticker"
-            case webmSticker = "webm_sticker"
-            case emojis = "emojis"
-            case maskPosition = "mask_position"
+        case userId = "user_id"
+        case name
+        case pngSticker = "png_sticker"
+        case tgsSticker = "tgs_sticker"
+        case webmSticker = "webm_sticker"
+        case emojis
+        case maskPosition = "mask_position"
     }
 
     public init(userId: Int64, name: String, pngSticker: FileInfo? = nil, tgsSticker: InputFile? = nil, webmSticker: InputFile? = nil, emojis: String, maskPosition: MaskPosition? = nil) {
-            self.userId = userId
-            self.name = name
-            self.pngSticker = pngSticker
-            self.tgsSticker = tgsSticker
-            self.webmSticker = webmSticker
-            self.emojis = emojis
-            self.maskPosition = maskPosition
+        self.userId = userId
+        self.name = name
+        self.pngSticker = pngSticker
+        self.tgsSticker = tgsSticker
+        self.webmSticker = webmSticker
+        self.emojis = emojis
+        self.maskPosition = maskPosition
     }
 }
 
-
 public extension Bot {
+    /**
+     Use this method to add a new sticker to a set created by the bot. You must use exactly one of the fields png_sticker, tgs_sticker, or webm_sticker. Animated stickers can be added to animated sticker sets and only to them. Animated sticker sets can have up to 50 stickers. Static sticker sets can have up to 120 stickers. Returns True on success.
 
-/**
- Use this method to add a new sticker to a set created by the bot. You must use exactly one of the fields png_sticker, tgs_sticker, or webm_sticker. Animated stickers can be added to animated sticker sets and only to them. Animated sticker sets can have up to 50 stickers. Static sticker sets can have up to 120 stickers. Returns True on success.
+     SeeAlso Telegram Bot API Reference:
+     [AddStickerToSetParams](https://core.telegram.org/bots/api#addstickertoset)
 
- SeeAlso Telegram Bot API Reference:
- [AddStickerToSetParams](https://core.telegram.org/bots/api#addstickertoset)
- 
- - Parameters:
-     - params: Parameters container, see `AddStickerToSetParams` struct
- - Throws: Throws on errors
- - Returns: EventLoopFuture of `Bool` type
- */
+     - Parameters:
+         - params: Parameters container, see `AddStickerToSetParams` struct
+     - Throws: Throws on errors
+     - Returns: EventLoopFuture of `Bool` type
+     */
     @discardableResult
     func addStickerToSet(params: AddStickerToSetParams) throws -> EventLoopFuture<Bool> {
         let methodURL: URI = .init(string: getMethodURL("addStickerToSet"))

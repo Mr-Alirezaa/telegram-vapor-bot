@@ -7,17 +7,16 @@
  [InlineQueryResultArticle](https://core.telegram.org/bots/api#inlinequeryresultarticle)
  */
 public final class InlineQueryResultArticle: Codable {
-
     /// Custom keys for coding/decoding `InlineQueryResultArticle` struct
     public enum CodingKeys: String, CodingKey {
-        case type = "type"
-        case id = "id"
-        case title = "title"
+        case type
+        case id
+        case title
         case inputMessageContent = "input_message_content"
         case replyMarkup = "reply_markup"
-        case url = "url"
+        case url
         case hideUrl = "hide_url"
-        case description = "description"
+        case description
         case thumbUrl = "thumb_url"
         case thumbWidth = "thumb_width"
         case thumbHeight = "thumb_height"
@@ -56,7 +55,7 @@ public final class InlineQueryResultArticle: Codable {
     /// Optional. Thumbnail height
     public var thumbHeight: Int?
 
-    public init (type: String, id: String, title: String, inputMessageContent: InputMessageContent, replyMarkup: InlineKeyboardMarkup? = nil, url: String? = nil, hideUrl: Bool? = nil, description: String? = nil, thumbUrl: String? = nil, thumbWidth: Int? = nil, thumbHeight: Int? = nil) {
+    public init(type: String, id: String, title: String, inputMessageContent: InputMessageContent, replyMarkup: InlineKeyboardMarkup? = nil, url: String? = nil, hideUrl: Bool? = nil, description: String? = nil, thumbUrl: String? = nil, thumbWidth: Int? = nil, thumbHeight: Int? = nil) {
         self.type = type
         self.id = id
         self.title = title

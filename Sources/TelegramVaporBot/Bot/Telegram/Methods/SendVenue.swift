@@ -1,14 +1,10 @@
-
-
 import Vapor
 
 /// DESCRIPTION:
 /// Use this method to send information about a venue. On success, the sent Message is returned.
 
-
 /// Parameters container struct for `sendVenue` method
 public struct SendVenueParams: Encodable {
-
     /// Unique identifier for the target chat or username of the target channel (in the format @channelusername)
     public var chatId: ChatId
 
@@ -53,54 +49,52 @@ public struct SendVenueParams: Encodable {
 
     /// Custom keys for coding/decoding `SendVenueParams` struct
     public enum CodingKeys: String, CodingKey {
-            case chatId = "chat_id"
-            case latitude = "latitude"
-            case longitude = "longitude"
-            case title = "title"
-            case address = "address"
-            case foursquareId = "foursquare_id"
-            case foursquareType = "foursquare_type"
-            case googlePlaceId = "google_place_id"
-            case googlePlaceType = "google_place_type"
-            case disableNotification = "disable_notification"
-            case protectContent = "protect_content"
-            case replyToMessageId = "reply_to_message_id"
-            case allowSendingWithoutReply = "allow_sending_without_reply"
-            case replyMarkup = "reply_markup"
+        case chatId = "chat_id"
+        case latitude
+        case longitude
+        case title
+        case address
+        case foursquareId = "foursquare_id"
+        case foursquareType = "foursquare_type"
+        case googlePlaceId = "google_place_id"
+        case googlePlaceType = "google_place_type"
+        case disableNotification = "disable_notification"
+        case protectContent = "protect_content"
+        case replyToMessageId = "reply_to_message_id"
+        case allowSendingWithoutReply = "allow_sending_without_reply"
+        case replyMarkup = "reply_markup"
     }
 
     public init(chatId: ChatId, latitude: Float, longitude: Float, title: String, address: String, foursquareId: String? = nil, foursquareType: String? = nil, googlePlaceId: String? = nil, googlePlaceType: String? = nil, disableNotification: Bool? = nil, protectContent: Bool? = nil, replyToMessageId: Int? = nil, allowSendingWithoutReply: Bool? = nil, replyMarkup: ReplyMarkup? = nil) {
-            self.chatId = chatId
-            self.latitude = latitude
-            self.longitude = longitude
-            self.title = title
-            self.address = address
-            self.foursquareId = foursquareId
-            self.foursquareType = foursquareType
-            self.googlePlaceId = googlePlaceId
-            self.googlePlaceType = googlePlaceType
-            self.disableNotification = disableNotification
-            self.protectContent = protectContent
-            self.replyToMessageId = replyToMessageId
-            self.allowSendingWithoutReply = allowSendingWithoutReply
-            self.replyMarkup = replyMarkup
+        self.chatId = chatId
+        self.latitude = latitude
+        self.longitude = longitude
+        self.title = title
+        self.address = address
+        self.foursquareId = foursquareId
+        self.foursquareType = foursquareType
+        self.googlePlaceId = googlePlaceId
+        self.googlePlaceType = googlePlaceType
+        self.disableNotification = disableNotification
+        self.protectContent = protectContent
+        self.replyToMessageId = replyToMessageId
+        self.allowSendingWithoutReply = allowSendingWithoutReply
+        self.replyMarkup = replyMarkup
     }
 }
 
-
 public extension Bot {
+    /**
+     Use this method to send information about a venue. On success, the sent Message is returned.
 
-/**
- Use this method to send information about a venue. On success, the sent Message is returned.
+     SeeAlso Telegram Bot API Reference:
+     [SendVenueParams](https://core.telegram.org/bots/api#sendvenue)
 
- SeeAlso Telegram Bot API Reference:
- [SendVenueParams](https://core.telegram.org/bots/api#sendvenue)
- 
- - Parameters:
-     - params: Parameters container, see `SendVenueParams` struct
- - Throws: Throws on errors
- - Returns: EventLoopFuture of `Message` type
- */
+     - Parameters:
+         - params: Parameters container, see `SendVenueParams` struct
+     - Throws: Throws on errors
+     - Returns: EventLoopFuture of `Message` type
+     */
     @discardableResult
     func sendVenue(params: SendVenueParams) throws -> EventLoopFuture<Message> {
         let methodURL: URI = .init(string: getMethodURL("sendVenue"))

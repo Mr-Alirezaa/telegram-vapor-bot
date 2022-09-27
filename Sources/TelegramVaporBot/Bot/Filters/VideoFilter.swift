@@ -1,19 +1,12 @@
-//
-//
-//
-
-//
-
 import Foundation
 
 /// Messages that contain `Video`
 public class VideoFilter: Filter {
-
-    public var name: String = "video"
+    public var name = "video"
 
     override
     public func filter(message: Message) -> Bool {
-        return message.video != nil
+        message.video != nil
     }
 }
 

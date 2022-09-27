@@ -9,7 +9,7 @@
  PassportElementErrorSelfie
  PassportElementErrorFile
  PassportElementErrorFiles
- 
+
  SeeAlso Telegram Bot API Reference:
  [PassportElementError](https://core.telegram.org/bots/api#passportelementerror)
  */
@@ -25,17 +25,17 @@ public enum PassportElementError: Codable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         switch self {
-        case .dataField(let value):
+        case let .dataField(value):
             try container.encode(value)
-        case .file(let value):
+        case let .file(value):
             try container.encode(value)
-        case .files(let value):
+        case let .files(value):
             try container.encode(value)
-        case .frontSide(let value):
+        case let .frontSide(value):
             try container.encode(value)
-        case .reverseSide(let value):
+        case let .reverseSide(value):
             try container.encode(value)
-        case .selfie(let value):
+        case let .selfie(value):
             try container.encode(value)
         case .unknown:
             try container.encodeNil()
@@ -69,5 +69,4 @@ public enum PassportElementError: Codable {
         }
         self = .unknown
     }
-
 }

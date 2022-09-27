@@ -1,14 +1,10 @@
-
-
 import Vapor
 
 /// DESCRIPTION:
 /// Use this method to copy messages of any kind. Service messages and invoice messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_id is known to the bot. The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message. Returns the MessageId of the sent message on success.
 
-
 /// Parameters container struct for `copyMessage` method
 public struct CopyMessageParams: Encodable {
-
     /// Unique identifier for the target chat or username of the target channel (in the format @channelusername)
     public var chatId: ChatId
 
@@ -44,48 +40,46 @@ public struct CopyMessageParams: Encodable {
 
     /// Custom keys for coding/decoding `CopyMessageParams` struct
     public enum CodingKeys: String, CodingKey {
-            case chatId = "chat_id"
-            case fromChatId = "from_chat_id"
-            case messageId = "message_id"
-            case caption = "caption"
-            case parseMode = "parse_mode"
-            case captionEntities = "caption_entities"
-            case disableNotification = "disable_notification"
-            case protectContent = "protect_content"
-            case replyToMessageId = "reply_to_message_id"
-            case allowSendingWithoutReply = "allow_sending_without_reply"
-            case replyMarkup = "reply_markup"
+        case chatId = "chat_id"
+        case fromChatId = "from_chat_id"
+        case messageId = "message_id"
+        case caption
+        case parseMode = "parse_mode"
+        case captionEntities = "caption_entities"
+        case disableNotification = "disable_notification"
+        case protectContent = "protect_content"
+        case replyToMessageId = "reply_to_message_id"
+        case allowSendingWithoutReply = "allow_sending_without_reply"
+        case replyMarkup = "reply_markup"
     }
 
     public init(chatId: ChatId, fromChatId: ChatId, messageId: Int, caption: String? = nil, parseMode: ParseMode? = nil, captionEntities: [MessageEntity]? = nil, disableNotification: Bool? = nil, protectContent: Bool? = nil, replyToMessageId: Int? = nil, allowSendingWithoutReply: Bool? = nil, replyMarkup: ReplyMarkup? = nil) {
-            self.chatId = chatId
-            self.fromChatId = fromChatId
-            self.messageId = messageId
-            self.caption = caption
-            self.parseMode = parseMode
-            self.captionEntities = captionEntities
-            self.disableNotification = disableNotification
-            self.protectContent = protectContent
-            self.replyToMessageId = replyToMessageId
-            self.allowSendingWithoutReply = allowSendingWithoutReply
-            self.replyMarkup = replyMarkup
+        self.chatId = chatId
+        self.fromChatId = fromChatId
+        self.messageId = messageId
+        self.caption = caption
+        self.parseMode = parseMode
+        self.captionEntities = captionEntities
+        self.disableNotification = disableNotification
+        self.protectContent = protectContent
+        self.replyToMessageId = replyToMessageId
+        self.allowSendingWithoutReply = allowSendingWithoutReply
+        self.replyMarkup = replyMarkup
     }
 }
 
-
 public extension Bot {
+    /**
+     Use this method to copy messages of any kind. Service messages and invoice messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_id is known to the bot. The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message. Returns the MessageId of the sent message on success.
 
-/**
- Use this method to copy messages of any kind. Service messages and invoice messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_id is known to the bot. The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message. Returns the MessageId of the sent message on success.
+     SeeAlso Telegram Bot API Reference:
+     [CopyMessageParams](https://core.telegram.org/bots/api#copymessage)
 
- SeeAlso Telegram Bot API Reference:
- [CopyMessageParams](https://core.telegram.org/bots/api#copymessage)
- 
- - Parameters:
-     - params: Parameters container, see `CopyMessageParams` struct
- - Throws: Throws on errors
- - Returns: EventLoopFuture of `MessageId` type
- */
+     - Parameters:
+         - params: Parameters container, see `CopyMessageParams` struct
+     - Throws: Throws on errors
+     - Returns: EventLoopFuture of `MessageId` type
+     */
     @discardableResult
     func copyMessage(params: CopyMessageParams) throws -> EventLoopFuture<MessageId> {
         let methodURL: URI = .init(string: getMethodURL("copyMessage"))

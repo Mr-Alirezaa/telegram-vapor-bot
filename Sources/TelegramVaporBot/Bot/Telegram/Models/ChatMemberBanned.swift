@@ -7,11 +7,10 @@
  [ChatMemberBanned](https://core.telegram.org/bots/api#chatmemberbanned)
  */
 public final class ChatMemberBanned: Codable {
-
     /// Custom keys for coding/decoding `ChatMemberBanned` struct
     public enum CodingKeys: String, CodingKey {
-        case status = "status"
-        case user = "user"
+        case status
+        case user
         case untilDate = "until_date"
     }
 
@@ -24,7 +23,7 @@ public final class ChatMemberBanned: Codable {
     /// Date when restrictions will be lifted for this user; unix time. If 0, then the user is banned forever
     public var untilDate: Int
 
-    public init (status: String, user: User, untilDate: Int) {
+    public init(status: String, user: User, untilDate: Int) {
         self.status = status
         self.user = user
         self.untilDate = untilDate

@@ -7,12 +7,11 @@
  [PreCheckoutQuery](https://core.telegram.org/bots/api#precheckoutquery)
  */
 public final class PreCheckoutQuery: Codable {
-
     /// Custom keys for coding/decoding `PreCheckoutQuery` struct
     public enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case from = "from"
-        case currency = "currency"
+        case id
+        case from
+        case currency
         case totalAmount = "total_amount"
         case invoicePayload = "invoice_payload"
         case shippingOptionId = "shipping_option_id"
@@ -40,7 +39,7 @@ public final class PreCheckoutQuery: Codable {
     /// Optional. Order information provided by the user
     public var orderInfo: OrderInfo?
 
-    public init (id: String, from: User, currency: String, totalAmount: Int, invoicePayload: String, shippingOptionId: String? = nil, orderInfo: OrderInfo? = nil) {
+    public init(id: String, from: User, currency: String, totalAmount: Int, invoicePayload: String, shippingOptionId: String? = nil, orderInfo: OrderInfo? = nil) {
         self.id = id
         self.from = from
         self.currency = currency

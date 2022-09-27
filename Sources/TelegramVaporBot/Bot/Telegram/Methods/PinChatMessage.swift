@@ -1,14 +1,10 @@
-
-
 import Vapor
 
 /// DESCRIPTION:
 /// Use this method to add a message to the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel. Returns True on success.
 
-
 /// Parameters container struct for `pinChatMessage` method
 public struct PinChatMessageParams: Encodable {
-
     /// Unique identifier for the target chat or username of the target channel (in the format @channelusername)
     public var chatId: ChatId
 
@@ -20,32 +16,30 @@ public struct PinChatMessageParams: Encodable {
 
     /// Custom keys for coding/decoding `PinChatMessageParams` struct
     public enum CodingKeys: String, CodingKey {
-            case chatId = "chat_id"
-            case messageId = "message_id"
-            case disableNotification = "disable_notification"
+        case chatId = "chat_id"
+        case messageId = "message_id"
+        case disableNotification = "disable_notification"
     }
 
     public init(chatId: ChatId, messageId: Int, disableNotification: Bool? = nil) {
-            self.chatId = chatId
-            self.messageId = messageId
-            self.disableNotification = disableNotification
+        self.chatId = chatId
+        self.messageId = messageId
+        self.disableNotification = disableNotification
     }
 }
 
-
 public extension Bot {
+    /**
+     Use this method to add a message to the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel. Returns True on success.
 
-/**
- Use this method to add a message to the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel. Returns True on success.
+     SeeAlso Telegram Bot API Reference:
+     [PinChatMessageParams](https://core.telegram.org/bots/api#pinchatmessage)
 
- SeeAlso Telegram Bot API Reference:
- [PinChatMessageParams](https://core.telegram.org/bots/api#pinchatmessage)
- 
- - Parameters:
-     - params: Parameters container, see `PinChatMessageParams` struct
- - Throws: Throws on errors
- - Returns: EventLoopFuture of `Bool` type
- */
+     - Parameters:
+         - params: Parameters container, see `PinChatMessageParams` struct
+     - Throws: Throws on errors
+     - Returns: EventLoopFuture of `Bool` type
+     */
     @discardableResult
     func pinChatMessage(params: PinChatMessageParams) throws -> EventLoopFuture<Bool> {
         let methodURL: URI = .init(string: getMethodURL("pinChatMessage"))

@@ -7,18 +7,17 @@
  [InputMediaAudio](https://core.telegram.org/bots/api#inputmediaaudio)
  */
 public final class InputMediaAudio: Encodable {
-
     /// Custom keys for coding/decoding `InputMediaAudio` struct
     public enum CodingKeys: String, CodingKey {
-        case type = "type"
-        case media = "media"
-        case thumb = "thumb"
-        case caption = "caption"
+        case type
+        case media
+        case thumb
+        case caption
         case parseMode = "parse_mode"
         case captionEntities = "caption_entities"
-        case duration = "duration"
-        case performer = "performer"
-        case title = "title"
+        case duration
+        case performer
+        case title
     }
 
     /// Type of the result, must be audio
@@ -48,7 +47,7 @@ public final class InputMediaAudio: Encodable {
     /// Optional. Title of the audio
     public var title: String?
 
-    public init (type: String, media: String, thumb: FileInfo? = nil, caption: String? = nil, parseMode: String? = nil, captionEntities: [MessageEntity]? = nil, duration: Int? = nil, performer: String? = nil, title: String? = nil) {
+    public init(type: String, media: String, thumb: FileInfo? = nil, caption: String? = nil, parseMode: String? = nil, captionEntities: [MessageEntity]? = nil, duration: Int? = nil, performer: String? = nil, title: String? = nil) {
         self.type = type
         self.media = media
         self.thumb = thumb

@@ -7,15 +7,14 @@
  [InlineQueryResultCachedPhoto](https://core.telegram.org/bots/api#inlinequeryresultcachedphoto)
  */
 public final class InlineQueryResultCachedPhoto: Codable {
-
     /// Custom keys for coding/decoding `InlineQueryResultCachedPhoto` struct
     public enum CodingKeys: String, CodingKey {
-        case type = "type"
-        case id = "id"
+        case type
+        case id
         case photoFileId = "photo_file_id"
-        case title = "title"
-        case description = "description"
-        case caption = "caption"
+        case title
+        case description
+        case caption
         case parseMode = "parse_mode"
         case captionEntities = "caption_entities"
         case replyMarkup = "reply_markup"
@@ -52,7 +51,7 @@ public final class InlineQueryResultCachedPhoto: Codable {
     /// Optional. Content of the message to be sent instead of the photo
     public var inputMessageContent: InputMessageContent?
 
-    public init (type: String, id: String, photoFileId: String, title: String? = nil, description: String? = nil, caption: String? = nil, parseMode: String? = nil, captionEntities: [MessageEntity]? = nil, replyMarkup: InlineKeyboardMarkup? = nil, inputMessageContent: InputMessageContent? = nil) {
+    public init(type: String, id: String, photoFileId: String, title: String? = nil, description: String? = nil, caption: String? = nil, parseMode: String? = nil, captionEntities: [MessageEntity]? = nil, replyMarkup: InlineKeyboardMarkup? = nil, inputMessageContent: InputMessageContent? = nil) {
         self.type = type
         self.id = id
         self.photoFileId = photoFileId

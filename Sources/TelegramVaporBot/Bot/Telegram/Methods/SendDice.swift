@@ -1,14 +1,10 @@
-
-
 import Vapor
 
 /// DESCRIPTION:
 /// Use this method to send an animated emoji that will display a random value. On success, the sent Message is returned.
 
-
 /// Parameters container struct for `sendDice` method
 public struct SendDiceParams: Encodable {
-
     /// Unique identifier for the target chat or username of the target channel (in the format @channelusername)
     public var chatId: ChatId
 
@@ -32,40 +28,38 @@ public struct SendDiceParams: Encodable {
 
     /// Custom keys for coding/decoding `SendDiceParams` struct
     public enum CodingKeys: String, CodingKey {
-            case chatId = "chat_id"
-            case emoji = "emoji"
-            case disableNotification = "disable_notification"
-            case protectContent = "protect_content"
-            case replyToMessageId = "reply_to_message_id"
-            case allowSendingWithoutReply = "allow_sending_without_reply"
-            case replyMarkup = "reply_markup"
+        case chatId = "chat_id"
+        case emoji
+        case disableNotification = "disable_notification"
+        case protectContent = "protect_content"
+        case replyToMessageId = "reply_to_message_id"
+        case allowSendingWithoutReply = "allow_sending_without_reply"
+        case replyMarkup = "reply_markup"
     }
 
     public init(chatId: ChatId, emoji: String? = nil, disableNotification: Bool? = nil, protectContent: Bool? = nil, replyToMessageId: Int? = nil, allowSendingWithoutReply: Bool? = nil, replyMarkup: ReplyMarkup? = nil) {
-            self.chatId = chatId
-            self.emoji = emoji
-            self.disableNotification = disableNotification
-            self.protectContent = protectContent
-            self.replyToMessageId = replyToMessageId
-            self.allowSendingWithoutReply = allowSendingWithoutReply
-            self.replyMarkup = replyMarkup
+        self.chatId = chatId
+        self.emoji = emoji
+        self.disableNotification = disableNotification
+        self.protectContent = protectContent
+        self.replyToMessageId = replyToMessageId
+        self.allowSendingWithoutReply = allowSendingWithoutReply
+        self.replyMarkup = replyMarkup
     }
 }
 
-
 public extension Bot {
+    /**
+     Use this method to send an animated emoji that will display a random value. On success, the sent Message is returned.
 
-/**
- Use this method to send an animated emoji that will display a random value. On success, the sent Message is returned.
+     SeeAlso Telegram Bot API Reference:
+     [SendDiceParams](https://core.telegram.org/bots/api#senddice)
 
- SeeAlso Telegram Bot API Reference:
- [SendDiceParams](https://core.telegram.org/bots/api#senddice)
- 
- - Parameters:
-     - params: Parameters container, see `SendDiceParams` struct
- - Throws: Throws on errors
- - Returns: EventLoopFuture of `Message` type
- */
+     - Parameters:
+         - params: Parameters container, see `SendDiceParams` struct
+     - Throws: Throws on errors
+     - Returns: EventLoopFuture of `Message` type
+     */
     @discardableResult
     func sendDice(params: SendDiceParams) throws -> EventLoopFuture<Message> {
         let methodURL: URI = .init(string: getMethodURL("sendDice"))

@@ -7,19 +7,18 @@
  [EncryptedPassportElement](https://core.telegram.org/bots/api#encryptedpassportelement)
  */
 public final class EncryptedPassportElement: Codable {
-
     /// Custom keys for coding/decoding `EncryptedPassportElement` struct
     public enum CodingKeys: String, CodingKey {
-        case type = "type"
-        case data = "data"
+        case type
+        case data
         case phoneNumber = "phone_number"
-        case email = "email"
-        case files = "files"
+        case email
+        case files
         case frontSide = "front_side"
         case reverseSide = "reverse_side"
-        case selfie = "selfie"
-        case translation = "translation"
-        case hash = "hash"
+        case selfie
+        case translation
+        case hash
     }
 
     /// Element type. One of “personal_details”, “passport”, “driver_license”, “identity_card”, “internal_passport”, “address”, “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration”, “temporary_registration”, “phone_number”, “email”.
@@ -52,7 +51,7 @@ public final class EncryptedPassportElement: Codable {
     /// Base64-encoded element hash for using in PassportElementErrorUnspecified
     public var hash: String
 
-    public init (type: String, data: String? = nil, phoneNumber: String? = nil, email: String? = nil, files: [PassportFile]? = nil, frontSide: PassportFile? = nil, reverseSide: PassportFile? = nil, selfie: PassportFile? = nil, translation: [PassportFile]? = nil, hash: String) {
+    public init(type: String, data: String? = nil, phoneNumber: String? = nil, email: String? = nil, files: [PassportFile]? = nil, frontSide: PassportFile? = nil, reverseSide: PassportFile? = nil, selfie: PassportFile? = nil, translation: [PassportFile]? = nil, hash: String) {
         self.type = type
         self.data = data
         self.phoneNumber = phoneNumber

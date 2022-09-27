@@ -1,14 +1,7 @@
-//
-//
-//
-
-//
-
 import Foundation
 
 /// Filters messages to allow only those which are from specified user ID.
 public class UserFilter: Filter {
-
     var userIds: Set<Int64>?
     var usernames: Set<String>?
 
@@ -16,17 +9,17 @@ public class UserFilter: Filter {
      Init filter with user id
      */
     public init(userId: Int64) {
-        self.userIds = Set<Int64>([userId])
+        userIds = Set<Int64>([userId])
         super.init()
     }
 
     /**
       Init filter which username to allow through.
-     
+
       Note: Which username to allow through. If username starts with ‘@’ symbol, it will be ignored.
      */
     public init(username: String) {
-        self.usernames = Set<String>([username])
+        usernames = Set<String>([username])
         super.init()
     }
 
@@ -40,7 +33,7 @@ public class UserFilter: Filter {
 
     /**
      Init filter which usernames to allow through.
-     
+
      Note: If username starts with ‘@’ symbol, it will be ignored.
      */
     public init(usernames: [String]) {
@@ -50,7 +43,7 @@ public class UserFilter: Filter {
 
     /**
      Init filter with user id or user name
-     
+
      Note: If username starts with ‘@’ symbol, it will be ignored.
      */
     public init(userIds: [Int64], usernames: [String]) {
@@ -58,25 +51,27 @@ public class UserFilter: Filter {
         self.usernames = Set(usernames)
         super.init()
     }
-    
+
 //    required init(lhs: Filter, rhs: Filter, op: Operation) {
 //        super.init(lhs: lhs, rhs: rhs, op: op)
 //    }
-    
-    public var name: String = "user"
+
+    public var name = "user"
 
     override
     public func filter(message: Message) -> Bool {
         guard let user = message.from else { return false }
 
         if let ids = userIds,
-            !ids.contains(user.id) {
+           !ids.contains(user.id)
+        {
             return false
         }
 
         if let names = usernames,
-            let username = user.username,
-            !names.contains(username) {
+           let username = user.username,
+           !names.contains(username)
+        {
             return false
         }
 
@@ -86,22 +81,22 @@ public class UserFilter: Filter {
 
 public extension Filter {
     static func user(userId: Int64) -> UserFilter {
-        return UserFilter(userId: userId)
+        UserFilter(userId: userId)
     }
 
     static func user(username: String) -> UserFilter {
-        return UserFilter(username: username)
+        UserFilter(username: username)
     }
 
     static func user(userIds: [Int64]) -> UserFilter {
-        return UserFilter(userIds: userIds)
+        UserFilter(userIds: userIds)
     }
 
     static func user(usernames: [String]) -> UserFilter {
-        return UserFilter(usernames: usernames)
+        UserFilter(usernames: usernames)
     }
 
     static func user(userIds: [Int64], usernames: [String]) -> UserFilter {
-        return UserFilter(userIds: userIds, usernames: usernames)
+        UserFilter(userIds: userIds, usernames: usernames)
     }
 }

@@ -7,7 +7,6 @@
  [ChatAdministratorRights](https://core.telegram.org/bots/api#chatadministratorrights)
  */
 public final class ChatAdministratorRights: Codable {
-
     /// Custom keys for coding/decoding `ChatAdministratorRights` struct
     public enum CodingKeys: String, CodingKey {
         case isAnonymous = "is_anonymous"
@@ -56,7 +55,7 @@ public final class ChatAdministratorRights: Codable {
     /// Optional. True, if the user is allowed to pin messages; groups and supergroups only
     public var canPinMessages: Bool?
 
-    public init (isAnonymous: Bool, canManageChat: Bool, canDeleteMessages: Bool, canManageVideoChats: Bool, canRestrictMembers: Bool, canPromoteMembers: Bool, canChangeInfo: Bool, canInviteUsers: Bool, canPostMessages: Bool? = nil, canEditMessages: Bool? = nil, canPinMessages: Bool? = nil) {
+    public init(isAnonymous: Bool, canManageChat: Bool, canDeleteMessages: Bool, canManageVideoChats: Bool, canRestrictMembers: Bool, canPromoteMembers: Bool, canChangeInfo: Bool, canInviteUsers: Bool, canPostMessages: Bool? = nil, canEditMessages: Bool? = nil, canPinMessages: Bool? = nil) {
         self.isAnonymous = isAnonymous
         self.canManageChat = canManageChat
         self.canDeleteMessages = canDeleteMessages

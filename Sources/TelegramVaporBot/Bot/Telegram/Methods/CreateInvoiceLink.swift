@@ -1,14 +1,10 @@
-
-
 import Vapor
 
 /// DESCRIPTION:
 /// Use this method to create a link for an invoice. Returns the created invoice link as String on success.
 
-
 /// Parameters container struct for `createInvoiceLink` method
 public struct CreateInvoiceLinkParams: Encodable {
-
     /// Product name, 1-32 characters
     public var title: String
 
@@ -71,66 +67,64 @@ public struct CreateInvoiceLinkParams: Encodable {
 
     /// Custom keys for coding/decoding `CreateInvoiceLinkParams` struct
     public enum CodingKeys: String, CodingKey {
-            case title = "title"
-            case description = "description"
-            case payload = "payload"
-            case providerToken = "provider_token"
-            case currency = "currency"
-            case prices = "prices"
-            case maxTipAmount = "max_tip_amount"
-            case suggestedTipAmounts = "suggested_tip_amounts"
-            case providerData = "provider_data"
-            case photoUrl = "photo_url"
-            case photoSize = "photo_size"
-            case photoWidth = "photo_width"
-            case photoHeight = "photo_height"
-            case needName = "need_name"
-            case needPhoneNumber = "need_phone_number"
-            case needEmail = "need_email"
-            case needShippingAddress = "need_shipping_address"
-            case sendPhoneNumberToProvider = "send_phone_number_to_provider"
-            case sendEmailToProvider = "send_email_to_provider"
-            case isFlexible = "is_flexible"
+        case title
+        case description
+        case payload
+        case providerToken = "provider_token"
+        case currency
+        case prices
+        case maxTipAmount = "max_tip_amount"
+        case suggestedTipAmounts = "suggested_tip_amounts"
+        case providerData = "provider_data"
+        case photoUrl = "photo_url"
+        case photoSize = "photo_size"
+        case photoWidth = "photo_width"
+        case photoHeight = "photo_height"
+        case needName = "need_name"
+        case needPhoneNumber = "need_phone_number"
+        case needEmail = "need_email"
+        case needShippingAddress = "need_shipping_address"
+        case sendPhoneNumberToProvider = "send_phone_number_to_provider"
+        case sendEmailToProvider = "send_email_to_provider"
+        case isFlexible = "is_flexible"
     }
 
     public init(title: String, description: String, payload: String, providerToken: String, currency: String, prices: [LabeledPrice], maxTipAmount: Int? = nil, suggestedTipAmounts: [Int]? = nil, providerData: String? = nil, photoUrl: String? = nil, photoSize: Int? = nil, photoWidth: Int? = nil, photoHeight: Int? = nil, needName: Bool? = nil, needPhoneNumber: Bool? = nil, needEmail: Bool? = nil, needShippingAddress: Bool? = nil, sendPhoneNumberToProvider: Bool? = nil, sendEmailToProvider: Bool? = nil, isFlexible: Bool? = nil) {
-            self.title = title
-            self.description = description
-            self.payload = payload
-            self.providerToken = providerToken
-            self.currency = currency
-            self.prices = prices
-            self.maxTipAmount = maxTipAmount
-            self.suggestedTipAmounts = suggestedTipAmounts
-            self.providerData = providerData
-            self.photoUrl = photoUrl
-            self.photoSize = photoSize
-            self.photoWidth = photoWidth
-            self.photoHeight = photoHeight
-            self.needName = needName
-            self.needPhoneNumber = needPhoneNumber
-            self.needEmail = needEmail
-            self.needShippingAddress = needShippingAddress
-            self.sendPhoneNumberToProvider = sendPhoneNumberToProvider
-            self.sendEmailToProvider = sendEmailToProvider
-            self.isFlexible = isFlexible
+        self.title = title
+        self.description = description
+        self.payload = payload
+        self.providerToken = providerToken
+        self.currency = currency
+        self.prices = prices
+        self.maxTipAmount = maxTipAmount
+        self.suggestedTipAmounts = suggestedTipAmounts
+        self.providerData = providerData
+        self.photoUrl = photoUrl
+        self.photoSize = photoSize
+        self.photoWidth = photoWidth
+        self.photoHeight = photoHeight
+        self.needName = needName
+        self.needPhoneNumber = needPhoneNumber
+        self.needEmail = needEmail
+        self.needShippingAddress = needShippingAddress
+        self.sendPhoneNumberToProvider = sendPhoneNumberToProvider
+        self.sendEmailToProvider = sendEmailToProvider
+        self.isFlexible = isFlexible
     }
 }
 
-
 public extension Bot {
+    /**
+     Use this method to create a link for an invoice. Returns the created invoice link as String on success.
 
-/**
- Use this method to create a link for an invoice. Returns the created invoice link as String on success.
+     SeeAlso Telegram Bot API Reference:
+     [CreateInvoiceLinkParams](https://core.telegram.org/bots/api#createinvoicelink)
 
- SeeAlso Telegram Bot API Reference:
- [CreateInvoiceLinkParams](https://core.telegram.org/bots/api#createinvoicelink)
- 
- - Parameters:
-     - params: Parameters container, see `CreateInvoiceLinkParams` struct
- - Throws: Throws on errors
- - Returns: EventLoopFuture of `String` type
- */
+     - Parameters:
+         - params: Parameters container, see `CreateInvoiceLinkParams` struct
+     - Throws: Throws on errors
+     - Returns: EventLoopFuture of `String` type
+     */
     @discardableResult
     func createInvoiceLink(params: CreateInvoiceLinkParams) throws -> EventLoopFuture<String> {
         let methodURL: URI = .init(string: getMethodURL("createInvoiceLink"))

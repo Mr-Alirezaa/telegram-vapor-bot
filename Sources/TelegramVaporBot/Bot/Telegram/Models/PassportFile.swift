@@ -7,7 +7,6 @@
  [PassportFile](https://core.telegram.org/bots/api#passportfile)
  */
 public final class PassportFile: Codable {
-
     /// Custom keys for coding/decoding `PassportFile` struct
     public enum CodingKeys: String, CodingKey {
         case fileId = "file_id"
@@ -28,7 +27,7 @@ public final class PassportFile: Codable {
     /// Unix time when the file was uploaded
     public var fileDate: Int
 
-    public init (fileId: String, fileUniqueId: String, fileSize: Int, fileDate: Int) {
+    public init(fileId: String, fileUniqueId: String, fileSize: Int, fileDate: Int) {
         self.fileId = fileId
         self.fileUniqueId = fileUniqueId
         self.fileSize = fileSize

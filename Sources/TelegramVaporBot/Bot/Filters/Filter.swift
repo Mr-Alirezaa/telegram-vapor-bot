@@ -1,13 +1,6 @@
-//
-//
-//
-
-//
-
 import Foundation
 
 public class Filter {
-
     public enum Operation {
         case and
         case or
@@ -16,10 +9,10 @@ public class Filter {
 
     public typealias Compound = (lhs: Filter, rhs: Filter, op: Operation)
 
-    private var compoundFilter: Compound? = nil
+    private var compoundFilter: Compound?
 
     public init() {}
-    
+
     init(lhs: Filter, rhs: Filter, op: Operation) {
         compoundFilter = (lhs: lhs, rhs: rhs, op: op)
     }
@@ -35,23 +28,23 @@ public class Filter {
                 return !(filter.rhs).check(mess)
             }
         } else {
-            return self.filter(message: mess)
+            return filter(message: mess)
         }
     }
 
     public func filter(message: Message) -> Bool {
-        return false
+        false
     }
 
-    public static func &&(lhs: Filter, rhs: Filter) -> Filter {
-        return Filter(lhs: lhs, rhs: rhs, op: .and)
+    public static func && (lhs: Filter, rhs: Filter) -> Filter {
+        Filter(lhs: lhs, rhs: rhs, op: .and)
     }
 
-    public static func ||(lhs: Filter, rhs: Filter) -> Filter {
-        return Filter(lhs: lhs, rhs: rhs, op: .or)
+    public static func || (lhs: Filter, rhs: Filter) -> Filter {
+        Filter(lhs: lhs, rhs: rhs, op: .or)
     }
 
-    public static prefix func !(filter: Filter) -> Filter {
-        return Filter(lhs: filter, rhs: filter, op: .not)
+    public static prefix func ! (filter: Filter) -> Filter {
+        Filter(lhs: filter, rhs: filter, op: .not)
     }
 }

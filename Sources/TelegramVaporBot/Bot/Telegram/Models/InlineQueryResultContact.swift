@@ -7,15 +7,14 @@
  [InlineQueryResultContact](https://core.telegram.org/bots/api#inlinequeryresultcontact)
  */
 public final class InlineQueryResultContact: Codable {
-
     /// Custom keys for coding/decoding `InlineQueryResultContact` struct
     public enum CodingKeys: String, CodingKey {
-        case type = "type"
-        case id = "id"
+        case type
+        case id
         case phoneNumber = "phone_number"
         case firstName = "first_name"
         case lastName = "last_name"
-        case vcard = "vcard"
+        case vcard
         case replyMarkup = "reply_markup"
         case inputMessageContent = "input_message_content"
         case thumbUrl = "thumb_url"
@@ -56,7 +55,7 @@ public final class InlineQueryResultContact: Codable {
     /// Optional. Thumbnail height
     public var thumbHeight: Int?
 
-    public init (type: String, id: String, phoneNumber: String, firstName: String, lastName: String? = nil, vcard: String? = nil, replyMarkup: InlineKeyboardMarkup? = nil, inputMessageContent: InputMessageContent? = nil, thumbUrl: String? = nil, thumbWidth: Int? = nil, thumbHeight: Int? = nil) {
+    public init(type: String, id: String, phoneNumber: String, firstName: String, lastName: String? = nil, vcard: String? = nil, replyMarkup: InlineKeyboardMarkup? = nil, inputMessageContent: InputMessageContent? = nil, thumbUrl: String? = nil, thumbWidth: Int? = nil, thumbHeight: Int? = nil) {
         self.type = type
         self.id = id
         self.phoneNumber = phoneNumber

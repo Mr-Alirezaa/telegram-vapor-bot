@@ -1,13 +1,6 @@
-//
-//  Constants.swift
-//  Telegrammer
-//
-
-//
-
 import Foundation
 
-//public struct Const {
+// public struct Const {
 //    static let MessageMaxLength: Int = 4096
 //    static let CaptionMaxLength: Int = 200
 //    static let WebhooksSupportedPorts: [Int] = [443, 80, 88, 8443]
@@ -20,4 +13,4 @@ import Foundation
 //    static let InlineQueryMaxResults: Int = 50
 //    ///Beyond this cap telegram will simply ignore further formatting styles
 //    static let MessagesMaxEntities: Int = 100
-//}
+// }

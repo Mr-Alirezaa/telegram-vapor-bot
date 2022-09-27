@@ -1,10 +1,3 @@
-//
-//  InputFile.swift
-//
-//
-
-//
-
 import Foundation
 import Vapor
 
@@ -15,21 +8,19 @@ public struct InputFile: Encodable {
 
     public init(filename: String, data: Data, mimeType: String? = nil) {
         self.data = data
-        self.fileName = filename
+        fileName = filename
         self.mimeType = mimeType
     }
 }
 
-
 extension InputFile: MultipartPartConvertible {
-
     public var multipart: MultipartPart? {
         guard let multipartData = data.multipart else {
             return nil
         }
 
         var multipart = MultipartPart(body: multipartData.body)
-        multipart.filename = self.fileName
+        multipart.filename = fileName
         return multipart
     }
 
@@ -42,6 +33,6 @@ extension InputFile: MultipartPartConvertible {
         }
         self.fileName = fileName
         self.data = data
-        self.mimeType = multipart.headers["Content-Type"].first
+        mimeType = multipart.headers["Content-Type"].first
     }
 }

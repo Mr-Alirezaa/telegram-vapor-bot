@@ -1,14 +1,10 @@
-
-
 import Vapor
 
 /// DESCRIPTION:
 /// Use this method to send static .WEBP, animated .S, or video .WEBM stickers. On success, the sent Message is returned.
 
-
 /// Parameters container struct for `sendSticker` method
 public struct SendStickerParams: Encodable {
-
     /// Unique identifier for the target chat or username of the target channel (in the format @channelusername)
     public var chatId: ChatId
 
@@ -32,40 +28,38 @@ public struct SendStickerParams: Encodable {
 
     /// Custom keys for coding/decoding `SendStickerParams` struct
     public enum CodingKeys: String, CodingKey {
-            case chatId = "chat_id"
-            case sticker = "sticker"
-            case disableNotification = "disable_notification"
-            case protectContent = "protect_content"
-            case replyToMessageId = "reply_to_message_id"
-            case allowSendingWithoutReply = "allow_sending_without_reply"
-            case replyMarkup = "reply_markup"
+        case chatId = "chat_id"
+        case sticker
+        case disableNotification = "disable_notification"
+        case protectContent = "protect_content"
+        case replyToMessageId = "reply_to_message_id"
+        case allowSendingWithoutReply = "allow_sending_without_reply"
+        case replyMarkup = "reply_markup"
     }
 
     public init(chatId: ChatId, sticker: FileInfo, disableNotification: Bool? = nil, protectContent: Bool? = nil, replyToMessageId: Int? = nil, allowSendingWithoutReply: Bool? = nil, replyMarkup: ReplyMarkup? = nil) {
-            self.chatId = chatId
-            self.sticker = sticker
-            self.disableNotification = disableNotification
-            self.protectContent = protectContent
-            self.replyToMessageId = replyToMessageId
-            self.allowSendingWithoutReply = allowSendingWithoutReply
-            self.replyMarkup = replyMarkup
+        self.chatId = chatId
+        self.sticker = sticker
+        self.disableNotification = disableNotification
+        self.protectContent = protectContent
+        self.replyToMessageId = replyToMessageId
+        self.allowSendingWithoutReply = allowSendingWithoutReply
+        self.replyMarkup = replyMarkup
     }
 }
 
-
 public extension Bot {
+    /**
+     Use this method to send static .WEBP, animated .S, or video .WEBM stickers. On success, the sent Message is returned.
 
-/**
- Use this method to send static .WEBP, animated .S, or video .WEBM stickers. On success, the sent Message is returned.
+     SeeAlso Telegram Bot API Reference:
+     [SendStickerParams](https://core.telegram.org/bots/api#sendsticker)
 
- SeeAlso Telegram Bot API Reference:
- [SendStickerParams](https://core.telegram.org/bots/api#sendsticker)
- 
- - Parameters:
-     - params: Parameters container, see `SendStickerParams` struct
- - Throws: Throws on errors
- - Returns: EventLoopFuture of `Message` type
- */
+     - Parameters:
+         - params: Parameters container, see `SendStickerParams` struct
+     - Throws: Throws on errors
+     - Returns: EventLoopFuture of `Message` type
+     */
     @discardableResult
     func sendSticker(params: SendStickerParams) throws -> EventLoopFuture<Message> {
         let methodURL: URI = .init(string: getMethodURL("sendSticker"))

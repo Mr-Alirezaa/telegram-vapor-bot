@@ -7,18 +7,17 @@
  [InlineQueryResultPhoto](https://core.telegram.org/bots/api#inlinequeryresultphoto)
  */
 public final class InlineQueryResultPhoto: Codable {
-
     /// Custom keys for coding/decoding `InlineQueryResultPhoto` struct
     public enum CodingKeys: String, CodingKey {
-        case type = "type"
-        case id = "id"
+        case type
+        case id
         case photoUrl = "photo_url"
         case thumbUrl = "thumb_url"
         case photoWidth = "photo_width"
         case photoHeight = "photo_height"
-        case title = "title"
-        case description = "description"
-        case caption = "caption"
+        case title
+        case description
+        case caption
         case parseMode = "parse_mode"
         case captionEntities = "caption_entities"
         case replyMarkup = "reply_markup"
@@ -64,7 +63,7 @@ public final class InlineQueryResultPhoto: Codable {
     /// Optional. Content of the message to be sent instead of the photo
     public var inputMessageContent: InputMessageContent?
 
-    public init (type: String, id: String, photoUrl: String, thumbUrl: String, photoWidth: Int? = nil, photoHeight: Int? = nil, title: String? = nil, description: String? = nil, caption: String? = nil, parseMode: String? = nil, captionEntities: [MessageEntity]? = nil, replyMarkup: InlineKeyboardMarkup? = nil, inputMessageContent: InputMessageContent? = nil) {
+    public init(type: String, id: String, photoUrl: String, thumbUrl: String, photoWidth: Int? = nil, photoHeight: Int? = nil, title: String? = nil, description: String? = nil, caption: String? = nil, parseMode: String? = nil, captionEntities: [MessageEntity]? = nil, replyMarkup: InlineKeyboardMarkup? = nil, inputMessageContent: InputMessageContent? = nil) {
         self.type = type
         self.id = id
         self.photoUrl = photoUrl

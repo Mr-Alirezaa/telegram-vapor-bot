@@ -1,14 +1,10 @@
-
-
 import Vapor
 
 /// DESCRIPTION:
 /// Use this method to send photos. On success, the sent Message is returned.
 
-
 /// Parameters container struct for `sendPhoto` method
 public struct SendPhotoParams: Encodable {
-
     /// Unique identifier for the target chat or username of the target channel (in the format @channelusername)
     public var chatId: ChatId
 
@@ -41,46 +37,44 @@ public struct SendPhotoParams: Encodable {
 
     /// Custom keys for coding/decoding `SendPhotoParams` struct
     public enum CodingKeys: String, CodingKey {
-            case chatId = "chat_id"
-            case photo = "photo"
-            case caption = "caption"
-            case parseMode = "parse_mode"
-            case captionEntities = "caption_entities"
-            case disableNotification = "disable_notification"
-            case protectContent = "protect_content"
-            case replyToMessageId = "reply_to_message_id"
-            case allowSendingWithoutReply = "allow_sending_without_reply"
-            case replyMarkup = "reply_markup"
+        case chatId = "chat_id"
+        case photo
+        case caption
+        case parseMode = "parse_mode"
+        case captionEntities = "caption_entities"
+        case disableNotification = "disable_notification"
+        case protectContent = "protect_content"
+        case replyToMessageId = "reply_to_message_id"
+        case allowSendingWithoutReply = "allow_sending_without_reply"
+        case replyMarkup = "reply_markup"
     }
 
     public init(chatId: ChatId, photo: FileInfo, caption: String? = nil, parseMode: ParseMode? = nil, captionEntities: [MessageEntity]? = nil, disableNotification: Bool? = nil, protectContent: Bool? = nil, replyToMessageId: Int? = nil, allowSendingWithoutReply: Bool? = nil, replyMarkup: ReplyMarkup? = nil) {
-            self.chatId = chatId
-            self.photo = photo
-            self.caption = caption
-            self.parseMode = parseMode
-            self.captionEntities = captionEntities
-            self.disableNotification = disableNotification
-            self.protectContent = protectContent
-            self.replyToMessageId = replyToMessageId
-            self.allowSendingWithoutReply = allowSendingWithoutReply
-            self.replyMarkup = replyMarkup
+        self.chatId = chatId
+        self.photo = photo
+        self.caption = caption
+        self.parseMode = parseMode
+        self.captionEntities = captionEntities
+        self.disableNotification = disableNotification
+        self.protectContent = protectContent
+        self.replyToMessageId = replyToMessageId
+        self.allowSendingWithoutReply = allowSendingWithoutReply
+        self.replyMarkup = replyMarkup
     }
 }
 
-
 public extension Bot {
+    /**
+     Use this method to send photos. On success, the sent Message is returned.
 
-/**
- Use this method to send photos. On success, the sent Message is returned.
+     SeeAlso Telegram Bot API Reference:
+     [SendPhotoParams](https://core.telegram.org/bots/api#sendphoto)
 
- SeeAlso Telegram Bot API Reference:
- [SendPhotoParams](https://core.telegram.org/bots/api#sendphoto)
- 
- - Parameters:
-     - params: Parameters container, see `SendPhotoParams` struct
- - Throws: Throws on errors
- - Returns: EventLoopFuture of `Message` type
- */
+     - Parameters:
+         - params: Parameters container, see `SendPhotoParams` struct
+     - Throws: Throws on errors
+     - Returns: EventLoopFuture of `Message` type
+     */
     @discardableResult
     func sendPhoto(params: SendPhotoParams) throws -> EventLoopFuture<Message> {
         let methodURL: URI = .init(string: getMethodURL("sendPhoto"))

@@ -7,15 +7,14 @@
  [InputInvoiceMessageContent](https://core.telegram.org/bots/api#inputinvoicemessagecontent)
  */
 public final class InputInvoiceMessageContent: Codable {
-
     /// Custom keys for coding/decoding `InputInvoiceMessageContent` struct
     public enum CodingKeys: String, CodingKey {
-        case title = "title"
-        case description = "description"
-        case payload = "payload"
+        case title
+        case description
+        case payload
         case providerToken = "provider_token"
-        case currency = "currency"
-        case prices = "prices"
+        case currency
+        case prices
         case maxTipAmount = "max_tip_amount"
         case suggestedTipAmounts = "suggested_tip_amounts"
         case providerData = "provider_data"
@@ -92,7 +91,7 @@ public final class InputInvoiceMessageContent: Codable {
     /// Optional. Pass True if the final price depends on the shipping method
     public var isFlexible: Bool?
 
-    public init (title: String, description: String, payload: String, providerToken: String, currency: String, prices: [LabeledPrice], maxTipAmount: Int? = nil, suggestedTipAmounts: [Int]? = nil, providerData: String? = nil, photoUrl: String? = nil, photoSize: Int? = nil, photoWidth: Int? = nil, photoHeight: Int? = nil, needName: Bool? = nil, needPhoneNumber: Bool? = nil, needEmail: Bool? = nil, needShippingAddress: Bool? = nil, sendPhoneNumberToProvider: Bool? = nil, sendEmailToProvider: Bool? = nil, isFlexible: Bool? = nil) {
+    public init(title: String, description: String, payload: String, providerToken: String, currency: String, prices: [LabeledPrice], maxTipAmount: Int? = nil, suggestedTipAmounts: [Int]? = nil, providerData: String? = nil, photoUrl: String? = nil, photoSize: Int? = nil, photoWidth: Int? = nil, photoHeight: Int? = nil, needName: Bool? = nil, needPhoneNumber: Bool? = nil, needEmail: Bool? = nil, needShippingAddress: Bool? = nil, sendPhoneNumberToProvider: Bool? = nil, sendEmailToProvider: Bool? = nil, isFlexible: Bool? = nil) {
         self.title = title
         self.description = description
         self.payload = payload

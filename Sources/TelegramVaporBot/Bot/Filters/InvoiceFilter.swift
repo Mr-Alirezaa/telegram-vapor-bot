@@ -1,19 +1,12 @@
-//
-//
-//
-
-//
-
 import Foundation
 
 /// Messages that contain `Invoice`
 public class InvoiceFilter: Filter {
-
-    public var name: String = "invoice"
+    public var name = "invoice"
 
     override
     public func filter(message: Message) -> Bool {
-        return message.invoice != nil
+        message.invoice != nil
     }
 }
 

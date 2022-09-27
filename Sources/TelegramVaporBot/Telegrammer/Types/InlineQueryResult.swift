@@ -118,45 +118,45 @@ public enum InlineQueryResult: Codable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         switch self {
-        case .cachedAudio(let value):
+        case let .cachedAudio(value):
             try container.encode(value)
-        case .cachedDocument(let value):
+        case let .cachedDocument(value):
             try container.encode(value)
-        case .cachedGif(let value):
+        case let .cachedGif(value):
             try container.encode(value)
-        case .cachedMpeg4Gif(let value):
+        case let .cachedMpeg4Gif(value):
             try container.encode(value)
-        case .cachedPhoto(let value):
+        case let .cachedPhoto(value):
             try container.encode(value)
-        case .cachedSticker(let value):
+        case let .cachedSticker(value):
             try container.encode(value)
-        case .cachedVideo(let value):
+        case let .cachedVideo(value):
             try container.encode(value)
-        case .cachedVoice(let value):
+        case let .cachedVoice(value):
             try container.encode(value)
-        case .article(let value):
+        case let .article(value):
             try container.encode(value)
-        case .audio(let value):
+        case let .audio(value):
             try container.encode(value)
-        case .contact(let value):
+        case let .contact(value):
             try container.encode(value)
-        case .game(let value):
+        case let .game(value):
             try container.encode(value)
-        case .document(let value):
+        case let .document(value):
             try container.encode(value)
-        case .gif(let value):
+        case let .gif(value):
             try container.encode(value)
-        case .location(let value):
+        case let .location(value):
             try container.encode(value)
-        case .mpeg4Gif(let value):
+        case let .mpeg4Gif(value):
             try container.encode(value)
-        case .photo(let value):
+        case let .photo(value):
             try container.encode(value)
-        case .venue(let value):
+        case let .venue(value):
             try container.encode(value)
-        case .video(let value):
+        case let .video(value):
             try container.encode(value)
-        case .voice(let value):
+        case let .voice(value):
             try container.encode(value)
         case .undefined:
             try container.encodeNil()

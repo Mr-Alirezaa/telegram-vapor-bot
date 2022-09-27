@@ -7,14 +7,13 @@
  [VideoNote](https://core.telegram.org/bots/api#videonote)
  */
 public final class VideoNote: Codable {
-
     /// Custom keys for coding/decoding `VideoNote` struct
     public enum CodingKeys: String, CodingKey {
         case fileId = "file_id"
         case fileUniqueId = "file_unique_id"
-        case length = "length"
-        case duration = "duration"
-        case thumb = "thumb"
+        case length
+        case duration
+        case thumb
         case fileSize = "file_size"
     }
 
@@ -36,7 +35,7 @@ public final class VideoNote: Codable {
     /// Optional. File size in bytes
     public var fileSize: Int?
 
-    public init (fileId: String, fileUniqueId: String, length: Int, duration: Int, thumb: PhotoSize? = nil, fileSize: Int? = nil) {
+    public init(fileId: String, fileUniqueId: String, length: Int, duration: Int, thumb: PhotoSize? = nil, fileSize: Int? = nil) {
         self.fileId = fileId
         self.fileUniqueId = fileUniqueId
         self.length = length

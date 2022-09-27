@@ -1,14 +1,10 @@
-
-
 import Vapor
 
 /// DESCRIPTION:
 /// Use this method to send video files, Telegram clients support MPEG4 videos (other formats may be sent as Document). On success, the sent Message is returned. Bots can currently send video files of up to 50 MB in size, this limit may be changed in the future.
 
-
 /// Parameters container struct for `sendVideo` method
 public struct SendVideoParams: Encodable {
-
     /// Unique identifier for the target chat or username of the target channel (in the format @channelusername)
     public var chatId: ChatId
 
@@ -56,56 +52,54 @@ public struct SendVideoParams: Encodable {
 
     /// Custom keys for coding/decoding `SendVideoParams` struct
     public enum CodingKeys: String, CodingKey {
-            case chatId = "chat_id"
-            case video = "video"
-            case duration = "duration"
-            case width = "width"
-            case height = "height"
-            case thumb = "thumb"
-            case caption = "caption"
-            case parseMode = "parse_mode"
-            case captionEntities = "caption_entities"
-            case supportsStreaming = "supports_streaming"
-            case disableNotification = "disable_notification"
-            case protectContent = "protect_content"
-            case replyToMessageId = "reply_to_message_id"
-            case allowSendingWithoutReply = "allow_sending_without_reply"
-            case replyMarkup = "reply_markup"
+        case chatId = "chat_id"
+        case video
+        case duration
+        case width
+        case height
+        case thumb
+        case caption
+        case parseMode = "parse_mode"
+        case captionEntities = "caption_entities"
+        case supportsStreaming = "supports_streaming"
+        case disableNotification = "disable_notification"
+        case protectContent = "protect_content"
+        case replyToMessageId = "reply_to_message_id"
+        case allowSendingWithoutReply = "allow_sending_without_reply"
+        case replyMarkup = "reply_markup"
     }
 
     public init(chatId: ChatId, video: FileInfo, duration: Int? = nil, width: Int? = nil, height: Int? = nil, thumb: FileInfo? = nil, caption: String? = nil, parseMode: ParseMode? = nil, captionEntities: [MessageEntity]? = nil, supportsStreaming: Bool? = nil, disableNotification: Bool? = nil, protectContent: Bool? = nil, replyToMessageId: Int? = nil, allowSendingWithoutReply: Bool? = nil, replyMarkup: ReplyMarkup? = nil) {
-            self.chatId = chatId
-            self.video = video
-            self.duration = duration
-            self.width = width
-            self.height = height
-            self.thumb = thumb
-            self.caption = caption
-            self.parseMode = parseMode
-            self.captionEntities = captionEntities
-            self.supportsStreaming = supportsStreaming
-            self.disableNotification = disableNotification
-            self.protectContent = protectContent
-            self.replyToMessageId = replyToMessageId
-            self.allowSendingWithoutReply = allowSendingWithoutReply
-            self.replyMarkup = replyMarkup
+        self.chatId = chatId
+        self.video = video
+        self.duration = duration
+        self.width = width
+        self.height = height
+        self.thumb = thumb
+        self.caption = caption
+        self.parseMode = parseMode
+        self.captionEntities = captionEntities
+        self.supportsStreaming = supportsStreaming
+        self.disableNotification = disableNotification
+        self.protectContent = protectContent
+        self.replyToMessageId = replyToMessageId
+        self.allowSendingWithoutReply = allowSendingWithoutReply
+        self.replyMarkup = replyMarkup
     }
 }
 
-
 public extension Bot {
+    /**
+     Use this method to send video files, Telegram clients support MPEG4 videos (other formats may be sent as Document). On success, the sent Message is returned. Bots can currently send video files of up to 50 MB in size, this limit may be changed in the future.
 
-/**
- Use this method to send video files, Telegram clients support MPEG4 videos (other formats may be sent as Document). On success, the sent Message is returned. Bots can currently send video files of up to 50 MB in size, this limit may be changed in the future.
+     SeeAlso Telegram Bot API Reference:
+     [SendVideoParams](https://core.telegram.org/bots/api#sendvideo)
 
- SeeAlso Telegram Bot API Reference:
- [SendVideoParams](https://core.telegram.org/bots/api#sendvideo)
- 
- - Parameters:
-     - params: Parameters container, see `SendVideoParams` struct
- - Throws: Throws on errors
- - Returns: EventLoopFuture of `Message` type
- */
+     - Parameters:
+         - params: Parameters container, see `SendVideoParams` struct
+     - Throws: Throws on errors
+     - Returns: EventLoopFuture of `Message` type
+     */
     @discardableResult
     func sendVideo(params: SendVideoParams) throws -> EventLoopFuture<Message> {
         let methodURL: URI = .init(string: getMethodURL("sendVideo"))

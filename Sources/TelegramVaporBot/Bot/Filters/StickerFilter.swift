@@ -1,19 +1,12 @@
-//
-//
-//
-
-//
-
 import Foundation
 
 /// Messages that contain `Sticker`
 public class StickerFilter: Filter {
-
-    public var name: String = "sticker"
+    public var name = "sticker"
 
     override
     public func filter(message: Message) -> Bool {
-        return message.sticker != nil
+        message.sticker != nil
     }
 }
 

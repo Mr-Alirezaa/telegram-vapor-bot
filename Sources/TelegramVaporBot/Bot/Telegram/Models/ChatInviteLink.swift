@@ -7,15 +7,14 @@
  [ChatInviteLink](https://core.telegram.org/bots/api#chatinvitelink)
  */
 public final class ChatInviteLink: Codable {
-
     /// Custom keys for coding/decoding `ChatInviteLink` struct
     public enum CodingKeys: String, CodingKey {
         case inviteLink = "invite_link"
-        case creator = "creator"
+        case creator
         case createsJoinRequest = "creates_join_request"
         case isPrimary = "is_primary"
         case isRevoked = "is_revoked"
-        case name = "name"
+        case name
         case expireDate = "expire_date"
         case memberLimit = "member_limit"
         case pendingJoinRequestCount = "pending_join_request_count"
@@ -48,7 +47,7 @@ public final class ChatInviteLink: Codable {
     /// Optional. Number of pending join requests created using this link
     public var pendingJoinRequestCount: Int?
 
-    public init (inviteLink: String, creator: User, createsJoinRequest: Bool, isPrimary: Bool, isRevoked: Bool, name: String? = nil, expireDate: Int? = nil, memberLimit: Int? = nil, pendingJoinRequestCount: Int? = nil) {
+    public init(inviteLink: String, creator: User, createsJoinRequest: Bool, isPrimary: Bool, isRevoked: Bool, name: String? = nil, expireDate: Int? = nil, memberLimit: Int? = nil, pendingJoinRequestCount: Int? = nil) {
         self.inviteLink = inviteLink
         self.creator = creator
         self.createsJoinRequest = createsJoinRequest

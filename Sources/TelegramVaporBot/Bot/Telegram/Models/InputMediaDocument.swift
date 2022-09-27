@@ -7,13 +7,12 @@
  [InputMediaDocument](https://core.telegram.org/bots/api#inputmediadocument)
  */
 public final class InputMediaDocument: Encodable {
-
     /// Custom keys for coding/decoding `InputMediaDocument` struct
     public enum CodingKeys: String, CodingKey {
-        case type = "type"
-        case media = "media"
-        case thumb = "thumb"
-        case caption = "caption"
+        case type
+        case media
+        case thumb
+        case caption
         case parseMode = "parse_mode"
         case captionEntities = "caption_entities"
         case disableContentTypeDetection = "disable_content_type_detection"
@@ -40,7 +39,7 @@ public final class InputMediaDocument: Encodable {
     /// Optional. Disables automatic server-side content type detection for files uploaded using multipart/form-data. Always True, if the document is sent as part of an album.
     public var disableContentTypeDetection: Bool?
 
-    public init (type: String, media: String, thumb: FileInfo? = nil, caption: String? = nil, parseMode: String? = nil, captionEntities: [MessageEntity]? = nil, disableContentTypeDetection: Bool? = nil) {
+    public init(type: String, media: String, thumb: FileInfo? = nil, caption: String? = nil, parseMode: String? = nil, captionEntities: [MessageEntity]? = nil, disableContentTypeDetection: Bool? = nil) {
         self.type = type
         self.media = media
         self.thumb = thumb

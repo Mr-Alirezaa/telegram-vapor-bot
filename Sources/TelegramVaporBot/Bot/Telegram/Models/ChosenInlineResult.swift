@@ -7,14 +7,13 @@
  [ChosenInlineResult](https://core.telegram.org/bots/api#choseninlineresult)
  */
 public final class ChosenInlineResult: Codable {
-
     /// Custom keys for coding/decoding `ChosenInlineResult` struct
     public enum CodingKeys: String, CodingKey {
         case resultId = "result_id"
-        case from = "from"
-        case location = "location"
+        case from
+        case location
         case inlineMessageId = "inline_message_id"
-        case query = "query"
+        case query
     }
 
     /// The unique identifier for the result that was chosen
@@ -32,7 +31,7 @@ public final class ChosenInlineResult: Codable {
     /// The query that was used to obtain the result
     public var query: String
 
-    public init (resultId: String, from: User, location: Location? = nil, inlineMessageId: String? = nil, query: String) {
+    public init(resultId: String, from: User, location: Location? = nil, inlineMessageId: String? = nil, query: String) {
         self.resultId = resultId
         self.from = from
         self.location = location

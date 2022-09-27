@@ -7,14 +7,13 @@
  [PassportElementErrorDataField](https://core.telegram.org/bots/api#passportelementerrordatafield)
  */
 public final class PassportElementErrorDataField: Codable {
-
     /// Custom keys for coding/decoding `PassportElementErrorDataField` struct
     public enum CodingKeys: String, CodingKey {
-        case source = "source"
-        case type = "type"
+        case source
+        case type
         case fieldName = "field_name"
         case dataHash = "data_hash"
-        case message = "message"
+        case message
     }
 
     /// Error source, must be data
@@ -32,7 +31,7 @@ public final class PassportElementErrorDataField: Codable {
     /// Error message
     public var message: String
 
-    public init (source: String, type: String, fieldName: String, dataHash: String, message: String) {
+    public init(source: String, type: String, fieldName: String, dataHash: String, message: String) {
         self.source = source
         self.type = type
         self.fieldName = fieldName

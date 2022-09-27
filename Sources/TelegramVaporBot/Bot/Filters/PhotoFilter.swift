@@ -1,15 +1,8 @@
-//
-//
-//
-
-//
-
 import Foundation
 
 /// Messages that contain `[PhotoSize]`
 public class PhotoFilter: Filter {
-
-    public var name: String = "photo"
+    public var name = "photo"
 
     override
     public func filter(message: Message) -> Bool {

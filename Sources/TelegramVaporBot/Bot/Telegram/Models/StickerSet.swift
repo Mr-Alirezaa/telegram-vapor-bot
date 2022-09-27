@@ -7,16 +7,15 @@
  [StickerSet](https://core.telegram.org/bots/api#stickerset)
  */
 public final class StickerSet: Codable {
-
     /// Custom keys for coding/decoding `StickerSet` struct
     public enum CodingKeys: String, CodingKey {
-        case name = "name"
-        case title = "title"
+        case name
+        case title
         case stickerType = "sticker_type"
         case isAnimated = "is_animated"
         case isVideo = "is_video"
-        case stickers = "stickers"
-        case thumb = "thumb"
+        case stickers
+        case thumb
     }
 
     /// Sticker set name
@@ -40,7 +39,7 @@ public final class StickerSet: Codable {
     /// Optional. Sticker set thumbnail in the .WEBP, .S, or .WEBM format
     public var thumb: PhotoSize?
 
-    public init (name: String, title: String, stickerType: String, isAnimated: Bool, isVideo: Bool, stickers: [Sticker], thumb: PhotoSize? = nil) {
+    public init(name: String, title: String, stickerType: String, isAnimated: Bool, isVideo: Bool, stickers: [Sticker], thumb: PhotoSize? = nil) {
         self.name = name
         self.title = title
         self.stickerType = stickerType

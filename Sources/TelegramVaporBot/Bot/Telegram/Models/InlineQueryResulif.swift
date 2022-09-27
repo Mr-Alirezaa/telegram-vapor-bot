@@ -7,19 +7,18 @@
  [InlineQueryResultGif](https://core.telegram.org/bots/api#inlinequeryresultgif)
  */
 public final class InlineQueryResultGif: Codable {
-
     /// Custom keys for coding/decoding `InlineQueryResultGif` struct
     public enum CodingKeys: String, CodingKey {
-        case type = "type"
-        case id = "id"
+        case type
+        case id
         case gifUrl = "gif_url"
         case gifWidth = "gif_width"
         case gifHeight = "gif_height"
         case gifDuration = "gif_duration"
         case thumbUrl = "thumb_url"
         case thumbMimeType = "thumb_mime_type"
-        case title = "title"
-        case caption = "caption"
+        case title
+        case caption
         case parseMode = "parse_mode"
         case captionEntities = "caption_entities"
         case replyMarkup = "reply_markup"
@@ -68,7 +67,7 @@ public final class InlineQueryResultGif: Codable {
     /// Optional. Content of the message to be sent instead of the GIF animation
     public var inputMessageContent: InputMessageContent?
 
-    public init (type: String, id: String, gifUrl: String, gifWidth: Int? = nil, gifHeight: Int? = nil, gifDuration: Int? = nil, thumbUrl: String, thumbMimeType: String? = nil, title: String? = nil, caption: String? = nil, parseMode: String? = nil, captionEntities: [MessageEntity]? = nil, replyMarkup: InlineKeyboardMarkup? = nil, inputMessageContent: InputMessageContent? = nil) {
+    public init(type: String, id: String, gifUrl: String, gifWidth: Int? = nil, gifHeight: Int? = nil, gifDuration: Int? = nil, thumbUrl: String, thumbMimeType: String? = nil, title: String? = nil, caption: String? = nil, parseMode: String? = nil, captionEntities: [MessageEntity]? = nil, replyMarkup: InlineKeyboardMarkup? = nil, inputMessageContent: InputMessageContent? = nil) {
         self.type = type
         self.id = id
         self.gifUrl = gifUrl

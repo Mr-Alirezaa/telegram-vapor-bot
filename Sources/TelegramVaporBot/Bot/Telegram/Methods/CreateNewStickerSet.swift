@@ -1,14 +1,10 @@
-
-
 import Vapor
 
 /// DESCRIPTION:
 /// Use this method to create a new sticker set owned by a user. The bot will be able to edit the sticker set thus created. You must use exactly one of the fields png_sticker, tgs_sticker, or webm_sticker. Returns True on success.
 
-
 /// Parameters container struct for `createNewStickerSet` method
 public struct CreateNewStickerSetParams: Encodable {
-
     /// User identifier of created sticker set owner
     public var userId: Int64
 
@@ -38,44 +34,42 @@ public struct CreateNewStickerSetParams: Encodable {
 
     /// Custom keys for coding/decoding `CreateNewStickerSetParams` struct
     public enum CodingKeys: String, CodingKey {
-            case userId = "user_id"
-            case name = "name"
-            case title = "title"
-            case pngSticker = "png_sticker"
-            case tgsSticker = "tgs_sticker"
-            case webmSticker = "webm_sticker"
-            case stickerType = "sticker_type"
-            case emojis = "emojis"
-            case maskPosition = "mask_position"
+        case userId = "user_id"
+        case name
+        case title
+        case pngSticker = "png_sticker"
+        case tgsSticker = "tgs_sticker"
+        case webmSticker = "webm_sticker"
+        case stickerType = "sticker_type"
+        case emojis
+        case maskPosition = "mask_position"
     }
 
     public init(userId: Int64, name: String, title: String, pngSticker: FileInfo? = nil, tgsSticker: InputFile? = nil, webmSticker: InputFile? = nil, stickerType: String? = nil, emojis: String, maskPosition: MaskPosition? = nil) {
-            self.userId = userId
-            self.name = name
-            self.title = title
-            self.pngSticker = pngSticker
-            self.tgsSticker = tgsSticker
-            self.webmSticker = webmSticker
-            self.stickerType = stickerType
-            self.emojis = emojis
-            self.maskPosition = maskPosition
+        self.userId = userId
+        self.name = name
+        self.title = title
+        self.pngSticker = pngSticker
+        self.tgsSticker = tgsSticker
+        self.webmSticker = webmSticker
+        self.stickerType = stickerType
+        self.emojis = emojis
+        self.maskPosition = maskPosition
     }
 }
 
-
 public extension Bot {
+    /**
+     Use this method to create a new sticker set owned by a user. The bot will be able to edit the sticker set thus created. You must use exactly one of the fields png_sticker, tgs_sticker, or webm_sticker. Returns True on success.
 
-/**
- Use this method to create a new sticker set owned by a user. The bot will be able to edit the sticker set thus created. You must use exactly one of the fields png_sticker, tgs_sticker, or webm_sticker. Returns True on success.
+     SeeAlso Telegram Bot API Reference:
+     [CreateNewStickerSetParams](https://core.telegram.org/bots/api#createnewstickerset)
 
- SeeAlso Telegram Bot API Reference:
- [CreateNewStickerSetParams](https://core.telegram.org/bots/api#createnewstickerset)
- 
- - Parameters:
-     - params: Parameters container, see `CreateNewStickerSetParams` struct
- - Throws: Throws on errors
- - Returns: EventLoopFuture of `Bool` type
- */
+     - Parameters:
+         - params: Parameters container, see `CreateNewStickerSetParams` struct
+     - Throws: Throws on errors
+     - Returns: EventLoopFuture of `Bool` type
+     */
     @discardableResult
     func createNewStickerSet(params: CreateNewStickerSetParams) throws -> EventLoopFuture<Bool> {
         let methodURL: URI = .init(string: getMethodURL("createNewStickerSet"))

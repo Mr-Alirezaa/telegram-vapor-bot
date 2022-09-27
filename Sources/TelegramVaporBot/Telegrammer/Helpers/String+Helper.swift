@@ -1,25 +1,17 @@
-//
-//  String+Helper.swift
-//  Telegrammer
-//
-
-//
-
 import Foundation
 import Logging
 import SwiftRegularExpression
 #if os(Linux)
-import Glibc
+    import Glibc
 #endif
 
 public extension String {
-
     static func random(ofLength length: Int) -> String {
-        return random(minimumLength: length, maximumLength: length)
+        random(minimumLength: length, maximumLength: length)
     }
 
     static func random(minimumLength min: Int, maximumLength max: Int) -> String {
-        return random(
+        random(
             withCharactersInString: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
             minimumLength: min,
             maximumLength: max
@@ -27,7 +19,7 @@ public extension String {
     }
 
     static func random(withCharactersInString string: String, ofLength length: Int) -> String {
-        return random(
+        random(
             withCharactersInString: string,
             minimumLength: length,
             maximumLength: length
@@ -39,15 +31,15 @@ public extension String {
         minimumLength min: Int,
         maximumLength max: Int
     ) -> String {
-        guard min > 0 && max >= min else {
+        guard min > 0, max >= min else {
             return ""
         }
 
-        let length: Int = (min < max) ? .random(min...max) : max
+        let length: Int = (min < max) ? .random(min ... max) : max
         var randomString = ""
 
-        (1...length).forEach { _ in
-            let randomIndex: Int = .random(0..<string.count)
+        (1 ... length).forEach { _ in
+            let randomIndex: Int = .random(0 ..< string.count)
             let c = string.index(string.startIndex, offsetBy: randomIndex)
             randomString += String(string[c])
         }
@@ -58,30 +50,30 @@ public extension String {
 
 public extension Int {
     static func random(_ range: Range<Int>) -> Int {
-        return random(range.lowerBound, range.upperBound - 1)
+        random(range.lowerBound, range.upperBound - 1)
     }
 
     static func random(_ range: ClosedRange<Int>) -> Int {
-        return random(range.lowerBound, range.upperBound)
+        random(range.lowerBound, range.upperBound)
     }
 
     static func random(_ lower: Int = 0, _ upper: Int = 100) -> Int {
         #if os(Linux)
-        return Int(Glibc.random() % (upper - lower + 1))
+            return Int(Glibc.random() % (upper - lower + 1))
         #else
-        return Int(arc4random_uniform(UInt32(upper - lower + 1)))
+            return Int(arc4random_uniform(UInt32(upper - lower + 1)))
         #endif
     }
 }
 
 public extension String {
     func matchRegexp(pattern: String) -> Bool {
-        self.regexp(pattern).keys.count > 0
+        regexp(pattern).keys.count > 0
     }
 }
 
 public extension String {
     var logMessage: Logger.Message {
-        return Logger.Message(stringLiteral: self)
+        Logger.Message(stringLiteral: self)
     }
 }

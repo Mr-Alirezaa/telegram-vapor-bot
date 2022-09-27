@@ -7,18 +7,17 @@
  [Audio](https://core.telegram.org/bots/api#audio)
  */
 public final class Audio: Codable {
-
     /// Custom keys for coding/decoding `Audio` struct
     public enum CodingKeys: String, CodingKey {
         case fileId = "file_id"
         case fileUniqueId = "file_unique_id"
-        case duration = "duration"
-        case performer = "performer"
-        case title = "title"
+        case duration
+        case performer
+        case title
         case fileName = "file_name"
         case mimeType = "mime_type"
         case fileSize = "file_size"
-        case thumb = "thumb"
+        case thumb
     }
 
     /// Identifier for this file, which can be used to download or reuse the file
@@ -48,7 +47,7 @@ public final class Audio: Codable {
     /// Optional. Thumbnail of the album cover to which the music file belongs
     public var thumb: PhotoSize?
 
-    public init (fileId: String, fileUniqueId: String, duration: Int, performer: String? = nil, title: String? = nil, fileName: String? = nil, mimeType: String? = nil, fileSize: Int? = nil, thumb: PhotoSize? = nil) {
+    public init(fileId: String, fileUniqueId: String, duration: Int, performer: String? = nil, title: String? = nil, fileName: String? = nil, mimeType: String? = nil, fileSize: Int? = nil, thumb: PhotoSize? = nil) {
         self.fileId = fileId
         self.fileUniqueId = fileUniqueId
         self.duration = duration

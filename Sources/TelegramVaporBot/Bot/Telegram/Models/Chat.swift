@@ -7,32 +7,31 @@
  [Chat](https://core.telegram.org/bots/api#chat)
  */
 public final class Chat: Codable {
-
     /// Custom keys for coding/decoding `Chat` struct
     public enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case type = "type"
-        case title = "title"
-        case username = "username"
+        case id
+        case type
+        case title
+        case username
         case firstName = "first_name"
         case lastName = "last_name"
-        case photo = "photo"
-        case bio = "bio"
+        case photo
+        case bio
         case hasPrivateForwards = "has_private_forwards"
         case hasRestrictedVoiceAndVideoMessages = "has_restricted_voice_and_video_messages"
         case joinToSendMessages = "join_to_send_messages"
         case joinByRequest = "join_by_request"
-        case description = "description"
+        case description
         case inviteLink = "invite_link"
         case pinnedMessage = "pinned_message"
-        case permissions = "permissions"
+        case permissions
         case slowModeDelay = "slow_mode_delay"
         case messageAutoDeleteTime = "message_auto_delete_time"
         case hasProtectedContent = "has_protected_content"
         case stickerSetName = "sticker_set_name"
         case canSetStickerSet = "can_set_sticker_set"
         case linkedChatId = "linked_chat_id"
-        case location = "location"
+        case location
     }
 
     /// Unique identifier for this chat. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this identifier.
@@ -104,7 +103,7 @@ public final class Chat: Codable {
     /// Optional. For supergroups, the location to which the supergroup is connected. Returned only in getChat.
     public var location: ChatLocation?
 
-    public init (id: Int64, type: ChatType, title: String? = nil, username: String? = nil, firstName: String? = nil, lastName: String? = nil, photo: ChatPhoto? = nil, bio: String? = nil, hasPrivateForwards: Bool? = nil, hasRestrictedVoiceAndVideoMessages: Bool? = nil, joinToSendMessages: Bool? = nil, joinByRequest: Bool? = nil, description: String? = nil, inviteLink: String? = nil, pinnedMessage: Message? = nil, permissions: ChatPermissions? = nil, slowModeDelay: Int? = nil, messageAutoDeleteTime: Int? = nil, hasProtectedContent: Bool? = nil, stickerSetName: String? = nil, canSetStickerSet: Bool? = nil, linkedChatId: Int64? = nil, location: ChatLocation? = nil) {
+    public init(id: Int64, type: ChatType, title: String? = nil, username: String? = nil, firstName: String? = nil, lastName: String? = nil, photo: ChatPhoto? = nil, bio: String? = nil, hasPrivateForwards: Bool? = nil, hasRestrictedVoiceAndVideoMessages: Bool? = nil, joinToSendMessages: Bool? = nil, joinByRequest: Bool? = nil, description: String? = nil, inviteLink: String? = nil, pinnedMessage: Message? = nil, permissions: ChatPermissions? = nil, slowModeDelay: Int? = nil, messageAutoDeleteTime: Int? = nil, hasProtectedContent: Bool? = nil, stickerSetName: String? = nil, canSetStickerSet: Bool? = nil, linkedChatId: Int64? = nil, location: ChatLocation? = nil) {
         self.id = id
         self.type = type
         self.title = title

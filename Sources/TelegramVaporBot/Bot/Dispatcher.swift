@@ -1,10 +1,7 @@
-
-
 import Foundation
 import Vapor
 
 public protocol DispatcherProtocol {
-
     var bot: Bot? { get set }
     var handlersGroup: [[HandlerProtocol]] { get set }
 
@@ -17,26 +14,31 @@ public protocol DispatcherProtocol {
 }
 
 open class DefaultDispatcher: DispatcherProtocol {
-
     public weak var bot: Bot?
-    private var processQueue: DispatchQueue = .init(label: "com.telegram-vapor-bot-lib.dispatcher.processQueue",
-                                                    qos: .default,
-                                                    attributes: .concurrent)
+    private var processQueue: DispatchQueue = .init(
+        label: "com.telegram-vapor-bot-lib.dispatcher.processQueue",
+        qos: .default,
+        attributes: .concurrent
+    )
 
-    private var handlerQueue: DispatchQueue = .init(label: "com.telegram-vapor-bot-lib.dispatcher.handlerQueue",
-                                                    qos: .default,
-                                                    attributes: .concurrent)
+    private var handlerQueue: DispatchQueue = .init(
+        label: "com.telegram-vapor-bot-lib.dispatcher.handlerQueue",
+        qos: .default,
+        attributes: .concurrent
+    )
 
     public var handlersGroup: [[HandlerProtocol]] = []
     private var beforeAllCallback: ([Update], @escaping ([Update]) throws -> Void) throws -> Void = { updates, callback in
         try callback(updates)
     }
-    private var handlersId: Int = 0
+
+    private var handlersId = 0
     private var nextHandlerId: Int {
         handlersId += 1
         return handlersId
     }
-    private var index: Int = 0
+
+    private var index = 0
 
     private typealias Level = Int
     private typealias IndexId = Int
@@ -54,7 +56,7 @@ open class DefaultDispatcher: DispatcherProtocol {
             handler.id = self.nextHandlerId
 
             /// add handler
-            var handlerPosition: Int = 0
+            var handlerPosition = 0
             let correctLevel: Int = level >= 0 ? level : 0
             if self.handlersGroup.count > correctLevel {
                 self.handlersGroup[correctLevel].append(handler)
@@ -63,7 +65,7 @@ open class DefaultDispatcher: DispatcherProtocol {
                 self.handlersGroup.append([handler])
                 handlerPosition = self.handlersGroup[self.handlersGroup.count - 1].count - 1
             }
-            
+
             /// add handler to index
             if self.handlersIndex[level] == nil { self.handlersIndex[level] = .init() }
             self.handlersIndex[level]?[handler.id] = handlerPosition
@@ -119,7 +121,7 @@ open class DefaultDispatcher: DispatcherProtocol {
                 if self?.bot == nil { Bot.log.error("Bot not set to dispatcher"); return }
                 return
             }
-            for i in 1...self.handlersGroup.count {
+            for i in 1 ... self.handlersGroup.count {
                 for handler in self.handlersGroup[self.handlersGroup.count - i] {
                     if handler.check(update: update) {
                         self.handlerQueue.async {
@@ -131,5 +133,3 @@ open class DefaultDispatcher: DispatcherProtocol {
         }
     }
 }
-
-

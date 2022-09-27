@@ -7,11 +7,10 @@
  [MenuButtonWebApp](https://core.telegram.org/bots/api#menubuttonwebapp)
  */
 public final class MenuButtonWebApp: Codable {
-
     /// Custom keys for coding/decoding `MenuButtonWebApp` struct
     public enum CodingKeys: String, CodingKey {
-        case type = "type"
-        case text = "text"
+        case type
+        case text
         case webApp = "web_app"
     }
 
@@ -24,7 +23,7 @@ public final class MenuButtonWebApp: Codable {
     /// Description of the Web App that will be launched when the user presses the button. The Web App will be able to send an arbitrary message on behalf of the user using the method answerWebAppQuery.
     public var webApp: WebAppInfo
 
-    public init (type: String, text: String, webApp: WebAppInfo) {
+    public init(type: String, text: String, webApp: WebAppInfo) {
         self.type = type
         self.text = text
         self.webApp = webApp

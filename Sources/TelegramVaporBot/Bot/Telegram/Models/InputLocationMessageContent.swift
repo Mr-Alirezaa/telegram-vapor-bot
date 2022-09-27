@@ -7,14 +7,13 @@
  [InputLocationMessageContent](https://core.telegram.org/bots/api#inputlocationmessagecontent)
  */
 public final class InputLocationMessageContent: Codable {
-
     /// Custom keys for coding/decoding `InputLocationMessageContent` struct
     public enum CodingKeys: String, CodingKey {
-        case latitude = "latitude"
-        case longitude = "longitude"
+        case latitude
+        case longitude
         case horizontalAccuracy = "horizontal_accuracy"
         case livePeriod = "live_period"
-        case heading = "heading"
+        case heading
         case proximityAlertRadius = "proximity_alert_radius"
     }
 
@@ -36,7 +35,7 @@ public final class InputLocationMessageContent: Codable {
     /// Optional. For live locations, a maximum distance for proximity alerts about approaching another chat member, in meters. Must be between 1 and 100000 if specified.
     public var proximityAlertRadius: Int?
 
-    public init (latitude: Float, longitude: Float, horizontalAccuracy: Float? = nil, livePeriod: Int? = nil, heading: Int? = nil, proximityAlertRadius: Int? = nil) {
+    public init(latitude: Float, longitude: Float, horizontalAccuracy: Float? = nil, livePeriod: Int? = nil, heading: Int? = nil, proximityAlertRadius: Int? = nil) {
         self.latitude = latitude
         self.longitude = longitude
         self.horizontalAccuracy = horizontalAccuracy

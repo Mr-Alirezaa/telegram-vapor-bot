@@ -7,18 +7,17 @@
  [InlineQueryResultDocument](https://core.telegram.org/bots/api#inlinequeryresultdocument)
  */
 public final class InlineQueryResultDocument: Codable {
-
     /// Custom keys for coding/decoding `InlineQueryResultDocument` struct
     public enum CodingKeys: String, CodingKey {
-        case type = "type"
-        case id = "id"
-        case title = "title"
-        case caption = "caption"
+        case type
+        case id
+        case title
+        case caption
         case parseMode = "parse_mode"
         case captionEntities = "caption_entities"
         case documentUrl = "document_url"
         case mimeType = "mime_type"
-        case description = "description"
+        case description
         case replyMarkup = "reply_markup"
         case inputMessageContent = "input_message_content"
         case thumbUrl = "thumb_url"
@@ -68,7 +67,7 @@ public final class InlineQueryResultDocument: Codable {
     /// Optional. Thumbnail height
     public var thumbHeight: Int?
 
-    public init (type: String, id: String, title: String, caption: String? = nil, parseMode: String? = nil, captionEntities: [MessageEntity]? = nil, documentUrl: String, mimeType: String, description: String? = nil, replyMarkup: InlineKeyboardMarkup? = nil, inputMessageContent: InputMessageContent? = nil, thumbUrl: String? = nil, thumbWidth: Int? = nil, thumbHeight: Int? = nil) {
+    public init(type: String, id: String, title: String, caption: String? = nil, parseMode: String? = nil, captionEntities: [MessageEntity]? = nil, documentUrl: String, mimeType: String, description: String? = nil, replyMarkup: InlineKeyboardMarkup? = nil, inputMessageContent: InputMessageContent? = nil, thumbUrl: String? = nil, thumbWidth: Int? = nil, thumbHeight: Int? = nil) {
         self.type = type
         self.id = id
         self.title = title

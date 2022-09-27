@@ -7,10 +7,9 @@
  [WebhookInfo](https://core.telegram.org/bots/api#webhookinfo)
  */
 public final class WebhookInfo: Codable {
-
     /// Custom keys for coding/decoding `WebhookInfo` struct
     public enum CodingKeys: String, CodingKey {
-        case url = "url"
+        case url
         case hasCustomCertificate = "has_custom_certificate"
         case pendingUpdateCount = "pending_update_count"
         case ipAddress = "ip_address"
@@ -48,7 +47,7 @@ public final class WebhookInfo: Codable {
     /// Optional. A list of update types the bot is subscribed to. Defaults to all update types except chat_member
     public var allowedUpdates: [String]?
 
-    public init (url: String, hasCustomCertificate: Bool, pendingUpdateCount: Int, ipAddress: String? = nil, lastErrorDate: Int? = nil, lastErrorMessage: String? = nil, lastSynchronizationErrorDate: Int? = nil, maxConnections: Int? = nil, allowedUpdates: [String]? = nil) {
+    public init(url: String, hasCustomCertificate: Bool, pendingUpdateCount: Int, ipAddress: String? = nil, lastErrorDate: Int? = nil, lastErrorMessage: String? = nil, lastSynchronizationErrorDate: Int? = nil, maxConnections: Int? = nil, allowedUpdates: [String]? = nil) {
         self.url = url
         self.hasCustomCertificate = hasCustomCertificate
         self.pendingUpdateCount = pendingUpdateCount

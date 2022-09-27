@@ -7,12 +7,11 @@
  [InputMediaPhoto](https://core.telegram.org/bots/api#inputmediaphoto)
  */
 public final class InputMediaPhoto: Encodable {
-
     /// Custom keys for coding/decoding `InputMediaPhoto` struct
     public enum CodingKeys: String, CodingKey {
-        case type = "type"
-        case media = "media"
-        case caption = "caption"
+        case type
+        case media
+        case caption
         case parseMode = "parse_mode"
         case captionEntities = "caption_entities"
     }
@@ -32,7 +31,7 @@ public final class InputMediaPhoto: Encodable {
     /// Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
     public var captionEntities: [MessageEntity]?
 
-    public init (type: String, media: String, caption: String? = nil, parseMode: String? = nil, captionEntities: [MessageEntity]? = nil) {
+    public init(type: String, media: String, caption: String? = nil, parseMode: String? = nil, captionEntities: [MessageEntity]? = nil) {
         self.type = type
         self.media = media
         self.caption = caption

@@ -7,15 +7,14 @@
  [InlineQuery](https://core.telegram.org/bots/api#inlinequery)
  */
 public final class InlineQuery: Codable {
-
     /// Custom keys for coding/decoding `InlineQuery` struct
     public enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case from = "from"
-        case query = "query"
-        case offset = "offset"
+        case id
+        case from
+        case query
+        case offset
         case chatType = "chat_type"
-        case location = "location"
+        case location
     }
 
     /// Unique identifier for this query
@@ -36,7 +35,7 @@ public final class InlineQuery: Codable {
     /// Optional. Sender location, only for bots that request user location
     public var location: Location?
 
-    public init (id: String, from: User, query: String, offset: String, chatType: String? = nil, location: Location? = nil) {
+    public init(id: String, from: User, query: String, offset: String, chatType: String? = nil, location: Location? = nil) {
         self.id = id
         self.from = from
         self.query = query

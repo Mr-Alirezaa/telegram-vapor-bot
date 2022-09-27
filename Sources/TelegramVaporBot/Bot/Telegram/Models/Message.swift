@@ -7,14 +7,13 @@
  [Message](https://core.telegram.org/bots/api#message)
  */
 public final class Message: Codable {
-
     /// Custom keys for coding/decoding `Message` struct
     public enum CodingKeys: String, CodingKey {
         case messageId = "message_id"
-        case from = "from"
+        case from
         case senderChat = "sender_chat"
-        case date = "date"
-        case chat = "chat"
+        case date
+        case chat
         case forwardFrom = "forward_from"
         case forwardFromChat = "forward_from_chat"
         case forwardFromMessageId = "forward_from_message_id"
@@ -28,24 +27,24 @@ public final class Message: Codable {
         case hasProtectedContent = "has_protected_content"
         case mediaGroupId = "media_group_id"
         case authorSignature = "author_signature"
-        case text = "text"
-        case entities = "entities"
-        case animation = "animation"
-        case audio = "audio"
-        case document = "document"
-        case photo = "photo"
-        case sticker = "sticker"
-        case video = "video"
+        case text
+        case entities
+        case animation
+        case audio
+        case document
+        case photo
+        case sticker
+        case video
         case videoNote = "video_note"
-        case voice = "voice"
-        case caption = "caption"
+        case voice
+        case caption
         case captionEntities = "caption_entities"
-        case contact = "contact"
-        case dice = "dice"
-        case game = "game"
-        case poll = "poll"
-        case venue = "venue"
-        case location = "location"
+        case contact
+        case dice
+        case game
+        case poll
+        case venue
+        case location
         case newChatMembers = "new_chat_members"
         case leftChatMember = "left_chat_member"
         case newChatTitle = "new_chat_title"
@@ -58,7 +57,7 @@ public final class Message: Codable {
         case migrateToChatId = "migrate_to_chat_id"
         case migrateFromChatId = "migrate_from_chat_id"
         case pinnedMessage = "pinned_message"
-        case invoice = "invoice"
+        case invoice
         case successfulPayment = "successful_payment"
         case connectedWebsite = "connected_website"
         case passportData = "passport_data"
@@ -248,7 +247,7 @@ public final class Message: Codable {
     /// Optional. Inline keyboard attached to the message. login_url buttons are represented as ordinary url buttons.
     public var replyMarkup: InlineKeyboardMarkup?
 
-    public init (messageId: Int, from: User? = nil, senderChat: Chat? = nil, date: Int, chat: Chat, forwardFrom: User? = nil, forwardFromChat: Chat? = nil, forwardFromMessageId: Int? = nil, forwardSignature: String? = nil, forwardSenderName: String? = nil, forwardDate: Int? = nil, isAutomaticForward: Bool? = nil, replyToMessage: Message? = nil, viaBot: User? = nil, editDate: Int? = nil, hasProtectedContent: Bool? = nil, mediaGroupId: String? = nil, authorSignature: String? = nil, text: String? = nil, entities: [MessageEntity]? = nil, animation: Animation? = nil, audio: Audio? = nil, document: Document? = nil, photo: [PhotoSize]? = nil, sticker: Sticker? = nil, video: Video? = nil, videoNote: VideoNote? = nil, voice: Voice? = nil, caption: String? = nil, captionEntities: [MessageEntity]? = nil, contact: Contact? = nil, dice: Dice? = nil, game: Game? = nil, poll: Poll? = nil, venue: Venue? = nil, location: Location? = nil, newChatMembers: [User]? = nil, leftChatMember: User? = nil, newChatTitle: String? = nil, newChatPhoto: [PhotoSize]? = nil, deleteChatPhoto: Bool? = nil, groupChatCreated: Bool? = nil, supergroupChatCreated: Bool? = nil, channelChatCreated: Bool? = nil, messageAutoDeleteTimerChanged: MessageAutoDeleteTimerChanged? = nil, migrateToChatId: Int64? = nil, migrateFromChatId: Int64? = nil, pinnedMessage: Message? = nil, invoice: Invoice? = nil, successfulPayment: SuccessfulPayment? = nil, connectedWebsite: String? = nil, passportData: PassportData? = nil, proximityAlertTriggered: ProximityAlertTriggered? = nil, videoChatScheduled: VideoChatScheduled? = nil, videoChatStarted: VideoChatStarted? = nil, videoChatEnded: VideoChatEnded? = nil, videoChatParticipantsInvited: VideoChatParticipantsInvited? = nil, webAppData: WebAppData? = nil, replyMarkup: InlineKeyboardMarkup? = nil) {
+    public init(messageId: Int, from: User? = nil, senderChat: Chat? = nil, date: Int, chat: Chat, forwardFrom: User? = nil, forwardFromChat: Chat? = nil, forwardFromMessageId: Int? = nil, forwardSignature: String? = nil, forwardSenderName: String? = nil, forwardDate: Int? = nil, isAutomaticForward: Bool? = nil, replyToMessage: Message? = nil, viaBot: User? = nil, editDate: Int? = nil, hasProtectedContent: Bool? = nil, mediaGroupId: String? = nil, authorSignature: String? = nil, text: String? = nil, entities: [MessageEntity]? = nil, animation: Animation? = nil, audio: Audio? = nil, document: Document? = nil, photo: [PhotoSize]? = nil, sticker: Sticker? = nil, video: Video? = nil, videoNote: VideoNote? = nil, voice: Voice? = nil, caption: String? = nil, captionEntities: [MessageEntity]? = nil, contact: Contact? = nil, dice: Dice? = nil, game: Game? = nil, poll: Poll? = nil, venue: Venue? = nil, location: Location? = nil, newChatMembers: [User]? = nil, leftChatMember: User? = nil, newChatTitle: String? = nil, newChatPhoto: [PhotoSize]? = nil, deleteChatPhoto: Bool? = nil, groupChatCreated: Bool? = nil, supergroupChatCreated: Bool? = nil, channelChatCreated: Bool? = nil, messageAutoDeleteTimerChanged: MessageAutoDeleteTimerChanged? = nil, migrateToChatId: Int64? = nil, migrateFromChatId: Int64? = nil, pinnedMessage: Message? = nil, invoice: Invoice? = nil, successfulPayment: SuccessfulPayment? = nil, connectedWebsite: String? = nil, passportData: PassportData? = nil, proximityAlertTriggered: ProximityAlertTriggered? = nil, videoChatScheduled: VideoChatScheduled? = nil, videoChatStarted: VideoChatStarted? = nil, videoChatEnded: VideoChatEnded? = nil, videoChatParticipantsInvited: VideoChatParticipantsInvited? = nil, webAppData: WebAppData? = nil, replyMarkup: InlineKeyboardMarkup? = nil) {
         self.messageId = messageId
         self.from = from
         self.senderChat = senderChat

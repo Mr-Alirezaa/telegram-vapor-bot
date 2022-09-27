@@ -1,23 +1,16 @@
-//
-//
-//
-
-//
-
 import Foundation
 
 /// Messages that are forwarded.
 public class ForwarderFilter: Filter {
-
-    public var name: String = "forwarded"
+    public var name = "forwarded"
 
     override
     public func filter(message: Message) -> Bool {
-        return message.forwardDate != nil ||
-        message.forwardFrom != nil ||
-        message.forwardFromChat != nil ||
-        message.forwardSignature != nil ||
-        message.forwardFromMessageId != nil
+        message.forwardDate != nil ||
+            message.forwardFrom != nil ||
+            message.forwardFromChat != nil ||
+            message.forwardSignature != nil ||
+            message.forwardFromMessageId != nil
     }
 }
 

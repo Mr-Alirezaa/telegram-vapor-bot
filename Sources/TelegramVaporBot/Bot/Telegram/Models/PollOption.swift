@@ -7,10 +7,9 @@
  [PollOption](https://core.telegram.org/bots/api#polloption)
  */
 public final class PollOption: Codable {
-
     /// Custom keys for coding/decoding `PollOption` struct
     public enum CodingKeys: String, CodingKey {
-        case text = "text"
+        case text
         case voterCount = "voter_count"
     }
 
@@ -20,7 +19,7 @@ public final class PollOption: Codable {
     /// Number of users that voted for this option
     public var voterCount: Int
 
-    public init (text: String, voterCount: Int) {
+    public init(text: String, voterCount: Int) {
         self.text = text
         self.voterCount = voterCount
     }

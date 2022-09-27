@@ -7,14 +7,13 @@
  [InlineQueryResultVoice](https://core.telegram.org/bots/api#inlinequeryresultvoice)
  */
 public final class InlineQueryResultVoice: Codable {
-
     /// Custom keys for coding/decoding `InlineQueryResultVoice` struct
     public enum CodingKeys: String, CodingKey {
-        case type = "type"
-        case id = "id"
+        case type
+        case id
         case voiceUrl = "voice_url"
-        case title = "title"
-        case caption = "caption"
+        case title
+        case caption
         case parseMode = "parse_mode"
         case captionEntities = "caption_entities"
         case voiceDuration = "voice_duration"
@@ -52,7 +51,7 @@ public final class InlineQueryResultVoice: Codable {
     /// Optional. Content of the message to be sent instead of the voice recording
     public var inputMessageContent: InputMessageContent?
 
-    public init (type: String, id: String, voiceUrl: String, title: String, caption: String? = nil, parseMode: String? = nil, captionEntities: [MessageEntity]? = nil, voiceDuration: Int? = nil, replyMarkup: InlineKeyboardMarkup? = nil, inputMessageContent: InputMessageContent? = nil) {
+    public init(type: String, id: String, voiceUrl: String, title: String, caption: String? = nil, parseMode: String? = nil, captionEntities: [MessageEntity]? = nil, voiceDuration: Int? = nil, replyMarkup: InlineKeyboardMarkup? = nil, inputMessageContent: InputMessageContent? = nil) {
         self.type = type
         self.id = id
         self.voiceUrl = voiceUrl

@@ -7,11 +7,10 @@
  [InlineQueryResultCachedSticker](https://core.telegram.org/bots/api#inlinequeryresultcachedsticker)
  */
 public final class InlineQueryResultCachedSticker: Codable {
-
     /// Custom keys for coding/decoding `InlineQueryResultCachedSticker` struct
     public enum CodingKeys: String, CodingKey {
-        case type = "type"
-        case id = "id"
+        case type
+        case id
         case stickerFileId = "sticker_file_id"
         case replyMarkup = "reply_markup"
         case inputMessageContent = "input_message_content"
@@ -32,7 +31,7 @@ public final class InlineQueryResultCachedSticker: Codable {
     /// Optional. Content of the message to be sent instead of the sticker
     public var inputMessageContent: InputMessageContent?
 
-    public init (type: String, id: String, stickerFileId: String, replyMarkup: InlineKeyboardMarkup? = nil, inputMessageContent: InputMessageContent? = nil) {
+    public init(type: String, id: String, stickerFileId: String, replyMarkup: InlineKeyboardMarkup? = nil, inputMessageContent: InputMessageContent? = nil) {
         self.type = type
         self.id = id
         self.stickerFileId = stickerFileId

@@ -1,16 +1,9 @@
-//
-//
-//
-
-//
-
 import Foundation
 
 /// Filters messages to allow only those which contains text
 public class TextFilter: Filter {
-
-    public var name: String = "text"
-    private var value: String? = nil
+    public var name = "text"
+    private var value: String?
 
     override
     public func filter(message: Message) -> Bool {

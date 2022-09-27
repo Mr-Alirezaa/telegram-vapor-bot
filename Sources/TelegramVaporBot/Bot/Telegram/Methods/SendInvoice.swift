@@ -1,14 +1,10 @@
-
-
 import Vapor
 
 /// DESCRIPTION:
 /// Use this method to send invoices. On success, the sent Message is returned.
 
-
 /// Parameters container struct for `sendInvoice` method
 public struct SendInvoiceParams: Encodable {
-
     /// Unique identifier for the target chat or username of the target channel (in the format @channelusername)
     public var chatId: ChatId
 
@@ -92,80 +88,78 @@ public struct SendInvoiceParams: Encodable {
 
     /// Custom keys for coding/decoding `SendInvoiceParams` struct
     public enum CodingKeys: String, CodingKey {
-            case chatId = "chat_id"
-            case title = "title"
-            case description = "description"
-            case payload = "payload"
-            case providerToken = "provider_token"
-            case currency = "currency"
-            case prices = "prices"
-            case maxTipAmount = "max_tip_amount"
-            case suggestedTipAmounts = "suggested_tip_amounts"
-            case startParameter = "start_parameter"
-            case providerData = "provider_data"
-            case photoUrl = "photo_url"
-            case photoSize = "photo_size"
-            case photoWidth = "photo_width"
-            case photoHeight = "photo_height"
-            case needName = "need_name"
-            case needPhoneNumber = "need_phone_number"
-            case needEmail = "need_email"
-            case needShippingAddress = "need_shipping_address"
-            case sendPhoneNumberToProvider = "send_phone_number_to_provider"
-            case sendEmailToProvider = "send_email_to_provider"
-            case isFlexible = "is_flexible"
-            case disableNotification = "disable_notification"
-            case protectContent = "protect_content"
-            case replyToMessageId = "reply_to_message_id"
-            case allowSendingWithoutReply = "allow_sending_without_reply"
-            case replyMarkup = "reply_markup"
+        case chatId = "chat_id"
+        case title
+        case description
+        case payload
+        case providerToken = "provider_token"
+        case currency
+        case prices
+        case maxTipAmount = "max_tip_amount"
+        case suggestedTipAmounts = "suggested_tip_amounts"
+        case startParameter = "start_parameter"
+        case providerData = "provider_data"
+        case photoUrl = "photo_url"
+        case photoSize = "photo_size"
+        case photoWidth = "photo_width"
+        case photoHeight = "photo_height"
+        case needName = "need_name"
+        case needPhoneNumber = "need_phone_number"
+        case needEmail = "need_email"
+        case needShippingAddress = "need_shipping_address"
+        case sendPhoneNumberToProvider = "send_phone_number_to_provider"
+        case sendEmailToProvider = "send_email_to_provider"
+        case isFlexible = "is_flexible"
+        case disableNotification = "disable_notification"
+        case protectContent = "protect_content"
+        case replyToMessageId = "reply_to_message_id"
+        case allowSendingWithoutReply = "allow_sending_without_reply"
+        case replyMarkup = "reply_markup"
     }
 
     public init(chatId: ChatId, title: String, description: String, payload: String, providerToken: String, currency: String, prices: [LabeledPrice], maxTipAmount: Int? = nil, suggestedTipAmounts: [Int]? = nil, startParameter: String? = nil, providerData: String? = nil, photoUrl: String? = nil, photoSize: Int? = nil, photoWidth: Int? = nil, photoHeight: Int? = nil, needName: Bool? = nil, needPhoneNumber: Bool? = nil, needEmail: Bool? = nil, needShippingAddress: Bool? = nil, sendPhoneNumberToProvider: Bool? = nil, sendEmailToProvider: Bool? = nil, isFlexible: Bool? = nil, disableNotification: Bool? = nil, protectContent: Bool? = nil, replyToMessageId: Int? = nil, allowSendingWithoutReply: Bool? = nil, replyMarkup: InlineKeyboardMarkup? = nil) {
-            self.chatId = chatId
-            self.title = title
-            self.description = description
-            self.payload = payload
-            self.providerToken = providerToken
-            self.currency = currency
-            self.prices = prices
-            self.maxTipAmount = maxTipAmount
-            self.suggestedTipAmounts = suggestedTipAmounts
-            self.startParameter = startParameter
-            self.providerData = providerData
-            self.photoUrl = photoUrl
-            self.photoSize = photoSize
-            self.photoWidth = photoWidth
-            self.photoHeight = photoHeight
-            self.needName = needName
-            self.needPhoneNumber = needPhoneNumber
-            self.needEmail = needEmail
-            self.needShippingAddress = needShippingAddress
-            self.sendPhoneNumberToProvider = sendPhoneNumberToProvider
-            self.sendEmailToProvider = sendEmailToProvider
-            self.isFlexible = isFlexible
-            self.disableNotification = disableNotification
-            self.protectContent = protectContent
-            self.replyToMessageId = replyToMessageId
-            self.allowSendingWithoutReply = allowSendingWithoutReply
-            self.replyMarkup = replyMarkup
+        self.chatId = chatId
+        self.title = title
+        self.description = description
+        self.payload = payload
+        self.providerToken = providerToken
+        self.currency = currency
+        self.prices = prices
+        self.maxTipAmount = maxTipAmount
+        self.suggestedTipAmounts = suggestedTipAmounts
+        self.startParameter = startParameter
+        self.providerData = providerData
+        self.photoUrl = photoUrl
+        self.photoSize = photoSize
+        self.photoWidth = photoWidth
+        self.photoHeight = photoHeight
+        self.needName = needName
+        self.needPhoneNumber = needPhoneNumber
+        self.needEmail = needEmail
+        self.needShippingAddress = needShippingAddress
+        self.sendPhoneNumberToProvider = sendPhoneNumberToProvider
+        self.sendEmailToProvider = sendEmailToProvider
+        self.isFlexible = isFlexible
+        self.disableNotification = disableNotification
+        self.protectContent = protectContent
+        self.replyToMessageId = replyToMessageId
+        self.allowSendingWithoutReply = allowSendingWithoutReply
+        self.replyMarkup = replyMarkup
     }
 }
 
-
 public extension Bot {
+    /**
+     Use this method to send invoices. On success, the sent Message is returned.
 
-/**
- Use this method to send invoices. On success, the sent Message is returned.
+     SeeAlso Telegram Bot API Reference:
+     [SendInvoiceParams](https://core.telegram.org/bots/api#sendinvoice)
 
- SeeAlso Telegram Bot API Reference:
- [SendInvoiceParams](https://core.telegram.org/bots/api#sendinvoice)
- 
- - Parameters:
-     - params: Parameters container, see `SendInvoiceParams` struct
- - Throws: Throws on errors
- - Returns: EventLoopFuture of `Message` type
- */
+     - Parameters:
+         - params: Parameters container, see `SendInvoiceParams` struct
+     - Throws: Throws on errors
+     - Returns: EventLoopFuture of `Message` type
+     */
     @discardableResult
     func sendInvoice(params: SendInvoiceParams) throws -> EventLoopFuture<Message> {
         let methodURL: URI = .init(string: getMethodURL("sendInvoice"))

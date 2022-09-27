@@ -7,19 +7,18 @@
  [Poll](https://core.telegram.org/bots/api#poll)
  */
 public final class Poll: Codable {
-
     /// Custom keys for coding/decoding `Poll` struct
     public enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case question = "question"
-        case options = "options"
+        case id
+        case question
+        case options
         case totalVoterCount = "total_voter_count"
         case isClosed = "is_closed"
         case isAnonymous = "is_anonymous"
-        case type = "type"
+        case type
         case allowsMultipleAnswers = "allows_multiple_answers"
         case correctOptionId = "correct_option_id"
-        case explanation = "explanation"
+        case explanation
         case explanationEntities = "explanation_entities"
         case openPeriod = "open_period"
         case closeDate = "close_date"
@@ -64,7 +63,7 @@ public final class Poll: Codable {
     /// Optional. Point in time (Unix timestamp) when the poll will be automatically closed
     public var closeDate: Int?
 
-    public init (id: String, question: String, options: [PollOption], totalVoterCount: Int, isClosed: Bool, isAnonymous: Bool, type: String, allowsMultipleAnswers: Bool, correctOptionId: Int? = nil, explanation: String? = nil, explanationEntities: [MessageEntity]? = nil, openPeriod: Int? = nil, closeDate: Int? = nil) {
+    public init(id: String, question: String, options: [PollOption], totalVoterCount: Int, isClosed: Bool, isAnonymous: Bool, type: String, allowsMultipleAnswers: Bool, correctOptionId: Int? = nil, explanation: String? = nil, explanationEntities: [MessageEntity]? = nil, openPeriod: Int? = nil, closeDate: Int? = nil) {
         self.id = id
         self.question = question
         self.options = options

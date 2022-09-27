@@ -7,15 +7,14 @@
  [InlineQueryResultVenue](https://core.telegram.org/bots/api#inlinequeryresultvenue)
  */
 public final class InlineQueryResultVenue: Codable {
-
     /// Custom keys for coding/decoding `InlineQueryResultVenue` struct
     public enum CodingKeys: String, CodingKey {
-        case type = "type"
-        case id = "id"
-        case latitude = "latitude"
-        case longitude = "longitude"
-        case title = "title"
-        case address = "address"
+        case type
+        case id
+        case latitude
+        case longitude
+        case title
+        case address
         case foursquareId = "foursquare_id"
         case foursquareType = "foursquare_type"
         case googlePlaceId = "google_place_id"
@@ -72,7 +71,7 @@ public final class InlineQueryResultVenue: Codable {
     /// Optional. Thumbnail height
     public var thumbHeight: Int?
 
-    public init (type: String, id: String, latitude: Float, longitude: Float, title: String, address: String, foursquareId: String? = nil, foursquareType: String? = nil, googlePlaceId: String? = nil, googlePlaceType: String? = nil, replyMarkup: InlineKeyboardMarkup? = nil, inputMessageContent: InputMessageContent? = nil, thumbUrl: String? = nil, thumbWidth: Int? = nil, thumbHeight: Int? = nil) {
+    public init(type: String, id: String, latitude: Float, longitude: Float, title: String, address: String, foursquareId: String? = nil, foursquareType: String? = nil, googlePlaceId: String? = nil, googlePlaceType: String? = nil, replyMarkup: InlineKeyboardMarkup? = nil, inputMessageContent: InputMessageContent? = nil, thumbUrl: String? = nil, thumbWidth: Int? = nil, thumbHeight: Int? = nil) {
         self.type = type
         self.id = id
         self.latitude = latitude

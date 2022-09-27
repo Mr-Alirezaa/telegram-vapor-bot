@@ -1,14 +1,10 @@
-
-
 import Vapor
 
 /// DESCRIPTION:
 /// Use this method to set the thumbnail of a sticker set. Animated thumbnails can be set for animated sticker sets only. Video thumbnails can be set only for video sticker sets only. Returns True on success.
 
-
 /// Parameters container struct for `setStickerSetThumb` method
 public struct SetStickerSetThumbParams: Encodable {
-
     /// Sticker set name
     public var name: String
 
@@ -20,32 +16,30 @@ public struct SetStickerSetThumbParams: Encodable {
 
     /// Custom keys for coding/decoding `SetStickerSetThumbParams` struct
     public enum CodingKeys: String, CodingKey {
-            case name = "name"
-            case userId = "user_id"
-            case thumb = "thumb"
+        case name
+        case userId = "user_id"
+        case thumb
     }
 
     public init(name: String, userId: Int64, thumb: FileInfo? = nil) {
-            self.name = name
-            self.userId = userId
-            self.thumb = thumb
+        self.name = name
+        self.userId = userId
+        self.thumb = thumb
     }
 }
 
-
 public extension Bot {
+    /**
+     Use this method to set the thumbnail of a sticker set. Animated thumbnails can be set for animated sticker sets only. Video thumbnails can be set only for video sticker sets only. Returns True on success.
 
-/**
- Use this method to set the thumbnail of a sticker set. Animated thumbnails can be set for animated sticker sets only. Video thumbnails can be set only for video sticker sets only. Returns True on success.
+     SeeAlso Telegram Bot API Reference:
+     [SetStickerSetThumbParams](https://core.telegram.org/bots/api#setstickersetthumb)
 
- SeeAlso Telegram Bot API Reference:
- [SetStickerSetThumbParams](https://core.telegram.org/bots/api#setstickersetthumb)
- 
- - Parameters:
-     - params: Parameters container, see `SetStickerSetThumbParams` struct
- - Throws: Throws on errors
- - Returns: EventLoopFuture of `Bool` type
- */
+     - Parameters:
+         - params: Parameters container, see `SetStickerSetThumbParams` struct
+     - Throws: Throws on errors
+     - Returns: EventLoopFuture of `Bool` type
+     */
     @discardableResult
     func setStickerSetThumb(params: SetStickerSetThumbParams) throws -> EventLoopFuture<Bool> {
         let methodURL: URI = .init(string: getMethodURL("setStickerSetThumb"))

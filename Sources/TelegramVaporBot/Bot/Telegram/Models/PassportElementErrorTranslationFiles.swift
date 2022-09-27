@@ -7,13 +7,12 @@
  [PassportElementErrorTranslationFiles](https://core.telegram.org/bots/api#passportelementerrortranslationfiles)
  */
 public final class PassportElementErrorTranslationFiles: Codable {
-
     /// Custom keys for coding/decoding `PassportElementErrorTranslationFiles` struct
     public enum CodingKeys: String, CodingKey {
-        case source = "source"
-        case type = "type"
+        case source
+        case type
         case fileHashes = "file_hashes"
-        case message = "message"
+        case message
     }
 
     /// Error source, must be translation_files
@@ -28,7 +27,7 @@ public final class PassportElementErrorTranslationFiles: Codable {
     /// Error message
     public var message: String
 
-    public init (source: String, type: String, fileHashes: [String], message: String) {
+    public init(source: String, type: String, fileHashes: [String], message: String) {
         self.source = source
         self.type = type
         self.fileHashes = fileHashes

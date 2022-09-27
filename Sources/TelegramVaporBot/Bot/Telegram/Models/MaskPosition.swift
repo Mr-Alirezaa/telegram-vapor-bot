@@ -1,5 +1,3 @@
-
-
 import Vapor
 
 /**
@@ -9,13 +7,12 @@ import Vapor
  [MaskPosition](https://core.telegram.org/bots/api#maskposition)
  */
 public final class MaskPosition: Codable {
-
     /// Custom keys for coding/decoding `MaskPosition` struct
     public enum CodingKeys: String, CodingKey {
-        case point = "point"
+        case point
         case xShift = "x_shift"
         case yShift = "y_shift"
-        case scale = "scale"
+        case scale
     }
 
     /// The part of the face relative to which the mask should be placed. One of “forehead”, “eyes”, “mouth”, or “chin”.
@@ -30,7 +27,7 @@ public final class MaskPosition: Codable {
     /// Mask scaling coefficient. For example, 2.0 means double size.
     public var scale: Float
 
-    public init (point: String, xShift: Float, yShift: Float, scale: Float) {
+    public init(point: String, xShift: Float, yShift: Float, scale: Float) {
         self.point = point
         self.xShift = xShift
         self.yShift = yShift

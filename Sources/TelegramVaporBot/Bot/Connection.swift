@@ -1,11 +1,7 @@
-
-
 import Foundation
 import Vapor
 
-
 public protocol ConnectionProtocol {
-
     var bot: Bot? { get set }
     var dispatcher: DispatcherProtocol { get }
 
@@ -13,9 +9,7 @@ public protocol ConnectionProtocol {
     func start() throws -> Bool
 }
 
-
 public final class LongPollingConnection: ConnectionProtocol {
-
     public weak var bot: Bot? {
         get { _bot }
         set {
@@ -23,13 +17,14 @@ public final class LongPollingConnection: ConnectionProtocol {
             dispatcher.bot = newValue
         }
     }
+
     public var dispatcher: DispatcherProtocol
     public var limit: Int?
     public var timeout: Int? = 15
     public var allowedUpdates: [Update.CodingKeys]?
 
     private weak var _bot: Bot?
-    private var offsetUpdates: Int = 0
+    private var offsetUpdates = 0
     private var newOffsetUpdates: Int { offsetUpdates + 1 }
 
     public init(dispatcher: DispatcherProtocol, limit: Int? = nil, timeout: Int? = nil, allowedUpdates: [Update.CodingKeys]? = nil) {
@@ -40,7 +35,7 @@ public final class LongPollingConnection: ConnectionProtocol {
     }
 
     public init(limit: Int? = nil, timeout: Int? = nil, allowedUpdates: [Update.CodingKeys]? = nil) {
-        self.dispatcher = DefaultDispatcher()
+        dispatcher = DefaultDispatcher()
         self.limit = limit
         self.timeout = timeout ?? self.timeout
         self.allowedUpdates = allowedUpdates
@@ -52,10 +47,10 @@ public final class LongPollingConnection: ConnectionProtocol {
         let deleteWebHookParams: DeleteWebhookParams = .init(dropPendingUpdates: false)
         guard let bot = bot else { return false }
         let future: EventLoopFuture<Bool> = try bot.deleteWebhook(params: deleteWebHookParams)
-        var result: Bool = false
+        var result = false
         future.whenComplete { [weak self] response in
             switch response {
-            case .success(_):
+            case .success:
                 result = true
             case let .failure(error):
                 Bot.log.critical(error.logMessage)
@@ -74,11 +69,13 @@ public final class LongPollingConnection: ConnectionProtocol {
     }
 
     private func getUpdates() throws {
-        let allowedUpdates: [String] = (allowedUpdates ?? []).map { $0.rawValue }
-        let params: GetUpdatesParams = .init(offset: newOffsetUpdates,
-                                                   limit: limit,
-                                                   timeout: timeout,
-                                                   allowedUpdates: allowedUpdates)
+        let allowedUpdates: [String] = (allowedUpdates ?? []).map(\.rawValue)
+        let params: GetUpdatesParams = .init(
+            offset: newOffsetUpdates,
+            limit: limit,
+            timeout: timeout,
+            allowedUpdates: allowedUpdates
+        )
         try bot?.getUpdates(params: params).whenComplete { [weak self] response in
             switch response {
             case let .success(updates):
@@ -100,12 +97,9 @@ public final class LongPollingConnection: ConnectionProtocol {
             }
         }
     }
-
 }
 
-
 public final class WebHookConnection: ConnectionProtocol {
-
     private weak var _bot: Bot?
     public weak var bot: Bot? {
         get { _bot }
@@ -114,6 +108,7 @@ public final class WebHookConnection: ConnectionProtocol {
             dispatcher.bot = newValue
         }
     }
+
     public var dispatcher: DispatcherProtocol
     public var webHookURL: URI
 
@@ -124,7 +119,7 @@ public final class WebHookConnection: ConnectionProtocol {
 
     public init(webHookURL: URI) {
         self.webHookURL = webHookURL
-        self.dispatcher = DefaultDispatcher()
+        dispatcher = DefaultDispatcher()
     }
 
     @discardableResult
@@ -132,10 +127,10 @@ public final class WebHookConnection: ConnectionProtocol {
         let webHookParams: SetWebhookParams = .init(url: webHookURL.description)
         guard let bot = bot else { return false }
         let future: EventLoopFuture<Bool> = try bot.setWebhook(params: webHookParams)
-        var result: Bool = false
+        var result = false
         future.whenComplete { response in
             switch response {
-            case .success(_):
+            case .success:
                 result = true
             case let .failure(error):
                 Bot.log.critical(error.logMessage)

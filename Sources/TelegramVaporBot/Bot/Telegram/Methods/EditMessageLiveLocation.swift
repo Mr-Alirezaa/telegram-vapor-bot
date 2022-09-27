@@ -1,14 +1,10 @@
-
-
 import Vapor
 
 /// DESCRIPTION:
 /// Use this method to edit live location messages. A location can be edited until its live_period expires or editing is explicitly disabled by a call to stopMessageLiveLocation. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
 
-
 /// Parameters container struct for `editMessageLiveLocation` method
 public struct EditMessageLiveLocationParams: Encodable {
-
     /// Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
     public var chatId: ChatId?
 
@@ -38,44 +34,42 @@ public struct EditMessageLiveLocationParams: Encodable {
 
     /// Custom keys for coding/decoding `EditMessageLiveLocationParams` struct
     public enum CodingKeys: String, CodingKey {
-            case chatId = "chat_id"
-            case messageId = "message_id"
-            case inlineMessageId = "inline_message_id"
-            case latitude = "latitude"
-            case longitude = "longitude"
-            case horizontalAccuracy = "horizontal_accuracy"
-            case heading = "heading"
-            case proximityAlertRadius = "proximity_alert_radius"
-            case replyMarkup = "reply_markup"
+        case chatId = "chat_id"
+        case messageId = "message_id"
+        case inlineMessageId = "inline_message_id"
+        case latitude
+        case longitude
+        case horizontalAccuracy = "horizontal_accuracy"
+        case heading
+        case proximityAlertRadius = "proximity_alert_radius"
+        case replyMarkup = "reply_markup"
     }
 
     public init(chatId: ChatId? = nil, messageId: Int? = nil, inlineMessageId: String? = nil, latitude: Float, longitude: Float, horizontalAccuracy: Float? = nil, heading: Int? = nil, proximityAlertRadius: Int? = nil, replyMarkup: InlineKeyboardMarkup? = nil) {
-            self.chatId = chatId
-            self.messageId = messageId
-            self.inlineMessageId = inlineMessageId
-            self.latitude = latitude
-            self.longitude = longitude
-            self.horizontalAccuracy = horizontalAccuracy
-            self.heading = heading
-            self.proximityAlertRadius = proximityAlertRadius
-            self.replyMarkup = replyMarkup
+        self.chatId = chatId
+        self.messageId = messageId
+        self.inlineMessageId = inlineMessageId
+        self.latitude = latitude
+        self.longitude = longitude
+        self.horizontalAccuracy = horizontalAccuracy
+        self.heading = heading
+        self.proximityAlertRadius = proximityAlertRadius
+        self.replyMarkup = replyMarkup
     }
 }
 
-
 public extension Bot {
+    /**
+     Use this method to edit live location messages. A location can be edited until its live_period expires or editing is explicitly disabled by a call to stopMessageLiveLocation. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
 
-/**
- Use this method to edit live location messages. A location can be edited until its live_period expires or editing is explicitly disabled by a call to stopMessageLiveLocation. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
+     SeeAlso Telegram Bot API Reference:
+     [EditMessageLiveLocationParams](https://core.telegram.org/bots/api#editmessagelivelocation)
 
- SeeAlso Telegram Bot API Reference:
- [EditMessageLiveLocationParams](https://core.telegram.org/bots/api#editmessagelivelocation)
- 
- - Parameters:
-     - params: Parameters container, see `EditMessageLiveLocationParams` struct
- - Throws: Throws on errors
- - Returns: EventLoopFuture of `MessageOrBool` type
- */
+     - Parameters:
+         - params: Parameters container, see `EditMessageLiveLocationParams` struct
+     - Throws: Throws on errors
+     - Returns: EventLoopFuture of `MessageOrBool` type
+     */
     @discardableResult
     func editMessageLiveLocation(params: EditMessageLiveLocationParams) throws -> EventLoopFuture<MessageOrBool> {
         let methodURL: URI = .init(string: getMethodURL("editMessageLiveLocation"))

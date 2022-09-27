@@ -7,12 +7,11 @@
  [InputTextMessageContent](https://core.telegram.org/bots/api#inputtextmessagecontent)
  */
 public final class InputTextMessageContent: Codable {
-
     /// Custom keys for coding/decoding `InputTextMessageContent` struct
     public enum CodingKeys: String, CodingKey {
         case messageText = "message_text"
         case parseMode = "parse_mode"
-        case entities = "entities"
+        case entities
         case disableWebPagePreview = "disable_web_page_preview"
     }
 
@@ -28,7 +27,7 @@ public final class InputTextMessageContent: Codable {
     /// Optional. Disables link previews for links in the sent message
     public var disableWebPagePreview: Bool?
 
-    public init (messageText: String, parseMode: String? = nil, entities: [MessageEntity]? = nil, disableWebPagePreview: Bool? = nil) {
+    public init(messageText: String, parseMode: String? = nil, entities: [MessageEntity]? = nil, disableWebPagePreview: Bool? = nil) {
         self.messageText = messageText
         self.parseMode = parseMode
         self.entities = entities

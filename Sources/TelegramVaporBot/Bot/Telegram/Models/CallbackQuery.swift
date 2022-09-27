@@ -7,15 +7,14 @@
  [CallbackQuery](https://core.telegram.org/bots/api#callbackquery)
  */
 public final class CallbackQuery: Codable {
-
     /// Custom keys for coding/decoding `CallbackQuery` struct
     public enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case from = "from"
-        case message = "message"
+        case id
+        case from
+        case message
         case inlineMessageId = "inline_message_id"
         case chatInstance = "chat_instance"
-        case data = "data"
+        case data
         case gameShortName = "game_short_name"
     }
 
@@ -40,7 +39,7 @@ public final class CallbackQuery: Codable {
     /// Optional. Short name of a Game to be returned, serves as the unique identifier for the game
     public var gameShortName: String?
 
-    public init (id: String, from: User, message: Message? = nil, inlineMessageId: String? = nil, chatInstance: String, data: String? = nil, gameShortName: String? = nil) {
+    public init(id: String, from: User, message: Message? = nil, inlineMessageId: String? = nil, chatInstance: String, data: String? = nil, gameShortName: String? = nil) {
         self.id = id
         self.from = from
         self.message = message

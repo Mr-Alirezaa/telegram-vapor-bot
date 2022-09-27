@@ -7,18 +7,17 @@
  [InlineKeyboardButton](https://core.telegram.org/bots/api#inlinekeyboardbutton)
  */
 public final class InlineKeyboardButton: Codable {
-
     /// Custom keys for coding/decoding `InlineKeyboardButton` struct
     public enum CodingKeys: String, CodingKey {
-        case text = "text"
-        case url = "url"
+        case text
+        case url
         case callbackData = "callback_data"
         case webApp = "web_app"
         case loginUrl = "login_url"
         case switchInlineQuery = "switch_inline_query"
         case switchInlineQueryCurrentChat = "switch_inline_query_current_chat"
         case callbackGame = "callback_game"
-        case pay = "pay"
+        case pay
     }
 
     /// Label text on the button
@@ -37,26 +36,26 @@ public final class InlineKeyboardButton: Codable {
     public var loginUrl: LoginUrl?
 
     /// Optional. If set, pressing the button will prompt the user to select one of their chats, open that chat and insert the bot's username and the specified inline query in the input field. May be empty, in which case just the bot's username will be inserted.
-    /// 
+    ///
     /// Note: This offers an easy way for users to start using your bot in inline mode when they are currently in a private chat with it. Especially useful when combined with switch_pm… actions - in this case the user will be automatically returned to the chat they switched from, skipping the chat selection screen.
     public var switchInlineQuery: String?
 
     /// Optional. If set, pressing the button will insert the bot's username and the specified inline query in the current chat's input field. May be empty, in which case only the bot's username will be inserted.
-    /// 
+    ///
     /// This offers a quick way for the user to open your bot in inline mode in the same chat - good for selecting something from multiple options.
     public var switchInlineQueryCurrentChat: String?
 
     /// Optional. Description of the game that will be launched when the user presses the button.
-    /// 
+    ///
     /// NOTE: This type of button must always be the first button in the first row.
     public var callbackGame: CallbackGame?
 
     /// Optional. Specify True, to send a Pay button.
-    /// 
+    ///
     /// NOTE: This type of button must always be the first button in the first row and can only be used in invoice messages.
     public var pay: Bool?
 
-    public init (text: String, url: String? = nil, callbackData: String? = nil, webApp: WebAppInfo? = nil, loginUrl: LoginUrl? = nil, switchInlineQuery: String? = nil, switchInlineQueryCurrentChat: String? = nil, callbackGame: CallbackGame? = nil, pay: Bool? = nil) {
+    public init(text: String, url: String? = nil, callbackData: String? = nil, webApp: WebAppInfo? = nil, loginUrl: LoginUrl? = nil, switchInlineQuery: String? = nil, switchInlineQueryCurrentChat: String? = nil, callbackGame: CallbackGame? = nil, pay: Bool? = nil) {
         self.text = text
         self.url = url
         self.callbackData = callbackData

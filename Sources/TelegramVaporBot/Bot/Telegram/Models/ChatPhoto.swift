@@ -7,7 +7,6 @@
  [ChatPhoto](https://core.telegram.org/bots/api#chatphoto)
  */
 public final class ChatPhoto: Codable {
-
     /// Custom keys for coding/decoding `ChatPhoto` struct
     public enum CodingKeys: String, CodingKey {
         case smallFileId = "small_file_id"
@@ -28,7 +27,7 @@ public final class ChatPhoto: Codable {
     /// Unique file identifier of big (640x640) chat photo, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.
     public var bigFileUniqueId: String
 
-    public init (smallFileId: String, smallFileUniqueId: String, bigFileId: String, bigFileUniqueId: String) {
+    public init(smallFileId: String, smallFileUniqueId: String, bigFileId: String, bigFileUniqueId: String) {
         self.smallFileId = smallFileId
         self.smallFileUniqueId = smallFileUniqueId
         self.bigFileId = bigFileId

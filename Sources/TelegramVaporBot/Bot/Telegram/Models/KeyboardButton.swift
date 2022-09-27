@@ -7,10 +7,9 @@
  [KeyboardButton](https://core.telegram.org/bots/api#keyboardbutton)
  */
 public final class KeyboardButton: Codable {
-
     /// Custom keys for coding/decoding `KeyboardButton` struct
     public enum CodingKeys: String, CodingKey {
-        case text = "text"
+        case text
         case requestContact = "request_contact"
         case requestLocation = "request_location"
         case requestPoll = "request_poll"
@@ -32,7 +31,7 @@ public final class KeyboardButton: Codable {
     /// Optional. If specified, the described Web App will be launched when the button is pressed. The Web App will be able to send a “web_app_data” service message. Available in private chats only.
     public var webApp: WebAppInfo?
 
-    public init (text: String, requestContact: Bool? = nil, requestLocation: Bool? = nil, requestPoll: KeyboardButtonPollType? = nil, webApp: WebAppInfo? = nil) {
+    public init(text: String, requestContact: Bool? = nil, requestLocation: Bool? = nil, requestPoll: KeyboardButtonPollType? = nil, webApp: WebAppInfo? = nil) {
         self.text = text
         self.requestContact = requestContact
         self.requestLocation = requestLocation
