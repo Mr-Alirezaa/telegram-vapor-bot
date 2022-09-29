@@ -7,14 +7,8 @@ public protocol AsyncHandlerProtocol: HandlerProtocol {
     func handle(update: Update, bot: BotProtocol) async
 }
 
-extension AsyncHandlerProtocol {
-    public func handle(update: Update, bot: BotProtocol) {
-        Task {
-            await self.handle(update: update, bot: bot)
-        }
-    }
-
-    public func handle(update: Update, bot: BotProtocol) async {
+public extension AsyncHandlerProtocol {
+    func handle(update: Update, bot: BotProtocol) async {
         await Task {
             do {
                 try await asyncCallback(update, bot)

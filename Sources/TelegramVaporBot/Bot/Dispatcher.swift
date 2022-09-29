@@ -125,7 +125,13 @@ open class DefaultDispatcher: DispatcherProtocol {
                 for handler in self.handlersGroup[self.handlersGroup.count - i] {
                     if handler.check(update: update) {
                         self.handlerQueue.async {
-                            handler.handle(update: update, bot: bot)
+                            if let handler = handler as? AsyncHandlerProtocol {
+                                Task {
+                                    await handler.handle(update: update, bot: bot)
+                                }
+                            } else {
+                                handler.handle(update: update, bot: bot)
+                            }
                         }
                     }
                 }
