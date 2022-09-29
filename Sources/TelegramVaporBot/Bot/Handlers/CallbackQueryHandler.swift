@@ -5,9 +5,9 @@ public class CallbackQueryHandler: HandlerProtocol {
     public var id = 0
 
     public var name: String
+    public let callback: HandlerCallback
 
     let pattern: String
-    let callback: HandlerCallback
 
     public init(
         name: String = String(describing: CallbackQueryHandler.self),

@@ -2,7 +2,7 @@ import Foundation
 import SwiftRegularExpression
 
 /// Filters updates by searching for an occurence of pattern in the message text. The `NSRegularExpression` is used to determine whether an update should be filtered. Refer to the documentation of the `NSRegularExpression` for more information.
-public class RegexpFilter: Filter {
+public class RegexFilter: Filter {
     let pattern: String
     let options: NSRegularExpression.Options
 
@@ -22,7 +22,7 @@ public class RegexpFilter: Filter {
 }
 
 public extension Filter {
-    static func regexp(pattern: String, options: NSRegularExpression.Options = []) -> RegexpFilter {
-        RegexpFilter(pattern: pattern, options: options)
+    static func regexp(pattern: String, options: NSRegularExpression.Options = []) -> RegexFilter {
+        RegexFilter(pattern: pattern, options: options)
     }
 }

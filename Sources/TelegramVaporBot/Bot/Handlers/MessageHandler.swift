@@ -22,8 +22,8 @@ public class MessageHandler: HandlerProtocol {
         public static let editedUpdates = Options(rawValue: 4)
     }
 
+    public let callback: HandlerCallback
     let filters: Filter
-    let callback: HandlerCallback
     let options: Options
 
     public init(
@@ -59,13 +59,5 @@ public class MessageHandler: HandlerProtocol {
         }
 
         return false
-    }
-
-    public func handle(update: Update, bot: BotProtocol) {
-        do {
-            try callback(update, bot)
-        } catch {
-            Bot.log.error(error.logMessage)
-        }
     }
 }

@@ -6,9 +6,10 @@ public enum HTTPMediaType: String, Equatable {
     case json
 }
 
-private struct EmptyParams: Encodable {}
+struct EmptyParams: Encodable {}
 
 public protocol ClientProtocol {
+    var client: Vapor.Client { get }
     @discardableResult
     func get<Params: Encodable, Response: Codable>(_ url: URI, params: Params?, as mediaType: Vapor.HTTPMediaType?) -> EventLoopFuture<Response>
 
@@ -28,8 +29,9 @@ public protocol ClientProtocol {
     func post<Response: Codable>(_ url: URI, as mediaType: Vapor.HTTPMediaType) -> EventLoopFuture<Response>
 }
 
+
 public final class DefaultClient: ClientProtocol {
-    private let client: Vapor.Client
+    public let client: Vapor.Client
 
     public init(client: Vapor.Client) {
         self.client = client

@@ -1,9 +1,3 @@
-//
-//
-//
-
-//
-
 /**
  Handler class to handle Telegram commands.
 
@@ -29,16 +23,16 @@ public class CommandHandler: HandlerProtocol {
         /// Determines Whether the handler should also accept edited messages. Not used by default.
         public static let editedUpdates = Options(rawValue: 1)
     }
+    public let callback: HandlerCallback
 
-    let commands: Set<String>
-    let callback: HandlerCallback
+    public let commands: Set<String>
     let filters: Filter
     let options: Options
     let botUsername: String?
 
     public init(
         name: String = String(describing: CommandHandler.self),
-        commands: [String],
+        commands: Set<String>,
         filters: Filter = .all,
         options: Options = [],
         botUsername: String? = nil,
@@ -82,13 +76,5 @@ public class CommandHandler: HandlerProtocol {
             }
         }
         return !commands.intersection(types).isEmpty
-    }
-
-    public func handle(update: Update, bot: BotProtocol) {
-        do {
-            try callback(update, bot)
-        } catch {
-            Bot.log.error(error.logMessage)
-        }
     }
 }

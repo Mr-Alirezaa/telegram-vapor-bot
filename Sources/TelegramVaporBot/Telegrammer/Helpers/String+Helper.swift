@@ -2,7 +2,7 @@ import Foundation
 import Logging
 import SwiftRegularExpression
 #if os(Linux)
-    import Glibc
+import Glibc
 #endif
 
 public extension String {
