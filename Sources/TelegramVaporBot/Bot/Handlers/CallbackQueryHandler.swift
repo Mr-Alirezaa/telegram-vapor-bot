@@ -28,12 +28,4 @@ public class CallbackQueryHandler: HandlerProtocol {
         }
         return true
     }
-
-    public func handle(update: Update, bot: BotProtocol) {
-        do {
-            try callback(update, bot)
-        } catch {
-            Bot.log.error(error.logMessage)
-        }
-    }
 }
