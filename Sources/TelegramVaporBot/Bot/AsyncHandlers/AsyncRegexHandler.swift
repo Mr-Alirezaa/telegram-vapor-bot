@@ -30,6 +30,17 @@ public class AsyncRegexHandler: RegexHandler, AsyncHandlerProtocol {
             callback
         )
     }
+
+    public func handle(update: Update, bot: BotProtocol) async {
+        await Task {
+            do {
+                try await asyncCallback(update, bot)
+            } catch {
+                Bot.log.error(error.logMessage)
+            }
+        }
+        .value
+    }
 }
 #endif
 

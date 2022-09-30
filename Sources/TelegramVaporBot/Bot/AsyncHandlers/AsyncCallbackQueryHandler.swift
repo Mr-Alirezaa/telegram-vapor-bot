@@ -12,5 +12,16 @@ public class AsyncCallbackQueryHandler: CallbackQueryHandler, AsyncHandlerProtoc
         self.asyncCallback = callback
         super.init(name: name, pattern: pattern, { _, _ in })
     }
+
+    func handle(update: Update, bot: BotProtocol) async {
+        await Task {
+            do {
+                try await asyncCallback(update, bot)
+            } catch {
+                Bot.log.error(error.logMessage)
+            }
+        }
+        .value
+    }
 }
 #endif

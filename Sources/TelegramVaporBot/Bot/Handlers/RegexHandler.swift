@@ -42,4 +42,12 @@ public class RegexHandler: HandlerProtocol {
         guard let text = update.message?.text else { return false }
         return text.regexp(regex.pattern, regex.options).keys.count > 0
     }
+
+    public func handle(update: Update, bot: BotProtocol) {
+        do {
+            try callback(update, bot)
+        } catch {
+            Bot.log.error(error.logMessage)
+        }
+    }
 }

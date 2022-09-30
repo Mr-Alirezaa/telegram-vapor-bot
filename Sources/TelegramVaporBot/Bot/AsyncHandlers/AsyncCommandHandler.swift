@@ -15,5 +15,16 @@ public class AsyncCommandHandler: CommandHandler, AsyncHandlerProtocol {
         self.asyncCallback = callback
         super.init(name: name, commands: commands, filters: filters, options: options, botUsername: botUsername, { _, _ in })
     }
+
+    func handle(update: Update, bot: BotProtocol) async {
+        await Task {
+            do {
+                try await asyncCallback(update, bot)
+            } catch {
+                Bot.log.error(error.logMessage)
+            }
+        }
+        .value
+    }
 }
 #endif

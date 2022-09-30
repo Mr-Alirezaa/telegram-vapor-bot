@@ -77,4 +77,12 @@ public class CommandHandler: HandlerProtocol {
         }
         return !commands.intersection(types).isEmpty
     }
+
+    public func handle(update: Update, bot: BotProtocol) {
+        do {
+            try callback(update, bot)
+        } catch {
+            Bot.log.error(error.logMessage)
+        }
+    }
 }

@@ -14,5 +14,16 @@ public class AsyncMessageHandler: MessageHandler, AsyncHandlerProtocol {
         self.asyncCallback = callback
         super.init(name: name, filters: filters, options: options, { _, _ in })
     }
+
+    func handle(update: Update, bot: BotProtocol) async {
+        await Task {
+            do {
+                try await asyncCallback(update, bot)
+            } catch {
+                Bot.log.error(error.logMessage)
+            }
+        }
+        .value
+    }
 }
 #endif
