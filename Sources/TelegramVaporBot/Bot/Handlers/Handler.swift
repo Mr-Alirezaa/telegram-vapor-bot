@@ -1,6 +1,6 @@
 import Foundation
 
-public protocol Handler: HandlerProtocol {
+public protocol Handler<ResultType>: HandlerProtocol {
     associatedtype ResultType = Void
 
     @discardableResult

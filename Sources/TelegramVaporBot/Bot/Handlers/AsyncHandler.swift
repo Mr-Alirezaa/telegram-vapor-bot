@@ -1,6 +1,6 @@
 import Foundation
 
-public protocol AsyncHandler: HandlerProtocol {
+public protocol AsyncHandler<ResultType>: HandlerProtocol {
     associatedtype ResultType = Void
 
     @discardableResult
