@@ -3,13 +3,13 @@ import Vapor
 
 public protocol DispatcherProtocol {
     var bot: Bot? { get set }
-    var handlersGroup: [[HandlerProtocol]] { get set }
+    var handlersGroup: [[any HandlerProtocol]] { get set }
 
     /// The higher level has the highest priority
-    func add(_ handler: HandlerProtocol, priority: Int)
-    func add(_ handler: HandlerProtocol)
+    func add(_ handler: any HandlerProtocol, priority: Int)
+    func add(_ handler: any HandlerProtocol)
     func addBeforeAllCallback(_ callback: @escaping ([Update], @escaping ([Update]) throws -> Void) throws -> Void)
-    func remove(_ handler: HandlerProtocol, from level: Int?)
+    func remove(_ handler: any HandlerProtocol, from level: Int?)
     func process(_ updates: [Update]) throws
 }
 
@@ -27,7 +27,7 @@ open class DefaultDispatcher: DispatcherProtocol {
         attributes: .concurrent
     )
 
-    public var handlersGroup: [[HandlerProtocol]] = []
+    public var handlersGroup: [[any HandlerProtocol]] = []
     private var beforeAllCallback: ([Update], @escaping ([Update]) throws -> Void) throws -> Void = { updates, callback in
         try callback(updates)
     }
@@ -47,12 +47,12 @@ open class DefaultDispatcher: DispatcherProtocol {
 
     public init() {}
 
-    public func add(_ handler: HandlerProtocol, priority level: Int) {
+    public func add(_ handler: any HandlerProtocol, priority level: Int) {
         processQueue.sync(flags: .barrier) { [weak self] in
             guard let self = self else { return }
 
             /// add uniq index id
-            var handler: HandlerProtocol = handler
+            var handler: any HandlerProtocol = handler
             handler.id = self.nextHandlerId
 
             /// add handler
@@ -72,7 +72,7 @@ open class DefaultDispatcher: DispatcherProtocol {
         }
     }
 
-    public func add(_ handler: HandlerProtocol) {
+    public func add(_ handler: any HandlerProtocol) {
         add(handler, priority: 0)
     }
 
@@ -80,7 +80,7 @@ open class DefaultDispatcher: DispatcherProtocol {
         beforeAllCallback = callback
     }
 
-    public func remove(_ handler: HandlerProtocol, from level: Int?) {
+    public func remove(_ handler: any HandlerProtocol, from level: Int?) {
         processQueue.sync(flags: .barrier) { [weak self] in
             guard let self = self else { return }
             let level: Level = level ?? 0
@@ -125,12 +125,16 @@ open class DefaultDispatcher: DispatcherProtocol {
                 for handler in self.handlersGroup[self.handlersGroup.count - i] {
                     if handler.check(update: update) {
                         self.handlerQueue.async {
-                            if let handler = handler as? AsyncHandlerProtocol {
-                                Task {
-                                    await handler.handle(update: update, bot: bot)
+                            do {
+                                if let handler = handler as? (any AsyncHandler) {
+                                    Task {
+                                        try await handler.handle(update: update, bot: bot)
+                                    }
+                                } else if let handler = handler as? (any Handler)  {
+                                    try handler.handle(update: update, bot: bot)
                                 }
-                            } else {
-                                handler.handle(update: update, bot: bot)
+                            } catch {
+                                Bot.log.report(error: error)
                             }
                         }
                     }

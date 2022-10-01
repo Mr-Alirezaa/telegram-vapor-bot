@@ -1,3 +1,3 @@
 import Foundation
 
-extension Array where Element == [HandlerProtocol] {}
+extension Array where Element == [any HandlerProtocol] {}

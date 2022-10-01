@@ -2,15 +2,12 @@ import Foundation
 import Logging
 
 public class LoggerHandler: HandlerProtocol {
-    public let callback: HandlerCallback
-
     public var id = 0
 
     let logLevel: Logger.Level
 
     public init(level: Logger.Level) {
         logLevel = level
-        callback = { _, _ in }
     }
 
     public func check(update: Update) -> Bool {
