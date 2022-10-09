@@ -72,7 +72,23 @@ public final class Update: Codable {
     /// Optional. A request to join the chat has been sent. The bot must have the can_invite_users administrator right in the chat to receive these updates.
     public var chatJoinRequest: ChatJoinRequest?
 
-    public init(updateId: Int, message: Message? = nil, editedMessage: Message? = nil, channelPost: Message? = nil, editedChannelPost: Message? = nil, inlineQuery: InlineQuery? = nil, chosenInlineResult: ChosenInlineResult? = nil, callbackQuery: CallbackQuery? = nil, shippingQuery: ShippingQuery? = nil, preCheckoutQuery: PreCheckoutQuery? = nil, poll: Poll? = nil, pollAnswer: PollAnswer? = nil, myChatMember: ChatMemberUpdated? = nil, chatMember: ChatMemberUpdated? = nil, chatJoinRequest: ChatJoinRequest? = nil) {
+    public init(
+        updateId: Int,
+        message: Message? = nil,
+        editedMessage: Message? = nil,
+        channelPost: Message? = nil,
+        editedChannelPost: Message? = nil,
+        inlineQuery: InlineQuery? = nil,
+        chosenInlineResult: ChosenInlineResult? = nil,
+        callbackQuery: CallbackQuery? = nil,
+        shippingQuery: ShippingQuery? = nil,
+        preCheckoutQuery: PreCheckoutQuery? = nil,
+        poll: Poll? = nil,
+        pollAnswer: PollAnswer? = nil,
+        myChatMember: ChatMemberUpdated? = nil,
+        chatMember: ChatMemberUpdated? = nil,
+        chatJoinRequest: ChatJoinRequest? = nil
+    ) {
         self.updateId = updateId
         self.message = message
         self.editedMessage = editedMessage
@@ -88,5 +104,49 @@ public final class Update: Codable {
         self.myChatMember = myChatMember
         self.chatMember = chatMember
         self.chatJoinRequest = chatJoinRequest
+    }
+}
+
+extension Update {
+
+    /// Convenient access to `from` property in different Update types.
+    var from: TelegramVaporBot.User? {
+        if let from = message?.from {
+            return from
+        }
+        if let from = message?.from {
+            return from
+        }
+        if let from = editedMessage?.from {
+            return from
+        }
+        if let from = channelPost?.from {
+            return from
+        }
+        if let from = editedChannelPost?.from {
+            return from
+        }
+        if let from = inlineQuery?.from {
+            return from
+        }
+        if let from = chosenInlineResult?.from {
+            return from
+        }
+        if let from = callbackQuery?.from {
+            return from
+        }
+        if let from = shippingQuery?.from {
+            return from
+        }
+        if let from = preCheckoutQuery?.from {
+            return from
+        }
+        if let from = myChatMember?.from {
+            return from
+        }
+        if let from = chatJoinRequest?.from {
+            return from
+        }
+        return nil
     }
 }
