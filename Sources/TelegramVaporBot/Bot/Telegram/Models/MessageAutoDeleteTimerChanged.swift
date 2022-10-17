@@ -1,11 +1,8 @@
 
-
-/**
- This object represents a service message about a change in auto-delete timer settings.
-
- SeeAlso Telegram Bot API Reference:
- [MessageAutoDeleteTimerChanged](https://core.telegram.org/bots/api#messageautodeletetimerchanged)
- */
+/// This object represents a service message about a change in auto-delete timer settings.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [MessageAutoDeleteTimerChanged](https://core.telegram.org/bots/api#messageautodeletetimerchanged)
 public final class MessageAutoDeleteTimerChanged: Codable {
     /// Custom keys for coding/decoding `MessageAutoDeleteTimerChanged` struct
     public enum CodingKeys: String, CodingKey {

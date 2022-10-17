@@ -1,20 +1,17 @@
 
-
-/**
- Represents a link to a page containing an embedded video player or a video file. By default, this video file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the video.
- If an InlineQueryResultVideo message contains an embedded video (e.g., YouTube), you must replace its content using input_message_content.
-
- SeeAlso Telegram Bot API Reference:
- [InlineQueryResultVideo](https://core.telegram.org/bots/api#inlinequeryresultvideo)
- */
+/// Represents a link to a page containing an embedded video player or a video file. By default, this video file will be sent by the user with an optional caption. Alternatively, you can use input\_message\_content to send a message with the specified content instead of the video.
+/// If an InlineQueryResultVideo message contains an embedded video (e.g., YouTube), you must replace its content using input\_message\_content.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [InlineQueryResultVideo](https://core.telegram.org/bots/api#inlinequeryresultvideo)
 public final class InlineQueryResultVideo: Codable {
     /// Custom keys for coding/decoding `InlineQueryResultVideo` struct
     public enum CodingKeys: String, CodingKey {
         case type
         case id
-        case videoUrl = "video_url"
+        case videoURL = "video_url"
         case mimeType = "mime_type"
-        case thumbUrl = "thumb_url"
+        case thumbURL = "thumb_url"
         case title
         case caption
         case parseMode = "parse_mode"
@@ -34,13 +31,13 @@ public final class InlineQueryResultVideo: Codable {
     public var id: String
 
     /// A valid URL for the embedded video player or video file
-    public var videoUrl: String
+    public var videoURL: String
 
     /// MIME type of the content of the video URL, “text/html” or “video/mp4”
     public var mimeType: String
 
     /// URL of the thumbnail (JPEG only) for the video
-    public var thumbUrl: String
+    public var thumbURL: String
 
     /// Title for the result
     public var title: String
@@ -51,7 +48,7 @@ public final class InlineQueryResultVideo: Codable {
     /// Optional. Mode for parsing entities in the video caption. See formatting options for more details.
     public var parseMode: String?
 
-    /// Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
+    /// Optional. List of special entities that appear in the caption, which can be specified instead of parse\_mode
     public var captionEntities: [MessageEntity]?
 
     /// Optional. Video width
@@ -72,12 +69,28 @@ public final class InlineQueryResultVideo: Codable {
     /// Optional. Content of the message to be sent instead of the video. This field is required if InlineQueryResultVideo is used to send an HTML-page as a result (e.g., a YouTube video).
     public var inputMessageContent: InputMessageContent?
 
-    public init(type: String, id: String, videoUrl: String, mimeType: String, thumbUrl: String, title: String, caption: String? = nil, parseMode: String? = nil, captionEntities: [MessageEntity]? = nil, videoWidth: Int? = nil, videoHeight: Int? = nil, videoDuration: Int? = nil, description: String? = nil, replyMarkup: InlineKeyboardMarkup? = nil, inputMessageContent: InputMessageContent? = nil) {
+    public init(
+        type: String,
+        id: String,
+        videoURL: String,
+        mimeType: String,
+        thumbURL: String,
+        title: String,
+        caption: String? = nil,
+        parseMode: String? = nil,
+        captionEntities: [MessageEntity]? = nil,
+        videoWidth: Int? = nil,
+        videoHeight: Int? = nil,
+        videoDuration: Int? = nil,
+        description: String? = nil,
+        replyMarkup: InlineKeyboardMarkup? = nil,
+        inputMessageContent: InputMessageContent? = nil
+    ) {
         self.type = type
         self.id = id
-        self.videoUrl = videoUrl
+        self.videoURL = videoURL
         self.mimeType = mimeType
-        self.thumbUrl = thumbUrl
+        self.thumbURL = thumbURL
         self.title = title
         self.caption = caption
         self.parseMode = parseMode

@@ -1,11 +1,8 @@
 
-
-/**
- This object contains information about an incoming shipping query.
-
- SeeAlso Telegram Bot API Reference:
- [ShippingQuery](https://core.telegram.org/bots/api#shippingquery)
- */
+/// This object contains information about an incoming shipping query.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [ShippingQuery](https://core.telegram.org/bots/api#shippingquery)
 public final class ShippingQuery: Codable {
     /// Custom keys for coding/decoding `ShippingQuery` struct
     public enum CodingKeys: String, CodingKey {

@@ -1,11 +1,8 @@
 
-
-/**
- Represents a contact with a phone number. By default, this contact will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the contact.
-
- SeeAlso Telegram Bot API Reference:
- [InlineQueryResultContact](https://core.telegram.org/bots/api#inlinequeryresultcontact)
- */
+/// Represents a contact with a phone number. By default, this contact will be sent by the user. Alternatively, you can use input\_message\_content to send a message with the specified content instead of the contact.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [InlineQueryResultContact](https://core.telegram.org/bots/api#inlinequeryresultcontact)
 public final class InlineQueryResultContact: Codable {
     /// Custom keys for coding/decoding `InlineQueryResultContact` struct
     public enum CodingKeys: String, CodingKey {
@@ -17,7 +14,7 @@ public final class InlineQueryResultContact: Codable {
         case vcard
         case replyMarkup = "reply_markup"
         case inputMessageContent = "input_message_content"
-        case thumbUrl = "thumb_url"
+        case thumbURL = "thumb_url"
         case thumbWidth = "thumb_width"
         case thumbHeight = "thumb_height"
     }
@@ -46,8 +43,8 @@ public final class InlineQueryResultContact: Codable {
     /// Optional. Content of the message to be sent instead of the contact
     public var inputMessageContent: InputMessageContent?
 
-    /// Optional. Url of the thumbnail for the result
-    public var thumbUrl: String?
+    /// Optional. URL of the thumbnail for the result
+    public var thumbURL: String?
 
     /// Optional. Thumbnail width
     public var thumbWidth: Int?
@@ -55,7 +52,19 @@ public final class InlineQueryResultContact: Codable {
     /// Optional. Thumbnail height
     public var thumbHeight: Int?
 
-    public init(type: String, id: String, phoneNumber: String, firstName: String, lastName: String? = nil, vcard: String? = nil, replyMarkup: InlineKeyboardMarkup? = nil, inputMessageContent: InputMessageContent? = nil, thumbUrl: String? = nil, thumbWidth: Int? = nil, thumbHeight: Int? = nil) {
+    public init(
+        type: String,
+        id: String,
+        phoneNumber: String,
+        firstName: String,
+        lastName: String? = nil,
+        vcard: String? = nil,
+        replyMarkup: InlineKeyboardMarkup? = nil,
+        inputMessageContent: InputMessageContent? = nil,
+        thumbURL: String? = nil,
+        thumbWidth: Int? = nil,
+        thumbHeight: Int? = nil
+    ) {
         self.type = type
         self.id = id
         self.phoneNumber = phoneNumber
@@ -64,7 +73,7 @@ public final class InlineQueryResultContact: Codable {
         self.vcard = vcard
         self.replyMarkup = replyMarkup
         self.inputMessageContent = inputMessageContent
-        self.thumbUrl = thumbUrl
+        self.thumbURL = thumbURL
         self.thumbWidth = thumbWidth
         self.thumbHeight = thumbHeight
     }

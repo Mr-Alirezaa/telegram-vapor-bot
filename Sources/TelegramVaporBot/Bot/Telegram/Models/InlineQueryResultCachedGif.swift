@@ -1,17 +1,14 @@
 
-
-/**
- Represents a link to an animated GIF file stored on the Telegram servers. By default, this animated GIF file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with specified content instead of the animation.
-
- SeeAlso Telegram Bot API Reference:
- [InlineQueryResultCachedGif](https://core.telegram.org/bots/api#inlinequeryresultcachedgif)
- */
+/// Represents a link to an animated GIF file stored on the Telegram servers. By default, this animated GIF file will be sent by the user with an optional caption. Alternatively, you can use input\_message\_content to send a message with specified content instead of the animation.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [InlineQueryResultCachedGif](https://core.telegram.org/bots/api#inlinequeryresultcachedgif)
 public final class InlineQueryResultCachedGif: Codable {
     /// Custom keys for coding/decoding `InlineQueryResultCachedGif` struct
     public enum CodingKeys: String, CodingKey {
         case type
         case id
-        case gifFileId = "gif_file_id"
+        case gifFileID = "gif_file_id"
         case title
         case caption
         case parseMode = "parse_mode"
@@ -27,7 +24,7 @@ public final class InlineQueryResultCachedGif: Codable {
     public var id: String
 
     /// A valid file identifier for the GIF file
-    public var gifFileId: String
+    public var gifFileID: String
 
     /// Optional. Title for the result
     public var title: String?
@@ -38,7 +35,7 @@ public final class InlineQueryResultCachedGif: Codable {
     /// Optional. Mode for parsing entities in the caption. See formatting options for more details.
     public var parseMode: String?
 
-    /// Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
+    /// Optional. List of special entities that appear in the caption, which can be specified instead of parse\_mode
     public var captionEntities: [MessageEntity]?
 
     /// Optional. Inline keyboard attached to the message
@@ -47,10 +44,20 @@ public final class InlineQueryResultCachedGif: Codable {
     /// Optional. Content of the message to be sent instead of the GIF animation
     public var inputMessageContent: InputMessageContent?
 
-    public init(type: String, id: String, gifFileId: String, title: String? = nil, caption: String? = nil, parseMode: String? = nil, captionEntities: [MessageEntity]? = nil, replyMarkup: InlineKeyboardMarkup? = nil, inputMessageContent: InputMessageContent? = nil) {
+    public init(
+        type: String,
+        id: String,
+        gifFileID: String,
+        title: String? = nil,
+        caption: String? = nil,
+        parseMode: String? = nil,
+        captionEntities: [MessageEntity]? = nil,
+        replyMarkup: InlineKeyboardMarkup? = nil,
+        inputMessageContent: InputMessageContent? = nil
+    ) {
         self.type = type
         self.id = id
-        self.gifFileId = gifFileId
+        self.gifFileID = gifFileID
         self.title = title
         self.caption = caption
         self.parseMode = parseMode

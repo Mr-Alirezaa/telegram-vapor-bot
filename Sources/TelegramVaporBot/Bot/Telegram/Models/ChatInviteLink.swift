@@ -1,11 +1,8 @@
 
-
-/**
- Represents an invite link for a chat.
-
- SeeAlso Telegram Bot API Reference:
- [ChatInviteLink](https://core.telegram.org/bots/api#chatinvitelink)
- */
+/// Represents an invite link for a chat.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [ChatInviteLink](https://core.telegram.org/bots/api#chatinvitelink)
 public final class ChatInviteLink: Codable {
     /// Custom keys for coding/decoding `ChatInviteLink` struct
     public enum CodingKeys: String, CodingKey {
@@ -47,7 +44,17 @@ public final class ChatInviteLink: Codable {
     /// Optional. Number of pending join requests created using this link
     public var pendingJoinRequestCount: Int?
 
-    public init(inviteLink: String, creator: User, createsJoinRequest: Bool, isPrimary: Bool, isRevoked: Bool, name: String? = nil, expireDate: Int? = nil, memberLimit: Int? = nil, pendingJoinRequestCount: Int? = nil) {
+    public init(
+        inviteLink: String,
+        creator: User,
+        createsJoinRequest: Bool,
+        isPrimary: Bool,
+        isRevoked: Bool,
+        name: String? = nil,
+        expireDate: Int? = nil,
+        memberLimit: Int? = nil,
+        pendingJoinRequestCount: Int? = nil
+    ) {
         self.inviteLink = inviteLink
         self.creator = creator
         self.createsJoinRequest = createsJoinRequest

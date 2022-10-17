@@ -1,11 +1,8 @@
 
-
-/**
- This object represents a point on the map.
-
- SeeAlso Telegram Bot API Reference:
- [Location](https://core.telegram.org/bots/api#location)
- */
+/// This object represents a point on the map.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [Location](https://core.telegram.org/bots/api#location)
 public final class Location: Codable {
     /// Custom keys for coding/decoding `Location` struct
     public enum CodingKeys: String, CodingKey {
@@ -35,7 +32,14 @@ public final class Location: Codable {
     /// Optional. The maximum distance for proximity alerts about approaching another chat member, in meters. For sent live locations only.
     public var proximityAlertRadius: Int?
 
-    public init(longitude: Float, latitude: Float, horizontalAccuracy: Float? = nil, livePeriod: Int? = nil, heading: Int? = nil, proximityAlertRadius: Int? = nil) {
+    public init(
+        longitude: Float,
+        latitude: Float,
+        horizontalAccuracy: Float? = nil,
+        livePeriod: Int? = nil,
+        heading: Int? = nil,
+        proximityAlertRadius: Int? = nil
+    ) {
         self.longitude = longitude
         self.latitude = latitude
         self.horizontalAccuracy = horizontalAccuracy

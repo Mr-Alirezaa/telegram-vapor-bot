@@ -2,7 +2,7 @@ import Foundation
 
 /// Filters messages to only allow those which are from users with a certain language code.
 ///
-/// Note: According to telegrams documentation, every single user does not have the language_code attribute.
+/// Note: According to telegrams documentation, every single user does not have the language\_code attribute.
 public class LanguageFilter: Filter {
     var lang: String
 

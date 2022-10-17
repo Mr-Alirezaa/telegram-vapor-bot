@@ -5,7 +5,7 @@ public class EntityFilter: Filter {
     let entityTypes: Set<MessageEntityType>
 
     public init(types: [MessageEntityType]) {
-        entityTypes = Set(types)
+        self.entityTypes = Set(types)
         super.init()
     }
 

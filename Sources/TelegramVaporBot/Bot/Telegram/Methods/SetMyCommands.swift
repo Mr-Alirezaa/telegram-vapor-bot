@@ -1,8 +1,5 @@
 import Vapor
 
-/// DESCRIPTION:
-/// Use this method to change the list of the bot's commands. See https://core.telegram.org/bots#commands for more details about bot commands. Returns True on success.
-
 /// Parameters container struct for `setMyCommands` method
 public struct SetMyCommandsParams: Encodable {
     /// A JSON-serialized list of bot commands to be set as the list of the bot's commands. At most 100 commands can be specified.
@@ -29,19 +26,16 @@ public struct SetMyCommandsParams: Encodable {
 }
 
 public extension Bot {
-    /**
-     Use this method to change the list of the bot's commands. See https://core.telegram.org/bots#commands for more details about bot commands. Returns True on success.
+    /// Use this method to change the list of the bot's commands. See https://core.telegram.org/bots#commands for more details about bot commands. Returns True on success.
 
-     SeeAlso Telegram Bot API Reference:
-     [SetMyCommandsParams](https://core.telegram.org/bots/api#setmycommands)
+    /// SeeAlso Telegram Bot API Reference:
+    /// [SetMyCommandsParams](https://core.telegram.org/bots/api#setmycommands)
 
-     - Parameters:
-         - params: Parameters container, see `SetMyCommandsParams` struct
-     - Throws: Throws on errors
-     - Returns: EventLoopFuture of `Bool` type
-     */
-    @discardableResult
-    func setMyCommands(params: SetMyCommandsParams) throws -> EventLoopFuture<Bool> {
+    /// - Parameters:
+    ///     - params: Parameters container, see `SetMyCommandsParams` struct
+    /// - Throws: Throws on errors
+    /// - Returns: EventLoopFuture of `Bool` type
+    @discardableResult func setMyCommands(params: SetMyCommandsParams) throws -> EventLoopFuture<Bool> {
         let methodURL: URI = .init(string: getMethodURL("setMyCommands"))
         let future: EventLoopFuture<Bool> = tgClient.post(methodURL, params: params, as: nil)
         return future

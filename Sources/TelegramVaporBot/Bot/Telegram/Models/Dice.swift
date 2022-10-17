@@ -1,11 +1,8 @@
 
-
-/**
- This object represents an animated emoji that displays a random value.
-
- SeeAlso Telegram Bot API Reference:
- [Dice](https://core.telegram.org/bots/api#dice)
- */
+/// This object represents an animated emoji that displays a random value.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [Dice](https://core.telegram.org/bots/api#dice)
 public final class Dice: Codable {
     /// Custom keys for coding/decoding `Dice` struct
     public enum CodingKeys: String, CodingKey {

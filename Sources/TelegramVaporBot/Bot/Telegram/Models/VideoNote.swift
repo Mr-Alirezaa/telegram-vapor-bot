@@ -1,16 +1,13 @@
 
-
-/**
- This object represents a video message (available in Telegram apps as of v.4.0).
-
- SeeAlso Telegram Bot API Reference:
- [VideoNote](https://core.telegram.org/bots/api#videonote)
- */
+/// This object represents a video message (available in Telegram apps as of v.4.0).
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [VideoNote](https://core.telegram.org/bots/api#videonote)
 public final class VideoNote: Codable {
     /// Custom keys for coding/decoding `VideoNote` struct
     public enum CodingKeys: String, CodingKey {
-        case fileId = "file_id"
-        case fileUniqueId = "file_unique_id"
+        case fileID = "file_id"
+        case fileUniqueID = "file_unique_id"
         case length
         case duration
         case thumb
@@ -18,10 +15,10 @@ public final class VideoNote: Codable {
     }
 
     /// Identifier for this file, which can be used to download or reuse the file
-    public var fileId: String
+    public var fileID: String
 
     /// Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.
-    public var fileUniqueId: String
+    public var fileUniqueID: String
 
     /// Video width and height (diameter of the video message) as defined by sender
     public var length: Int
@@ -35,9 +32,16 @@ public final class VideoNote: Codable {
     /// Optional. File size in bytes
     public var fileSize: Int?
 
-    public init(fileId: String, fileUniqueId: String, length: Int, duration: Int, thumb: PhotoSize? = nil, fileSize: Int? = nil) {
-        self.fileId = fileId
-        self.fileUniqueId = fileUniqueId
+    public init(
+        fileID: String,
+        fileUniqueID: String,
+        length: Int,
+        duration: Int,
+        thumb: PhotoSize? = nil,
+        fileSize: Int? = nil
+    ) {
+        self.fileID = fileID
+        self.fileUniqueID = fileUniqueID
         self.length = length
         self.duration = duration
         self.thumb = thumb

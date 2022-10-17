@@ -2,11 +2,11 @@ import Foundation
 
 /// Filters messages to allow only those which are from specified chat ID.
 public class ChatFilter: Filter {
-    var chatId: Int64
+    var chatID: Int64
     var username: String?
 
-    public init(chatId: Int64, username: String? = nil) {
-        self.chatId = chatId
+    public init(chatID: Int64, username: String? = nil) {
+        self.chatID = chatID
         self.username = username
         super.init()
     }
@@ -15,7 +15,7 @@ public class ChatFilter: Filter {
 
     override
     public func filter(message: Message) -> Bool {
-        guard message.chat.id == chatId else { return false }
+        guard message.chat.id == chatID else { return false }
         guard let desiredUsername = username else { return true }
         guard let incomingUsername = message.chat.username else { return true }
         return desiredUsername == incomingUsername
@@ -23,7 +23,7 @@ public class ChatFilter: Filter {
 }
 
 public extension Filter {
-    static func chat(chatId: Int64, username: String? = nil) -> ChatFilter {
-        ChatFilter(chatId: chatId, username: username)
+    static func chat(chatID: Int64, username: String? = nil) -> ChatFilter {
+        ChatFilter(chatID: chatID, username: username)
     }
 }

@@ -1,11 +1,8 @@
 
-
-/**
- This object represents a custom keyboard with reply options (see Introduction to bots for details and examples).
-
- SeeAlso Telegram Bot API Reference:
- [ReplyKeyboardMarkup](https://core.telegram.org/bots/api#replykeyboardmarkup)
- */
+/// This object represents a custom keyboard with reply options (see Introduction to bots for details and examples).
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [ReplyKeyboardMarkup](https://core.telegram.org/bots/api#replykeyboardmarkup)
 public final class ReplyKeyboardMarkup: Codable {
     /// Custom keys for coding/decoding `ReplyKeyboardMarkup` struct
     public enum CodingKeys: String, CodingKey {
@@ -28,12 +25,18 @@ public final class ReplyKeyboardMarkup: Codable {
     /// Optional. The placeholder to be shown in the input field when the keyboard is active; 1-64 characters
     public var inputFieldPlaceholder: String?
 
-    /// Optional. Use this parameter if you want to show the keyboard to specific users only. Targets: 1) users that are @mentioned in the text of the Message object; 2) if the bot's message is a reply (has reply_to_message_id), sender of the original message.
+    /// Optional. Use this parameter if you want to show the keyboard to specific users only. Targets: 1) users that are @mentioned in the text of the Message object; 2) if the bot's message is a reply (has reply\_to\_message\_id), sender of the original message.
     ///
     /// Example: A user requests to change the bot's language, bot replies to the request with a keyboard to select the new language. Other users in the group don't see the keyboard.
     public var selective: Bool?
 
-    public init(keyboard: [[KeyboardButton]], resizeKeyboard: Bool? = nil, oneTimeKeyboard: Bool? = nil, inputFieldPlaceholder: String? = nil, selective: Bool? = nil) {
+    public init(
+        keyboard: [[KeyboardButton]],
+        resizeKeyboard: Bool? = nil,
+        oneTimeKeyboard: Bool? = nil,
+        inputFieldPlaceholder: String? = nil,
+        selective: Bool? = nil
+    ) {
         self.keyboard = keyboard
         self.resizeKeyboard = resizeKeyboard
         self.oneTimeKeyboard = oneTimeKeyboard

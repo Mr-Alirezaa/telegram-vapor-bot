@@ -1,11 +1,8 @@
 
-
-/**
- Represents an issue in an unspecified place. The error is considered resolved when new data is added.
-
- SeeAlso Telegram Bot API Reference:
- [PassportElementErrorUnspecified](https://core.telegram.org/bots/api#passportelementerrorunspecified)
- */
+/// Represents an issue in an unspecified place. The error is considered resolved when new data is added.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [PassportElementErrorUnspecified](https://core.telegram.org/bots/api#passportelementerrorunspecified)
 public final class PassportElementErrorUnspecified: Codable {
     /// Custom keys for coding/decoding `PassportElementErrorUnspecified` struct
     public enum CodingKeys: String, CodingKey {

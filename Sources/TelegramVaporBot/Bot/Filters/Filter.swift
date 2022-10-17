@@ -14,7 +14,7 @@ public class Filter {
     public init() {}
 
     init(lhs: Filter, rhs: Filter, op: Operation) {
-        compoundFilter = (lhs: lhs, rhs: rhs, op: op)
+        self.compoundFilter = (lhs: lhs, rhs: rhs, op: op)
     }
 
     public func check(_ mess: Message) -> Bool {

@@ -5,7 +5,7 @@ public class CaptionEntityFilter: Filter {
     var entityType: MessageEntityType
 
     public init(type: MessageEntityType) {
-        entityType = type
+        self.entityType = type
         super.init()
     }
 

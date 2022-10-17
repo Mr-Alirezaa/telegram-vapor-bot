@@ -1,12 +1,9 @@
 import Vapor
 
-/// DESCRIPTION:
-/// Use this method to send invoices. On success, the sent Message is returned.
-
 /// Parameters container struct for `sendInvoice` method
 public struct SendInvoiceParams: Encodable {
     /// Unique identifier for the target chat or username of the target channel (in the format @channelusername)
-    public var chatId: ChatId
+    public var chatID: ChatID
 
     /// Product name, 1-32 characters
     public var title: String
@@ -26,10 +23,10 @@ public struct SendInvoiceParams: Encodable {
     /// Price breakdown, a JSON-serialized list of components (e.g. product price, tax, discount, delivery cost, delivery tax, bonus, etc.)
     public var prices: [LabeledPrice]
 
-    /// The maximum accepted amount for tips in the smallest units of the currency (integer, not float/double). For example, for a maximum tip of US$ 1.45 pass max_tip_amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies). Defaults to 0
+    /// The maximum accepted amount for tips in the smallest units of the currency (integer, not float/double). For example, for a maximum tip of US$ 1.45 pass max\_tip\_amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies). Defaults to 0
     public var maxTipAmount: Int?
 
-    /// A JSON-serialized array of suggested amounts of tips in the smallest units of the currency (integer, not float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must be positive, passed in a strictly increased order and must not exceed max_tip_amount.
+    /// A JSON-serialized array of suggested amounts of tips in the smallest units of the currency (integer, not float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must be positive, passed in a strictly increased order and must not exceed max\_tip\_amount.
     public var suggestedTipAmounts: [Int]?
 
     /// Unique deep-linking parameter. If left empty, forwarded copies of the sent message will have a Pay button, allowing multiple users to pay directly from the forwarded message, using the same invoice. If non-empty, forwarded copies of the sent message will have a URL button with a deep link to the bot (instead of a Pay button), with the value used as the start parameter
@@ -39,7 +36,7 @@ public struct SendInvoiceParams: Encodable {
     public var providerData: String?
 
     /// URL of the product photo for the invoice. Can be a photo of the goods or a marketing image for a service. People like it better when they see what they are paying for.
-    public var photoUrl: String?
+    public var photoURL: String?
 
     /// Photo size in bytes
     public var photoSize: Int?
@@ -78,7 +75,7 @@ public struct SendInvoiceParams: Encodable {
     public var protectContent: Bool?
 
     /// If the message is a reply, ID of the original message
-    public var replyToMessageId: Int?
+    public var replyToMessageID: Int?
 
     /// Pass True if the message should be sent even if the specified replied-to message is not found
     public var allowSendingWithoutReply: Bool?
@@ -88,7 +85,7 @@ public struct SendInvoiceParams: Encodable {
 
     /// Custom keys for coding/decoding `SendInvoiceParams` struct
     public enum CodingKeys: String, CodingKey {
-        case chatId = "chat_id"
+        case chatID = "chat_id"
         case title
         case description
         case payload
@@ -99,7 +96,7 @@ public struct SendInvoiceParams: Encodable {
         case suggestedTipAmounts = "suggested_tip_amounts"
         case startParameter = "start_parameter"
         case providerData = "provider_data"
-        case photoUrl = "photo_url"
+        case photoURL = "photo_url"
         case photoSize = "photo_size"
         case photoWidth = "photo_width"
         case photoHeight = "photo_height"
@@ -112,13 +109,41 @@ public struct SendInvoiceParams: Encodable {
         case isFlexible = "is_flexible"
         case disableNotification = "disable_notification"
         case protectContent = "protect_content"
-        case replyToMessageId = "reply_to_message_id"
+        case replyToMessageID = "reply_to_message_id"
         case allowSendingWithoutReply = "allow_sending_without_reply"
         case replyMarkup = "reply_markup"
     }
 
-    public init(chatId: ChatId, title: String, description: String, payload: String, providerToken: String, currency: String, prices: [LabeledPrice], maxTipAmount: Int? = nil, suggestedTipAmounts: [Int]? = nil, startParameter: String? = nil, providerData: String? = nil, photoUrl: String? = nil, photoSize: Int? = nil, photoWidth: Int? = nil, photoHeight: Int? = nil, needName: Bool? = nil, needPhoneNumber: Bool? = nil, needEmail: Bool? = nil, needShippingAddress: Bool? = nil, sendPhoneNumberToProvider: Bool? = nil, sendEmailToProvider: Bool? = nil, isFlexible: Bool? = nil, disableNotification: Bool? = nil, protectContent: Bool? = nil, replyToMessageId: Int? = nil, allowSendingWithoutReply: Bool? = nil, replyMarkup: InlineKeyboardMarkup? = nil) {
-        self.chatId = chatId
+    public init(
+        chatID: ChatID,
+        title: String,
+        description: String,
+        payload: String,
+        providerToken: String,
+        currency: String,
+        prices: [LabeledPrice],
+        maxTipAmount: Int? = nil,
+        suggestedTipAmounts: [Int]? = nil,
+        startParameter: String? = nil,
+        providerData: String? = nil,
+        photoURL: String? = nil,
+        photoSize: Int? = nil,
+        photoWidth: Int? = nil,
+        photoHeight: Int? = nil,
+        needName: Bool? = nil,
+        needPhoneNumber: Bool? = nil,
+        needEmail: Bool? = nil,
+        needShippingAddress: Bool? = nil,
+        sendPhoneNumberToProvider: Bool? = nil,
+        sendEmailToProvider: Bool? = nil,
+        isFlexible: Bool? = nil,
+        disableNotification: Bool? = nil,
+        protectContent: Bool? = nil,
+        replyToMessageID: Int? = nil,
+        allowSendingWithoutReply: Bool? = nil,
+        replyMarkup: InlineKeyboardMarkup? = nil
+    ) {
+        self.chatID = chatID
         self.title = title
         self.description = description
         self.payload = payload
@@ -129,7 +154,7 @@ public struct SendInvoiceParams: Encodable {
         self.suggestedTipAmounts = suggestedTipAmounts
         self.startParameter = startParameter
         self.providerData = providerData
-        self.photoUrl = photoUrl
+        self.photoURL = photoURL
         self.photoSize = photoSize
         self.photoWidth = photoWidth
         self.photoHeight = photoHeight
@@ -142,26 +167,23 @@ public struct SendInvoiceParams: Encodable {
         self.isFlexible = isFlexible
         self.disableNotification = disableNotification
         self.protectContent = protectContent
-        self.replyToMessageId = replyToMessageId
+        self.replyToMessageID = replyToMessageID
         self.allowSendingWithoutReply = allowSendingWithoutReply
         self.replyMarkup = replyMarkup
     }
 }
 
 public extension Bot {
-    /**
-     Use this method to send invoices. On success, the sent Message is returned.
-
-     SeeAlso Telegram Bot API Reference:
-     [SendInvoiceParams](https://core.telegram.org/bots/api#sendinvoice)
-
-     - Parameters:
-         - params: Parameters container, see `SendInvoiceParams` struct
-     - Throws: Throws on errors
-     - Returns: EventLoopFuture of `Message` type
-     */
-    @discardableResult
-    func sendInvoice(params: SendInvoiceParams) throws -> EventLoopFuture<Message> {
+    /// Use this method to send invoices. On success, the sent Message is returned.
+    ///
+    /// SeeAlso Telegram Bot API Reference:
+    /// [SendInvoiceParams](https://core.telegram.org/bots/api#sendinvoice)
+    ///
+    /// - Parameters:
+    ///     - params: Parameters container, see `SendInvoiceParams` struct
+    /// - Throws: Throws on errors
+    /// - Returns: EventLoopFuture of `Message` type
+    @discardableResult func sendInvoice(params: SendInvoiceParams) throws -> EventLoopFuture<Message> {
         let methodURL: URI = .init(string: getMethodURL("sendInvoice"))
         let future: EventLoopFuture<Message> = tgClient.post(methodURL, params: params, as: nil)
         return future

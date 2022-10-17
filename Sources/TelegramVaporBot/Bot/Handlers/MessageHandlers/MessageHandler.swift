@@ -9,7 +9,6 @@ public class MessageHandler<ResultType>: BaseMessageHandler, HandlerProtocol {
     /// Name of particular MessageHandler, needed for determine handlers instances of one class in groups
     public var name: String
 
-
     public let callback: CallbackType
     public let filters: Filter
     public let options: Options
@@ -25,8 +24,8 @@ public class MessageHandler<ResultType>: BaseMessageHandler, HandlerProtocol {
         self.options = options
         self.name = name
     }
-    
+
     public func handle(update: Update, bot: BotProtocol) throws -> ResultType {
-        return try callback(update, bot)
+        try callback(update, bot)
     }
 }

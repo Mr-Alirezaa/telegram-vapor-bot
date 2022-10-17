@@ -10,7 +10,7 @@ public class ForwarderFilter: Filter {
             message.forwardFrom != nil ||
             message.forwardFromChat != nil ||
             message.forwardSignature != nil ||
-            message.forwardFromMessageId != nil
+            message.forwardFromMessageID != nil
     }
 }
 

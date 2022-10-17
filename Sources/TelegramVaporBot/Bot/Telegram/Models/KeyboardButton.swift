@@ -1,11 +1,8 @@
 
-
-/**
- This object represents one button of the reply keyboard. For simple text buttons String can be used instead of this object to specify text of the button. Optional fields web_app, request_contact, request_location, and request_poll are mutually exclusive.
-
- SeeAlso Telegram Bot API Reference:
- [KeyboardButton](https://core.telegram.org/bots/api#keyboardbutton)
- */
+/// This object represents one button of the reply keyboard. For simple text buttons String can be used instead of this object to specify text of the button. Optional fields web\_app, request\_contact, request\_location, and request\_poll are mutually exclusive.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [KeyboardButton](https://core.telegram.org/bots/api#keyboardbutton)
 public final class KeyboardButton: Codable {
     /// Custom keys for coding/decoding `KeyboardButton` struct
     public enum CodingKeys: String, CodingKey {
@@ -28,10 +25,16 @@ public final class KeyboardButton: Codable {
     /// Optional. If specified, the user will be asked to create a poll and send it to the bot when the button is pressed. Available in private chats only.
     public var requestPoll: KeyboardButtonPollType?
 
-    /// Optional. If specified, the described Web App will be launched when the button is pressed. The Web App will be able to send a “web_app_data” service message. Available in private chats only.
+    /// Optional. If specified, the described Web App will be launched when the button is pressed. The Web App will be able to send a “web\_app\_data” service message. Available in private chats only.
     public var webApp: WebAppInfo?
 
-    public init(text: String, requestContact: Bool? = nil, requestLocation: Bool? = nil, requestPoll: KeyboardButtonPollType? = nil, webApp: WebAppInfo? = nil) {
+    public init(
+        text: String,
+        requestContact: Bool? = nil,
+        requestLocation: Bool? = nil,
+        requestPoll: KeyboardButtonPollType? = nil,
+        webApp: WebAppInfo? = nil
+    ) {
         self.text = text
         self.requestContact = requestContact
         self.requestLocation = requestLocation

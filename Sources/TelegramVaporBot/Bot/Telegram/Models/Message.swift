@@ -1,22 +1,19 @@
 
-
-/**
- This object represents a message.
-
- SeeAlso Telegram Bot API Reference:
- [Message](https://core.telegram.org/bots/api#message)
- */
+/// This object represents a message.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [Message](https://core.telegram.org/bots/api#message)
 public final class Message: Codable {
     /// Custom keys for coding/decoding `Message` struct
     public enum CodingKeys: String, CodingKey {
-        case messageId = "message_id"
+        case messageID = "message_id"
         case from
         case senderChat = "sender_chat"
         case date
         case chat
         case forwardFrom = "forward_from"
         case forwardFromChat = "forward_from_chat"
-        case forwardFromMessageId = "forward_from_message_id"
+        case forwardFromMessageID = "forward_from_message_id"
         case forwardSignature = "forward_signature"
         case forwardSenderName = "forward_sender_name"
         case forwardDate = "forward_date"
@@ -25,7 +22,7 @@ public final class Message: Codable {
         case viaBot = "via_bot"
         case editDate = "edit_date"
         case hasProtectedContent = "has_protected_content"
-        case mediaGroupId = "media_group_id"
+        case mediaGroupID = "media_group_id"
         case authorSignature = "author_signature"
         case text
         case entities
@@ -54,8 +51,8 @@ public final class Message: Codable {
         case supergroupChatCreated = "supergroup_chat_created"
         case channelChatCreated = "channel_chat_created"
         case messageAutoDeleteTimerChanged = "message_auto_delete_timer_changed"
-        case migrateToChatId = "migrate_to_chat_id"
-        case migrateFromChatId = "migrate_from_chat_id"
+        case migrateToChatID = "migrate_to_chat_id"
+        case migrateFromChatID = "migrate_from_chat_id"
         case pinnedMessage = "pinned_message"
         case invoice
         case successfulPayment = "successful_payment"
@@ -71,7 +68,7 @@ public final class Message: Codable {
     }
 
     /// Unique message identifier inside this chat
-    public var messageId: Int
+    public var messageID: Int
 
     /// Optional. Sender of the message; empty for messages sent to channels. For backward compatibility, the field contains a fake sender user in non-channel chats, if the message was sent on behalf of a chat.
     public var from: User?
@@ -92,7 +89,7 @@ public final class Message: Codable {
     public var forwardFromChat: Chat?
 
     /// Optional. For messages forwarded from channels, identifier of the original message in the channel
-    public var forwardFromMessageId: Int?
+    public var forwardFromMessageID: Int?
 
     /// Optional. For forwarded messages that were originally sent in channels or by an anonymous chat administrator, signature of the message sender if present
     public var forwardSignature: String?
@@ -106,7 +103,7 @@ public final class Message: Codable {
     /// Optional. True, if the message is a channel post that was automatically forwarded to the connected discussion group
     public var isAutomaticForward: Bool?
 
-    /// Optional. For replies, the original message. Note that the Message object in this field will not contain further reply_to_message fields even if it itself is a reply.
+    /// Optional. For replies, the original message. Note that the Message object in this field will not contain further reply\_to\_message fields even if it itself is a reply.
     public var replyToMessage: Message?
 
     /// Optional. Bot through which the message was sent
@@ -119,7 +116,7 @@ public final class Message: Codable {
     public var hasProtectedContent: Bool?
 
     /// Optional. The unique identifier of a media message group this message belongs to
-    public var mediaGroupId: String?
+    public var mediaGroupID: String?
 
     /// Optional. Signature of the post author for messages in channels, or the custom title of an anonymous group administrator
     public var authorSignature: String?
@@ -196,22 +193,22 @@ public final class Message: Codable {
     /// Optional. Service message: the group has been created
     public var groupChatCreated: Bool?
 
-    /// Optional. Service message: the supergroup has been created. This field can't be received in a message coming through updates, because bot can't be a member of a supergroup when it is created. It can only be found in reply_to_message if someone replies to a very first message in a directly created supergroup.
+    /// Optional. Service message: the supergroup has been created. This field can't be received in a message coming through updates, because bot can't be a member of a supergroup when it is created. It can only be found in reply\_to\_message if someone replies to a very first message in a directly created supergroup.
     public var supergroupChatCreated: Bool?
 
-    /// Optional. Service message: the channel has been created. This field can't be received in a message coming through updates, because bot can't be a member of a channel when it is created. It can only be found in reply_to_message if someone replies to a very first message in a channel.
+    /// Optional. Service message: the channel has been created. This field can't be received in a message coming through updates, because bot can't be a member of a channel when it is created. It can only be found in reply\_to\_message if someone replies to a very first message in a channel.
     public var channelChatCreated: Bool?
 
     /// Optional. Service message: auto-delete timer settings changed in the chat
     public var messageAutoDeleteTimerChanged: MessageAutoDeleteTimerChanged?
 
     /// Optional. The group has been migrated to a supergroup with the specified identifier. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this identifier.
-    public var migrateToChatId: Int64?
+    public var migrateToChatID: Int64?
 
     /// Optional. The supergroup has been migrated from a group with the specified identifier. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this identifier.
-    public var migrateFromChatId: Int64?
+    public var migrateFromChatID: Int64?
 
-    /// Optional. Specified message was pinned. Note that the Message object in this field will not contain further reply_to_message fields even if it is itself a reply.
+    /// Optional. Specified message was pinned. Note that the Message object in this field will not contain further reply\_to\_message fields even if it is itself a reply.
     public var pinnedMessage: Message?
 
     /// Optional. Message is an invoice for a payment, information about the invoice. More about payments »
@@ -244,18 +241,78 @@ public final class Message: Codable {
     /// Optional. Service message: data sent by a Web App
     public var webAppData: WebAppData?
 
-    /// Optional. Inline keyboard attached to the message. login_url buttons are represented as ordinary url buttons.
+    /// Optional. Inline keyboard attached to the message. login\_url buttons are represented as ordinary url buttons.
     public var replyMarkup: InlineKeyboardMarkup?
 
-    public init(messageId: Int, from: User? = nil, senderChat: Chat? = nil, date: Int, chat: Chat, forwardFrom: User? = nil, forwardFromChat: Chat? = nil, forwardFromMessageId: Int? = nil, forwardSignature: String? = nil, forwardSenderName: String? = nil, forwardDate: Int? = nil, isAutomaticForward: Bool? = nil, replyToMessage: Message? = nil, viaBot: User? = nil, editDate: Int? = nil, hasProtectedContent: Bool? = nil, mediaGroupId: String? = nil, authorSignature: String? = nil, text: String? = nil, entities: [MessageEntity]? = nil, animation: Animation? = nil, audio: Audio? = nil, document: Document? = nil, photo: [PhotoSize]? = nil, sticker: Sticker? = nil, video: Video? = nil, videoNote: VideoNote? = nil, voice: Voice? = nil, caption: String? = nil, captionEntities: [MessageEntity]? = nil, contact: Contact? = nil, dice: Dice? = nil, game: Game? = nil, poll: Poll? = nil, venue: Venue? = nil, location: Location? = nil, newChatMembers: [User]? = nil, leftChatMember: User? = nil, newChatTitle: String? = nil, newChatPhoto: [PhotoSize]? = nil, deleteChatPhoto: Bool? = nil, groupChatCreated: Bool? = nil, supergroupChatCreated: Bool? = nil, channelChatCreated: Bool? = nil, messageAutoDeleteTimerChanged: MessageAutoDeleteTimerChanged? = nil, migrateToChatId: Int64? = nil, migrateFromChatId: Int64? = nil, pinnedMessage: Message? = nil, invoice: Invoice? = nil, successfulPayment: SuccessfulPayment? = nil, connectedWebsite: String? = nil, passportData: PassportData? = nil, proximityAlertTriggered: ProximityAlertTriggered? = nil, videoChatScheduled: VideoChatScheduled? = nil, videoChatStarted: VideoChatStarted? = nil, videoChatEnded: VideoChatEnded? = nil, videoChatParticipantsInvited: VideoChatParticipantsInvited? = nil, webAppData: WebAppData? = nil, replyMarkup: InlineKeyboardMarkup? = nil) {
-        self.messageId = messageId
+    public init(
+        messageID: Int,
+        from: User? = nil,
+        senderChat: Chat? = nil,
+        date: Int,
+        chat: Chat,
+        forwardFrom: User? = nil,
+        forwardFromChat: Chat? = nil,
+        forwardFromMessageID: Int? = nil,
+        forwardSignature: String? = nil,
+        forwardSenderName: String? = nil,
+        forwardDate: Int? = nil,
+        isAutomaticForward: Bool? = nil,
+        replyToMessage: Message? = nil,
+        viaBot: User? = nil,
+        editDate: Int? = nil,
+        hasProtectedContent: Bool? = nil,
+        mediaGroupID: String? = nil,
+        authorSignature: String? = nil,
+        text: String? = nil,
+        entities: [MessageEntity]? = nil,
+        animation: Animation? = nil,
+        audio: Audio? = nil,
+        document: Document? = nil,
+        photo: [PhotoSize]? = nil,
+        sticker: Sticker? = nil,
+        video: Video? = nil,
+        videoNote: VideoNote? = nil,
+        voice: Voice? = nil,
+        caption: String? = nil,
+        captionEntities: [MessageEntity]? = nil,
+        contact: Contact? = nil,
+        dice: Dice? = nil,
+        game: Game? = nil,
+        poll: Poll? = nil,
+        venue: Venue? = nil,
+        location: Location? = nil,
+        newChatMembers: [User]? = nil,
+        leftChatMember: User? = nil,
+        newChatTitle: String? = nil,
+        newChatPhoto: [PhotoSize]? = nil,
+        deleteChatPhoto: Bool? = nil,
+        groupChatCreated: Bool? = nil,
+        supergroupChatCreated: Bool? = nil,
+        channelChatCreated: Bool? = nil,
+        messageAutoDeleteTimerChanged: MessageAutoDeleteTimerChanged? = nil,
+        migrateToChatID: Int64? = nil,
+        migrateFromChatID: Int64? = nil,
+        pinnedMessage: Message? = nil,
+        invoice: Invoice? = nil,
+        successfulPayment: SuccessfulPayment? = nil,
+        connectedWebsite: String? = nil,
+        passportData: PassportData? = nil,
+        proximityAlertTriggered: ProximityAlertTriggered? = nil,
+        videoChatScheduled: VideoChatScheduled? = nil,
+        videoChatStarted: VideoChatStarted? = nil,
+        videoChatEnded: VideoChatEnded? = nil,
+        videoChatParticipantsInvited: VideoChatParticipantsInvited? = nil,
+        webAppData: WebAppData? = nil,
+        replyMarkup: InlineKeyboardMarkup? = nil
+    ) {
+        self.messageID = messageID
         self.from = from
         self.senderChat = senderChat
         self.date = date
         self.chat = chat
         self.forwardFrom = forwardFrom
         self.forwardFromChat = forwardFromChat
-        self.forwardFromMessageId = forwardFromMessageId
+        self.forwardFromMessageID = forwardFromMessageID
         self.forwardSignature = forwardSignature
         self.forwardSenderName = forwardSenderName
         self.forwardDate = forwardDate
@@ -264,7 +321,7 @@ public final class Message: Codable {
         self.viaBot = viaBot
         self.editDate = editDate
         self.hasProtectedContent = hasProtectedContent
-        self.mediaGroupId = mediaGroupId
+        self.mediaGroupID = mediaGroupID
         self.authorSignature = authorSignature
         self.text = text
         self.entities = entities
@@ -293,8 +350,8 @@ public final class Message: Codable {
         self.supergroupChatCreated = supergroupChatCreated
         self.channelChatCreated = channelChatCreated
         self.messageAutoDeleteTimerChanged = messageAutoDeleteTimerChanged
-        self.migrateToChatId = migrateToChatId
-        self.migrateFromChatId = migrateFromChatId
+        self.migrateToChatID = migrateToChatID
+        self.migrateFromChatID = migrateFromChatID
         self.pinnedMessage = pinnedMessage
         self.invoice = invoice
         self.successfulPayment = successfulPayment

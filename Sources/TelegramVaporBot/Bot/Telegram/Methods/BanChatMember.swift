@@ -1,15 +1,12 @@
 import Vapor
 
-/// DESCRIPTION:
-/// Use this method to ban a user in a group, a supergroup or a channel. In the case of supergroups and channels, the user will not be able to return to the chat on their own using invite links, etc., unless unbanned first. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
-
 /// Parameters container struct for `banChatMember` method
 public struct BanChatMemberParams: Encodable {
     /// Unique identifier for the target group or username of the target supergroup or channel (in the format @channelusername)
-    public var chatId: ChatId
+    public var chatID: ChatID
 
     /// Unique identifier of the target user
-    public var userId: Int64
+    public var userID: Int64
 
     /// Date when the user will be unbanned, unix time. If user is banned for more than 366 days or less than 30 seconds from the current time they are considered to be banned forever. Applied for supergroups and channels only.
     public var untilDate: Int?
@@ -19,34 +16,31 @@ public struct BanChatMemberParams: Encodable {
 
     /// Custom keys for coding/decoding `BanChatMemberParams` struct
     public enum CodingKeys: String, CodingKey {
-        case chatId = "chat_id"
-        case userId = "user_id"
+        case chatID = "chat_id"
+        case userID = "user_id"
         case untilDate = "until_date"
         case revokeMessages = "revoke_messages"
     }
 
-    public init(chatId: ChatId, userId: Int64, untilDate: Int? = nil, revokeMessages: Bool? = nil) {
-        self.chatId = chatId
-        self.userId = userId
+    public init(chatID: ChatID, userID: Int64, untilDate: Int? = nil, revokeMessages: Bool? = nil) {
+        self.chatID = chatID
+        self.userID = userID
         self.untilDate = untilDate
         self.revokeMessages = revokeMessages
     }
 }
 
 public extension Bot {
-    /**
-     Use this method to ban a user in a group, a supergroup or a channel. In the case of supergroups and channels, the user will not be able to return to the chat on their own using invite links, etc., unless unbanned first. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
-
-     SeeAlso Telegram Bot API Reference:
-     [BanChatMemberParams](https://core.telegram.org/bots/api#banchatmember)
-
-     - Parameters:
-         - params: Parameters container, see `BanChatMemberParams` struct
-     - Throws: Throws on errors
-     - Returns: EventLoopFuture of `Bool` type
-     */
-    @discardableResult
-    func banChatMember(params: BanChatMemberParams) throws -> EventLoopFuture<Bool> {
+    /// Use this method to ban a user in a group, a supergroup or a channel. In the case of supergroups and channels, the user will not be able to return to the chat on their own using invite links, etc., unless unbanned first. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
+    ///
+    /// SeeAlso Telegram Bot API Reference:
+    /// [BanChatMemberParams](https://core.telegram.org/bots/api#banchatmember)
+    ///
+    /// - Parameters:
+    ///     - params: Parameters container, see `BanChatMemberParams` struct
+    /// - Throws: Throws on errors
+    /// - Returns: EventLoopFuture of `Bool` type
+    @discardableResult func banChatMember(params: BanChatMemberParams) throws -> EventLoopFuture<Bool> {
         let methodURL: URI = .init(string: getMethodURL("banChatMember"))
         let future: EventLoopFuture<Bool> = tgClient.post(methodURL, params: params, as: nil)
         return future

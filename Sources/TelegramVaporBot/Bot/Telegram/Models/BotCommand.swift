@@ -1,11 +1,8 @@
 
-
-/**
- This object represents a bot command.
-
- SeeAlso Telegram Bot API Reference:
- [BotCommand](https://core.telegram.org/bots/api#botcommand)
- */
+/// This object represents a bot command.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [BotCommand](https://core.telegram.org/bots/api#botcommand)
 public final class BotCommand: Codable {
     /// Custom keys for coding/decoding `BotCommand` struct
     public enum CodingKeys: String, CodingKey {

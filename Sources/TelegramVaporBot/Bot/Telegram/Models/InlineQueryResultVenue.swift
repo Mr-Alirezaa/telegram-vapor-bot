@@ -1,11 +1,8 @@
 
-
-/**
- Represents a venue. By default, the venue will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the venue.
-
- SeeAlso Telegram Bot API Reference:
- [InlineQueryResultVenue](https://core.telegram.org/bots/api#inlinequeryresultvenue)
- */
+/// Represents a venue. By default, the venue will be sent by the user. Alternatively, you can use input\_message\_content to send a message with the specified content instead of the venue.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [InlineQueryResultVenue](https://core.telegram.org/bots/api#inlinequeryresultvenue)
 public final class InlineQueryResultVenue: Codable {
     /// Custom keys for coding/decoding `InlineQueryResultVenue` struct
     public enum CodingKeys: String, CodingKey {
@@ -15,13 +12,13 @@ public final class InlineQueryResultVenue: Codable {
         case longitude
         case title
         case address
-        case foursquareId = "foursquare_id"
+        case foursquareID = "foursquare_id"
         case foursquareType = "foursquare_type"
-        case googlePlaceId = "google_place_id"
+        case googlePlaceID = "google_place_id"
         case googlePlaceType = "google_place_type"
         case replyMarkup = "reply_markup"
         case inputMessageContent = "input_message_content"
-        case thumbUrl = "thumb_url"
+        case thumbURL = "thumb_url"
         case thumbWidth = "thumb_width"
         case thumbHeight = "thumb_height"
     }
@@ -45,13 +42,13 @@ public final class InlineQueryResultVenue: Codable {
     public var address: String
 
     /// Optional. Foursquare identifier of the venue if known
-    public var foursquareId: String?
+    public var foursquareID: String?
 
-    /// Optional. Foursquare type of the venue, if known. (For example, “arts_entertainment/default”, “arts_entertainment/aquarium” or “food/icecream”.)
+    /// Optional. Foursquare type of the venue, if known. (For example, “arts\_entertainment/default”, “arts\_entertainment/aquarium” or “food/icecream”.)
     public var foursquareType: String?
 
     /// Optional. Google Places identifier of the venue
-    public var googlePlaceId: String?
+    public var googlePlaceID: String?
 
     /// Optional. Google Places type of the venue. (See supported types.)
     public var googlePlaceType: String?
@@ -62,8 +59,8 @@ public final class InlineQueryResultVenue: Codable {
     /// Optional. Content of the message to be sent instead of the venue
     public var inputMessageContent: InputMessageContent?
 
-    /// Optional. Url of the thumbnail for the result
-    public var thumbUrl: String?
+    /// Optional. URL of the thumbnail for the result
+    public var thumbURL: String?
 
     /// Optional. Thumbnail width
     public var thumbWidth: Int?
@@ -71,20 +68,36 @@ public final class InlineQueryResultVenue: Codable {
     /// Optional. Thumbnail height
     public var thumbHeight: Int?
 
-    public init(type: String, id: String, latitude: Float, longitude: Float, title: String, address: String, foursquareId: String? = nil, foursquareType: String? = nil, googlePlaceId: String? = nil, googlePlaceType: String? = nil, replyMarkup: InlineKeyboardMarkup? = nil, inputMessageContent: InputMessageContent? = nil, thumbUrl: String? = nil, thumbWidth: Int? = nil, thumbHeight: Int? = nil) {
+    public init(
+        type: String,
+        id: String,
+        latitude: Float,
+        longitude: Float,
+        title: String,
+        address: String,
+        foursquareID: String? = nil,
+        foursquareType: String? = nil,
+        googlePlaceID: String? = nil,
+        googlePlaceType: String? = nil,
+        replyMarkup: InlineKeyboardMarkup? = nil,
+        inputMessageContent: InputMessageContent? = nil,
+        thumbURL: String? = nil,
+        thumbWidth: Int? = nil,
+        thumbHeight: Int? = nil
+    ) {
         self.type = type
         self.id = id
         self.latitude = latitude
         self.longitude = longitude
         self.title = title
         self.address = address
-        self.foursquareId = foursquareId
+        self.foursquareID = foursquareID
         self.foursquareType = foursquareType
-        self.googlePlaceId = googlePlaceId
+        self.googlePlaceID = googlePlaceID
         self.googlePlaceType = googlePlaceType
         self.replyMarkup = replyMarkup
         self.inputMessageContent = inputMessageContent
-        self.thumbUrl = thumbUrl
+        self.thumbURL = thumbURL
         self.thumbWidth = thumbWidth
         self.thumbHeight = thumbHeight
     }

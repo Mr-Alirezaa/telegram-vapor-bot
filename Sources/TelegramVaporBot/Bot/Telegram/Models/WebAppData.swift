@@ -1,11 +1,8 @@
 
-
-/**
- Describes data sent from a Web App to the bot.
-
- SeeAlso Telegram Bot API Reference:
- [WebAppData](https://core.telegram.org/bots/api#webappdata)
- */
+/// Describes data sent from a Web App to the bot.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [WebAppData](https://core.telegram.org/bots/api#webappdata)
 public final class WebAppData: Codable {
     /// Custom keys for coding/decoding `WebAppData` struct
     public enum CodingKeys: String, CodingKey {
@@ -16,7 +13,7 @@ public final class WebAppData: Codable {
     /// The data. Be aware that a bad client can send arbitrary data in this field.
     public var data: String
 
-    /// Text of the web_app keyboard button from which the Web App was opened. Be aware that a bad client can send arbitrary data in this field.
+    /// Text of the web\_app keyboard button from which the Web App was opened. Be aware that a bad client can send arbitrary data in this field.
     public var buttonText: String
 
     public init(data: String, buttonText: String) {

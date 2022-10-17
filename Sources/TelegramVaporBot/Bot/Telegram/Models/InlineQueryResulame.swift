@@ -1,11 +1,8 @@
 
-
-/**
- Represents a Game.
-
- SeeAlso Telegram Bot API Reference:
- [InlineQueryResultGame](https://core.telegram.org/bots/api#inlinequeryresultgame)
- */
+/// Represents a Game.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [InlineQueryResultGame](https://core.telegram.org/bots/api#inlinequeryresultgame)
 public final class InlineQueryResultGame: Codable {
     /// Custom keys for coding/decoding `InlineQueryResultGame` struct
     public enum CodingKeys: String, CodingKey {

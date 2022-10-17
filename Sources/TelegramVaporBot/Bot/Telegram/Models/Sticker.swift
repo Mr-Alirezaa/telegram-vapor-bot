@@ -1,16 +1,13 @@
 
-
-/**
- This object represents a sticker.
-
- SeeAlso Telegram Bot API Reference:
- [Sticker](https://core.telegram.org/bots/api#sticker)
- */
+/// This object represents a sticker.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [Sticker](https://core.telegram.org/bots/api#sticker)
 public final class Sticker: Codable {
     /// Custom keys for coding/decoding `Sticker` struct
     public enum CodingKeys: String, CodingKey {
-        case fileId = "file_id"
-        case fileUniqueId = "file_unique_id"
+        case fileID = "file_id"
+        case fileUniqueID = "file_unique_id"
         case type
         case width
         case height
@@ -21,17 +18,17 @@ public final class Sticker: Codable {
         case setName = "set_name"
         case premiumAnimation = "premium_animation"
         case maskPosition = "mask_position"
-        case customEmojiId = "custom_emoji_id"
+        case customEmojiID = "custom_emoji_id"
         case fileSize = "file_size"
     }
 
     /// Identifier for this file, which can be used to download or reuse the file
-    public var fileId: String
+    public var fileID: String
 
     /// Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.
-    public var fileUniqueId: String
+    public var fileUniqueID: String
 
-    /// Type of the sticker, currently one of “regular”, “mask”, “custom_emoji”. The type of the sticker is independent from its format, which is determined by the fields is_animated and is_video.
+    /// Type of the sticker, currently one of “regular”, “mask”, “custom\_emoji”. The type of the sticker is independent from its format, which is determined by the fields is\_animated and is\_video.
     public var type: String
 
     /// Sticker width
@@ -62,14 +59,29 @@ public final class Sticker: Codable {
     public var maskPosition: MaskPosition?
 
     /// Optional. For custom emoji stickers, unique identifier of the custom emoji
-    public var customEmojiId: String?
+    public var customEmojiID: String?
 
     /// Optional. File size in bytes
     public var fileSize: Int?
 
-    public init(fileId: String, fileUniqueId: String, type: String, width: Int, height: Int, isAnimated: Bool, isVideo: Bool, thumb: PhotoSize? = nil, emoji: String? = nil, setName: String? = nil, premiumAnimation: File? = nil, maskPosition: MaskPosition? = nil, customEmojiId: String? = nil, fileSize: Int? = nil) {
-        self.fileId = fileId
-        self.fileUniqueId = fileUniqueId
+    public init(
+        fileID: String,
+        fileUniqueID: String,
+        type: String,
+        width: Int,
+        height: Int,
+        isAnimated: Bool,
+        isVideo: Bool,
+        thumb: PhotoSize? = nil,
+        emoji: String? = nil,
+        setName: String? = nil,
+        premiumAnimation: File? = nil,
+        maskPosition: MaskPosition? = nil,
+        customEmojiID: String? = nil,
+        fileSize: Int? = nil
+    ) {
+        self.fileID = fileID
+        self.fileUniqueID = fileUniqueID
         self.type = type
         self.width = width
         self.height = height
@@ -80,7 +92,7 @@ public final class Sticker: Codable {
         self.setName = setName
         self.premiumAnimation = premiumAnimation
         self.maskPosition = maskPosition
-        self.customEmojiId = customEmojiId
+        self.customEmojiID = customEmojiID
         self.fileSize = fileSize
     }
 }

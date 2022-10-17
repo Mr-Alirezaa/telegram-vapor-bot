@@ -28,22 +28,23 @@ open class DefaultDispatcher: DispatcherProtocol {
     )
 
     public var handlersGroup: [[any HandlerProtocol]] = []
-    private var beforeAllCallback: ([Update], @escaping ([Update]) throws -> Void) throws -> Void = { updates, callback in
-        try callback(updates)
-    }
+    private var beforeAllCallback: ([Update], @escaping ([Update]) throws -> Void) throws
+        -> Void = { updates, callback in
+            try callback(updates)
+        }
 
-    private var handlersId = 0
-    private var nextHandlerId: Int {
-        handlersId += 1
-        return handlersId
+    private var handlersID = 0
+    private var nextHandlerID: Int {
+        handlersID += 1
+        return handlersID
     }
 
     private var index = 0
 
     private typealias Level = Int
-    private typealias IndexId = Int
+    private typealias IndexID = Int
     private typealias Position = Int
-    private var handlersIndex: [Level: [IndexId: Position]] = .init()
+    private var handlersIndex: [Level: [IndexID: Position]] = .init()
 
     public init() {}
 
@@ -53,7 +54,7 @@ open class DefaultDispatcher: DispatcherProtocol {
 
             /// add uniq index id
             var handler: any HandlerProtocol = handler
-            handler.id = self.nextHandlerId
+            handler.id = self.nextHandlerID
 
             /// add handler
             var handlerPosition = 0
@@ -76,7 +77,10 @@ open class DefaultDispatcher: DispatcherProtocol {
         add(handler, priority: 0)
     }
 
-    public func addBeforeAllCallback(_ callback: @escaping ([Update], @escaping ([Update]) throws -> Void) throws -> Void) {
+    public func addBeforeAllCallback(
+        _ callback: @escaping ([Update], @escaping ([Update]) throws -> Void) throws
+            -> Void
+    ) {
         beforeAllCallback = callback
     }
 
@@ -84,15 +88,14 @@ open class DefaultDispatcher: DispatcherProtocol {
         processQueue.sync(flags: .barrier) { [weak self] in
             guard let self = self else { return }
             let level: Level = level ?? 0
-            let indexId: IndexId = handler.id
-            guard
-                let index: [IndexId: Position] = self.handlersIndex[level],
-                let position: Position = index[indexId]
+            let indexID: IndexID = handler.id
+            guard let index: [IndexID: Position] = self.handlersIndex[level],
+                  let position: Position = index[indexID]
             else {
                 return
             }
             self.handlersGroup[level].remove(at: position)
-            self.handlersIndex[level]![indexId] = nil
+            self.handlersIndex[level]![indexID] = nil
         }
     }
 
@@ -133,7 +136,7 @@ open class DefaultDispatcher: DispatcherProtocol {
                                         Bot.log.report(error: error)
                                     }
                                 }
-                            } else if let handler = handler as? (any Handler)  {
+                            } else if let handler = handler as? (any Handler) {
                                 do {
                                     try handler.handle(update: update, bot: bot)
                                 } catch {

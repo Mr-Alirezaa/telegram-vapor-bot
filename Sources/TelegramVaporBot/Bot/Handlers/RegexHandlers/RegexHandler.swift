@@ -42,6 +42,6 @@ public class RegexHandler<ResultType>: BaseRegexHandler, Handler {
     }
 
     public func handle(update: Update, bot: BotProtocol) throws -> ResultType {
-        return try callback(update, bot)
+        try callback(update, bot)
     }
 }

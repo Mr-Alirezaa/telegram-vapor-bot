@@ -1,11 +1,8 @@
-import Vapor
 
-/**
- This object describes the position on faces where a mask should be placed by default.
-
- SeeAlso Telegram Bot API Reference:
- [MaskPosition](https://core.telegram.org/bots/api#maskposition)
- */
+/// This object describes the position on faces where a mask should be placed by default.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [MaskPosition](https://core.telegram.org/bots/api#maskposition)
 public final class MaskPosition: Codable {
     /// Custom keys for coding/decoding `MaskPosition` struct
     public enum CodingKeys: String, CodingKey {

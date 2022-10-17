@@ -1,13 +1,17 @@
 import Foundation
 
-/** Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in your bot's message.
-
- SeeAlso Telegram Bot API Reference:
- [Formatting Options](https://core.telegram.org/bots/api#formatting-options)
- */
+/// Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in your bot's message.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [Formatting Options](https://core.telegram.org/bots/api#formatting-options)
 public enum ParseMode: String, Codable {
     case markdownV2 = "MarkdownV2"
-    @available(*, deprecated, message: "This is a legacy mode, retained for backward compatibility.", renamed: "markdownV2")
+    @available(
+        *,
+        deprecated,
+        message: "This is a legacy mode, retained for backward compatibility.",
+        renamed: "markdownV2"
+    )
     case markdown = "Markdown"
     case html = "HTML"
     case undefined

@@ -1,12 +1,9 @@
 import Vapor
 
-/// DESCRIPTION:
-/// Use this method to edit a non-primary invite link created by the bot. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the edited invite link as a ChatInviteLink object.
-
 /// Parameters container struct for `editChatInviteLink` method
 public struct EditChatInviteLinkParams: Encodable {
     /// Unique identifier for the target chat or username of the target channel (in the format @channelusername)
-    public var chatId: ChatId
+    public var chatID: ChatID
 
     /// The invite link to edit
     public var inviteLink: String
@@ -20,12 +17,12 @@ public struct EditChatInviteLinkParams: Encodable {
     /// The maximum number of users that can be members of the chat simultaneously after joining the chat via this invite link; 1-99999
     public var memberLimit: Int?
 
-    /// True, if users joining the chat via the link need to be approved by chat administrators. If True, member_limit can't be specified
+    /// True, if users joining the chat via the link need to be approved by chat administrators. If True, member\_limit can't be specified
     public var createsJoinRequest: Bool?
 
     /// Custom keys for coding/decoding `EditChatInviteLinkParams` struct
     public enum CodingKeys: String, CodingKey {
-        case chatId = "chat_id"
+        case chatID = "chat_id"
         case inviteLink = "invite_link"
         case name
         case expireDate = "expire_date"
@@ -33,8 +30,15 @@ public struct EditChatInviteLinkParams: Encodable {
         case createsJoinRequest = "creates_join_request"
     }
 
-    public init(chatId: ChatId, inviteLink: String, name: String? = nil, expireDate: Int? = nil, memberLimit: Int? = nil, createsJoinRequest: Bool? = nil) {
-        self.chatId = chatId
+    public init(
+        chatID: ChatID,
+        inviteLink: String,
+        name: String? = nil,
+        expireDate: Int? = nil,
+        memberLimit: Int? = nil,
+        createsJoinRequest: Bool? = nil
+    ) {
+        self.chatID = chatID
         self.inviteLink = inviteLink
         self.name = name
         self.expireDate = expireDate
@@ -44,19 +48,16 @@ public struct EditChatInviteLinkParams: Encodable {
 }
 
 public extension Bot {
-    /**
-     Use this method to edit a non-primary invite link created by the bot. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the edited invite link as a ChatInviteLink object.
-
-     SeeAlso Telegram Bot API Reference:
-     [EditChatInviteLinkParams](https://core.telegram.org/bots/api#editchatinvitelink)
-
-     - Parameters:
-         - params: Parameters container, see `EditChatInviteLinkParams` struct
-     - Throws: Throws on errors
-     - Returns: EventLoopFuture of `Bool` type
-     */
-    @discardableResult
-    func editChatInviteLink(params: EditChatInviteLinkParams) throws -> EventLoopFuture<Bool> {
+    /// Use this method to edit a non-primary invite link created by the bot. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the edited invite link as a ChatInviteLink object.
+    ///
+    /// SeeAlso Telegram Bot API Reference:
+    /// [EditChatInviteLinkParams](https://core.telegram.org/bots/api#editchatinvitelink)
+    ///
+    /// - Parameters:
+    ///     - params: Parameters container, see `EditChatInviteLinkParams` struct
+    /// - Throws: Throws on errors
+    /// - Returns: EventLoopFuture of `Bool` type
+    @discardableResult func editChatInviteLink(params: EditChatInviteLinkParams) throws -> EventLoopFuture<Bool> {
         let methodURL: URI = .init(string: getMethodURL("editChatInviteLink"))
         let future: EventLoopFuture<Bool> = tgClient.post(methodURL, params: params, as: nil)
         return future

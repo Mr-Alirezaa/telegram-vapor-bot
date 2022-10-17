@@ -1,11 +1,8 @@
 
-
-/**
- This object represents a shipping address.
-
- SeeAlso Telegram Bot API Reference:
- [ShippingAddress](https://core.telegram.org/bots/api#shippingaddress)
- */
+/// This object represents a shipping address.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [ShippingAddress](https://core.telegram.org/bots/api#shippingaddress)
 public final class ShippingAddress: Codable {
     /// Custom keys for coding/decoding `ShippingAddress` struct
     public enum CodingKeys: String, CodingKey {
@@ -35,7 +32,14 @@ public final class ShippingAddress: Codable {
     /// Address post code
     public var postCode: String
 
-    public init(countryCode: String, state: String, city: String, streetLine1: String, streetLine2: String, postCode: String) {
+    public init(
+        countryCode: String,
+        state: String,
+        city: String,
+        streetLine1: String,
+        streetLine2: String,
+        postCode: String
+    ) {
         self.countryCode = countryCode
         self.state = state
         self.city = city

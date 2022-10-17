@@ -2,52 +2,42 @@ import Foundation
 
 /// Filters messages to allow only those which are from specified user ID.
 public class UserFilter: Filter {
-    var userIds: Set<Int64>?
+    var userIDs: Set<Int64>?
     var usernames: Set<String>?
 
-    /**
-     Init filter with user id
-     */
-    public init(userId: Int64) {
-        userIds = Set<Int64>([userId])
+    /// Init filter with user id
+    public init(userID: Int64) {
+        self.userIDs = Set<Int64>([userID])
         super.init()
     }
 
-    /**
-      Init filter which username to allow through.
-
-      Note: Which username to allow through. If username starts with ‘@’ symbol, it will be ignored.
-     */
+    /// Init filter which username to allow through.
+    ///
+    /// - note: Which username to allow through. If username starts with ‘@’ symbol, it will be ignored.
     public init(username: String) {
-        usernames = Set<String>([username])
+        self.usernames = Set<String>([username])
         super.init()
     }
 
-    /**
-     Init filter with user ids
-     */
-    public init(userIds: [Int64]) {
-        self.userIds = Set(userIds)
+    /// Init filter with user ids
+    public init(userIDs: [Int64]) {
+        self.userIDs = Set(userIDs)
         super.init()
     }
 
-    /**
-     Init filter which usernames to allow through.
-
-     Note: If username starts with ‘@’ symbol, it will be ignored.
-     */
+    /// Init filter which usernames to allow through.
+    ///
+    /// - note: If username starts with ‘@’ symbol, it will be ignored.
     public init(usernames: [String]) {
         self.usernames = Set(usernames)
         super.init()
     }
 
-    /**
-     Init filter with user id or user name
-
-     Note: If username starts with ‘@’ symbol, it will be ignored.
-     */
-    public init(userIds: [Int64], usernames: [String]) {
-        self.userIds = Set(userIds)
+    /// Init filter with user id or user name
+    ///
+    /// - note: If username starts with ‘@’ symbol, it will be ignored.
+    public init(userIDs: [Int64], usernames: [String]) {
+        self.userIDs = Set(userIDs)
         self.usernames = Set(usernames)
         super.init()
     }
@@ -62,7 +52,7 @@ public class UserFilter: Filter {
     public func filter(message: Message) -> Bool {
         guard let user = message.from else { return false }
 
-        if let ids = userIds,
+        if let ids = userIDs,
            !ids.contains(user.id)
         {
             return false
@@ -80,23 +70,23 @@ public class UserFilter: Filter {
 }
 
 public extension Filter {
-    static func user(userId: Int64) -> UserFilter {
-        UserFilter(userId: userId)
+    static func user(userID: Int64) -> UserFilter {
+        UserFilter(userID: userID)
     }
 
     static func user(username: String) -> UserFilter {
         UserFilter(username: username)
     }
 
-    static func user(userIds: [Int64]) -> UserFilter {
-        UserFilter(userIds: userIds)
+    static func user(userIDs: [Int64]) -> UserFilter {
+        UserFilter(userIDs: userIDs)
     }
 
     static func user(usernames: [String]) -> UserFilter {
         UserFilter(usernames: usernames)
     }
 
-    static func user(userIds: [Int64], usernames: [String]) -> UserFilter {
-        UserFilter(userIds: userIds, usernames: usernames)
+    static func user(userIDs: [Int64], usernames: [String]) -> UserFilter {
+        UserFilter(userIDs: userIDs, usernames: usernames)
     }
 }

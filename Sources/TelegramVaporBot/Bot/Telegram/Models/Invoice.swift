@@ -1,11 +1,8 @@
 
-
-/**
- This object contains basic information about an invoice.
-
- SeeAlso Telegram Bot API Reference:
- [Invoice](https://core.telegram.org/bots/api#invoice)
- */
+/// This object contains basic information about an invoice.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [Invoice](https://core.telegram.org/bots/api#invoice)
 public final class Invoice: Codable {
     /// Custom keys for coding/decoding `Invoice` struct
     public enum CodingKeys: String, CodingKey {

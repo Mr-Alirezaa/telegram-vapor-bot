@@ -29,7 +29,7 @@ public extension BaseMessageHandler {
             }
             if options.contains(.editedUpdates),
                update.editedChannelPost != nil ||
-                update.editedMessage != nil
+               update.editedMessage != nil
             {
                 return true
             }

@@ -7,7 +7,7 @@ public class LoggerHandler: HandlerProtocol {
     let logLevel: Logger.Level
 
     public init(level: Logger.Level) {
-        logLevel = level
+        self.logLevel = level
     }
 
     public func check(update: Update) -> Bool {

@@ -1,11 +1,8 @@
 
-
-/**
- Represents an issue with the translated version of a document. The error is considered resolved when a file with the document translation change.
-
- SeeAlso Telegram Bot API Reference:
- [PassportElementErrorTranslationFiles](https://core.telegram.org/bots/api#passportelementerrortranslationfiles)
- */
+/// Represents an issue with the translated version of a document. The error is considered resolved when a file with the document translation change.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [PassportElementErrorTranslationFiles](https://core.telegram.org/bots/api#passportelementerrortranslationfiles)
 public final class PassportElementErrorTranslationFiles: Codable {
     /// Custom keys for coding/decoding `PassportElementErrorTranslationFiles` struct
     public enum CodingKeys: String, CodingKey {
@@ -15,10 +12,10 @@ public final class PassportElementErrorTranslationFiles: Codable {
         case message
     }
 
-    /// Error source, must be translation_files
+    /// Error source, must be translation\_files
     public var source: String
 
-    /// Type of element of the user's Telegram Passport which has the issue, one of “passport”, “driver_license”, “identity_card”, “internal_passport”, “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration”, “temporary_registration”
+    /// Type of element of the user's Telegram Passport which has the issue, one of “passport”, “driver\_license”, “identity\_card”, “internal\_passport”, “utility\_bill”, “bank\_statement”, “rental\_agreement”, “passport\_registration”, “temporary\_registration”
     public var type: String
 
     /// List of base64-encoded file hashes

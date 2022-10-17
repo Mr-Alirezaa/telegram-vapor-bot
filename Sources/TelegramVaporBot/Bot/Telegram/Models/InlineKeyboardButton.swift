@@ -1,11 +1,8 @@
 
-
-/**
- This object represents one button of an inline keyboard. You must use exactly one of the optional fields.
-
- SeeAlso Telegram Bot API Reference:
- [InlineKeyboardButton](https://core.telegram.org/bots/api#inlinekeyboardbutton)
- */
+/// This object represents one button of an inline keyboard. You must use exactly one of the optional fields.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [InlineKeyboardButton](https://core.telegram.org/bots/api#inlinekeyboardbutton)
 public final class InlineKeyboardButton: Codable {
     /// Custom keys for coding/decoding `InlineKeyboardButton` struct
     public enum CodingKeys: String, CodingKey {
@@ -13,7 +10,7 @@ public final class InlineKeyboardButton: Codable {
         case url
         case callbackData = "callback_data"
         case webApp = "web_app"
-        case loginUrl = "login_url"
+        case loginURL = "login_url"
         case switchInlineQuery = "switch_inline_query"
         case switchInlineQueryCurrentChat = "switch_inline_query_current_chat"
         case callbackGame = "callback_game"
@@ -23,7 +20,7 @@ public final class InlineKeyboardButton: Codable {
     /// Label text on the button
     public var text: String
 
-    /// Optional. HTTP or tg:// URL to be opened when the button is pressed. Links tg://user?id=<user_id> can be used to mention a user by their ID without using a username, if this is allowed by their privacy settings.
+    /// Optional. HTTP or tg:// URL to be opened when the button is pressed. Links tg://user?id=<user\_id> can be used to mention a user by their ID without using a username, if this is allowed by their privacy settings.
     public var url: String?
 
     /// Optional. Data to be sent in a callback query to the bot when button is pressed, 1-64 bytes
@@ -33,11 +30,11 @@ public final class InlineKeyboardButton: Codable {
     public var webApp: WebAppInfo?
 
     /// Optional. An HTTPS URL used to automatically authorize the user. Can be used as a replacement for the Telegram Login Widget.
-    public var loginUrl: LoginUrl?
+    public var loginURL: LoginURL?
 
     /// Optional. If set, pressing the button will prompt the user to select one of their chats, open that chat and insert the bot's username and the specified inline query in the input field. May be empty, in which case just the bot's username will be inserted.
     ///
-    /// Note: This offers an easy way for users to start using your bot in inline mode when they are currently in a private chat with it. Especially useful when combined with switch_pm… actions - in this case the user will be automatically returned to the chat they switched from, skipping the chat selection screen.
+    /// Note: This offers an easy way for users to start using your bot in inline mode when they are currently in a private chat with it. Especially useful when combined with switch\_pm… actions - in this case the user will be automatically returned to the chat they switched from, skipping the chat selection screen.
     public var switchInlineQuery: String?
 
     /// Optional. If set, pressing the button will insert the bot's username and the specified inline query in the current chat's input field. May be empty, in which case only the bot's username will be inserted.
@@ -55,12 +52,22 @@ public final class InlineKeyboardButton: Codable {
     /// NOTE: This type of button must always be the first button in the first row and can only be used in invoice messages.
     public var pay: Bool?
 
-    public init(text: String, url: String? = nil, callbackData: String? = nil, webApp: WebAppInfo? = nil, loginUrl: LoginUrl? = nil, switchInlineQuery: String? = nil, switchInlineQueryCurrentChat: String? = nil, callbackGame: CallbackGame? = nil, pay: Bool? = nil) {
+    public init(
+        text: String,
+        url: String? = nil,
+        callbackData: String? = nil,
+        webApp: WebAppInfo? = nil,
+        loginURL: LoginURL? = nil,
+        switchInlineQuery: String? = nil,
+        switchInlineQueryCurrentChat: String? = nil,
+        callbackGame: CallbackGame? = nil,
+        pay: Bool? = nil
+    ) {
         self.text = text
         self.url = url
         self.callbackData = callbackData
         self.webApp = webApp
-        self.loginUrl = loginUrl
+        self.loginURL = loginURL
         self.switchInlineQuery = switchInlineQuery
         self.switchInlineQueryCurrentChat = switchInlineQueryCurrentChat
         self.callbackGame = callbackGame

@@ -1,11 +1,8 @@
 
-
-/**
- Represents a join request sent to a chat.
-
- SeeAlso Telegram Bot API Reference:
- [ChatJoinRequest](https://core.telegram.org/bots/api#chatjoinrequest)
- */
+/// Represents a join request sent to a chat.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [ChatJoinRequest](https://core.telegram.org/bots/api#chatjoinrequest)
 public final class ChatJoinRequest: Codable {
     /// Custom keys for coding/decoding `ChatJoinRequest` struct
     public enum CodingKeys: String, CodingKey {

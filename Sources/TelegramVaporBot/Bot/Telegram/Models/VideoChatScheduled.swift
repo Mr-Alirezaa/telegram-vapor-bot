@@ -1,11 +1,8 @@
 
-
-/**
- This object represents a service message about a video chat scheduled in the chat.
-
- SeeAlso Telegram Bot API Reference:
- [VideoChatScheduled](https://core.telegram.org/bots/api#videochatscheduled)
- */
+/// This object represents a service message about a video chat scheduled in the chat.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [VideoChatScheduled](https://core.telegram.org/bots/api#videochatscheduled)
 public final class VideoChatScheduled: Codable {
     /// Custom keys for coding/decoding `VideoChatScheduled` struct
     public enum CodingKeys: String, CodingKey {

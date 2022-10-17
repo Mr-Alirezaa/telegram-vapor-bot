@@ -1,8 +1,5 @@
 import Vapor
 
-/// DESCRIPTION:
-/// Use this method to remove webhook integration if you decide to switch back to getUpdates. Returns True on success.
-
 /// Parameters container struct for `deleteWebhook` method
 public struct DeleteWebhookParams: Encodable {
     /// Pass True to drop all pending updates
@@ -19,19 +16,16 @@ public struct DeleteWebhookParams: Encodable {
 }
 
 public extension Bot {
-    /**
-     Use this method to remove webhook integration if you decide to switch back to getUpdates. Returns True on success.
-
-     SeeAlso Telegram Bot API Reference:
-     [DeleteWebhookParams](https://core.telegram.org/bots/api#deletewebhook)
-
-     - Parameters:
-         - params: Parameters container, see `DeleteWebhookParams` struct
-     - Throws: Throws on errors
-     - Returns: EventLoopFuture of `Bool` type
-     */
-    @discardableResult
-    func deleteWebhook(params: DeleteWebhookParams? = nil) throws -> EventLoopFuture<Bool> {
+    /// Use this method to remove webhook integration if you decide to switch back to getUpdates. Returns True on success.
+    ///
+    /// SeeAlso Telegram Bot API Reference:
+    /// [DeleteWebhookParams](https://core.telegram.org/bots/api#deletewebhook)
+    ///
+    /// - Parameters:
+    ///     - params: Parameters container, see `DeleteWebhookParams` struct
+    /// - Throws: Throws on errors
+    /// - Returns: EventLoopFuture of `Bool` type
+    @discardableResult func deleteWebhook(params: DeleteWebhookParams? = nil) throws -> EventLoopFuture<Bool> {
         let methodURL: URI = .init(string: getMethodURL("deleteWebhook"))
         let future: EventLoopFuture<Bool> = tgClient.post(methodURL, params: params, as: nil)
         return future

@@ -1,11 +1,8 @@
 
-
-/**
- This object represents a portion of the price for goods or services.
-
- SeeAlso Telegram Bot API Reference:
- [LabeledPrice](https://core.telegram.org/bots/api#labeledprice)
- */
+/// This object represents a portion of the price for goods or services.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [LabeledPrice](https://core.telegram.org/bots/api#labeledprice)
 public final class LabeledPrice: Codable {
     /// Custom keys for coding/decoding `LabeledPrice` struct
     public enum CodingKeys: String, CodingKey {

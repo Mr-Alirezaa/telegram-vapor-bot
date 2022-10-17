@@ -1,11 +1,8 @@
 
-
-/**
- This object represents an inline keyboard that appears right next to the message it belongs to.
-
- SeeAlso Telegram Bot API Reference:
- [InlineKeyboardMarkup](https://core.telegram.org/bots/api#inlinekeyboardmarkup)
- */
+/// This object represents an inline keyboard that appears right next to the message it belongs to.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [InlineKeyboardMarkup](https://core.telegram.org/bots/api#inlinekeyboardmarkup)
 public final class InlineKeyboardMarkup: Codable {
     /// Custom keys for coding/decoding `InlineKeyboardMarkup` struct
     public enum CodingKeys: String, CodingKey {

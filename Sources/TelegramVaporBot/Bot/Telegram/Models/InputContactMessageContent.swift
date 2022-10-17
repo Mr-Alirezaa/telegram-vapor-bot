@@ -1,11 +1,8 @@
 
-
-/**
- Represents the content of a contact message to be sent as the result of an inline query.
-
- SeeAlso Telegram Bot API Reference:
- [InputContactMessageContent](https://core.telegram.org/bots/api#inputcontactmessagecontent)
- */
+/// Represents the content of a contact message to be sent as the result of an inline query.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [InputContactMessageContent](https://core.telegram.org/bots/api#inputcontactmessagecontent)
 public final class InputContactMessageContent: Codable {
     /// Custom keys for coding/decoding `InputContactMessageContent` struct
     public enum CodingKeys: String, CodingKey {

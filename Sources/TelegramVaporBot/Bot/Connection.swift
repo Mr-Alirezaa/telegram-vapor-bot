@@ -5,8 +5,7 @@ public protocol ConnectionProtocol {
     var bot: Bot? { get set }
     var dispatcher: DispatcherProtocol { get }
 
-    @discardableResult
-    func start() throws -> Bool
+    @discardableResult func start() throws -> Bool
 }
 
 public final class LongPollingConnection: ConnectionProtocol {
@@ -27,7 +26,12 @@ public final class LongPollingConnection: ConnectionProtocol {
     private var offsetUpdates = 0
     private var newOffsetUpdates: Int { offsetUpdates + 1 }
 
-    public init(dispatcher: DispatcherProtocol, limit: Int? = nil, timeout: Int? = nil, allowedUpdates: [Update.CodingKeys]? = nil) {
+    public init(
+        dispatcher: DispatcherProtocol,
+        limit: Int? = nil,
+        timeout: Int? = nil,
+        allowedUpdates: [Update.CodingKeys]? = nil
+    ) {
         self.dispatcher = dispatcher
         self.limit = limit
         self.timeout = timeout ?? self.timeout
@@ -35,14 +39,13 @@ public final class LongPollingConnection: ConnectionProtocol {
     }
 
     public init(limit: Int? = nil, timeout: Int? = nil, allowedUpdates: [Update.CodingKeys]? = nil) {
-        dispatcher = DefaultDispatcher()
+        self.dispatcher = DefaultDispatcher()
         self.limit = limit
         self.timeout = timeout ?? self.timeout
         self.allowedUpdates = allowedUpdates
     }
 
-    @discardableResult
-    public func start() throws -> Bool {
+    @discardableResult public func start() throws -> Bool {
         /// delete webhook because: You will not be able to receive updates using getUpdates for as long as an outgoing webhook is set up.
         let deleteWebHookParams: DeleteWebhookParams = .init(dropPendingUpdates: false)
         guard let bot = bot else { return false }
@@ -80,7 +83,7 @@ public final class LongPollingConnection: ConnectionProtocol {
             switch response {
             case let .success(updates):
                 if let lastUpdate: Update = updates.last {
-                    self?.offsetUpdates = lastUpdate.updateId
+                    self?.offsetUpdates = lastUpdate.updateID
                 }
                 do {
                     try self?.dispatcher.process(updates)
@@ -119,11 +122,10 @@ public final class WebHookConnection: ConnectionProtocol {
 
     public init(webHookURL: URI) {
         self.webHookURL = webHookURL
-        dispatcher = DefaultDispatcher()
+        self.dispatcher = DefaultDispatcher()
     }
 
-    @discardableResult
-    public func start() throws -> Bool {
+    @discardableResult public func start() throws -> Bool {
         let webHookParams: SetWebhookParams = .init(url: webHookURL.description)
         guard let bot = bot else { return false }
         let future: EventLoopFuture<Bool> = try bot.setWebhook(params: webHookParams)

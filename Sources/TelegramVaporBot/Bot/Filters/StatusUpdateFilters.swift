@@ -1,10 +1,8 @@
 import Foundation
 
-/**
- Subset struct for messages containing a status update.
-
- Use these filters like: `StatusUpdateFilters.newChatMembers` etc.
- */
+/// Subset struct for messages containing a status update.
+///
+/// Use these filters like: `StatusUpdateFilters.newChatMembers` etc.
 public struct StatusUpdateFilters {
     /// Messages that contain Message.groupChatCreated, Message.supergroupChatCreated or Message.channelChatCreated
     public static var chatCreated: ChatCreatedFilter { ChatCreatedFilter() }
@@ -15,7 +13,7 @@ public struct StatusUpdateFilters {
     /// Messages that contain Message.leftChatMember
     public static var leftChatMember: LeftChatMemberFilter { LeftChatMemberFilter() }
 
-    /// Messages that contain Message.migrateFromChatId
+    /// Messages that contain Message.migrateFromChatID
     public static var migrate: MigrateFilter { MigrateFilter() }
 
     /// Messages that contain Message.newChatMembers
@@ -63,14 +61,14 @@ public class LeftChatMemberFilter: Filter {
     }
 }
 
-/// Messages that contain Message.migrateFromChatId
+/// Messages that contain Message.migrateFromChatID
 public class MigrateFilter: Filter {
     public var name = "migrate"
 
     override
     public func filter(message: Message) -> Bool {
-        message.migrateFromChatId != nil ||
-            message.migrateToChatId != nil
+        message.migrateFromChatID != nil ||
+            message.migrateToChatID != nil
     }
 }
 

@@ -1,12 +1,9 @@
 import Vapor
 
-/// DESCRIPTION:
-/// Use this method to send phone contacts. On success, the sent Message is returned.
-
 /// Parameters container struct for `sendContact` method
 public struct SendContactParams: Encodable {
     /// Unique identifier for the target chat or username of the target channel (in the format @channelusername)
-    public var chatId: ChatId
+    public var chatID: ChatID
 
     /// Contact's phone number
     public var phoneNumber: String
@@ -27,7 +24,7 @@ public struct SendContactParams: Encodable {
     public var protectContent: Bool?
 
     /// If the message is a reply, ID of the original message
-    public var replyToMessageId: Int?
+    public var replyToMessageID: Int?
 
     /// Pass True if the message should be sent even if the specified replied-to message is not found
     public var allowSendingWithoutReply: Bool?
@@ -37,46 +34,54 @@ public struct SendContactParams: Encodable {
 
     /// Custom keys for coding/decoding `SendContactParams` struct
     public enum CodingKeys: String, CodingKey {
-        case chatId = "chat_id"
+        case chatID = "chat_id"
         case phoneNumber = "phone_number"
         case firstName = "first_name"
         case lastName = "last_name"
         case vcard
         case disableNotification = "disable_notification"
         case protectContent = "protect_content"
-        case replyToMessageId = "reply_to_message_id"
+        case replyToMessageID = "reply_to_message_id"
         case allowSendingWithoutReply = "allow_sending_without_reply"
         case replyMarkup = "reply_markup"
     }
 
-    public init(chatId: ChatId, phoneNumber: String, firstName: String, lastName: String? = nil, vcard: String? = nil, disableNotification: Bool? = nil, protectContent: Bool? = nil, replyToMessageId: Int? = nil, allowSendingWithoutReply: Bool? = nil, replyMarkup: ReplyMarkup? = nil) {
-        self.chatId = chatId
+    public init(
+        chatID: ChatID,
+        phoneNumber: String,
+        firstName: String,
+        lastName: String? = nil,
+        vcard: String? = nil,
+        disableNotification: Bool? = nil,
+        protectContent: Bool? = nil,
+        replyToMessageID: Int? = nil,
+        allowSendingWithoutReply: Bool? = nil,
+        replyMarkup: ReplyMarkup? = nil
+    ) {
+        self.chatID = chatID
         self.phoneNumber = phoneNumber
         self.firstName = firstName
         self.lastName = lastName
         self.vcard = vcard
         self.disableNotification = disableNotification
         self.protectContent = protectContent
-        self.replyToMessageId = replyToMessageId
+        self.replyToMessageID = replyToMessageID
         self.allowSendingWithoutReply = allowSendingWithoutReply
         self.replyMarkup = replyMarkup
     }
 }
 
 public extension Bot {
-    /**
-     Use this method to send phone contacts. On success, the sent Message is returned.
-
-     SeeAlso Telegram Bot API Reference:
-     [SendContactParams](https://core.telegram.org/bots/api#sendcontact)
-
-     - Parameters:
-         - params: Parameters container, see `SendContactParams` struct
-     - Throws: Throws on errors
-     - Returns: EventLoopFuture of `Message` type
-     */
-    @discardableResult
-    func sendContact(params: SendContactParams) throws -> EventLoopFuture<Message> {
+    /// Use this method to send phone contacts. On success, the sent Message is returned.
+    ///
+    /// SeeAlso Telegram Bot API Reference:
+    /// [SendContactParams](https://core.telegram.org/bots/api#sendcontact)
+    ///
+    /// - Parameters:
+    ///     - params: Parameters container, see `SendContactParams` struct
+    /// - Throws: Throws on errors
+    /// - Returns: EventLoopFuture of `Message` type
+    @discardableResult func sendContact(params: SendContactParams) throws -> EventLoopFuture<Message> {
         let methodURL: URI = .init(string: getMethodURL("sendContact"))
         let future: EventLoopFuture<Message> = tgClient.post(methodURL, params: params, as: nil)
         return future

@@ -1,11 +1,8 @@
 
-
-/**
- Represents a location on a map. By default, the location will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the location.
-
- SeeAlso Telegram Bot API Reference:
- [InlineQueryResultLocation](https://core.telegram.org/bots/api#inlinequeryresultlocation)
- */
+/// Represents a location on a map. By default, the location will be sent by the user. Alternatively, you can use input\_message\_content to send a message with the specified content instead of the location.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [InlineQueryResultLocation](https://core.telegram.org/bots/api#inlinequeryresultlocation)
 public final class InlineQueryResultLocation: Codable {
     /// Custom keys for coding/decoding `InlineQueryResultLocation` struct
     public enum CodingKeys: String, CodingKey {
@@ -20,7 +17,7 @@ public final class InlineQueryResultLocation: Codable {
         case proximityAlertRadius = "proximity_alert_radius"
         case replyMarkup = "reply_markup"
         case inputMessageContent = "input_message_content"
-        case thumbUrl = "thumb_url"
+        case thumbURL = "thumb_url"
         case thumbWidth = "thumb_width"
         case thumbHeight = "thumb_height"
     }
@@ -58,8 +55,8 @@ public final class InlineQueryResultLocation: Codable {
     /// Optional. Content of the message to be sent instead of the location
     public var inputMessageContent: InputMessageContent?
 
-    /// Optional. Url of the thumbnail for the result
-    public var thumbUrl: String?
+    /// Optional. URL of the thumbnail for the result
+    public var thumbURL: String?
 
     /// Optional. Thumbnail width
     public var thumbWidth: Int?
@@ -67,7 +64,22 @@ public final class InlineQueryResultLocation: Codable {
     /// Optional. Thumbnail height
     public var thumbHeight: Int?
 
-    public init(type: String, id: String, latitude: Float, longitude: Float, title: String, horizontalAccuracy: Float? = nil, livePeriod: Int? = nil, heading: Int? = nil, proximityAlertRadius: Int? = nil, replyMarkup: InlineKeyboardMarkup? = nil, inputMessageContent: InputMessageContent? = nil, thumbUrl: String? = nil, thumbWidth: Int? = nil, thumbHeight: Int? = nil) {
+    public init(
+        type: String,
+        id: String,
+        latitude: Float,
+        longitude: Float,
+        title: String,
+        horizontalAccuracy: Float? = nil,
+        livePeriod: Int? = nil,
+        heading: Int? = nil,
+        proximityAlertRadius: Int? = nil,
+        replyMarkup: InlineKeyboardMarkup? = nil,
+        inputMessageContent: InputMessageContent? = nil,
+        thumbURL: String? = nil,
+        thumbWidth: Int? = nil,
+        thumbHeight: Int? = nil
+    ) {
         self.type = type
         self.id = id
         self.latitude = latitude
@@ -79,7 +91,7 @@ public final class InlineQueryResultLocation: Codable {
         self.proximityAlertRadius = proximityAlertRadius
         self.replyMarkup = replyMarkup
         self.inputMessageContent = inputMessageContent
-        self.thumbUrl = thumbUrl
+        self.thumbURL = thumbURL
         self.thumbWidth = thumbWidth
         self.thumbHeight = thumbHeight
     }

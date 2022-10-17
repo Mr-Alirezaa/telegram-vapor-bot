@@ -1,11 +1,8 @@
 
-
-/**
- Represents a chat member that has no additional privileges or restrictions.
-
- SeeAlso Telegram Bot API Reference:
- [ChatMemberMember](https://core.telegram.org/bots/api#chatmembermember)
- */
+/// Represents a chat member that has no additional privileges or restrictions.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [ChatMemberMember](https://core.telegram.org/bots/api#chatmembermember)
 public final class ChatMemberMember: Codable {
     /// Custom keys for coding/decoding `ChatMemberMember` struct
     public enum CodingKeys: String, CodingKey {

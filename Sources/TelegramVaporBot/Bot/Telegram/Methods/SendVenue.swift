@@ -1,12 +1,9 @@
 import Vapor
 
-/// DESCRIPTION:
-/// Use this method to send information about a venue. On success, the sent Message is returned.
-
 /// Parameters container struct for `sendVenue` method
 public struct SendVenueParams: Encodable {
     /// Unique identifier for the target chat or username of the target channel (in the format @channelusername)
-    public var chatId: ChatId
+    public var chatID: ChatID
 
     /// Latitude of the venue
     public var latitude: Float
@@ -21,13 +18,13 @@ public struct SendVenueParams: Encodable {
     public var address: String
 
     /// Foursquare identifier of the venue
-    public var foursquareId: String?
+    public var foursquareID: String?
 
-    /// Foursquare type of the venue, if known. (For example, “arts_entertainment/default”, “arts_entertainment/aquarium” or “food/icecream”.)
+    /// Foursquare type of the venue, if known. (For example, “arts\_entertainment/default”, “arts\_entertainment/aquarium” or “food/icecream”.)
     public var foursquareType: String?
 
     /// Google Places identifier of the venue
-    public var googlePlaceId: String?
+    public var googlePlaceID: String?
 
     /// Google Places type of the venue. (See supported types.)
     public var googlePlaceType: String?
@@ -39,7 +36,7 @@ public struct SendVenueParams: Encodable {
     public var protectContent: Bool?
 
     /// If the message is a reply, ID of the original message
-    public var replyToMessageId: Int?
+    public var replyToMessageID: Int?
 
     /// Pass True if the message should be sent even if the specified replied-to message is not found
     public var allowSendingWithoutReply: Bool?
@@ -49,54 +46,66 @@ public struct SendVenueParams: Encodable {
 
     /// Custom keys for coding/decoding `SendVenueParams` struct
     public enum CodingKeys: String, CodingKey {
-        case chatId = "chat_id"
+        case chatID = "chat_id"
         case latitude
         case longitude
         case title
         case address
-        case foursquareId = "foursquare_id"
+        case foursquareID = "foursquare_id"
         case foursquareType = "foursquare_type"
-        case googlePlaceId = "google_place_id"
+        case googlePlaceID = "google_place_id"
         case googlePlaceType = "google_place_type"
         case disableNotification = "disable_notification"
         case protectContent = "protect_content"
-        case replyToMessageId = "reply_to_message_id"
+        case replyToMessageID = "reply_to_message_id"
         case allowSendingWithoutReply = "allow_sending_without_reply"
         case replyMarkup = "reply_markup"
     }
 
-    public init(chatId: ChatId, latitude: Float, longitude: Float, title: String, address: String, foursquareId: String? = nil, foursquareType: String? = nil, googlePlaceId: String? = nil, googlePlaceType: String? = nil, disableNotification: Bool? = nil, protectContent: Bool? = nil, replyToMessageId: Int? = nil, allowSendingWithoutReply: Bool? = nil, replyMarkup: ReplyMarkup? = nil) {
-        self.chatId = chatId
+    public init(
+        chatID: ChatID,
+        latitude: Float,
+        longitude: Float,
+        title: String,
+        address: String,
+        foursquareID: String? = nil,
+        foursquareType: String? = nil,
+        googlePlaceID: String? = nil,
+        googlePlaceType: String? = nil,
+        disableNotification: Bool? = nil,
+        protectContent: Bool? = nil,
+        replyToMessageID: Int? = nil,
+        allowSendingWithoutReply: Bool? = nil,
+        replyMarkup: ReplyMarkup? = nil
+    ) {
+        self.chatID = chatID
         self.latitude = latitude
         self.longitude = longitude
         self.title = title
         self.address = address
-        self.foursquareId = foursquareId
+        self.foursquareID = foursquareID
         self.foursquareType = foursquareType
-        self.googlePlaceId = googlePlaceId
+        self.googlePlaceID = googlePlaceID
         self.googlePlaceType = googlePlaceType
         self.disableNotification = disableNotification
         self.protectContent = protectContent
-        self.replyToMessageId = replyToMessageId
+        self.replyToMessageID = replyToMessageID
         self.allowSendingWithoutReply = allowSendingWithoutReply
         self.replyMarkup = replyMarkup
     }
 }
 
 public extension Bot {
-    /**
-     Use this method to send information about a venue. On success, the sent Message is returned.
-
-     SeeAlso Telegram Bot API Reference:
-     [SendVenueParams](https://core.telegram.org/bots/api#sendvenue)
-
-     - Parameters:
-         - params: Parameters container, see `SendVenueParams` struct
-     - Throws: Throws on errors
-     - Returns: EventLoopFuture of `Message` type
-     */
-    @discardableResult
-    func sendVenue(params: SendVenueParams) throws -> EventLoopFuture<Message> {
+    /// Use this method to send information about a venue. On success, the sent Message is returned.
+    ///
+    /// SeeAlso Telegram Bot API Reference:
+    /// [SendVenueParams](https://core.telegram.org/bots/api#sendvenue)
+    ///
+    /// - Parameters:
+    ///     - params: Parameters container, see `SendVenueParams` struct
+    /// - Throws: Throws on errors
+    /// - Returns: EventLoopFuture of `Message` type
+    @discardableResult func sendVenue(params: SendVenueParams) throws -> EventLoopFuture<Message> {
         let methodURL: URI = .init(string: getMethodURL("sendVenue"))
         let future: EventLoopFuture<Message> = tgClient.post(methodURL, params: params, as: nil)
         return future

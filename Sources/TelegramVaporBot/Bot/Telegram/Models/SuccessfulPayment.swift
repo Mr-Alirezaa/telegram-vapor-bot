@@ -1,21 +1,18 @@
 
-
-/**
- This object contains basic information about a successful payment.
-
- SeeAlso Telegram Bot API Reference:
- [SuccessfulPayment](https://core.telegram.org/bots/api#successfulpayment)
- */
+/// This object contains basic information about a successful payment.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [SuccessfulPayment](https://core.telegram.org/bots/api#successfulpayment)
 public final class SuccessfulPayment: Codable {
     /// Custom keys for coding/decoding `SuccessfulPayment` struct
     public enum CodingKeys: String, CodingKey {
         case currency
         case totalAmount = "total_amount"
         case invoicePayload = "invoice_payload"
-        case shippingOptionId = "shipping_option_id"
+        case shippingOptionID = "shipping_option_id"
         case orderInfo = "order_info"
-        case telegramPaymentChargeId = "telegram_payment_charge_id"
-        case providerPaymentChargeId = "provider_payment_charge_id"
+        case telegramPaymentChargeID = "telegram_payment_charge_id"
+        case providerPaymentChargeID = "provider_payment_charge_id"
     }
 
     /// Three-letter ISO 4217 currency code
@@ -28,24 +25,32 @@ public final class SuccessfulPayment: Codable {
     public var invoicePayload: String
 
     /// Optional. Identifier of the shipping option chosen by the user
-    public var shippingOptionId: String?
+    public var shippingOptionID: String?
 
     /// Optional. Order information provided by the user
     public var orderInfo: OrderInfo?
 
     /// Telegram payment identifier
-    public var telegramPaymentChargeId: String
+    public var telegramPaymentChargeID: String
 
     /// Provider payment identifier
-    public var providerPaymentChargeId: String
+    public var providerPaymentChargeID: String
 
-    public init(currency: String, totalAmount: Int, invoicePayload: String, shippingOptionId: String? = nil, orderInfo: OrderInfo? = nil, telegramPaymentChargeId: String, providerPaymentChargeId: String) {
+    public init(
+        currency: String,
+        totalAmount: Int,
+        invoicePayload: String,
+        shippingOptionID: String? = nil,
+        orderInfo: OrderInfo? = nil,
+        telegramPaymentChargeID: String,
+        providerPaymentChargeID: String
+    ) {
         self.currency = currency
         self.totalAmount = totalAmount
         self.invoicePayload = invoicePayload
-        self.shippingOptionId = shippingOptionId
+        self.shippingOptionID = shippingOptionID
         self.orderInfo = orderInfo
-        self.telegramPaymentChargeId = telegramPaymentChargeId
-        self.providerPaymentChargeId = providerPaymentChargeId
+        self.telegramPaymentChargeID = telegramPaymentChargeID
+        self.providerPaymentChargeID = providerPaymentChargeID
     }
 }

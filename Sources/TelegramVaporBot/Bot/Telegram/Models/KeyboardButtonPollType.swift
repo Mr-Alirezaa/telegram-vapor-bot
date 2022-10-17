@@ -1,11 +1,8 @@
 
-
-/**
- This object represents type of a poll, which is allowed to be created and sent when the corresponding button is pressed.
-
- SeeAlso Telegram Bot API Reference:
- [KeyboardButtonPollType](https://core.telegram.org/bots/api#keyboardbuttonpolltype)
- */
+/// This object represents type of a poll, which is allowed to be created and sent when the corresponding button is pressed.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [KeyboardButtonPollType](https://core.telegram.org/bots/api#keyboardbuttonpolltype)
 public final class KeyboardButtonPollType: Codable {
     /// Custom keys for coding/decoding `KeyboardButtonPollType` struct
     public enum CodingKeys: String, CodingKey {

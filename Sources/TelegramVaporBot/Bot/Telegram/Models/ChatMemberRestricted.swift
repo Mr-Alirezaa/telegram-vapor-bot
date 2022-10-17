@@ -1,11 +1,8 @@
 
-
-/**
- Represents a chat member that is under certain restrictions in the chat. Supergroups only.
-
- SeeAlso Telegram Bot API Reference:
- [ChatMemberRestricted](https://core.telegram.org/bots/api#chatmemberrestricted)
- */
+/// Represents a chat member that is under certain restrictions in the chat. Supergroups only.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [ChatMemberRestricted](https://core.telegram.org/bots/api#chatmemberrestricted)
 public final class ChatMemberRestricted: Codable {
     /// Custom keys for coding/decoding `ChatMemberRestricted` struct
     public enum CodingKeys: String, CodingKey {
@@ -59,7 +56,20 @@ public final class ChatMemberRestricted: Codable {
     /// Date when restrictions will be lifted for this user; unix time. If 0, then the user is restricted forever
     public var untilDate: Int
 
-    public init(status: String, user: User, isMember: Bool, canChangeInfo: Bool, canInviteUsers: Bool, canPinMessages: Bool, canSendMessages: Bool, canSendMediaMessages: Bool, canSendPolls: Bool, canSendOtherMessages: Bool, canAddWebPagePreviews: Bool, untilDate: Int) {
+    public init(
+        status: String,
+        user: User,
+        isMember: Bool,
+        canChangeInfo: Bool,
+        canInviteUsers: Bool,
+        canPinMessages: Bool,
+        canSendMessages: Bool,
+        canSendMediaMessages: Bool,
+        canSendPolls: Bool,
+        canSendOtherMessages: Bool,
+        canAddWebPagePreviews: Bool,
+        untilDate: Int
+    ) {
         self.status = status
         self.user = user
         self.isMember = isMember

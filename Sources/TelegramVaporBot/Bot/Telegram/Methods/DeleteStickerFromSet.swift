@@ -1,8 +1,5 @@
 import Vapor
 
-/// DESCRIPTION:
-/// Use this method to delete a sticker from a set created by the bot. Returns True on success.
-
 /// Parameters container struct for `deleteStickerFromSet` method
 public struct DeleteStickerFromSetParams: Encodable {
     /// File identifier of the sticker
@@ -19,19 +16,16 @@ public struct DeleteStickerFromSetParams: Encodable {
 }
 
 public extension Bot {
-    /**
-     Use this method to delete a sticker from a set created by the bot. Returns True on success.
-
-     SeeAlso Telegram Bot API Reference:
-     [DeleteStickerFromSetParams](https://core.telegram.org/bots/api#deletestickerfromset)
-
-     - Parameters:
-         - params: Parameters container, see `DeleteStickerFromSetParams` struct
-     - Throws: Throws on errors
-     - Returns: EventLoopFuture of `Bool` type
-     */
-    @discardableResult
-    func deleteStickerFromSet(params: DeleteStickerFromSetParams) throws -> EventLoopFuture<Bool> {
+    /// Use this method to delete a sticker from a set created by the bot. Returns True on success.
+    ///
+    /// SeeAlso Telegram Bot API Reference:
+    /// [DeleteStickerFromSetParams](https://core.telegram.org/bots/api#deletestickerfromset)
+    ///
+    /// - Parameters:
+    ///     - params: Parameters container, see `DeleteStickerFromSetParams` struct
+    /// - Throws: Throws on errors
+    /// - Returns: EventLoopFuture of `Bool` type
+    @discardableResult func deleteStickerFromSet(params: DeleteStickerFromSetParams) throws -> EventLoopFuture<Bool> {
         let methodURL: URI = .init(string: getMethodURL("deleteStickerFromSet"))
         let future: EventLoopFuture<Bool> = tgClient.post(methodURL, params: params, as: nil)
         return future

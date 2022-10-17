@@ -1,11 +1,8 @@
 
-
-/**
- Describes the current status of a webhook.
-
- SeeAlso Telegram Bot API Reference:
- [WebhookInfo](https://core.telegram.org/bots/api#webhookinfo)
- */
+/// Describes the current status of a webhook.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [WebhookInfo](https://core.telegram.org/bots/api#webhookinfo
 public final class WebhookInfo: Codable {
     /// Custom keys for coding/decoding `WebhookInfo` struct
     public enum CodingKeys: String, CodingKey {
@@ -44,10 +41,20 @@ public final class WebhookInfo: Codable {
     /// Optional. The maximum allowed number of simultaneous HTTPS connections to the webhook for update delivery
     public var maxConnections: Int?
 
-    /// Optional. A list of update types the bot is subscribed to. Defaults to all update types except chat_member
+    /// Optional. A list of update types the bot is subscribed to. Defaults to all update types except chat\_member
     public var allowedUpdates: [String]?
 
-    public init(url: String, hasCustomCertificate: Bool, pendingUpdateCount: Int, ipAddress: String? = nil, lastErrorDate: Int? = nil, lastErrorMessage: String? = nil, lastSynchronizationErrorDate: Int? = nil, maxConnections: Int? = nil, allowedUpdates: [String]? = nil) {
+    public init(
+        url: String,
+        hasCustomCertificate: Bool,
+        pendingUpdateCount: Int,
+        ipAddress: String? = nil,
+        lastErrorDate: Int? = nil,
+        lastErrorMessage: String? = nil,
+        lastSynchronizationErrorDate: Int? = nil,
+        maxConnections: Int? = nil,
+        allowedUpdates: [String]? = nil
+    ) {
         self.url = url
         self.hasCustomCertificate = hasCustomCertificate
         self.pendingUpdateCount = pendingUpdateCount

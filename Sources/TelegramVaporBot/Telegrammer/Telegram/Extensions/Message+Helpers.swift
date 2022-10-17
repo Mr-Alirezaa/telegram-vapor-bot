@@ -1,24 +1,16 @@
-//
-//  Message+Helpers.swift
-//  Telegrammer
-//
-
-//
-
 public extension Message {
-    /**
-     Helper method to easy reply to message
-     - Parameters:
-        - text: Text to send in reply
-        - bot: Bot from which send reply
-        - parseMode: Optional. Text format
-        - replyMarkup: Optional. Reply Markup
-
-     - Throws: Throws on errors
-     */
+    /// Helper method to easy reply to message
+    ///
+    /// - Parameters:
+    ///    - text: Text to send in reply
+    ///    - bot: Bot from which send reply
+    ///    - parseMode: Optional. Text format
+    ///    - replyMarkup: Optional. Reply Markup
+    ///
+    /// - Throws: Throws on errors
     func reply(text: String, bot: BotProtocol, parseMode: ParseMode? = nil, replyMarkup: ReplyMarkup? = nil) throws {
         let params = SendMessageParams(
-            chatId: .chat(chat.id),
+            chatID: .chat(chat.id),
             text: text,
             parseMode: parseMode,
             replyMarkup: replyMarkup
@@ -26,17 +18,15 @@ public extension Message {
         try bot.sendMessage(params: params)
     }
 
-    /**
-     Helper method to easy edit message
-
-     - Parameters:
-        - text: Text to send in reply
-        - bot: Bot from which send reply
-        - parseMode: Optional. Text format
-        - replyMarkup: Optional. Reply Markup
-
-     - Throws: Throws on errors
-     */
+    /// Helper method to easy edit message
+    ///
+    /// - Parameters:
+    ///    - text: Text to send in reply
+    ///    - bot: Bot from which send reply
+    ///    - parseMode: Optional. Text format
+    ///    - replyMarkup: Optional. Reply Markup
+    ///
+    /// - Throws: Throws on errors
     func edit(
         text: String,
         bot: BotProtocol,
@@ -44,8 +34,8 @@ public extension Message {
         replyMarkup: InlineKeyboardMarkup? = nil
     ) throws {
         let params = EditMessageTextParams(
-            chatId: .chat(chat.id),
-            messageId: messageId,
+            chatID: .chat(chat.id),
+            messageID: messageID,
             text: text,
             parseMode: parseMode,
             replyMarkup: replyMarkup
@@ -53,18 +43,16 @@ public extension Message {
         try bot.editMessageText(params: params)
     }
 
-    /**
-     Helper method to easy edit message
-
-     - Parameters:
-        - bot: Bot from which send reply
-
-     - Throws: Throws on errors
-     */
+    /// Helper method to easy edit message
+    ///
+    /// - Parameters:
+    ///    - bot: Bot from which send reply
+    ///
+    /// - Throws: Throws on errors
     func delete(bot: BotProtocol) throws {
         let params = DeleteMessageParams(
-            chatId: .chat(chat.id),
-            messageId: messageId
+            chatID: .chat(chat.id),
+            messageID: messageID
         )
         try bot.deleteMessage(params: params)
     }

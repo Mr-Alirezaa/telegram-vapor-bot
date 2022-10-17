@@ -1,11 +1,8 @@
 
-
-/**
- Describes Telegram Passport data shared with the bot by the user.
-
- SeeAlso Telegram Bot API Reference:
- [PassportData](https://core.telegram.org/bots/api#passportdata)
- */
+/// Describes Telegram Passport data shared with the bot by the user.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [PassportData](https://core.telegram.org/bots/api#passportdata)
 public final class PassportData: Codable {
     /// Custom keys for coding/decoding `PassportData` struct
     public enum CodingKeys: String, CodingKey {

@@ -1,11 +1,8 @@
 
-
-/**
- This object represents an incoming inline query. When the user sends an empty query, your bot could return some default or trending results.
-
- SeeAlso Telegram Bot API Reference:
- [InlineQuery](https://core.telegram.org/bots/api#inlinequery)
- */
+/// This object represents an incoming inline query. When the user sends an empty query, your bot could return some default or trending results.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [InlineQuery](https://core.telegram.org/bots/api#inlinequery)
 public final class InlineQuery: Codable {
     /// Custom keys for coding/decoding `InlineQuery` struct
     public enum CodingKeys: String, CodingKey {
@@ -35,7 +32,14 @@ public final class InlineQuery: Codable {
     /// Optional. Sender location, only for bots that request user location
     public var location: Location?
 
-    public init(id: String, from: User, query: String, offset: String, chatType: String? = nil, location: Location? = nil) {
+    public init(
+        id: String,
+        from: User,
+        query: String,
+        offset: String,
+        chatType: String? = nil,
+        location: Location? = nil
+    ) {
         self.id = id
         self.from = from
         self.query = query

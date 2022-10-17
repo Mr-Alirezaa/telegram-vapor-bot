@@ -3,8 +3,7 @@ import Foundation
 public protocol AsyncHandler<ResultType>: HandlerProtocol {
     associatedtype ResultType = Void
 
-    @discardableResult
-    func handle(update: Update, bot: BotProtocol) async throws -> ResultType
+    @discardableResult func handle(update: Update, bot: BotProtocol) async throws -> ResultType
 }
 
 /// Type-erased concrete type conforming to `AsyncHandler`.
@@ -26,6 +25,6 @@ class AnyAsyncHandler<State>: AsyncHandler {
     }
 
     func handle(update: TelegramVaporBot.Update, bot: TelegramVaporBot.BotProtocol) async throws -> State {
-        return try await handler.handle(update: update, bot: bot) as! State
+        try await handler.handle(update: update, bot: bot) as! State
     }
 }

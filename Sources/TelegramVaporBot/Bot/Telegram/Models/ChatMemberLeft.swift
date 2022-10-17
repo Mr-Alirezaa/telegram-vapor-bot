@@ -1,11 +1,8 @@
 
-
-/**
- Represents a chat member that isn't currently a member of the chat, but may join it themselves.
-
- SeeAlso Telegram Bot API Reference:
- [ChatMemberLeft](https://core.telegram.org/bots/api#chatmemberleft)
- */
+/// Represents a chat member that isn't currently a member of the chat, but may join it themselves.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [ChatMemberLeft](https://core.telegram.org/bots/api#chatmemberleft)
 public final class ChatMemberLeft: Codable {
     /// Custom keys for coding/decoding `ChatMemberLeft` struct
     public enum CodingKeys: String, CodingKey {

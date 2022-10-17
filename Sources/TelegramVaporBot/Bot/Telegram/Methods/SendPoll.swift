@@ -1,12 +1,9 @@
 import Vapor
 
-/// DESCRIPTION:
-/// Use this method to send a native poll. On success, the sent Message is returned.
-
 /// Parameters container struct for `sendPoll` method
 public struct SendPollParams: Encodable {
     /// Unique identifier for the target chat or username of the target channel (in the format @channelusername)
-    public var chatId: ChatId
+    public var chatID: ChatID
 
     /// Poll question, 1-300 characters
     public var question: String
@@ -24,7 +21,7 @@ public struct SendPollParams: Encodable {
     public var allowsMultipleAnswers: Bool?
 
     /// 0-based identifier of the correct answer option, required for polls in quiz mode
-    public var correctOptionId: Int?
+    public var correctOptionID: Int?
 
     /// Text that is shown when a user chooses an incorrect answer or taps on the lamp icon in a quiz-style poll, 0-200 characters with at most 2 line feeds after entities parsing
     public var explanation: String?
@@ -32,13 +29,13 @@ public struct SendPollParams: Encodable {
     /// Mode for parsing entities in the explanation. See formatting options for more details.
     public var explanationParseMode: ParseMode?
 
-    /// A JSON-serialized list of special entities that appear in the poll explanation, which can be specified instead of parse_mode
+    /// A JSON-serialized list of special entities that appear in the poll explanation, which can be specified instead of parse\_mode
     public var explanationEntities: [MessageEntity]?
 
-    /// Amount of time in seconds the poll will be active after creation, 5-600. Can't be used together with close_date.
+    /// Amount of time in seconds the poll will be active after creation, 5-600. Can't be used together with close\_date.
     public var openPeriod: Int?
 
-    /// Point in time (Unix timestamp) when the poll will be automatically closed. Must be at least 5 and no more than 600 seconds in the future. Can't be used together with open_period.
+    /// Point in time (Unix timestamp) when the poll will be automatically closed. Must be at least 5 and no more than 600 seconds in the future. Can't be used together with open\_period.
     public var closeDate: Int?
 
     /// Pass True if the poll needs to be immediately closed. This can be useful for poll preview.
@@ -51,7 +48,7 @@ public struct SendPollParams: Encodable {
     public var protectContent: Bool?
 
     /// If the message is a reply, ID of the original message
-    public var replyToMessageId: Int?
+    public var replyToMessageID: Int?
 
     /// Pass True if the message should be sent even if the specified replied-to message is not found
     public var allowSendingWithoutReply: Bool?
@@ -61,13 +58,13 @@ public struct SendPollParams: Encodable {
 
     /// Custom keys for coding/decoding `SendPollParams` struct
     public enum CodingKeys: String, CodingKey {
-        case chatId = "chat_id"
+        case chatID = "chat_id"
         case question
         case options
         case isAnonymous = "is_anonymous"
         case type
         case allowsMultipleAnswers = "allows_multiple_answers"
-        case correctOptionId = "correct_option_id"
+        case correctOptionID = "correct_option_id"
         case explanation
         case explanationParseMode = "explanation_parse_mode"
         case explanationEntities = "explanation_entities"
@@ -76,19 +73,38 @@ public struct SendPollParams: Encodable {
         case isClosed = "is_closed"
         case disableNotification = "disable_notification"
         case protectContent = "protect_content"
-        case replyToMessageId = "reply_to_message_id"
+        case replyToMessageID = "reply_to_message_id"
         case allowSendingWithoutReply = "allow_sending_without_reply"
         case replyMarkup = "reply_markup"
     }
 
-    public init(chatId: ChatId, question: String, options: [String], isAnonymous: Bool? = nil, type: String? = nil, allowsMultipleAnswers: Bool? = nil, correctOptionId: Int? = nil, explanation: String? = nil, explanationParseMode: ParseMode? = nil, explanationEntities: [MessageEntity]? = nil, openPeriod: Int? = nil, closeDate: Int? = nil, isClosed: Bool? = nil, disableNotification: Bool? = nil, protectContent: Bool? = nil, replyToMessageId: Int? = nil, allowSendingWithoutReply: Bool? = nil, replyMarkup: ReplyMarkup? = nil) {
-        self.chatId = chatId
+    public init(
+        chatID: ChatID,
+        question: String,
+        options: [String],
+        isAnonymous: Bool? = nil,
+        type: String? = nil,
+        allowsMultipleAnswers: Bool? = nil,
+        correctOptionID: Int? = nil,
+        explanation: String? = nil,
+        explanationParseMode: ParseMode? = nil,
+        explanationEntities: [MessageEntity]? = nil,
+        openPeriod: Int? = nil,
+        closeDate: Int? = nil,
+        isClosed: Bool? = nil,
+        disableNotification: Bool? = nil,
+        protectContent: Bool? = nil,
+        replyToMessageID: Int? = nil,
+        allowSendingWithoutReply: Bool? = nil,
+        replyMarkup: ReplyMarkup? = nil
+    ) {
+        self.chatID = chatID
         self.question = question
         self.options = options
         self.isAnonymous = isAnonymous
         self.type = type
         self.allowsMultipleAnswers = allowsMultipleAnswers
-        self.correctOptionId = correctOptionId
+        self.correctOptionID = correctOptionID
         self.explanation = explanation
         self.explanationParseMode = explanationParseMode
         self.explanationEntities = explanationEntities
@@ -97,26 +113,23 @@ public struct SendPollParams: Encodable {
         self.isClosed = isClosed
         self.disableNotification = disableNotification
         self.protectContent = protectContent
-        self.replyToMessageId = replyToMessageId
+        self.replyToMessageID = replyToMessageID
         self.allowSendingWithoutReply = allowSendingWithoutReply
         self.replyMarkup = replyMarkup
     }
 }
 
 public extension Bot {
-    /**
-     Use this method to send a native poll. On success, the sent Message is returned.
-
-     SeeAlso Telegram Bot API Reference:
-     [SendPollParams](https://core.telegram.org/bots/api#sendpoll)
-
-     - Parameters:
-         - params: Parameters container, see `SendPollParams` struct
-     - Throws: Throws on errors
-     - Returns: EventLoopFuture of `Message` type
-     */
-    @discardableResult
-    func sendPoll(params: SendPollParams) throws -> EventLoopFuture<Message> {
+    /// Use this method to send a native poll. On success, the sent Message is returned.
+    ///
+    /// SeeAlso Telegram Bot API Reference:
+    /// [SendPollParams](https://core.telegram.org/bots/api#sendpoll)
+    ///
+    /// - Parameters:
+    ///     - params: Parameters container, see `SendPollParams` struct
+    /// - Throws: Throws on errors
+    /// - Returns: EventLoopFuture of `Message` type
+    @discardableResult func sendPoll(params: SendPollParams) throws -> EventLoopFuture<Message> {
         let methodURL: URI = .init(string: getMethodURL("sendPoll"))
         let future: EventLoopFuture<Message> = tgClient.post(methodURL, params: params, as: nil)
         return future

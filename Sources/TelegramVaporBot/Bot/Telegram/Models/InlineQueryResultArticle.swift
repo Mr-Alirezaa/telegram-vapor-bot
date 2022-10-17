@@ -1,11 +1,8 @@
 
-
-/**
- Represents a link to an article or web page.
-
- SeeAlso Telegram Bot API Reference:
- [InlineQueryResultArticle](https://core.telegram.org/bots/api#inlinequeryresultarticle)
- */
+/// Represents a link to an article or web page.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [InlineQueryResultArticle](https://core.telegram.org/bots/api#inlinequeryresultarticle)
 public final class InlineQueryResultArticle: Codable {
     /// Custom keys for coding/decoding `InlineQueryResultArticle` struct
     public enum CodingKeys: String, CodingKey {
@@ -15,9 +12,9 @@ public final class InlineQueryResultArticle: Codable {
         case inputMessageContent = "input_message_content"
         case replyMarkup = "reply_markup"
         case url
-        case hideUrl = "hide_url"
+        case hideURL = "hide_url"
         case description
-        case thumbUrl = "thumb_url"
+        case thumbURL = "thumb_url"
         case thumbWidth = "thumb_width"
         case thumbHeight = "thumb_height"
     }
@@ -41,13 +38,13 @@ public final class InlineQueryResultArticle: Codable {
     public var url: String?
 
     /// Optional. Pass True if you don't want the URL to be shown in the message
-    public var hideUrl: Bool?
+    public var hideURL: Bool?
 
     /// Optional. Short description of the result
     public var description: String?
 
-    /// Optional. Url of the thumbnail for the result
-    public var thumbUrl: String?
+    /// Optional. URL of the thumbnail for the result
+    public var thumbURL: String?
 
     /// Optional. Thumbnail width
     public var thumbWidth: Int?
@@ -55,16 +52,28 @@ public final class InlineQueryResultArticle: Codable {
     /// Optional. Thumbnail height
     public var thumbHeight: Int?
 
-    public init(type: String, id: String, title: String, inputMessageContent: InputMessageContent, replyMarkup: InlineKeyboardMarkup? = nil, url: String? = nil, hideUrl: Bool? = nil, description: String? = nil, thumbUrl: String? = nil, thumbWidth: Int? = nil, thumbHeight: Int? = nil) {
+    public init(
+        type: String,
+        id: String,
+        title: String,
+        inputMessageContent: InputMessageContent,
+        replyMarkup: InlineKeyboardMarkup? = nil,
+        url: String? = nil,
+        hideURL: Bool? = nil,
+        description: String? = nil,
+        thumbURL: String? = nil,
+        thumbWidth: Int? = nil,
+        thumbHeight: Int? = nil
+    ) {
         self.type = type
         self.id = id
         self.title = title
         self.inputMessageContent = inputMessageContent
         self.replyMarkup = replyMarkup
         self.url = url
-        self.hideUrl = hideUrl
+        self.hideURL = hideURL
         self.description = description
-        self.thumbUrl = thumbUrl
+        self.thumbURL = thumbURL
         self.thumbWidth = thumbWidth
         self.thumbHeight = thumbHeight
     }

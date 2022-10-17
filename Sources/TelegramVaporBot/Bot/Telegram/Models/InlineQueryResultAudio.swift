@@ -1,17 +1,14 @@
 
-
-/**
- Represents a link to an MP3 audio file. By default, this audio file will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the audio.
-
- SeeAlso Telegram Bot API Reference:
- [InlineQueryResultAudio](https://core.telegram.org/bots/api#inlinequeryresultaudio)
- */
+/// Represents a link to an MP3 audio file. By default, this audio file will be sent by the user. Alternatively, you can use input\_message\_content to send a message with the specified content instead of the audio.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [InlineQueryResultAudio](https://core.telegram.org/bots/api#inlinequeryresultaudio)
 public final class InlineQueryResultAudio: Codable {
     /// Custom keys for coding/decoding `InlineQueryResultAudio` struct
     public enum CodingKeys: String, CodingKey {
         case type
         case id
-        case audioUrl = "audio_url"
+        case audioURL = "audio_url"
         case title
         case caption
         case parseMode = "parse_mode"
@@ -29,7 +26,7 @@ public final class InlineQueryResultAudio: Codable {
     public var id: String
 
     /// A valid URL for the audio file
-    public var audioUrl: String
+    public var audioURL: String
 
     /// Title
     public var title: String
@@ -40,7 +37,7 @@ public final class InlineQueryResultAudio: Codable {
     /// Optional. Mode for parsing entities in the audio caption. See formatting options for more details.
     public var parseMode: String?
 
-    /// Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
+    /// Optional. List of special entities that appear in the caption, which can be specified instead of parse\_mode
     public var captionEntities: [MessageEntity]?
 
     /// Optional. Performer
@@ -55,10 +52,22 @@ public final class InlineQueryResultAudio: Codable {
     /// Optional. Content of the message to be sent instead of the audio
     public var inputMessageContent: InputMessageContent?
 
-    public init(type: String, id: String, audioUrl: String, title: String, caption: String? = nil, parseMode: String? = nil, captionEntities: [MessageEntity]? = nil, performer: String? = nil, audioDuration: Int? = nil, replyMarkup: InlineKeyboardMarkup? = nil, inputMessageContent: InputMessageContent? = nil) {
+    public init(
+        type: String,
+        id: String,
+        audioURL: String,
+        title: String,
+        caption: String? = nil,
+        parseMode: String? = nil,
+        captionEntities: [MessageEntity]? = nil,
+        performer: String? = nil,
+        audioDuration: Int? = nil,
+        replyMarkup: InlineKeyboardMarkup? = nil,
+        inputMessageContent: InputMessageContent? = nil
+    ) {
         self.type = type
         self.id = id
-        self.audioUrl = audioUrl
+        self.audioURL = audioURL
         self.title = title
         self.caption = caption
         self.parseMode = parseMode

@@ -1,21 +1,18 @@
 
-
-/**
- This object represents a unique message identifier.
-
- SeeAlso Telegram Bot API Reference:
- [MessageId](https://core.telegram.org/bots/api#messageid)
- */
-public final class MessageId: Codable {
-    /// Custom keys for coding/decoding `MessageId` struct
+/// This object represents a unique message identifier.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [MessageID](https://core.telegram.org/bots/api#messageid)
+public final class MessageID: Codable {
+    /// Custom keys for coding/decoding `MessageID` struct
     public enum CodingKeys: String, CodingKey {
-        case messageId = "message_id"
+        case messageID = "message_id"
     }
 
     /// Unique message identifier
-    public var messageId: Int
+    public var messageID: Int
 
-    public init(messageId: Int) {
-        self.messageId = messageId
+    public init(messageID: Int) {
+        self.messageID = messageID
     }
 }

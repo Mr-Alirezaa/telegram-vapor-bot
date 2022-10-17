@@ -1,11 +1,8 @@
 
-
-/**
- Describes actions that a non-administrator user is allowed to take in a chat.
-
- SeeAlso Telegram Bot API Reference:
- [ChatPermissions](https://core.telegram.org/bots/api#chatpermissions)
- */
+/// Describes actions that a non-administrator user is allowed to take in a chat.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [ChatPermissions](https://core.telegram.org/bots/api#chatpermissions)
 public final class ChatPermissions: Codable {
     /// Custom keys for coding/decoding `ChatPermissions` struct
     public enum CodingKeys: String, CodingKey {
@@ -22,16 +19,16 @@ public final class ChatPermissions: Codable {
     /// Optional. True, if the user is allowed to send text messages, contacts, locations and venues
     public var canSendMessages: Bool?
 
-    /// Optional. True, if the user is allowed to send audios, documents, photos, videos, video notes and voice notes, implies can_send_messages
+    /// Optional. True, if the user is allowed to send audios, documents, photos, videos, video notes and voice notes, implies can\_send\_messages
     public var canSendMediaMessages: Bool?
 
-    /// Optional. True, if the user is allowed to send polls, implies can_send_messages
+    /// Optional. True, if the user is allowed to send polls, implies can\_send\_messages
     public var canSendPolls: Bool?
 
-    /// Optional. True, if the user is allowed to send animations, games, stickers and use inline bots, implies can_send_media_messages
+    /// Optional. True, if the user is allowed to send animations, games, stickers and use inline bots, implies can\_send\_media\_messages
     public var canSendOtherMessages: Bool?
 
-    /// Optional. True, if the user is allowed to add web page previews to their messages, implies can_send_media_messages
+    /// Optional. True, if the user is allowed to add web page previews to their messages, implies can\_send\_media\_messages
     public var canAddWebPagePreviews: Bool?
 
     /// Optional. True, if the user is allowed to change the chat title, photo and other settings. Ignored in public supergroups
@@ -43,7 +40,16 @@ public final class ChatPermissions: Codable {
     /// Optional. True, if the user is allowed to pin messages. Ignored in public supergroups
     public var canPinMessages: Bool?
 
-    public init(canSendMessages: Bool? = nil, canSendMediaMessages: Bool? = nil, canSendPolls: Bool? = nil, canSendOtherMessages: Bool? = nil, canAddWebPagePreviews: Bool? = nil, canChangeInfo: Bool? = nil, canInviteUsers: Bool? = nil, canPinMessages: Bool? = nil) {
+    public init(
+        canSendMessages: Bool? = nil,
+        canSendMediaMessages: Bool? = nil,
+        canSendPolls: Bool? = nil,
+        canSendOtherMessages: Bool? = nil,
+        canAddWebPagePreviews: Bool? = nil,
+        canChangeInfo: Bool? = nil,
+        canInviteUsers: Bool? = nil,
+        canPinMessages: Bool? = nil
+    ) {
         self.canSendMessages = canSendMessages
         self.canSendMediaMessages = canSendMediaMessages
         self.canSendPolls = canSendPolls

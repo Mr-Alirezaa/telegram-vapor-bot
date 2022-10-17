@@ -1,17 +1,14 @@
 
-
-/**
- Represents a link to a video file stored on the Telegram servers. By default, this video file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the video.
-
- SeeAlso Telegram Bot API Reference:
- [InlineQueryResultCachedVideo](https://core.telegram.org/bots/api#inlinequeryresultcachedvideo)
- */
+/// Represents a link to a video file stored on the Telegram servers. By default, this video file will be sent by the user with an optional caption. Alternatively, you can use input\_message\_content to send a message with the specified content instead of the video.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [InlineQueryResultCachedVideo](https://core.telegram.org/bots/api#inlinequeryresultcachedvideo)
 public final class InlineQueryResultCachedVideo: Codable {
     /// Custom keys for coding/decoding `InlineQueryResultCachedVideo` struct
     public enum CodingKeys: String, CodingKey {
         case type
         case id
-        case videoFileId = "video_file_id"
+        case videoFileID = "video_file_id"
         case title
         case description
         case caption
@@ -28,7 +25,7 @@ public final class InlineQueryResultCachedVideo: Codable {
     public var id: String
 
     /// A valid file identifier for the video file
-    public var videoFileId: String
+    public var videoFileID: String
 
     /// Title for the result
     public var title: String
@@ -42,7 +39,7 @@ public final class InlineQueryResultCachedVideo: Codable {
     /// Optional. Mode for parsing entities in the video caption. See formatting options for more details.
     public var parseMode: String?
 
-    /// Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
+    /// Optional. List of special entities that appear in the caption, which can be specified instead of parse\_mode
     public var captionEntities: [MessageEntity]?
 
     /// Optional. Inline keyboard attached to the message
@@ -51,10 +48,21 @@ public final class InlineQueryResultCachedVideo: Codable {
     /// Optional. Content of the message to be sent instead of the video
     public var inputMessageContent: InputMessageContent?
 
-    public init(type: String, id: String, videoFileId: String, title: String, description: String? = nil, caption: String? = nil, parseMode: String? = nil, captionEntities: [MessageEntity]? = nil, replyMarkup: InlineKeyboardMarkup? = nil, inputMessageContent: InputMessageContent? = nil) {
+    public init(
+        type: String,
+        id: String,
+        videoFileID: String,
+        title: String,
+        description: String? = nil,
+        caption: String? = nil,
+        parseMode: String? = nil,
+        captionEntities: [MessageEntity]? = nil,
+        replyMarkup: InlineKeyboardMarkup? = nil,
+        inputMessageContent: InputMessageContent? = nil
+    ) {
         self.type = type
         self.id = id
-        self.videoFileId = videoFileId
+        self.videoFileID = videoFileID
         self.title = title
         self.description = description
         self.caption = caption

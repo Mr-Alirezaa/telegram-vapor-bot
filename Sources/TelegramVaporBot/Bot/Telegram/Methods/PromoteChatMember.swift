@@ -1,15 +1,12 @@
 import Vapor
 
-/// DESCRIPTION:
-/// Use this method to promote or demote a user in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Pass False for all boolean parameters to demote a user. Returns True on success.
-
 /// Parameters container struct for `promoteChatMember` method
 public struct PromoteChatMemberParams: Encodable {
     /// Unique identifier for the target chat or username of the target channel (in the format @channelusername)
-    public var chatId: ChatId
+    public var chatID: ChatID
 
     /// Unique identifier of the target user
-    public var userId: Int64
+    public var userID: Int64
 
     /// Pass True if the administrator's presence in the chat is hidden
     public var isAnonymous: Bool?
@@ -46,8 +43,8 @@ public struct PromoteChatMemberParams: Encodable {
 
     /// Custom keys for coding/decoding `PromoteChatMemberParams` struct
     public enum CodingKeys: String, CodingKey {
-        case chatId = "chat_id"
-        case userId = "user_id"
+        case chatID = "chat_id"
+        case userID = "user_id"
         case isAnonymous = "is_anonymous"
         case canManageChat = "can_manage_chat"
         case canPostMessages = "can_post_messages"
@@ -61,9 +58,23 @@ public struct PromoteChatMemberParams: Encodable {
         case canPinMessages = "can_pin_messages"
     }
 
-    public init(chatId: ChatId, userId: Int64, isAnonymous: Bool? = nil, canManageChat: Bool? = nil, canPostMessages: Bool? = nil, canEditMessages: Bool? = nil, canDeleteMessages: Bool? = nil, canManageVideoChats: Bool? = nil, canRestrictMembers: Bool? = nil, canPromoteMembers: Bool? = nil, canChangeInfo: Bool? = nil, canInviteUsers: Bool? = nil, canPinMessages: Bool? = nil) {
-        self.chatId = chatId
-        self.userId = userId
+    public init(
+        chatID: ChatID,
+        userID: Int64,
+        isAnonymous: Bool? = nil,
+        canManageChat: Bool? = nil,
+        canPostMessages: Bool? = nil,
+        canEditMessages: Bool? = nil,
+        canDeleteMessages: Bool? = nil,
+        canManageVideoChats: Bool? = nil,
+        canRestrictMembers: Bool? = nil,
+        canPromoteMembers: Bool? = nil,
+        canChangeInfo: Bool? = nil,
+        canInviteUsers: Bool? = nil,
+        canPinMessages: Bool? = nil
+    ) {
+        self.chatID = chatID
+        self.userID = userID
         self.isAnonymous = isAnonymous
         self.canManageChat = canManageChat
         self.canPostMessages = canPostMessages
@@ -79,19 +90,16 @@ public struct PromoteChatMemberParams: Encodable {
 }
 
 public extension Bot {
-    /**
-     Use this method to promote or demote a user in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Pass False for all boolean parameters to demote a user. Returns True on success.
-
-     SeeAlso Telegram Bot API Reference:
-     [PromoteChatMemberParams](https://core.telegram.org/bots/api#promotechatmember)
-
-     - Parameters:
-         - params: Parameters container, see `PromoteChatMemberParams` struct
-     - Throws: Throws on errors
-     - Returns: EventLoopFuture of `Bool` type
-     */
-    @discardableResult
-    func promoteChatMember(params: PromoteChatMemberParams) throws -> EventLoopFuture<Bool> {
+    /// Use this method to promote or demote a user in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Pass False for all boolean parameters to demote a user. Returns True on success.
+    ///
+    /// SeeAlso Telegram Bot API Reference:
+    /// [PromoteChatMemberParams](https://core.telegram.org/bots/api#promotechatmember)
+    ///
+    /// - Parameters:
+    ///     - params: Parameters container, see `PromoteChatMemberParams` struct
+    /// - Throws: Throws on errors
+    /// - Returns: EventLoopFuture of `Bool` type
+    @discardableResult func promoteChatMember(params: PromoteChatMemberParams) throws -> EventLoopFuture<Bool> {
         let methodURL: URI = .init(string: getMethodURL("promoteChatMember"))
         let future: EventLoopFuture<Bool> = tgClient.post(methodURL, params: params, as: nil)
         return future

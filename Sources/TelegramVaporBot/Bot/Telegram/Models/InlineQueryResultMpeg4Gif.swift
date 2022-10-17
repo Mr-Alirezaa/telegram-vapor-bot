@@ -1,21 +1,18 @@
 
-
-/**
- Represents a link to a video animation (H.264/MPEG-4 AVC video without sound). By default, this animated MPEG-4 file will be sent by the user with optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the animation.
-
- SeeAlso Telegram Bot API Reference:
- [InlineQueryResultMpeg4Gif](https://core.telegram.org/bots/api#inlinequeryresultmpeg4gif)
- */
+/// Represents a link to a video animation (H.264/MPEG-4 AVC video without sound). By default, this animated MPEG-4 file will be sent by the user with optional caption. Alternatively, you can use input\_message\_content to send a message with the specified content instead of the animation.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [InlineQueryResultMpeg4Gif](https://core.telegram.org/bots/api#inlinequeryresultmpeg4gif)
 public final class InlineQueryResultMpeg4Gif: Codable {
     /// Custom keys for coding/decoding `InlineQueryResultMpeg4Gif` struct
     public enum CodingKeys: String, CodingKey {
         case type
         case id
-        case mpeg4Url = "mpeg4_url"
+        case mpeg4URL = "mpeg4_url"
         case mpeg4Width = "mpeg4_width"
         case mpeg4Height = "mpeg4_height"
         case mpeg4Duration = "mpeg4_duration"
-        case thumbUrl = "thumb_url"
+        case thumbURL = "thumb_url"
         case thumbMimeType = "thumb_mime_type"
         case title
         case caption
@@ -25,14 +22,14 @@ public final class InlineQueryResultMpeg4Gif: Codable {
         case inputMessageContent = "input_message_content"
     }
 
-    /// Type of the result, must be mpeg4_gif
+    /// Type of the result, must be mpeg4\_gif
     public var type: String
 
     /// Unique identifier for this result, 1-64 bytes
     public var id: String
 
     /// A valid URL for the MPEG4 file. File size must not exceed 1MB
-    public var mpeg4Url: String
+    public var mpeg4URL: String
 
     /// Optional. Video width
     public var mpeg4Width: Int?
@@ -44,7 +41,7 @@ public final class InlineQueryResultMpeg4Gif: Codable {
     public var mpeg4Duration: Int?
 
     /// URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result
-    public var thumbUrl: String
+    public var thumbURL: String
 
     /// Optional. MIME type of the thumbnail, must be one of “image/jpeg”, “image/gif”, or “video/mp4”. Defaults to “image/jpeg”
     public var thumbMimeType: String?
@@ -58,7 +55,7 @@ public final class InlineQueryResultMpeg4Gif: Codable {
     /// Optional. Mode for parsing entities in the caption. See formatting options for more details.
     public var parseMode: String?
 
-    /// Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
+    /// Optional. List of special entities that appear in the caption, which can be specified instead of parse\_mode
     public var captionEntities: [MessageEntity]?
 
     /// Optional. Inline keyboard attached to the message
@@ -67,14 +64,29 @@ public final class InlineQueryResultMpeg4Gif: Codable {
     /// Optional. Content of the message to be sent instead of the video animation
     public var inputMessageContent: InputMessageContent?
 
-    public init(type: String, id: String, mpeg4Url: String, mpeg4Width: Int? = nil, mpeg4Height: Int? = nil, mpeg4Duration: Int? = nil, thumbUrl: String, thumbMimeType: String? = nil, title: String? = nil, caption: String? = nil, parseMode: String? = nil, captionEntities: [MessageEntity]? = nil, replyMarkup: InlineKeyboardMarkup? = nil, inputMessageContent: InputMessageContent? = nil) {
+    public init(
+        type: String,
+        id: String,
+        mpeg4URL: String,
+        mpeg4Width: Int? = nil,
+        mpeg4Height: Int? = nil,
+        mpeg4Duration: Int? = nil,
+        thumbURL: String,
+        thumbMimeType: String? = nil,
+        title: String? = nil,
+        caption: String? = nil,
+        parseMode: String? = nil,
+        captionEntities: [MessageEntity]? = nil,
+        replyMarkup: InlineKeyboardMarkup? = nil,
+        inputMessageContent: InputMessageContent? = nil
+    ) {
         self.type = type
         self.id = id
-        self.mpeg4Url = mpeg4Url
+        self.mpeg4URL = mpeg4URL
         self.mpeg4Width = mpeg4Width
         self.mpeg4Height = mpeg4Height
         self.mpeg4Duration = mpeg4Duration
-        self.thumbUrl = thumbUrl
+        self.thumbURL = thumbURL
         self.thumbMimeType = thumbMimeType
         self.title = title
         self.caption = caption

@@ -1,11 +1,8 @@
 
-
-/**
- Represents a location to which a chat is connected.
-
- SeeAlso Telegram Bot API Reference:
- [ChatLocation](https://core.telegram.org/bots/api#chatlocation)
- */
+/// Represents a location to which a chat is connected.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [ChatLocation](https://core.telegram.org/bots/api#chatlocation)
 public final class ChatLocation: Codable {
     /// Custom keys for coding/decoding `ChatLocation` struct
     public enum CodingKeys: String, CodingKey {

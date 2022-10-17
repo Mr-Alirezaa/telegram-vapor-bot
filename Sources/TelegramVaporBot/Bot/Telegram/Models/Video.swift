@@ -1,16 +1,13 @@
 
-
-/**
- This object represents a video file.
-
- SeeAlso Telegram Bot API Reference:
- [Video](https://core.telegram.org/bots/api#video)
- */
+/// This object represents a video file.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [Video](https://core.telegram.org/bots/api#video)
 public final class Video: Codable {
     /// Custom keys for coding/decoding `Video` struct
     public enum CodingKeys: String, CodingKey {
-        case fileId = "file_id"
-        case fileUniqueId = "file_unique_id"
+        case fileID = "file_id"
+        case fileUniqueID = "file_unique_id"
         case width
         case height
         case duration
@@ -21,10 +18,10 @@ public final class Video: Codable {
     }
 
     /// Identifier for this file, which can be used to download or reuse the file
-    public var fileId: String
+    public var fileID: String
 
     /// Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.
-    public var fileUniqueId: String
+    public var fileUniqueID: String
 
     /// Video width as defined by sender
     public var width: Int
@@ -47,9 +44,19 @@ public final class Video: Codable {
     /// Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this value.
     public var fileSize: Int?
 
-    public init(fileId: String, fileUniqueId: String, width: Int, height: Int, duration: Int, thumb: PhotoSize? = nil, fileName: String? = nil, mimeType: String? = nil, fileSize: Int? = nil) {
-        self.fileId = fileId
-        self.fileUniqueId = fileUniqueId
+    public init(
+        fileID: String,
+        fileUniqueID: String,
+        width: Int,
+        height: Int,
+        duration: Int,
+        thumb: PhotoSize? = nil,
+        fileName: String? = nil,
+        mimeType: String? = nil,
+        fileSize: Int? = nil
+    ) {
+        self.fileID = fileID
+        self.fileUniqueID = fileUniqueID
         self.width = width
         self.height = height
         self.duration = duration

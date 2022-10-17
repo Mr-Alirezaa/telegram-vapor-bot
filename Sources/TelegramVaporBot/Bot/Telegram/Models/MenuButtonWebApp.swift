@@ -1,11 +1,8 @@
 
-
-/**
- Represents a menu button, which launches a Web App.
-
- SeeAlso Telegram Bot API Reference:
- [MenuButtonWebApp](https://core.telegram.org/bots/api#menubuttonwebapp)
- */
+/// Represents a menu button, which launches a Web App.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [MenuButtonWebApp](https://core.telegram.org/bots/api#menubuttonwebapp)
 public final class MenuButtonWebApp: Codable {
     /// Custom keys for coding/decoding `MenuButtonWebApp` struct
     public enum CodingKeys: String, CodingKey {
@@ -14,7 +11,7 @@ public final class MenuButtonWebApp: Codable {
         case webApp = "web_app"
     }
 
-    /// Type of the button, must be web_app
+    /// Type of the button, must be web\_app
     public var type: String
 
     /// Text on the button

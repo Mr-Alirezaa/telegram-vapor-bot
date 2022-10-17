@@ -1,16 +1,13 @@
 
-
-/**
- This object represents an incoming update.
- At most one of the optional parameters can be present in any given update.
-
- SeeAlso Telegram Bot API Reference:
- [Update](https://core.telegram.org/bots/api#update)
- */
+/// This object represents an incoming update.
+/// At most one of the optional parameters can be present in any given update.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [Update](https://core.telegram.org/bots/api#update)
 public final class Update: Codable {
     /// Custom keys for coding/decoding `Update` struct
     public enum CodingKeys: String, CodingKey {
-        case updateId = "update_id"
+        case updateID = "update_id"
         case message
         case editedMessage = "edited_message"
         case channelPost = "channel_post"
@@ -28,7 +25,7 @@ public final class Update: Codable {
     }
 
     /// The update's unique identifier. Update identifiers start from a certain positive number and increase sequentially. This ID becomes especially handy if you're using webhooks, since it allows you to ignore repeated updates or to restore the correct update sequence, should they get out of order. If there are no new updates for at least a week, then identifier of the next update will be chosen randomly instead of sequentially.
-    public var updateId: Int
+    public var updateID: Int
 
     /// Optional. New incoming message of any kind - text, photo, sticker, etc.
     public var message: Message?
@@ -66,14 +63,14 @@ public final class Update: Codable {
     /// Optional. The bot's chat member status was updated in a chat. For private chats, this update is received only when the bot is blocked or unblocked by the user.
     public var myChatMember: ChatMemberUpdated?
 
-    /// Optional. A chat member's status was updated in a chat. The bot must be an administrator in the chat and must explicitly specify “chat_member” in the list of allowed_updates to receive these updates.
+    /// Optional. A chat member's status was updated in a chat. The bot must be an administrator in the chat and must explicitly specify “chat\_member” in the list of allowed\_updates to receive these updates.
     public var chatMember: ChatMemberUpdated?
 
-    /// Optional. A request to join the chat has been sent. The bot must have the can_invite_users administrator right in the chat to receive these updates.
+    /// Optional. A request to join the chat has been sent. The bot must have the can\_invite\_users administrator right in the chat to receive these updates.
     public var chatJoinRequest: ChatJoinRequest?
 
     public init(
-        updateId: Int,
+        updateID: Int,
         message: Message? = nil,
         editedMessage: Message? = nil,
         channelPost: Message? = nil,
@@ -89,7 +86,7 @@ public final class Update: Codable {
         chatMember: ChatMemberUpdated? = nil,
         chatJoinRequest: ChatJoinRequest? = nil
     ) {
-        self.updateId = updateId
+        self.updateID = updateID
         self.message = message
         self.editedMessage = editedMessage
         self.channelPost = channelPost
@@ -108,7 +105,6 @@ public final class Update: Codable {
 }
 
 extension Update {
-
     /// Convenient access to `from` property in different Update types.
     var from: TelegramVaporBot.User? {
         if let from = message?.from {

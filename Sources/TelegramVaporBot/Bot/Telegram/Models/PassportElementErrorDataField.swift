@@ -1,11 +1,8 @@
 
-
-/**
- Represents an issue in one of the data fields that was provided by the user. The error is considered resolved when the field's value changes.
-
- SeeAlso Telegram Bot API Reference:
- [PassportElementErrorDataField](https://core.telegram.org/bots/api#passportelementerrordatafield)
- */
+/// Represents an issue in one of the data fields that was provided by the user. The error is considered resolved when the field's value changes.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [PassportElementErrorDataField](https://core.telegram.org/bots/api#passportelementerrordatafield)
 public final class PassportElementErrorDataField: Codable {
     /// Custom keys for coding/decoding `PassportElementErrorDataField` struct
     public enum CodingKeys: String, CodingKey {
@@ -19,7 +16,7 @@ public final class PassportElementErrorDataField: Codable {
     /// Error source, must be data
     public var source: String
 
-    /// The section of the user's Telegram Passport which has the error, one of “personal_details”, “passport”, “driver_license”, “identity_card”, “internal_passport”, “address”
+    /// The section of the user's Telegram Passport which has the error, one of “personal\_details”, “passport”, “driver\_license”, “identity\_card”, “internal\_passport”, “address”
     public var type: String
 
     /// Name of the data field which has the error

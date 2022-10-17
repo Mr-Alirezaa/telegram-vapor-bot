@@ -1,21 +1,18 @@
 
-
-/**
- Represents a link to an animated GIF file. By default, this animated GIF file will be sent by the user with optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the animation.
-
- SeeAlso Telegram Bot API Reference:
- [InlineQueryResultGif](https://core.telegram.org/bots/api#inlinequeryresultgif)
- */
+/// Represents a link to an animated GIF file. By default, this animated GIF file will be sent by the user with optional caption. Alternatively, you can use input\_message\_content to send a message with the specified content instead of the animation.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [InlineQueryResultGif](https://core.telegram.org/bots/api#inlinequeryresultgif)
 public final class InlineQueryResultGif: Codable {
     /// Custom keys for coding/decoding `InlineQueryResultGif` struct
     public enum CodingKeys: String, CodingKey {
         case type
         case id
-        case gifUrl = "gif_url"
+        case gifURL = "gif_url"
         case gifWidth = "gif_width"
         case gifHeight = "gif_height"
         case gifDuration = "gif_duration"
-        case thumbUrl = "thumb_url"
+        case thumbURL = "thumb_url"
         case thumbMimeType = "thumb_mime_type"
         case title
         case caption
@@ -32,7 +29,7 @@ public final class InlineQueryResultGif: Codable {
     public var id: String
 
     /// A valid URL for the GIF file. File size must not exceed 1MB
-    public var gifUrl: String
+    public var gifURL: String
 
     /// Optional. Width of the GIF
     public var gifWidth: Int?
@@ -44,7 +41,7 @@ public final class InlineQueryResultGif: Codable {
     public var gifDuration: Int?
 
     /// URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result
-    public var thumbUrl: String
+    public var thumbURL: String
 
     /// Optional. MIME type of the thumbnail, must be one of “image/jpeg”, “image/gif”, or “video/mp4”. Defaults to “image/jpeg”
     public var thumbMimeType: String?
@@ -58,7 +55,7 @@ public final class InlineQueryResultGif: Codable {
     /// Optional. Mode for parsing entities in the caption. See formatting options for more details.
     public var parseMode: String?
 
-    /// Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
+    /// Optional. List of special entities that appear in the caption, which can be specified instead of parse\_mode
     public var captionEntities: [MessageEntity]?
 
     /// Optional. Inline keyboard attached to the message
@@ -67,14 +64,29 @@ public final class InlineQueryResultGif: Codable {
     /// Optional. Content of the message to be sent instead of the GIF animation
     public var inputMessageContent: InputMessageContent?
 
-    public init(type: String, id: String, gifUrl: String, gifWidth: Int? = nil, gifHeight: Int? = nil, gifDuration: Int? = nil, thumbUrl: String, thumbMimeType: String? = nil, title: String? = nil, caption: String? = nil, parseMode: String? = nil, captionEntities: [MessageEntity]? = nil, replyMarkup: InlineKeyboardMarkup? = nil, inputMessageContent: InputMessageContent? = nil) {
+    public init(
+        type: String,
+        id: String,
+        gifURL: String,
+        gifWidth: Int? = nil,
+        gifHeight: Int? = nil,
+        gifDuration: Int? = nil,
+        thumbURL: String,
+        thumbMimeType: String? = nil,
+        title: String? = nil,
+        caption: String? = nil,
+        parseMode: String? = nil,
+        captionEntities: [MessageEntity]? = nil,
+        replyMarkup: InlineKeyboardMarkup? = nil,
+        inputMessageContent: InputMessageContent? = nil
+    ) {
         self.type = type
         self.id = id
-        self.gifUrl = gifUrl
+        self.gifURL = gifURL
         self.gifWidth = gifWidth
         self.gifHeight = gifHeight
         self.gifDuration = gifDuration
-        self.thumbUrl = thumbUrl
+        self.thumbURL = thumbURL
         self.thumbMimeType = thumbMimeType
         self.title = title
         self.caption = caption

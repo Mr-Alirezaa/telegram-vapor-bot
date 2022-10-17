@@ -1,11 +1,8 @@
 
-
-/**
- This object contains information about an incoming pre-checkout query.
-
- SeeAlso Telegram Bot API Reference:
- [PreCheckoutQuery](https://core.telegram.org/bots/api#precheckoutquery)
- */
+/// This object contains information about an incoming pre-checkout query.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [PreCheckoutQuery](https://core.telegram.org/bots/api#precheckoutquery)
 public final class PreCheckoutQuery: Codable {
     /// Custom keys for coding/decoding `PreCheckoutQuery` struct
     public enum CodingKeys: String, CodingKey {
@@ -14,7 +11,7 @@ public final class PreCheckoutQuery: Codable {
         case currency
         case totalAmount = "total_amount"
         case invoicePayload = "invoice_payload"
-        case shippingOptionId = "shipping_option_id"
+        case shippingOptionID = "shipping_option_id"
         case orderInfo = "order_info"
     }
 
@@ -34,18 +31,26 @@ public final class PreCheckoutQuery: Codable {
     public var invoicePayload: String
 
     /// Optional. Identifier of the shipping option chosen by the user
-    public var shippingOptionId: String?
+    public var shippingOptionID: String?
 
     /// Optional. Order information provided by the user
     public var orderInfo: OrderInfo?
 
-    public init(id: String, from: User, currency: String, totalAmount: Int, invoicePayload: String, shippingOptionId: String? = nil, orderInfo: OrderInfo? = nil) {
+    public init(
+        id: String,
+        from: User,
+        currency: String,
+        totalAmount: Int,
+        invoicePayload: String,
+        shippingOptionID: String? = nil,
+        orderInfo: OrderInfo? = nil
+    ) {
         self.id = id
         self.from = from
         self.currency = currency
         self.totalAmount = totalAmount
         self.invoicePayload = invoicePayload
-        self.shippingOptionId = shippingOptionId
+        self.shippingOptionID = shippingOptionID
         self.orderInfo = orderInfo
     }
 }

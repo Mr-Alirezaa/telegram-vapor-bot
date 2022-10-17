@@ -1,12 +1,9 @@
 import Vapor
 
-/// DESCRIPTION:
-/// Use this method to set the score of the specified user in a game message. On success, if the message is not an inline message, the Message is returned, otherwise True is returned. Returns an error, if the new score is not greater than the user's current score in the chat and force is False.
-
 /// Parameters container struct for `setGameScore` method
 public struct SetGameScoreParams: Encodable {
     /// User identifier
-    public var userId: Int64
+    public var userID: Int64
 
     /// New score, must be non-negative
     public var score: Int
@@ -17,51 +14,56 @@ public struct SetGameScoreParams: Encodable {
     /// Pass True if the game message should not be automatically edited to include the current scoreboard
     public var disableEditMessage: Bool?
 
-    /// Required if inline_message_id is not specified. Unique identifier for the target chat
-    public var chatId: Int64?
+    /// Required if inline\_message\_id is not specified. Unique identifier for the target chat
+    public var chatID: Int64?
 
-    /// Required if inline_message_id is not specified. Identifier of the sent message
-    public var messageId: Int?
+    /// Required if inline\_message\_id is not specified. Identifier of the sent message
+    public var messageID: Int?
 
-    /// Required if chat_id and message_id are not specified. Identifier of the inline message
-    public var inlineMessageId: String?
+    /// Required if chat\_id and message\_id are not specified. Identifier of the inline message
+    public var inlineMessageID: String?
 
     /// Custom keys for coding/decoding `SetGameScoreParams` struct
     public enum CodingKeys: String, CodingKey {
-        case userId = "user_id"
+        case userID = "user_id"
         case score
         case force
         case disableEditMessage = "disable_edit_message"
-        case chatId = "chat_id"
-        case messageId = "message_id"
-        case inlineMessageId = "inline_message_id"
+        case chatID = "chat_id"
+        case messageID = "message_id"
+        case inlineMessageID = "inline_message_id"
     }
 
-    public init(userId: Int64, score: Int, force: Bool? = nil, disableEditMessage: Bool? = nil, chatId: Int64? = nil, messageId: Int? = nil, inlineMessageId: String? = nil) {
-        self.userId = userId
+    public init(
+        userID: Int64,
+        score: Int,
+        force: Bool? = nil,
+        disableEditMessage: Bool? = nil,
+        chatID: Int64? = nil,
+        messageID: Int? = nil,
+        inlineMessageID: String? = nil
+    ) {
+        self.userID = userID
         self.score = score
         self.force = force
         self.disableEditMessage = disableEditMessage
-        self.chatId = chatId
-        self.messageId = messageId
-        self.inlineMessageId = inlineMessageId
+        self.chatID = chatID
+        self.messageID = messageID
+        self.inlineMessageID = inlineMessageID
     }
 }
 
 public extension Bot {
-    /**
-     Use this method to set the score of the specified user in a game message. On success, if the message is not an inline message, the Message is returned, otherwise True is returned. Returns an error, if the new score is not greater than the user's current score in the chat and force is False.
+    /// Use this method to set the score of the specified user in a game message. On success, if the message is not an inline message, the Message is returned, otherwise True is returned. Returns an error, if the new score is not greater than the user's current score in the chat and force is False.
 
-     SeeAlso Telegram Bot API Reference:
-     [SetGameScoreParams](https://core.telegram.org/bots/api#setgamescore)
+    /// SeeAlso Telegram Bot API Reference:
+    /// [SetGameScoreParams](https://core.telegram.org/bots/api#setgamescore)
 
-     - Parameters:
-         - params: Parameters container, see `SetGameScoreParams` struct
-     - Throws: Throws on errors
-     - Returns: EventLoopFuture of `MessageOrBool` type
-     */
-    @discardableResult
-    func setGameScore(params: SetGameScoreParams) throws -> EventLoopFuture<MessageOrBool> {
+    /// - Parameters:
+    ///     - params: Parameters container, see `SetGameScoreParams` struct
+    /// - Throws: Throws on errors
+    /// - Returns: EventLoopFuture of `MessageOrBool` type
+    @discardableResult func setGameScore(params: SetGameScoreParams) throws -> EventLoopFuture<MessageOrBool> {
         let methodURL: URI = .init(string: getMethodURL("setGameScore"))
         let future: EventLoopFuture<MessageOrBool> = tgClient.post(methodURL, params: params, as: nil)
         return future

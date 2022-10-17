@@ -2,7 +2,7 @@ import Foundation
 import Vapor
 
 public final class Bot: BotProtocol {
-    public var botId: String
+    public var botID: String
     public var tgURI: URI
     public var tgClient: ClientProtocol
     public var connection: ConnectionProtocol
@@ -12,13 +12,14 @@ public final class Bot: BotProtocol {
     private static var configured = false
     public static var log = Logger(label: "com.tgbot")
 
-    private init(connection: ConnectionProtocol,
-                 tgClient: ClientProtocol,
-                 tgURI: URI,
-                 botId: String)
-    {
+    private init(
+        connection: ConnectionProtocol,
+        tgClient: ClientProtocol,
+        tgURI: URI,
+        botID: String
+    ) {
         self.connection = connection
-        self.botId = botId
+        self.botID = botID
         self.tgURI = tgURI
         self.tgClient = tgClient
         Self.configured = true
@@ -35,25 +36,27 @@ public final class Bot: BotProtocol {
         return Self._shared
     }
 
-    public static func configure(connection: ConnectionProtocol,
-                                 botId: String,
-                                 tgURI: URI = Bot.standardURL,
-                                 tgClient: ClientProtocol)
-    {
+    public static func configure(
+        connection: ConnectionProtocol,
+        botID: String,
+        tgURI: URI = Bot.standardURL,
+        tgClient: ClientProtocol
+    ) {
         if configured { return }
-        Self._shared = Self(connection: connection, tgClient: tgClient, tgURI: tgURI, botId: botId)
+        Self._shared = Self(connection: connection, tgClient: tgClient, tgURI: tgURI, botID: botID)
         Self._shared.connection.bot = Self._shared
     }
 
-    public static func configure(connection: ConnectionProtocol,
-                                 botId: String,
-                                 tgURI: URI = Bot.standardURL,
-                                 vaporClient: Vapor.Client)
-    {
-        configure(connection: connection, botId: botId, tgURI: tgURI, tgClient: DefaultClient(client: vaporClient))
+    public static func configure(
+        connection: ConnectionProtocol,
+        botID: String,
+        tgURI: URI = Bot.standardURL,
+        vaporClient: Vapor.Client
+    ) {
+        configure(connection: connection, botID: botID, tgURI: tgURI, tgClient: DefaultClient(client: vaporClient))
     }
 
     public func getMethodURL(_ methodName: String) -> String {
-        "\(tgURI)/bot\(botId)/\(methodName)"
+        "\(tgURI)/bot\(botID)/\(methodName)"
     }
 }

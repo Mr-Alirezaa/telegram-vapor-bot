@@ -1,11 +1,8 @@
 
-
-/**
- This object represents information about an order.
-
- SeeAlso Telegram Bot API Reference:
- [OrderInfo](https://core.telegram.org/bots/api#orderinfo)
- */
+/// This object represents information about an order.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [OrderInfo](https://core.telegram.org/bots/api#orderinfo)
 public final class OrderInfo: Codable {
     /// Custom keys for coding/decoding `OrderInfo` struct
     public enum CodingKeys: String, CodingKey {
@@ -27,7 +24,12 @@ public final class OrderInfo: Codable {
     /// Optional. User shipping address
     public var shippingAddress: ShippingAddress?
 
-    public init(name: String? = nil, phoneNumber: String? = nil, email: String? = nil, shippingAddress: ShippingAddress? = nil) {
+    public init(
+        name: String? = nil,
+        phoneNumber: String? = nil,
+        email: String? = nil,
+        shippingAddress: ShippingAddress? = nil
+    ) {
         self.name = name
         self.phoneNumber = phoneNumber
         self.email = email

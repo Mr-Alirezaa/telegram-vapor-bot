@@ -1,11 +1,8 @@
 
-
-/**
- Describes that no specific value for the menu button was set.
-
- SeeAlso Telegram Bot API Reference:
- [MenuButtonDefault](https://core.telegram.org/bots/api#menubuttondefault)
- */
+/// Describes that no specific value for the menu button was set.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [MenuButtonDefault](https://core.telegram.org/bots/api#menubuttondefault)
 public final class MenuButtonDefault: Codable {
     /// Custom keys for coding/decoding `MenuButtonDefault` struct
     public enum CodingKeys: String, CodingKey {

@@ -10,25 +10,30 @@ struct EmptyParams: Encodable {}
 
 public protocol ClientProtocol {
     var client: Vapor.Client { get }
-    @discardableResult
-    func get<Params: Encodable, Response: Codable>(_ url: URI, params: Params?, as mediaType: Vapor.HTTPMediaType?) -> EventLoopFuture<Response>
+    @discardableResult func get<Params: Encodable, Response: Codable>(
+        _ url: URI,
+        params: Params?,
+        as mediaType: Vapor.HTTPMediaType?
+    )
+        -> EventLoopFuture<Response>
 
-    @discardableResult
-    func get<Response: Codable>(_ url: URI) -> EventLoopFuture<Response>
+    @discardableResult func get<Response: Codable>(_ url: URI) -> EventLoopFuture<Response>
 
-    @discardableResult
-    func get<Response: Codable>(_ url: URI, as mediaType: Vapor.HTTPMediaType) -> EventLoopFuture<Response>
+    @discardableResult func get<Response: Codable>(_ url: URI, as mediaType: Vapor.HTTPMediaType)
+        -> EventLoopFuture<Response>
 
-    @discardableResult
-    func post<Params: Encodable, Response: Codable>(_ url: URI, params: Params?, as mediaType: Vapor.HTTPMediaType?) -> EventLoopFuture<Response>
+    @discardableResult func post<Params: Encodable, Response: Codable>(
+        _ url: URI,
+        params: Params?,
+        as mediaType: Vapor.HTTPMediaType?
+    )
+        -> EventLoopFuture<Response>
 
-    @discardableResult
-    func post<Response: Codable>(_ url: URI) -> EventLoopFuture<Response>
+    @discardableResult func post<Response: Codable>(_ url: URI) -> EventLoopFuture<Response>
 
-    @discardableResult
-    func post<Response: Codable>(_ url: URI, as mediaType: Vapor.HTTPMediaType) -> EventLoopFuture<Response>
+    @discardableResult func post<Response: Codable>(_ url: URI, as mediaType: Vapor.HTTPMediaType)
+        -> EventLoopFuture<Response>
 }
-
 
 public final class DefaultClient: ClientProtocol {
     public let client: Vapor.Client
@@ -37,8 +42,7 @@ public final class DefaultClient: ClientProtocol {
         self.client = client
     }
 
-    @discardableResult
-    public func get<Params: Encodable, Response: Codable>
+    @discardableResult public func get<Params: Encodable, Response: Codable>
     (
         _ url: URI,
         params: Params? = nil,
@@ -49,14 +53,17 @@ public final class DefaultClient: ClientProtocol {
 //                #warning("THIS CODE FOR FAST FIX, BECAUSE https://github.com/vapor/multipart-kit/issues/63 not accepted yet")
                 var rawMultipart: (body: NSMutableData, boundary: String)!
                 do {
-                    /// Content-Disposition: form-data; name="nested_object"
+                    /// Content-Disposition: form-data; name="nested\_object"
                     ///
                     /// { json string }
                     rawMultipart = try (params ?? (EmptyParams() as! Params)).toMultiPartFormData()
                 } catch {
                     Bot.log.critical(error.logMessage)
                 }
-                clientRequest.headers.add(name: "Content-Type", value: "multipart/form-data; boundary=\(rawMultipart.boundary)")
+                clientRequest.headers.add(
+                    name: "Content-Type",
+                    value: "multipart/form-data; boundary=\(rawMultipart.boundary)"
+                )
                 let buffer = ByteBuffer(data: rawMultipart.body as Data)
                 clientRequest.body = buffer
             } else {
@@ -73,18 +80,18 @@ public final class DefaultClient: ClientProtocol {
         }
     }
 
-    @discardableResult
-    public func get<Response: Codable>(_ url: URI) -> EventLoopFuture<Response> {
+    @discardableResult public func get<Response: Codable>(_ url: URI) -> EventLoopFuture<Response> {
         get(url, params: EmptyParams(), as: nil)
     }
 
-    @discardableResult
-    public func get<Response: Codable>(_ url: URI, as mediaType: Vapor.HTTPMediaType) -> EventLoopFuture<Response> {
+    @discardableResult public func get<Response: Codable>(
+        _ url: URI,
+        as mediaType: Vapor.HTTPMediaType
+    ) -> EventLoopFuture<Response> {
         get(url, params: EmptyParams(), as: mediaType)
     }
 
-    @discardableResult
-    public func post<Params: Encodable, Response: Codable>
+    @discardableResult public func post<Params: Encodable, Response: Codable>
     (
         _ url: URI,
         params: Params? = nil,
@@ -95,7 +102,7 @@ public final class DefaultClient: ClientProtocol {
 //                #warning("THIS CODE FOR FAST FIX, BECAUSE https://github.com/vapor/multipart-kit/issues/63 not accepted yet")
                 var rawMultipart: (body: NSMutableData, boundary: String)!
                 do {
-                    /// Content-Disposition: form-data; name="nested_object"
+                    /// Content-Disposition: form-data; name="nested\_object"
                     ///
                     /// { json string }
                     if let currentParams: Params = params {
@@ -106,7 +113,10 @@ public final class DefaultClient: ClientProtocol {
                 } catch {
                     Bot.log.critical("Post request error: \(error.logMessage)")
                 }
-                clientRequest.headers.add(name: "Content-Type", value: "multipart/form-data; boundary=\(rawMultipart.boundary)")
+                clientRequest.headers.add(
+                    name: "Content-Type",
+                    value: "multipart/form-data; boundary=\(rawMultipart.boundary)"
+                )
                 let buffer = ByteBuffer(data: rawMultipart.body as Data)
                 clientRequest.body = buffer
                 /// Debug
@@ -121,13 +131,14 @@ public final class DefaultClient: ClientProtocol {
         }
     }
 
-    @discardableResult
-    public func post<Response: Codable>(_ url: URI) -> EventLoopFuture<Response> {
+    @discardableResult public func post<Response: Codable>(_ url: URI) -> EventLoopFuture<Response> {
         post(url, params: EmptyParams(), as: nil)
     }
 
-    @discardableResult
-    public func post<Response: Codable>(_ url: URI, as mediaType: Vapor.HTTPMediaType) -> EventLoopFuture<Response> {
+    @discardableResult public func post<Response: Codable>(
+        _ url: URI,
+        as mediaType: Vapor.HTTPMediaType
+    ) -> EventLoopFuture<Response> {
         post(url, params: EmptyParams(), as: mediaType)
     }
 

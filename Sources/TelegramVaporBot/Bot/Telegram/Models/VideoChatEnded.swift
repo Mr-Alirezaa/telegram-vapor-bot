@@ -1,11 +1,8 @@
 
-
-/**
- This object represents a service message about a video chat ended in the chat.
-
- SeeAlso Telegram Bot API Reference:
- [VideoChatEnded](https://core.telegram.org/bots/api#videochatended)
- */
+/// This object represents a service message about a video chat ended in the chat.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [VideoChatEnded](https://core.telegram.org/bots/api#videochatended)
 public final class VideoChatEnded: Codable {
     /// Custom keys for coding/decoding `VideoChatEnded` struct
     public enum CodingKeys: String, CodingKey {

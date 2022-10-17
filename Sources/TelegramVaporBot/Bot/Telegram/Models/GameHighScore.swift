@@ -1,11 +1,8 @@
 
-
-/**
- This object represents one row of the high scores table for a game.
-
- SeeAlso Telegram Bot API Reference:
- [GameHighScore](https://core.telegram.org/bots/api#gamehighscore)
- */
+/// This object represents one row of the high scores table for a game.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [GameHighScore](https://core.telegram.org/bots/api#gamehighscore)
 public final class GameHighScore: Codable {
     /// Custom keys for coding/decoding `GameHighScore` struct
     public enum CodingKeys: String, CodingKey {

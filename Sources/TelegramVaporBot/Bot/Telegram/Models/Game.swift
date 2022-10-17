@@ -1,11 +1,8 @@
 
-
-/**
- This object represents a game. Use BotFather to create and edit games, their short names will act as unique identifiers.
-
- SeeAlso Telegram Bot API Reference:
- [Game](https://core.telegram.org/bots/api#game)
- */
+/// This object represents a game. Use BotFather to create and edit games, their short names will act as unique identifiers.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [Game](https://core.telegram.org/bots/api#game)
 public final class Game: Codable {
     /// Custom keys for coding/decoding `Game` struct
     public enum CodingKeys: String, CodingKey {
@@ -35,7 +32,14 @@ public final class Game: Codable {
     /// Optional. Animation that will be displayed in the game message in chats. Upload via BotFather
     public var animation: Animation?
 
-    public init(title: String, description: String, photo: [PhotoSize], text: String? = nil, textEntities: [MessageEntity]? = nil, animation: Animation? = nil) {
+    public init(
+        title: String,
+        description: String,
+        photo: [PhotoSize],
+        text: String? = nil,
+        textEntities: [MessageEntity]? = nil,
+        animation: Animation? = nil
+    ) {
         self.title = title
         self.description = description
         self.photo = photo

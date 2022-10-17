@@ -1,11 +1,8 @@
 
-
-/**
- This object represents a service message about new members invited to a video chat.
-
- SeeAlso Telegram Bot API Reference:
- [VideoChatParticipantsInvited](https://core.telegram.org/bots/api#videochatparticipantsinvited)
- */
+/// This object represents a service message about new members invited to a video chat.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [VideoChatParticipantsInvited](https://core.telegram.org/bots/api#videochatparticipantsinvited)
 public final class VideoChatParticipantsInvited: Codable {
     /// Custom keys for coding/decoding `VideoChatParticipantsInvited` struct
     public enum CodingKeys: String, CodingKey {

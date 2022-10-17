@@ -1,6 +1,6 @@
 import Foundation
 
-/// Type of the entity. Can be mention (@username), hashtag, bot_command, url, email, bold (bold text), italic (italic text), code (monowidth string), pre (monowidth block), text_link (for clickable text URLs), text_mention (for users without usernames)
+/// Type of the entity. Can be mention (@username), hashtag, bot\_command, url, email, bold (bold text), italic (italic text), code (monowidth string), pre (monowidth block), text\_link (for clickable text URLs), text\_mention (for users without usernames)
 public enum MessageEntityType: String, Codable {
     case mention
     case hashtag

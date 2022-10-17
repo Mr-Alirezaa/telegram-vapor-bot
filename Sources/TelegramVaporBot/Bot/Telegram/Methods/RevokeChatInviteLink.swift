@@ -1,42 +1,36 @@
 import Vapor
 
-/// DESCRIPTION:
-/// Use this method to revoke an invite link created by the bot. If the primary link is revoked, a new link is automatically generated. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the revoked invite link as ChatInviteLink object.
-
 /// Parameters container struct for `revokeChatInviteLink` method
 public struct RevokeChatInviteLinkParams: Encodable {
     /// Unique identifier of the target chat or username of the target channel (in the format @channelusername)
-    public var chatId: ChatId
+    public var chatID: ChatID
 
     /// The invite link to revoke
     public var inviteLink: String
 
     /// Custom keys for coding/decoding `RevokeChatInviteLinkParams` struct
     public enum CodingKeys: String, CodingKey {
-        case chatId = "chat_id"
+        case chatID = "chat_id"
         case inviteLink = "invite_link"
     }
 
-    public init(chatId: ChatId, inviteLink: String) {
-        self.chatId = chatId
+    public init(chatID: ChatID, inviteLink: String) {
+        self.chatID = chatID
         self.inviteLink = inviteLink
     }
 }
 
 public extension Bot {
-    /**
-     Use this method to revoke an invite link created by the bot. If the primary link is revoked, a new link is automatically generated. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the revoked invite link as ChatInviteLink object.
-
-     SeeAlso Telegram Bot API Reference:
-     [RevokeChatInviteLinkParams](https://core.telegram.org/bots/api#revokechatinvitelink)
-
-     - Parameters:
-         - params: Parameters container, see `RevokeChatInviteLinkParams` struct
-     - Throws: Throws on errors
-     - Returns: EventLoopFuture of `Bool` type
-     */
-    @discardableResult
-    func revokeChatInviteLink(params: RevokeChatInviteLinkParams) throws -> EventLoopFuture<Bool> {
+    /// Use this method to revoke an invite link created by the bot. If the primary link is revoked, a new link is automatically generated. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the revoked invite link as ChatInviteLink object.
+    ///
+    /// SeeAlso Telegram Bot API Reference:
+    /// [RevokeChatInviteLinkParams](https://core.telegram.org/bots/api#revokechatinvitelink)
+    ///
+    /// - Parameters:
+    ///     - params: Parameters container, see `RevokeChatInviteLinkParams` struct
+    /// - Throws: Throws on errors
+    /// - Returns: EventLoopFuture of `Bool` type
+    @discardableResult func revokeChatInviteLink(params: RevokeChatInviteLinkParams) throws -> EventLoopFuture<Bool> {
         let methodURL: URI = .init(string: getMethodURL("revokeChatInviteLink"))
         let future: EventLoopFuture<Bool> = tgClient.post(methodURL, params: params, as: nil)
         return future

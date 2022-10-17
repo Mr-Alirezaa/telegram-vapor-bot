@@ -41,6 +41,6 @@ public class CommandHandler<ResultType>: BaseCommandHandler, Handler {
     }
 
     public func handle(update: Update, bot: BotProtocol) throws -> ResultType {
-        return try callback(update, bot)
+        try callback(update, bot)
     }
 }

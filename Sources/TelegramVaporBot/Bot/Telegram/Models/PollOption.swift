@@ -1,11 +1,8 @@
 
-
-/**
- This object contains information about one answer option in a poll.
-
- SeeAlso Telegram Bot API Reference:
- [PollOption](https://core.telegram.org/bots/api#polloption)
- */
+/// This object contains information about one answer option in a poll.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [PollOption](https://core.telegram.org/bots/api#polloption)
 public final class PollOption: Codable {
     /// Custom keys for coding/decoding `PollOption` struct
     public enum CodingKeys: String, CodingKey {

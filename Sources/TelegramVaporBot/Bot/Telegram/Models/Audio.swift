@@ -1,16 +1,13 @@
 
-
-/**
- This object represents an audio file to be treated as music by the Telegram clients.
-
- SeeAlso Telegram Bot API Reference:
- [Audio](https://core.telegram.org/bots/api#audio)
- */
+/// This object represents an audio file to be treated as music by the Telegram clients.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [Audio](https://core.telegram.org/bots/api#audio)
 public final class Audio: Codable {
     /// Custom keys for coding/decoding `Audio` struct
     public enum CodingKeys: String, CodingKey {
-        case fileId = "file_id"
-        case fileUniqueId = "file_unique_id"
+        case fileID = "file_id"
+        case fileUniqueID = "file_unique_id"
         case duration
         case performer
         case title
@@ -21,10 +18,10 @@ public final class Audio: Codable {
     }
 
     /// Identifier for this file, which can be used to download or reuse the file
-    public var fileId: String
+    public var fileID: String
 
     /// Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.
-    public var fileUniqueId: String
+    public var fileUniqueID: String
 
     /// Duration of the audio in seconds as defined by sender
     public var duration: Int
@@ -47,9 +44,19 @@ public final class Audio: Codable {
     /// Optional. Thumbnail of the album cover to which the music file belongs
     public var thumb: PhotoSize?
 
-    public init(fileId: String, fileUniqueId: String, duration: Int, performer: String? = nil, title: String? = nil, fileName: String? = nil, mimeType: String? = nil, fileSize: Int? = nil, thumb: PhotoSize? = nil) {
-        self.fileId = fileId
-        self.fileUniqueId = fileUniqueId
+    public init(
+        fileID: String,
+        fileUniqueID: String,
+        duration: Int,
+        performer: String? = nil,
+        title: String? = nil,
+        fileName: String? = nil,
+        mimeType: String? = nil,
+        fileSize: Int? = nil,
+        thumb: PhotoSize? = nil
+    ) {
+        self.fileID = fileID
+        self.fileUniqueID = fileUniqueID
         self.duration = duration
         self.performer = performer
         self.title = title

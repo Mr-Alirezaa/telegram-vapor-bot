@@ -1,11 +1,8 @@
 
-
-/**
- This object represents a chat.
-
- SeeAlso Telegram Bot API Reference:
- [Chat](https://core.telegram.org/bots/api#chat)
- */
+/// This object represents a chat.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [Chat](https://core.telegram.org/bots/api#chat)
 public final class Chat: Codable {
     /// Custom keys for coding/decoding `Chat` struct
     public enum CodingKeys: String, CodingKey {
@@ -30,7 +27,7 @@ public final class Chat: Codable {
         case hasProtectedContent = "has_protected_content"
         case stickerSetName = "sticker_set_name"
         case canSetStickerSet = "can_set_sticker_set"
-        case linkedChatId = "linked_chat_id"
+        case linkedChatID = "linked_chat_id"
         case location
     }
 
@@ -58,7 +55,7 @@ public final class Chat: Codable {
     /// Optional. Bio of the other party in a private chat. Returned only in getChat.
     public var bio: String?
 
-    /// Optional. True, if privacy settings of the other party in the private chat allows to use tg://user?id=<user_id> links only in chats with the user. Returned only in getChat.
+    /// Optional. True, if privacy settings of the other party in the private chat allows to use tg://user?id=<user\_id> links only in chats with the user. Returned only in getChat.
     public var hasPrivateForwards: Bool?
 
     /// Optional. True, if the privacy settings of the other party restrict sending voice and video note messages in the private chat. Returned only in getChat.
@@ -98,12 +95,36 @@ public final class Chat: Codable {
     public var canSetStickerSet: Bool?
 
     /// Optional. Unique identifier for the linked chat, i.e. the discussion group identifier for a channel and vice versa; for supergroups and channel chats. This identifier may be greater than 32 bits and some programming languages may have difficulty/silent defects in interpreting it. But it is smaller than 52 bits, so a signed 64 bit integer or double-precision float type are safe for storing this identifier. Returned only in getChat.
-    public var linkedChatId: Int64?
+    public var linkedChatID: Int64?
 
     /// Optional. For supergroups, the location to which the supergroup is connected. Returned only in getChat.
     public var location: ChatLocation?
 
-    public init(id: Int64, type: ChatType, title: String? = nil, username: String? = nil, firstName: String? = nil, lastName: String? = nil, photo: ChatPhoto? = nil, bio: String? = nil, hasPrivateForwards: Bool? = nil, hasRestrictedVoiceAndVideoMessages: Bool? = nil, joinToSendMessages: Bool? = nil, joinByRequest: Bool? = nil, description: String? = nil, inviteLink: String? = nil, pinnedMessage: Message? = nil, permissions: ChatPermissions? = nil, slowModeDelay: Int? = nil, messageAutoDeleteTime: Int? = nil, hasProtectedContent: Bool? = nil, stickerSetName: String? = nil, canSetStickerSet: Bool? = nil, linkedChatId: Int64? = nil, location: ChatLocation? = nil) {
+    public init(
+        id: Int64,
+        type: ChatType,
+        title: String? = nil,
+        username: String? = nil,
+        firstName: String? = nil,
+        lastName: String? = nil,
+        photo: ChatPhoto? = nil,
+        bio: String? = nil,
+        hasPrivateForwards: Bool? = nil,
+        hasRestrictedVoiceAndVideoMessages: Bool? = nil,
+        joinToSendMessages: Bool? = nil,
+        joinByRequest: Bool? = nil,
+        description: String? = nil,
+        inviteLink: String? = nil,
+        pinnedMessage: Message? = nil,
+        permissions: ChatPermissions? = nil,
+        slowModeDelay: Int? = nil,
+        messageAutoDeleteTime: Int? = nil,
+        hasProtectedContent: Bool? = nil,
+        stickerSetName: String? = nil,
+        canSetStickerSet: Bool? = nil,
+        linkedChatID: Int64? = nil,
+        location: ChatLocation? = nil
+    ) {
         self.id = id
         self.type = type
         self.title = title
@@ -125,7 +146,7 @@ public final class Chat: Codable {
         self.hasProtectedContent = hasProtectedContent
         self.stickerSetName = stickerSetName
         self.canSetStickerSet = canSetStickerSet
-        self.linkedChatId = linkedChatId
+        self.linkedChatID = linkedChatID
         self.location = location
     }
 }

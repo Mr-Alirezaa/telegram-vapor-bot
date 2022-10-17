@@ -1,17 +1,14 @@
 
-
-/**
- This object contains information about one member of a chat. Currently, the following 6 types of chat members are supported:
- ChatMemberOwner
- ChatMemberAdministrator
- ChatMemberMember
- ChatMemberRestricted
- ChatMemberLeft
- ChatMemberBanned
-
- SeeAlso Telegram Bot API Reference:
- [ChatMember](https://core.telegram.org/bots/api#chatmember)
- */
+/// This object contains information about one member of a chat. Currently, the following 6 types of chat members are supported:
+/// ChatMemberOwner
+/// ChatMemberAdministrator
+/// ChatMemberMember
+/// ChatMemberRestricted
+/// ChatMemberLeft
+/// ChatMemberBanned
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [ChatMember](https://core.telegram.org/bots/api#chatmember)
 public final class ChatMember: Codable {
     /// Custom keys for coding/decoding `ChatMember` struct
     public enum CodingKeys: String, CodingKey {
@@ -112,7 +109,30 @@ public final class ChatMember: Codable {
     /// The member's status in the chat, always “left”
     /// The member's status in the chat, always “kicked”
     /// Date when restrictions will be lifted for this user; unix time. If 0, then the user is banned forever
-    public init(status: String, user: User, isAnonymous: Bool?, customTitle: String?, canBeEdited: Bool?, canManageChat: Bool?, canDeleteMessages: Bool?, canManageVideoChats: Bool?, canRestrictMembers: Bool?, canPromoteMembers: Bool?, canChangeInfo: Bool?, canInviteUsers: Bool?, canPostMessages: Bool?, canEditMessages: Bool?, canPinMessages: Bool?, isMember: Bool?, canSendMessages: Bool?, canSendMediaMessages: Bool?, canSendPolls: Bool?, canSendOtherMessages: Bool?, canAddWebPagePreviews: Bool?, untilDate: Int?) {
+    public init(
+        status: String,
+        user: User,
+        isAnonymous: Bool?,
+        customTitle: String?,
+        canBeEdited: Bool?,
+        canManageChat: Bool?,
+        canDeleteMessages: Bool?,
+        canManageVideoChats: Bool?,
+        canRestrictMembers: Bool?,
+        canPromoteMembers: Bool?,
+        canChangeInfo: Bool?,
+        canInviteUsers: Bool?,
+        canPostMessages: Bool?,
+        canEditMessages: Bool?,
+        canPinMessages: Bool?,
+        isMember: Bool?,
+        canSendMessages: Bool?,
+        canSendMediaMessages: Bool?,
+        canSendPolls: Bool?,
+        canSendOtherMessages: Bool?,
+        canAddWebPagePreviews: Bool?,
+        untilDate: Int?
+    ) {
         self.status = status
         self.user = user
         self.isAnonymous = isAnonymous

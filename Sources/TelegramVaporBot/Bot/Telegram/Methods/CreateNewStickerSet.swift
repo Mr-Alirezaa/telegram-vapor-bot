@@ -1,20 +1,17 @@
 import Vapor
 
-/// DESCRIPTION:
-/// Use this method to create a new sticker set owned by a user. The bot will be able to edit the sticker set thus created. You must use exactly one of the fields png_sticker, tgs_sticker, or webm_sticker. Returns True on success.
-
 /// Parameters container struct for `createNewStickerSet` method
 public struct CreateNewStickerSetParams: Encodable {
     /// User identifier of created sticker set owner
-    public var userId: Int64
+    public var userID: Int64
 
-    /// Short name of sticker set, to be used in t.me/addstickers/ URLs (e.g., animals). Can contain only English letters, digits and underscores. Must begin with a letter, can't contain consecutive underscores and must end in "_by_<bot_username>". <bot_username> is case insensitive. 1-64 characters.
+    /// Short name of sticker set, to be used in t.me/addstickers/ URLs (e.g., animals). Can contain only English letters, digits and underscores. Must begin with a letter, can't contain consecutive underscores and must end in "\_by\_<bot\_username>". <bot\_username> is case insensitive. 1-64 characters.
     public var name: String
 
     /// Sticker set title, 1-64 characters
     public var title: String
 
-    /// PNG image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files »
+    /// PNG image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. Pass a file\_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files »
     public var pngSticker: FileInfo?
 
     /// S animation with the sticker, uploaded using multipart/form-data. See https://core.telegram.org/stickers#animated-sticker-requirements for technical requirements
@@ -34,7 +31,7 @@ public struct CreateNewStickerSetParams: Encodable {
 
     /// Custom keys for coding/decoding `CreateNewStickerSetParams` struct
     public enum CodingKeys: String, CodingKey {
-        case userId = "user_id"
+        case userID = "user_id"
         case name
         case title
         case pngSticker = "png_sticker"
@@ -45,8 +42,18 @@ public struct CreateNewStickerSetParams: Encodable {
         case maskPosition = "mask_position"
     }
 
-    public init(userId: Int64, name: String, title: String, pngSticker: FileInfo? = nil, tgsSticker: InputFile? = nil, webmSticker: InputFile? = nil, stickerType: String? = nil, emojis: String, maskPosition: MaskPosition? = nil) {
-        self.userId = userId
+    public init(
+        userID: Int64,
+        name: String,
+        title: String,
+        pngSticker: FileInfo? = nil,
+        tgsSticker: InputFile? = nil,
+        webmSticker: InputFile? = nil,
+        stickerType: String? = nil,
+        emojis: String,
+        maskPosition: MaskPosition? = nil
+    ) {
+        self.userID = userID
         self.name = name
         self.title = title
         self.pngSticker = pngSticker
@@ -59,19 +66,16 @@ public struct CreateNewStickerSetParams: Encodable {
 }
 
 public extension Bot {
-    /**
-     Use this method to create a new sticker set owned by a user. The bot will be able to edit the sticker set thus created. You must use exactly one of the fields png_sticker, tgs_sticker, or webm_sticker. Returns True on success.
-
-     SeeAlso Telegram Bot API Reference:
-     [CreateNewStickerSetParams](https://core.telegram.org/bots/api#createnewstickerset)
-
-     - Parameters:
-         - params: Parameters container, see `CreateNewStickerSetParams` struct
-     - Throws: Throws on errors
-     - Returns: EventLoopFuture of `Bool` type
-     */
-    @discardableResult
-    func createNewStickerSet(params: CreateNewStickerSetParams) throws -> EventLoopFuture<Bool> {
+    /// Use this method to create a new sticker set owned by a user. The bot will be able to edit the sticker set thus created. You must use exactly one of the fields png\_sticker, tgs\_sticker, or webm\_sticker. Returns True on success.
+    ///
+    /// SeeAlso Telegram Bot API Reference:
+    /// [CreateNewStickerSetParams](https://core.telegram.org/bots/api#createnewstickerset)
+    ///
+    /// - Parameters:
+    ///     - params: Parameters container, see `CreateNewStickerSetParams` struct
+    /// - Throws: Throws on errors
+    /// - Returns: EventLoopFuture of `Bool` type
+    @discardableResult func createNewStickerSet(params: CreateNewStickerSetParams) throws -> EventLoopFuture<Bool> {
         let methodURL: URI = .init(string: getMethodURL("createNewStickerSet"))
         let future: EventLoopFuture<Bool> = tgClient.post(methodURL, params: params, as: nil)
         return future

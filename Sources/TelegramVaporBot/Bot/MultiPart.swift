@@ -65,7 +65,7 @@ public class NetMultipartData {
     }
 
     public init() {
-        boundary = "Boundary-\(UUID().uuidString)"
+        self.boundary = "Boundary-\(UUID().uuidString)"
     }
 
     public init(boundary: String) {
@@ -142,7 +142,9 @@ public class NetMultipartData {
 public extension Encodable {
     func toMultiPartFormData() throws -> (body: NSMutableData, boundary: String) {
         let encodedData = try JSONEncoder().encode(self)
-        guard let dictironary: [String: Any] = try JSONSerialization.jsonObject(with: encodedData, options: []) as? [String: Any] else {
+        guard let dictironary: [String: Any] = try JSONSerialization
+            .jsonObject(with: encodedData, options: []) as? [String: Any]
+        else {
             fatalError("Not encode to dictionary \(Self.self)")
         }
         let multipart: NetMultipartData = .init()

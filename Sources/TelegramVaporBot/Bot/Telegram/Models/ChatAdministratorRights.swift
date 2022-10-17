@@ -1,11 +1,8 @@
 
-
-/**
- Represents the rights of an administrator in a chat.
-
- SeeAlso Telegram Bot API Reference:
- [ChatAdministratorRights](https://core.telegram.org/bots/api#chatadministratorrights)
- */
+/// Represents the rights of an administrator in a chat.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [ChatAdministratorRights](https://core.telegram.org/bots/api#chatadministratorrights)
 public final class ChatAdministratorRights: Codable {
     /// Custom keys for coding/decoding `ChatAdministratorRights` struct
     public enum CodingKeys: String, CodingKey {
@@ -55,7 +52,19 @@ public final class ChatAdministratorRights: Codable {
     /// Optional. True, if the user is allowed to pin messages; groups and supergroups only
     public var canPinMessages: Bool?
 
-    public init(isAnonymous: Bool, canManageChat: Bool, canDeleteMessages: Bool, canManageVideoChats: Bool, canRestrictMembers: Bool, canPromoteMembers: Bool, canChangeInfo: Bool, canInviteUsers: Bool, canPostMessages: Bool? = nil, canEditMessages: Bool? = nil, canPinMessages: Bool? = nil) {
+    public init(
+        isAnonymous: Bool,
+        canManageChat: Bool,
+        canDeleteMessages: Bool,
+        canManageVideoChats: Bool,
+        canRestrictMembers: Bool,
+        canPromoteMembers: Bool,
+        canChangeInfo: Bool,
+        canInviteUsers: Bool,
+        canPostMessages: Bool? = nil,
+        canEditMessages: Bool? = nil,
+        canPinMessages: Bool? = nil
+    ) {
         self.isAnonymous = isAnonymous
         self.canManageChat = canManageChat
         self.canDeleteMessages = canDeleteMessages

@@ -1,11 +1,8 @@
 
-
-/**
- This object represents one shipping option.
-
- SeeAlso Telegram Bot API Reference:
- [ShippingOption](https://core.telegram.org/bots/api#shippingoption)
- */
+/// This object represents one shipping option.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [ShippingOption](https://core.telegram.org/bots/api#shippingoption)
 public final class ShippingOption: Codable {
     /// Custom keys for coding/decoding `ShippingOption` struct
     public enum CodingKeys: String, CodingKey {

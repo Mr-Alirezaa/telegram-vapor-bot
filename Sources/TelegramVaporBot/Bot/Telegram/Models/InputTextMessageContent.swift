@@ -1,11 +1,8 @@
 
-
-/**
- Represents the content of a text message to be sent as the result of an inline query.
-
- SeeAlso Telegram Bot API Reference:
- [InputTextMessageContent](https://core.telegram.org/bots/api#inputtextmessagecontent)
- */
+/// Represents the content of a text message to be sent as the result of an inline query.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [InputTextMessageContent](https://core.telegram.org/bots/api#inputtextmessagecontent)
 public final class InputTextMessageContent: Codable {
     /// Custom keys for coding/decoding `InputTextMessageContent` struct
     public enum CodingKeys: String, CodingKey {
@@ -21,13 +18,18 @@ public final class InputTextMessageContent: Codable {
     /// Optional. Mode for parsing entities in the message text. See formatting options for more details.
     public var parseMode: String?
 
-    /// Optional. List of special entities that appear in message text, which can be specified instead of parse_mode
+    /// Optional. List of special entities that appear in message text, which can be specified instead of parse\_mode
     public var entities: [MessageEntity]?
 
     /// Optional. Disables link previews for links in the sent message
     public var disableWebPagePreview: Bool?
 
-    public init(messageText: String, parseMode: String? = nil, entities: [MessageEntity]? = nil, disableWebPagePreview: Bool? = nil) {
+    public init(
+        messageText: String,
+        parseMode: String? = nil,
+        entities: [MessageEntity]? = nil,
+        disableWebPagePreview: Bool? = nil
+    ) {
         self.messageText = messageText
         self.parseMode = parseMode
         self.entities = entities

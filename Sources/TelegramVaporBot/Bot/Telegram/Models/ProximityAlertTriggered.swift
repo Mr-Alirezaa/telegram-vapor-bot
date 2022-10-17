@@ -1,11 +1,8 @@
 
-
-/**
- This object represents the content of a service message, sent whenever a user in the chat triggers a proximity alert set by another user.
-
- SeeAlso Telegram Bot API Reference:
- [ProximityAlertTriggered](https://core.telegram.org/bots/api#proximityalerttriggered)
- */
+/// This object represents the content of a service message, sent whenever a user in the chat triggers a proximity alert set by another user.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [ProximityAlertTriggered](https://core.telegram.org/bots/api#proximityalerttriggered)
 public final class ProximityAlertTriggered: Codable {
     /// Custom keys for coding/decoding `ProximityAlertTriggered` struct
     public enum CodingKeys: String, CodingKey {

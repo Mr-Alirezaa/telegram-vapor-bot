@@ -1,18 +1,15 @@
 
-
-/**
- Represents a link to a photo. By default, this photo will be sent by the user with optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the photo.
-
- SeeAlso Telegram Bot API Reference:
- [InlineQueryResultPhoto](https://core.telegram.org/bots/api#inlinequeryresultphoto)
- */
+/// Represents a link to a photo. By default, this photo will be sent by the user with optional caption. Alternatively, you can use input\_message\_content to send a message with the specified content instead of the photo.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [InlineQueryResultPhoto](https://core.telegram.org/bots/api#inlinequeryresultphoto)
 public final class InlineQueryResultPhoto: Codable {
     /// Custom keys for coding/decoding `InlineQueryResultPhoto` struct
     public enum CodingKeys: String, CodingKey {
         case type
         case id
-        case photoUrl = "photo_url"
-        case thumbUrl = "thumb_url"
+        case photoURL = "photo_url"
+        case thumbURL = "thumb_url"
         case photoWidth = "photo_width"
         case photoHeight = "photo_height"
         case title
@@ -31,10 +28,10 @@ public final class InlineQueryResultPhoto: Codable {
     public var id: String
 
     /// A valid URL of the photo. Photo must be in JPEG format. Photo size must not exceed 5MB
-    public var photoUrl: String
+    public var photoURL: String
 
     /// URL of the thumbnail for the photo
-    public var thumbUrl: String
+    public var thumbURL: String
 
     /// Optional. Width of the photo
     public var photoWidth: Int?
@@ -54,7 +51,7 @@ public final class InlineQueryResultPhoto: Codable {
     /// Optional. Mode for parsing entities in the photo caption. See formatting options for more details.
     public var parseMode: String?
 
-    /// Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
+    /// Optional. List of special entities that appear in the caption, which can be specified instead of parse\_mode
     public var captionEntities: [MessageEntity]?
 
     /// Optional. Inline keyboard attached to the message
@@ -63,11 +60,25 @@ public final class InlineQueryResultPhoto: Codable {
     /// Optional. Content of the message to be sent instead of the photo
     public var inputMessageContent: InputMessageContent?
 
-    public init(type: String, id: String, photoUrl: String, thumbUrl: String, photoWidth: Int? = nil, photoHeight: Int? = nil, title: String? = nil, description: String? = nil, caption: String? = nil, parseMode: String? = nil, captionEntities: [MessageEntity]? = nil, replyMarkup: InlineKeyboardMarkup? = nil, inputMessageContent: InputMessageContent? = nil) {
+    public init(
+        type: String,
+        id: String,
+        photoURL: String,
+        thumbURL: String,
+        photoWidth: Int? = nil,
+        photoHeight: Int? = nil,
+        title: String? = nil,
+        description: String? = nil,
+        caption: String? = nil,
+        parseMode: String? = nil,
+        captionEntities: [MessageEntity]? = nil,
+        replyMarkup: InlineKeyboardMarkup? = nil,
+        inputMessageContent: InputMessageContent? = nil
+    ) {
         self.type = type
         self.id = id
-        self.photoUrl = photoUrl
-        self.thumbUrl = thumbUrl
+        self.photoURL = photoURL
+        self.thumbURL = thumbURL
         self.photoWidth = photoWidth
         self.photoHeight = photoHeight
         self.title = title

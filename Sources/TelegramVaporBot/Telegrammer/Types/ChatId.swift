@@ -1,7 +1,7 @@
 import Foundation
 
 /// Unique identifier for the target chat or username of the target channel (in the format @channelusername)
-public enum ChatId: Codable {
+public enum ChatID: Codable {
     case chat(Int64)
     case username(String)
     case undefined

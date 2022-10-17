@@ -1,11 +1,8 @@
 
-
-/**
- This object represent a user's profile pictures.
-
- SeeAlso Telegram Bot API Reference:
- [UserProfilePhotos](https://core.telegram.org/bots/api#userprofilephotos)
- */
+/// This object represent a user's profile pictures.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [UserProfilePhotos](https://core.telegram.org/bots/api#userprofilephotos)
 public final class UserProfilePhotos: Codable {
     /// Custom keys for coding/decoding `UserProfilePhotos` struct
     public enum CodingKeys: String, CodingKey {

@@ -8,7 +8,7 @@ public struct InputFile: Encodable {
 
     public init(filename: String, data: Data, mimeType: String? = nil) {
         self.data = data
-        fileName = filename
+        self.fileName = filename
         self.mimeType = mimeType
     }
 }
@@ -25,14 +25,13 @@ extension InputFile: MultipartPartConvertible {
     }
 
     public init?(multipart: MultipartPart) {
-        guard
-            let fileName = multipart.filename,
-            let data = Data(multipart: multipart)
+        guard let fileName = multipart.filename,
+              let data = Data(multipart: multipart)
         else {
             return nil
         }
         self.fileName = fileName
         self.data = data
-        mimeType = multipart.headers["Content-Type"].first
+        self.mimeType = multipart.headers["Content-Type"].first
     }
 }

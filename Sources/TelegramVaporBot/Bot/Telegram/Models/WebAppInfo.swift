@@ -1,11 +1,8 @@
 
-
-/**
- Describes a Web App.
-
- SeeAlso Telegram Bot API Reference:
- [WebAppInfo](https://core.telegram.org/bots/api#webappinfo)
- */
+/// Describes a Web App.
+///
+/// SeeAlso Telegram Bot API Reference:
+/// [WebAppInfo](https://core.telegram.org/bots/api#webappinfo)
 public final class WebAppInfo: Codable {
     /// Custom keys for coding/decoding `WebAppInfo` struct
     public enum CodingKeys: String, CodingKey {
