@@ -1,10 +1,3 @@
-//
-//  MessageOrBool.swift
-//  App
-//
-
-//
-
 /// Sometimes bot methods returns objects On success, otherwise returns False
 public enum MessageOrBool: Codable {
     case message(Message)

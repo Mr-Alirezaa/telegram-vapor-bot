@@ -13,7 +13,7 @@ public extension CallbackQuery {
     /// - Returns: An `EventLoopFuture` promising True if succeeds.
     @discardableResult
     func answer(
-        using bot: BotProtocol,
+        with bot: BotProtocol,
         text: String? = nil,
         showAlert: Bool? = nil,
         url: String? = nil,
@@ -42,13 +42,13 @@ public extension CallbackQuery {
     /// - Returns: True if succeeds.
     @discardableResult
     func answer(
-        using bot: BotProtocol,
+        with bot: BotProtocol,
         text: String? = nil,
         showAlert: Bool? = nil,
         url: String? = nil,
         cacheTime: Int? = nil
     ) async throws -> Bool {
-        try await answer(using: bot, text: text, showAlert: showAlert, url: url, cacheTime: cacheTime).get()
+        try await answer(with: bot, text: text, showAlert: showAlert, url: url, cacheTime: cacheTime).get()
     }
 }
 

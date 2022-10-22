@@ -10,7 +10,7 @@ public extension User {
     /// - Returns: List of user profile photos as a `UserProfilePhotos`
     @discardableResult
     func getProfilePhotos(
-        using bot: BotProtocol,
+        with bot: BotProtocol,
         offset: Int? = nil,
         limit: Int? = nil
     ) throws -> EventLoopFuture<UserProfilePhotos> {
@@ -28,10 +28,10 @@ public extension User {
     /// - Returns: List of user profile photos as a `UserProfilePhotos`
     @discardableResult
     func getProfilePhotos(
-        using bot: BotProtocol,
+        with bot: BotProtocol,
         offset: Int? = nil,
         limit: Int? = nil
     ) async throws -> UserProfilePhotos {
-        try await getProfilePhotos(using: bot, offset: offset, limit: limit).get()
+        try await getProfilePhotos(with: bot, offset: offset, limit: limit).get()
     }
 }
