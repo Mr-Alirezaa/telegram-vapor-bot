@@ -39,7 +39,7 @@ public final class LongPollingConnection: ConnectionProtocol {
     }
 
     public init(limit: Int? = nil, timeout: Int? = nil, allowedUpdates: [Update.CodingKeys]? = nil) {
-        self.dispatcher = DefaultDispatcher()
+        self.dispatcher = Dispatcher()
         self.limit = limit
         self.timeout = timeout ?? self.timeout
         self.allowedUpdates = allowedUpdates
@@ -122,7 +122,7 @@ public final class WebHookConnection: ConnectionProtocol {
 
     public init(webHookURL: URI) {
         self.webHookURL = webHookURL
-        self.dispatcher = DefaultDispatcher()
+        self.dispatcher = Dispatcher()
     }
 
     @discardableResult public func start() throws -> Bool {

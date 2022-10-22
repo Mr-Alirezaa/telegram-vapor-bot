@@ -13,7 +13,7 @@ public protocol DispatcherProtocol {
     func process(_ updates: [Update]) throws
 }
 
-open class DefaultDispatcher: DispatcherProtocol {
+open class Dispatcher: DispatcherProtocol {
     public weak var bot: Bot?
     private var processQueue: DispatchQueue = .init(
         label: "com.telegram-vapor-bot-lib.dispatcher.processQueue",

@@ -4,11 +4,11 @@ public extension Message {
     /// Use this helper method to edit text and game messages.
     ///
     /// - Parameters:
-    ///    - text: New text of the message, 1-4096 characters after entities parsing
-    ///    - parseMode: Mode for parsing entities in the message text. See formatting options for more details.
-    ///    - replyMarkup: A JSON-serialized object for an inline keyboard.
-    ///    - entities: A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse\_mode
-    ///    - disableWebPagePreview: Disables link previews for links in this message
+    ///   - text: New text of the message, 1-4096 characters after entities parsing
+    ///   - parseMode: Mode for parsing entities in the message text. See formatting options for more details.
+    ///   - replyMarkup: A JSON-serialized object for an inline keyboard.
+    ///   - entities: A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse\_mode
+    ///   - disableWebPagePreview: Disables link previews for links in this message
     ///
     /// - Throws: Throws on errors
     /// - Returns: On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
@@ -45,11 +45,11 @@ public extension Message {
     /// Use this helper method to edit text and game messages.
     ///
     /// - Parameters:
-    ///    - text: New text of the message, 1-4096 characters after entities parsing
-    ///    - parseMode: Mode for parsing entities in the message text. See formatting options for more details.
-    ///    - replyMarkup: A JSON-serialized object for an inline keyboard.
-    ///    - entities: A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse\_mode
-    ///    - disableWebPagePreview: Disables link previews for links in this message
+    ///   - text: New text of the message, 1-4096 characters after entities parsing
+    ///   - parseMode: Mode for parsing entities in the message text. See formatting options for more details.
+    ///   - replyMarkup: A JSON-serialized object for an inline keyboard.
+    ///   - entities: A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse\_mode
+    ///   - disableWebPagePreview: Disables link previews for links in this message
     ///
     /// - Throws: Throws on errors
     /// - Returns: On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.

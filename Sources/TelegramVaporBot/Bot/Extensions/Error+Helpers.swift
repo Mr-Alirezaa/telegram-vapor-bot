@@ -4,7 +4,7 @@ import Logging
 public extension Error {
     var logMessage: Logger.Message {
         var errorDescription: String
-        if let coreError = self as? CoreError {
+        if let coreError = self as? DefaultClient.CoreError {
             errorDescription = coreError.localizedDescription
         } else if let decodingError = self as? DecodingError {
             switch decodingError {
@@ -17,7 +17,7 @@ public extension Error {
             case let .valueNotFound(_, context):
                 errorDescription = context.debugDescription
             @unknown default:
-                errorDescription = "Uknown DecodingError"
+                errorDescription = "Unknown DecodingError"
             }
         } else {
             errorDescription = "Cannot detect error type, providing default description:\n\(localizedDescription)"

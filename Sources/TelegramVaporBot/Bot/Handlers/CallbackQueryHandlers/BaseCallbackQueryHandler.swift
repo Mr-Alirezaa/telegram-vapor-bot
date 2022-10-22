@@ -8,7 +8,7 @@ public extension BaseCallbackQueryHandler {
     func check(update: Update) -> Bool {
         guard let callbackQuery = update.callbackQuery else { return false }
         if let data = callbackQuery.data,
-           !data.matchRegexp(pattern: pattern)
+           !data.matchRegex(pattern: pattern)
         {
             return false
         }

@@ -4,7 +4,7 @@ public extension Message {
     /// Helper method to easily delete message
     ///
     /// - Parameters:
-    ///    - bot: Bot from which message is being deleted
+    ///   - bot: Bot from which message is being deleted
     ///
     /// - Throws: Throws on errors
     /// - Returns: An `EventLoopFuture` promising the result of the deleteMessage request
@@ -18,7 +18,7 @@ public extension Message {
     /// Helper method to easily delete message
     ///
     /// - Parameters:
-    ///    - bot: Bot from which message is being deleted
+    ///   - bot: Bot from which message is being deleted
     ///
     /// - Throws: Throws on errors
     /// - Returns: Result of deleteMessage request
