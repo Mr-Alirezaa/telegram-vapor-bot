@@ -1,4 +1,6 @@
 # Telegram Vapor Bot
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FMr-Alirezaa%2Ftelegram-vapor-bot.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FMr-Alirezaa%2Ftelegram-vapor-bot?ref=badge_shield)
+
 
 ## ⭐️ Please, support Swift Telegram Vapor Bot development by giving a ⭐️
 
@@ -185,3 +187,7 @@ let package = Package(
 ### Acknowledgments
 
 Inspired by [Telegrammer](https://github.com/givip/Telegrammer)
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FMr-Alirezaa%2Ftelegram-vapor-bot.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FMr-Alirezaa%2Ftelegram-vapor-bot?ref=badge_large)
