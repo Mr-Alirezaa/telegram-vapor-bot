@@ -20,11 +20,11 @@ class AnyAsyncHandler<State>: AsyncHandler {
         self.handler = handler
     }
 
-    func check(update: TelegramVaporBot.Update) -> Bool {
+    func check(update: Update) -> Bool {
         handler.check(update: update)
     }
 
-    func handle(update: TelegramVaporBot.Update, bot: TelegramVaporBot.BotProtocol) async throws -> State {
+    func handle(update: Update, bot: BotProtocol) async throws -> State {
         try await handler.handle(update: update, bot: bot) as! State
     }
 }

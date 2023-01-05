@@ -106,7 +106,7 @@ public final class Update: Codable {
 
 extension Update {
     /// Convenient access to `from` property in different Update types.
-    var from: TelegramVaporBot.User? {
+    var from: User? {
         if let from = message?.from {
             return from
         }
